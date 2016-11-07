@@ -1,28 +1,36 @@
-# classic-jekyll-theme
+---
+layout: product
+product-category: jekyll
+title: Classic-Jekyll-Theme
+subtitle: User Manual
+# icon: /img/classic-jekyll-theme.png
+permalink: /classic-jekyll-theme/features
+---
+# Classic-Jekyll-Theme
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
 Wide:
 
-![wide-layout](assets/img/wide.png)
+![wide-layout](http://balancingrock.nl/img/classic-jekyll-theme-wide.png)
 
 Medium:
 
-![medium-left-layout](assets/img/medium-left.png)
+![medium-left-layout](http://balancingrock.nl/img/classic-jekyll-theme-medium-left.png)
 
 Narrow:
 
-![narrow-layout](assets/img/narrow.png)
+![narrow-layout](http://balancingrock.nl/img/classic-jekyll-theme-narrow.png)
 
 The columns are called Primary (blue), Secondary (grey) and Tertiary (pink). In the above layouts the secondary column is on the left side. If it had been on the right side, the medium layout would have looked like this:
 
-![medium-right-layout](assets/img/medium-right.png)
+![medium-right-layout](http://balancingrock.nl/img/classic-jekyll-theme-medium-right.png)
 
 The menu bar (in yellow) is always deployed in the wide layout. In the medium and narrow layout the menu bar is shown in the deployed state. When not deployed, a menu-item symbol is shown in the banner that switches the menu between deployed and not.
 
 An example screenshot:
 
-![example](assets/img/screenshot-half.png)
+![example](http://balancingrock.nl/img/classic-jekyll-theme-screenshot-half.png)
 
 The navigation bar is created automatically from the available pages when they have the proper YAML frontmatter. The navigation bar contains the top level menu items, while the submenu items show up as a drop-down menu when the cursor hovers over the corresponding menu item.
 
@@ -91,7 +99,7 @@ Reload the website, and the columns will show up.
 
 To add sample content that illustrates how pages and categories are implemented, copy the folder `pages` from the gem to the current project. On MacOS the gems are located in: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. Replace the <version>'s with the appropriate numbers (note: these are two different unrelated version numbers). These pages not only contain examples, but also some additional information about using the theme.
 
-## Usage
+## Configuration
 
 The theme is configured in `_config.yml` and `_sass/classic-jekyll-theme.scss`.
 
@@ -121,12 +129,51 @@ The following values are configurable:
 
 - enable-cookies-policy:
  
-	`yes` to enable the cookies warning, `no` to disable. This is the cookies warning from [Silktide](http://silktide.com/cookieconsent) distributed under the MIT license.
+	`yes` to enable the cookies warning, `no` to disable. The cookies warning is from [Silktide](http://silktide.com/cookieconsent), distributed under the MIT license.
 
 
 ### _sass/classic-jekyll-theme.scss
 
 The default `main.scss` file has been emptied. Hence all CSS configuration is done in the theme sass file.
+
+## Creating Posts
+
+Posting is done exactly like in the standard Jekyll environment.
+
+## Creating a Category Page
+
+A category page is a page that contains links to all posts published in that category.
+
+To kick-off the creation of a category page, create a new page and include the following front matter:
+
+	---
+	layout: category-page
+	title: classic
+	---
+
+The rest of the page can remain empty, it will be automatically created. The _category-page_ triggers the generation of a category page. The _title_ is the category the page is created for. The category (and thus also the _title_) are case sensitive.
+
+## Creating Pages for the menu bar
+
+To create a page that must be included in the menu bar, add the following front matter to that page:
+
+	---
+	...
+	menuInclude: yes
+	menuTitle: "About Pages"
+	subMenuFrom: Classic
+	menuIndex: 2
+	---
+
+- menuInclude: Set to "yes" to link this page from the menu bar.
+- menuTitle: The title that will be used in the menu bar.
+- menuIndex: The place of the title within the menu bar. For top level menu items, lower numbers will be to the left of higher numbers. For sub-menu items, lower numbers will go above higher numbers. This theme only sorts on menuIndex numbers, not on other properties.
+- subMenuFrom:
+	- If absent, the page will be linked from a top level menu item. Top level menu items will always be visible when the menu bar is visible.
+	- If a subMenuFrom value is present, and there is a matching page with this value as its menuTitle, then this page will be linked from a drop-down (sub) menu item below that top level menu item.
+	- If a subMenuFrom value is present, and there is no matching page with this value as its menuTitle, then a top level menu item will be created with this as its title. This page will be linked from a drop down (sub) menu item below that menu item.
+
+For a consistent user experience in the narrow layout, it is recommened not to link pages to top level menu items if these menu items have a drop-down submenu.
 
 ## Feedback
 
