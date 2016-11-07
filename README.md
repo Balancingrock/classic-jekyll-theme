@@ -1,11 +1,3 @@
----
-layout: product
-product-category: jekyll
-title: Classic-Jekyll-Theme
-subtitle: User Manual
-# icon: /img/classic-jekyll-theme.png
-permalink: /classic-jekyll-theme/features
----
 # Classic-Jekyll-Theme
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
