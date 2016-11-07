@@ -32,25 +32,11 @@ For european users a cookies policy is included by default. It can be easily dis
 
 ## Installation
 
-Add this line to your Jekyll site's Gemfile:
+Install it as:
 
-```ruby
-gem "classic-jekyll-theme"
-```
+    $ sudo gem install classic-jekyll-theme
 
-And add this line to your Jekyll site's `_config.yml`:
 
-```yaml
-theme: classic-jekyll-theme
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install classic-jekyll-theme
 
 ## Usage
 
