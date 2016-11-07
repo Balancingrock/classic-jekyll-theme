@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<article class="page" itemscope itemtype="http://schema.org/Article">
+
+  <header class="page-header">
+    <h1 class="page-title" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="page-meta">{% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%F" }}</time>{% endif %}{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+  </header>
+
+  <div class="page-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  {% if site.disqus.shortname %}
+    {% include disqus_comments.html %}
+  {% endif %}
+</article>

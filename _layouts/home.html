@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<div>
+
+	<h1>Posts</h1>
+  
+<!--	{{ content }} -->
+
+	{% for post in site.posts %}
+	{% if forloop.index > site.number_of_posts_on_home_page %} {% break %} {% endif %}
+
+    <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+    <span class="post-meta">{{ post.date | date: "%F" }}</span>
+    
+    <div>{{ post.content }}</div>
+
+	{% endfor %}
+
+</div>

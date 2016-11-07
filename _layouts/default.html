@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	{% include head.html %}
+	
+  	<body>
+  	
+  		<div class="navbanner-panel">{% include navbanner.html %}</div>
+
+		<div class="column-panel">
+
+			{% if site.secondary_column == 'left' %}
+			<div class="secondary-column">
+				<div class="secondary-column-content">{% include secondary-column.html %}</div>
+				{% if site.tertiary_column == 'present' %}	
+					<div class="tertiary-column-content">{% include tertiary-column.html %}</div>
+				{% endif %}
+			</div>
+			<div class="secondary-divider"></div>
+			{% else %}
+				{% if site.tertiary_column == 'present' %}
+				<div class="tertiary-column">
+					<div class="tertiary-column-content">{% include tertiary-column.html %}</div>
+				</div>
+				<div class="tertiary-divider"></div>
+				{% endif %}			
+			{% endif %}
+
+
+			<div class="primary-column">
+				<main>{{ content }}</main>
+			</div>
+			
+			
+			{% if site.secondary_column == 'right' %}
+			<div class="secondary-divider"></div>			
+			<div class="secondary-column">
+				<div class="secondary-column-content">{% include secondary-column.html %}</div>
+				{% if site.tertiary_column == 'present' %}	
+					<div class="tertiary-column-content">{% include tertiary-column.html %}</div>
+				{% endif %}
+			</div>
+			{% else %}
+			   {% if site.tertiary_column == 'present' %}
+				<div class="tertiary-divider"></div>
+				<div class="tertiary-column">
+					<div class="tertiary-column-content">{% include tertiary-column.html %}</div>
+				</div>
+				{% endif %}
+			{% endif %}
+
+		</div>
+
+		<div class="footer-divider"></div>
+
+		<div class="footer-panel">{% include footer.html %}</div>
+
+  	</body>
+
+</html>

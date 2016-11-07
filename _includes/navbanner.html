@@ -1,0 +1,149 @@
+<!-- Title of the site is always visible -->
+<div class="navbanner-title">
+	<p>{{ site.title }}</p>
+</div>
+
+<!-- The menu symbol will only be shown on narrow and medium layout -->
+<div class="navbanner-label">
+	<label for="menu-checkbox"><p><!-- empty but necessary! --></p></label> 
+</div>
+<input type="checkbox" id="menu-checkbox">
+
+<!-- Separator between banner and navigation bar. Visibility depends on screen width. -->
+<div class="nav-top-divider"></div>
+
+<!-- Navigation bar visibility depends on screen width. -->
+<nav class="navbanner-menu">
+
+	<!-- The site navigation menu. Note that there is only one level of sub-menu items -->
+	<!-- Create a list of the necessary submenu's -->
+
+	{% assign submenus = "" | split: "" %}
+	{% assign sortedPages = site.pages | sort: 'menuIndex' %}
+	{% for ape in sortedPages %}
+		{% if ape.menuInclude %}
+			{% if ape.subMenuFrom %}
+				{% assign item-found = false %}
+				{% for menu-item in submenus %}
+					{% if menu-item == ape.subMenuFrom %}
+						{% assign item-found = true %}
+					{% endif %}
+				{% endfor %}
+				{% if item-found == false %}
+					{% assign submenus = submenus | push: ape.subMenuFrom %}
+				{% endif %}
+			{% else %}
+				{% assign item-found = false %}
+				{% for menu-item in submenus %}
+					{% if menu-item == ape.menuTitle %}
+						{% assign item-found = true %}
+					{% endif %}
+				{% endfor %}
+				{% if item-found == false %}
+					{% assign submenus = submenus | push: ape.menuTitle %}
+				{% endif %}
+			{% endif %}
+		{% endif %}
+	{% endfor %}
+
+	<!-- Using the above list, create the menu and submenu's -->
+	<ul>
+			
+		<!-- Home page -->
+		<li>
+			<div class="menu-item">
+				<div class="menu-item-symbol"></div>
+				<div class="menu-item-title"><a href="/"><p>Home</p></a></div>
+			</div>
+		</li>
+
+		<!-- Page menus -->
+		{% assign sortedSubMenus = submenus %}
+		{% for submenu in sortedSubMenus %}
+		<li>
+			<input type="checkbox" id="{{ submenu | append:'-checkbox'}}">
+			<label for="{{ submenu | append:'-checkbox'}}">
+				<div class="menu-item-separator"><p><!-- empty but necessary --></p></div>
+				<div class="menu-item">
+					<div class="menu-item-symbol">
+						{% for subpage in site.pages %}
+							{% if subpage.subMenuFrom == submenu %}
+								<p><!-- will be filled by disclosure indicator --></p>
+								{% break %}
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="menu-item-title">
+						{% assign foundTitlePage = false %}
+						{% for titlepage in site.pages %}
+							{% if titlepage.menuInclude %}
+								{% if titlepage.menuTitle == submenu %}
+									{% if titlepage.subMenuFrom == nil %}
+										<a href="{{ titlepage.url }}"><p>{{ submenu }}</p></a>
+										{% assign foundTitlePage = true %}
+										{% break %}
+									{% endif %}
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+						{% if foundTitlePage == false %}
+							<p>{{ submenu }}</p>
+						{% endif %}
+					</div>
+				</div>
+			</label>
+			<ul>
+			{% assign sortedPages = site.pages | sort: 'menuIndex' %}
+			{% for ape in sortedPages %}
+				{% if ape.menuInclude %}
+					{% if ape.subMenuFrom == submenu %}
+					<li>
+						<div class="menu-subitem">
+							<div class="menu-subitem-symbol"></div>
+							<div class="menu-subitem-title">
+								<a href="{{ ape.url }}"><p>{{ ape.menuTitle }}</p></a>
+							</div>
+						</div>
+					</li>
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+			</ul>
+		</li>
+		{% endfor %}
+
+		<!-- Categories menu -->
+		<li>
+			<input type="checkbox" id="category-checkbox">
+			<label for="category-checkbox">
+				<div class="menu-item-separator"><p><!-- empty but necessary --></p></div>
+				<div class="menu-item">
+					<div class="menu-item-symbol">
+						<p><!-- empty but necessary! --></p>
+					</div>
+					<div class="menu-item-title">
+						<p>Categories</p>
+					</div>
+				</div>
+			</label>
+			<ul>
+			{% for ape in site.pages %}
+				{% if ape.layout == 'category-page' %}
+				<li>
+					<div class="menu-subitem">
+						<div class="menu-subitem-symbol"></div>
+						<div class="menu-subitem-title">
+							<a href="{{ ape.url }}"><p>{{ ape.title | capitalize }}</p></a>
+						</div>
+					</div>
+				</li>
+				{% endif %}
+			{% endfor %}
+			</ul>
+		</li>
+
+	</ul>
+</nav>
+
+<!-- Separator between navigation bar and column panel. Visibility depends on screen width. -->
+<div class="nav-bottom-divider"></div>

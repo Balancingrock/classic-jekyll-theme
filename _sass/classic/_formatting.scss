@@ -1,0 +1,189 @@
+// The distinction between "layout" and "formatting" is as follows: If the resulting CCS affects the placement of and/or visibility of multiple items, it is placed in "layout". If the CSS affects only the appearance of an item, then it appears here. Of course the appearance may affect the layout, so there is no hard distinction.
+
+// Formatting for the navbanner panel elements.
+.navbanner-panel {
+
+	// Formatting for the banner area
+	.navbanner-title, .navbanner-label {
+	
+		// Color for the title itself
+		p { color: $site-title-color; }
+		
+		// Color for the menu symbol (only visible on narrow and medium sized layouts)
+		label p { color: $menu-symbol-color; }
+		
+		// Size of the title and menu symbol depends on the layout in effect.
+		@include narrow-layout {
+			font-size: $narrow-site-title-font-size;
+			label { padding: 0 $hspacing-unit; } // Give the menu label more area to make it easier to tap.
+		}
+		@include medium-layout {
+			font-size: $medium-site-title-font-size;
+			label { padding: 0 $hspacing-unit; } // Give the menu label more area to make it easier to tap.
+		}
+		@include wide-layout {
+			font-size: $wide-site-title-font-size;
+		}
+	}
+
+	// Formating for the divider between the banner and menu.	
+	.nav-top-divider {
+		border-top: 2px solid $navbanner-menu-dividers-color;
+		display: $navbanner-menu-dividers-display;
+	}
+	
+	// Formatting for the menu (navigation) area
+	.navbanner-menu {
+
+		// Lists are used for the menu's. No spacing for the top level list and no item markers. There will be an item marker for the narrow layout but that marker is state-dependent and set via a content property.
+		ul { margin: 0;  list-style-type: none; }
+
+		// Set the color for the menu items
+		.menu-item-separator, .menu-item-symbol, .menu-item-title {
+			color: $menu-item-font-color;
+			a { color: $menu-item-font-color; }
+			a:hover { color: $menu-item-hover-color; }
+		}
+		
+		// Set the color for the submenu items
+		.menu-subitem-symbol, .menu-subitem-title {
+			color: $menu-subitem-font-color;
+			a { color: $menu-subitem-font-color; }
+			a:hover { color: $menu-subitem-hover-color; }
+		}
+		
+		// Set the font size for the menu items
+		.menu-item-title { font-size: $menu-item-font-size; }
+		.menu-subitem-title { font-size: $menu-subitem-font-size; }
+
+		// The sub menu items are displayed in a box, make sure the text does not start at the box edge.
+		.menu-subitem {
+			padding-left: $hspacing-unit / 2;
+			padding-right: $hspacing-unit / 2;
+		}
+		
+		// Specifics for the narrow sized layout
+		@include narrow-layout {
+		
+			// Fix the height of the items and subitems to make tapping easier
+			// Use a background color to set off the menu from the content
+			.menu-item, .menu-subitem {
+				border-top: 1px solid $background-color;
+				border-bottom: 1px solid $background-color;
+			}
+			.menu-item {
+				p { line-height: $narrow-menu-item-height; margin-bottom: 0; }
+				background-color: $narrow-menu-item-background-color;
+			}
+			.menu-subitem {
+				p { line-height: $narrow-menu-subitem-height; margin-bottom: 0; }
+				background-color: $narrow-menu-subitem-background-color;
+			}
+
+			// Move the disclosure symbol a little bit from the edge of the item
+			.menu-item-symbol p { margin-left: $hspacing-unit; }
+			
+			// Add some left-margin for the title of the subitems
+			.menu-subitem-title { margin-left: $hspacing-unit; }
+		}
+		
+		// Specifics for the medium sized layout
+		@include medium-layout {
+		
+			// Keep the submenu tight
+			.menu-subitem p { margin-bottom: 0; }
+			
+			// Formatting of the sub-menu items
+			ul li ul {
+				margin-left: 2 * $hspacing-unit; // The sub-menu should appear slightly to the right
+				background-color: $medium-menu-subitem-background-color; // Set-of a little bit from the background
+				box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.2); // Create a shadow box
+			}
+		}
+		
+		// Specifics for the wide sized layout
+		@include wide-layout {
+
+			// Keep the submenu tight
+			.menu-subitem p { margin-bottom: 0; }
+
+			// Formatting of the sub-menu items
+			ul li ul {
+				margin-left: 2 * $hspacing-unit; // The sub-menu should appear slightly to the right
+				background-color: $wide-menu-subitem-background-color; // Set-of a little bit from the background
+				box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.2); // Create a shadow box
+			}
+		}
+	}
+	
+	// Formatting for the divder between menu and column panel.
+	.nav-bottom-divider {
+		border-top: 2px solid $navbanner-menu-dividers-color;
+		display: $navbanner-menu-dividers-display;
+	}
+}
+
+// Defines the insets used in the columns and footer-panel. I.e the empty spaces between text and separators lines.
+.insets {
+	padding-top: $vspacing-unit;
+	padding-right: $hspacing-unit;
+	padding-bottom: $vspacing-unit;
+	padding-left: $hspacing-unit;
+}
+.secondary-column { @extend .insets; }
+.primary-column { @extend .insets; }
+.tertiary-column { @extend .insets; }
+.footer-panel { @extend .insets; }
+
+// Set the background colors for the panels & columns
+.navbanner-panel { background-color: $navbanner-background-color; }
+.navbanner-panel .navbanner-menu { background-color: $navbanner-menubar-background-color; }
+.primary-column { background-color: $primary-column-background-color; }
+.secondary-column { background-color: $secondary-column-background-color; }
+.tertiary-column { background-color: $tertiary-column-background-color; }
+.footer-panel { background-color: $footer-background-color; }
+
+// This is the element between the column panel and the footer.
+.footer-divider {
+	display: $footer-divider-display;
+	width: 100%;
+	margin: 0;
+	border-bottom: 1px solid $footer-divider-color;
+}
+
+// Formatting for the footer.
+.footer-panel {
+	font-size: $small-font-size;
+	text-align: center;
+}
+
+// Formatting for the widgets. Note that widgets are small.
+.widget {
+	font-size: $small-small-font-size;
+	h1 { font-size: $small-font-size; font-weight: bold; }
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure { margin-bottom: 0; }
+}
+
+// The divider between widgets, a thin horizontal line.
+.widget-divider {
+	margin-top: $vspacing-unit / 2;
+	margin-left: 0;
+	margin-bottom: $vspacing-unit / 2;
+	margin-right: 0;
+	border-bottom: 1px solid $widget-divider-color;
+	display: $widget-divider-display;
+}
+
+// Divider between primary, secondary and tertiary
+.secondary-widget-divider { @extend .widget-divider; }
+.tertiary-widget-divider { @extend .widget-divider; }
+
+// The column dividers
+.secondary-divider, .tertiary-divider {
+	margin-top: $vspacing-unit;
+	margin-left: 0;
+	margin-bottom: $vspacing-unit;
+	margin-right: 0;
+	border-right: 1px solid $column-divider-color;
+	display: $column-divider-display;
+}

@@ -1,0 +1,115 @@
+// =========================================================================================
+// Defaults for the Classic-Jekyll-Theme
+// Note: the definitions in main.scss have been deactivated.
+// =========================================================================================
+
+// Primary defaults
+$base-font-family:				"Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-size:				16px;
+$base-font-weight:				400;
+$small-font-size:				$base-font-size * 0.875;
+$small-small-font-size:			$small-font-size * 0.875;
+$large-font-size:				$base-font-size * 1.125;
+$large-large-font-size:			$large-font-size * 1.125;
+$base-line-height:				1.5;
+
+$hspacing-unit:					14px; // For best results, use even numbers only
+$vspacing-unit:					14px; // For best results, use even numbers only
+
+$text-color:					#111;
+$background-color:				#fdfdfd;
+$brand-color:					#2a7ae2;
+
+$grey-color:					#828282;
+$grey-color-light:				lighten($grey-color, 40%);
+$grey-color-light-light:		lighten($grey-color-light, 40%);
+$grey-color-dark:				darken($grey-color, 25%);
+
+
+// =========================================================================================
+// From here one, element properties are set.
+// The easiest way to become familiar with them is to change a value and see what happens. 
+// =========================================================================================
+
+// The theme-color is the default for some of the other elements that can be colored in this theme.
+// Its value is only used in this file.
+$theme-color:					green;
+
+$navbanner-background-color:			$background-color;
+$navbanner-menubar-background-color:	$background-color;
+$primary-column-background-color:		$background-color;
+$secondary-column-background-color:		$background-color;
+$tertiary-column-background-color:		$background-color;
+$footer-background-color:				$background-color;
+
+// Colors for the dividers between the panels, columns and widgets
+// Set display to 'none' to get rid of the divider, 'block' to enable the divider
+$column-divider-color:				lighten($grey-color, 30%);
+$column-divider-display:			block; //none;
+$navbanner-menu-dividers-color:		$theme-color;
+$navbanner-menu-dividers-display:	block; //none;
+$footer-divider-color:				$theme-color;
+$footer-divider-display:			block; //none;
+$widget-divider-color:      		$theme-color;
+$widget-divider-display:			block; //none;
+
+// Site title and menu-label coloring and sizing
+$site-title-color:				$theme-color;
+$narrow-site-title-font-size:	2 * $base-font-size;
+$medium-site-title-font-size:  	2.5 * $base-font-size;
+$wide-site-title-font-size:		3.5 * $base-font-size;
+
+// Special characters used for menu functions
+$menu-symbol-code:          	'\02261'; // ≡ Used in narrow and medium banner only
+$menu-closed-submenu-code:		'\021E8'; // ⇨ Used in narrow when the menu items are visible
+$menu-open-submenu-code:    	'\021E9'; // ⇩ Used in narrow when the submenu items are visible
+$menu-item-separator:			''; // Default = nothing
+
+// Alignent of the menu items in the navigation bar.
+// This is done via the "justify-content" flex property, valid values are:
+// flex-start - to start the menu items at the left hand side of the screen
+// center     - to center the menu items in the middle of the navigation bar
+// flex-end   - to have them at the right most position possible
+// for more options, see "justif-content".
+$menu-alignment:				flex-start;
+
+// Navigation menu coloring and sizing
+$menu-symbol-color:						$theme-color;
+$menu-item-font-color:					$theme-color;
+$menu-item-hover-color:         		black;
+$menu-subitem-font-color:   			$theme-color;
+$menu-subitem-hover-color:      		black;
+$narrow-menu-item-background-color:		$grey-color-light;
+$narrow-menu-subitem-background-color:	$grey-color-light;
+$medium-menu-subitem-background-color:	$grey-color-light-light;
+$wide-menu-subitem-background-color:	$medium-menu-subitem-background-color;
+$menu-item-font-size:       			$base-font-size;
+$menu-subitem-font-size:				$small-font-size;
+$narrow-menu-item-height:				3 * $vspacing-unit;
+$narrow-menu-subitem-height:    		2.5 * $vspacing-unit;
+
+// Navigation bar formatting
+$navbar-side-margin:			$hspacing-unit; // Only for medium and wide navbars
+$navbar-menu-item-spacing:		$hspacing-unit; // Only for medium and wide navbars
+
+// Column width specification. The secondary and tertiary column can be removed in the _config.yml file.
+$primary-column-min-width:		480px;
+$secondary-column-width: 		240px;
+$tertiary-column-width:			240px;
+
+// There should be no need to change the next 4 definitions
+$wide-min-width:				$primary-column-min-width + $secondary-column-width + $tertiary-column-width;
+$medium-max-width:				$wide-min-width - 1;
+$medium-min-width:				$primary-column-min-width + $secondary-column-width;
+$narrow-max-width:				$medium-min-width - 1;
+
+
+// Import partials.
+@import
+  "classic/base",
+  "classic/layout",
+  "classic/formatting",
+  "classic/syntax-highlighting",
+  "classic/post",
+  "classic/page"
+;

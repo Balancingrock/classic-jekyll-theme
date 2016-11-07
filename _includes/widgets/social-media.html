@@ -1,0 +1,9 @@
+<div>
+	<h1>Social media & Resources:</h1>
+	{% if site.github_username %}
+		<div>{% include widgets/social-media-res/icon-github.html username=site.github_username %}</div>
+	{% endif %}
+	{% if site.twitter_username %}
+		<div>{% include widgets/social-media-res/icon-twitter.html username=site.twitter_username %}</div>
+	{% endif %}
+</div>
