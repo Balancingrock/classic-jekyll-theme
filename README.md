@@ -89,7 +89,7 @@ If the jekyll server was started, then it must be stopped now (CTRL-C) and resta
 	
 Reload the website, and the columns will show up.
 
-To add sample content that illustrates how pages and categories are implemented, copy the folder `pages` from the gem to the current project. On MacOS the gems are located in: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. Replace the <version>'s with the appropriate numbers (note: these are two different unrelated version numbers). These pages not only contain examples, but also some additional information about using the theme.
+To add sample content that illustrates how pages and categories are implemented, copy the folder `pages` from the gem to the current project. On MacOS the gems are located in: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. Replace the version's with the appropriate numbers (note: these are two different unrelated version numbers). These pages not only contain examples, but also some additional information about using the theme.
 
 ## Configuration
 
