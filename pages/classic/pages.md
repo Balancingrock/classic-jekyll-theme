@@ -12,15 +12,13 @@ description: A description can be up to 156 characters long...
 
 Pages in classic can be linked to from the navigation menu. To do so there are some additional YAML tags that help building the navigation menu.
 
-- `menuInclude`: A page will only be included in the menu if set to `yes`.
-- `menuTitle`: This will be the title of the menu item, or sub menu item that links to the post.
-- `menuIndex`: A number that is used to sort the menu and sub menu sequence. For the menu, higher numbers go to the right of lower numbers. For sub menu items the higher numbers go below the lower numbers.
-- `subMenuFrom`: The page will be linked from a submenu item below a menu item with this title.
+- menuInclude: Set to "yes" to consider this page for a navigation bar menu item.
+- menuLink: Set to 'no' to disable a link creation from the navigation bar to this page. However the menu title or subtitle will be included. This allows the ordering of menu items that do not have an associated page. The default behaviour assumes 'yes'. So not including this tag will create a link. Note: This allows ordering of top level menu items. For submenu items this probably only makes sense if some kind of "divider" must be shown. Otherwise showing a submenu item without a link will probably confuse users.
+- menuTopTitle: The title of the menu item in the navigation bar. When used in conjunction with a menuSubTitle, this will be the title of the menu item to which this submenu item will be added in the drop down menu. 
+- menuTopIndex: The place of the title within the menu bar. Lower numbers will be to the left of higher numbers. Be aware that the "Home" menu item will always be first and the "Categories" will always be last.
+- menuSubTitle: The title of the submenu item in the drop down menu.
+- menuSubIndex: The place of the submenu item within the dropdown menu. Lower numbers will go above higher numbers. This theme only sorts on menuIndex numbers, not on other properties.
 
-There can be three different kinds of menu/submenu's:
-
-1. A menu without submenu's. This is a direct link to a page. There will be no dropdown of submenu's. To create a navigation item without submenu's leave the `subMenuFrom` tag empty. See for example the "contact" menu item above.
-2. A menu with submenu items but without a link from the menu item to a page. This happens if a page is included with a `subMenuFrom` tag value present, but where there is no page with a `menuTitle` of the same value. An example is the "Other" menu item above.
-3. A menu item that links to a page and has submenu items that link to other pages. This happens when there are at least two pages, with one page containing the `menuTitle` value of the `subMenuFrom` value from the other. While this works fine it should be warned against from a user's perspective. When the website is seen in the 'narrow' layout the tap of a menu item will have different results for a menu with subitems as compared to a menu without subitems. This could be confusing towards new visitors.
+For a consistent user experience in the narrow layout, it is recommened not to link pages to top level menu items if these menu items have a drop-down submenu.
 
 Submenu's only go one level deep. If deeper nesting is necessary, send me a mail at: rien@balancingrock.nl
