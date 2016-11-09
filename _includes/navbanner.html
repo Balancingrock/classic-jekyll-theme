@@ -15,36 +15,15 @@
 <!-- Navigation bar visibility depends on screen width. -->
 <nav class="navbanner-menu">
 
-	<!-- The site navigation menu. Note that there is only one level of sub-menu items -->
-	<!-- Create a list of the necessary submenu's -->
-
-	{% assign submenus = "" | split: "" %}
-	{% assign sortedPages = site.pages | sort: 'menuIndex' %}
+	<!-- Create a list of top menu item titles -->
+	{% assign topTitles = "" | split: "" %}
+	{% assign sortedPages = site.pages | sort: 'menuTopIndex' %} <!-- sorts empty tags first, then numerically -->
 	{% for ape in sortedPages %}
-		{% if ape.menuInclude %}
-			{% if ape.subMenuFrom %}
-				{% assign item-found = false %}
-				{% for menu-item in submenus %}
-					{% if menu-item == ape.subMenuFrom %}
-						{% assign item-found = true %}
-					{% endif %}
-				{% endfor %}
-				{% if item-found == false %}
-					{% assign submenus = submenus | push: ape.subMenuFrom %}
-				{% endif %}
-			{% else %}
-				{% assign item-found = false %}
-				{% for menu-item in submenus %}
-					{% if menu-item == ape.menuTitle %}
-						{% assign item-found = true %}
-					{% endif %}
-				{% endfor %}
-				{% if item-found == false %}
-					{% assign submenus = submenus | push: ape.menuTitle %}
-				{% endif %}
-			{% endif %}
+		{% if ape.menuInclude == true and ape.menuTopTitle %}
+			{% assign topTitles = topTitles | push: ape.menuTopTitle %}
 		{% endif %}
 	{% endfor %}
+	{% assign topTitles = topTitles | reverse | uniq | reverse %} <!-- remove emtpy, stay numerically -->
 
 	<!-- Using the above list, create the menu and submenu's -->
 	<ul>
@@ -56,60 +35,83 @@
 				<div class="menu-item-title"><a href="/"><p>Home</p></a></div>
 			</div>
 		</li>
-
+		
 		<!-- Page menus -->
-		{% assign sortedSubMenus = submenus %}
-		{% for submenu in sortedSubMenus %}
-		<li>
-			<input type="checkbox" id="{{ submenu | append:'-checkbox'}}">
-			<label for="{{ submenu | append:'-checkbox'}}">
-				<div class="menu-item-separator"><p><!-- empty but necessary --></p></div>
-				<div class="menu-item">
-					<div class="menu-item-symbol">
-						{% for subpage in site.pages %}
-							{% if subpage.subMenuFrom == submenu %}
-								<p><!-- will be filled by disclosure indicator --></p>
+		{% for topTitle in topTitles %}
+		
+			<!-- Create a list of sub menu item titles -->
+			{% assign subTitles = "" | split: "" %}
+			{% assign sortedPages = site.pages | sort: 'menuSubIndex' %}
+			{% for ape in sortedPages %}
+				{% if ape.menuInclude == true and ape.menuTopTitle == topTitle and ape.menuSubTitle %}
+					{% assign subTitles = subTitles | push: ape.menuSubTitle %}
+				{% endif %}
+			{% endfor %}
+			{% assign subTitles = subTitles | reverse | uniq | reverse %}
+
+			<li>
+
+				<!-- Create top menu item -->
+				<input type="checkbox" id="{{ topTitle | append:'-checkbox'}}">
+				<label for="{{ topTitle | append:'-checkbox'}}">
+					<div class="menu-item-separator"><p><!-- empty but necessary --></p></div>
+					<div class="menu-item">
+						<div class="menu-item-symbol">
+						{% if subTitles.size > 0 %}
+							<p><!-- will be filled by disclosure indicator --></p>
+						{% endif %}
+						</div>
+						<div class="menu-item-title">
+						<!-- Find page to link to -->
+						{% assign pageFound = false %}
+						{% for ape in site.pages %}
+							{% if ape.menuTopTitle == topTitle and ape.menuSubTitle == nil %}
+								{% if ape.menuLink == false %}
+									<p>{{ topTitle }}</p>
+								{% else %}
+									<a href="{{ ape.url }}"><p>{{ topTitle }}</p></a>
+								{% endif %}
+								{% assign pageFound == true %}
 								{% break %}
 							{% endif %}
 						{% endfor %}
+						{% if pageFound == false %}
+							<p>{{ topTitle }}</p>
+						{% endif %}
+						</div>
 					</div>
-					<div class="menu-item-title">
-						{% assign foundTitlePage = false %}
-						{% for titlepage in site.pages %}
-							{% if titlepage.menuInclude %}
-								{% if titlepage.menuTitle == submenu %}
-									{% if titlepage.subMenuFrom == nil %}
-										<a href="{{ titlepage.url }}"><p>{{ submenu }}</p></a>
-										{% assign foundTitlePage = true %}
-										{% break %}
-									{% endif %}
+				</label>
+				
+				<!-- Create sub menu items -->
+				{% if subTitles.size > 0 %}
+					<ul>
+					{% for subTitle in subTitles %}
+						{% for ape in site.pages %}
+							{% if ape.menuTopTitle == topTitle and ape.menuSubTitle == subTitle %}
+								{% if ape.menuLink != false %}
+								<li>
+									<div class="menu-subitem">
+										<div class="menu-subitem-symbol"></div>
+										<div class="menu-subitem-title">
+											<a href="{{ ape.url }}"><p>{{ subTitle }}</p></a>
+										</div>
+									</div>
+								</li>
+								{% else %}
+								<li>
+									<div class="menu-subitem">
+										<div class="menu-subitem-symbol"></div>
+										<div class="menu-subitem-title"><p>{{ subTitle }}</p></div>
+									</div>
+								</li>
 								{% endif %}
+								{% break %}
 							{% endif %}
 						{% endfor %}
-						{% if foundTitlePage == false %}
-							<p>{{ submenu }}</p>
-						{% endif %}
-					</div>
-				</div>
-			</label>
-			<ul>
-			{% assign sortedPages = site.pages | sort: 'menuIndex' %}
-			{% for ape in sortedPages %}
-				{% if ape.menuInclude %}
-					{% if ape.subMenuFrom == submenu %}
-					<li>
-						<div class="menu-subitem">
-							<div class="menu-subitem-symbol"></div>
-							<div class="menu-subitem-title">
-								<a href="{{ ape.url }}"><p>{{ ape.menuTitle }}</p></a>
-							</div>
-						</div>
-					</li>
-					{% endif %}
+					{% endfor %}			
+					</ul>
 				{% endif %}
-			{% endfor %}
-			</ul>
-		</li>
+			</li>
 		{% endfor %}
 
 		<!-- Categories menu -->
@@ -141,7 +143,6 @@
 			{% endfor %}
 			</ul>
 		</li>
-
 	</ul>
 </nav>
 

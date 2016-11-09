@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme
+# Classic-Jekyll-Theme v1.0.0
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -152,20 +152,64 @@ To create a page that must be included in the menu bar, add the following front 
 	---
 	...
 	menuInclude: yes
-	menuTitle: "About Pages"
-	subMenuFrom: Classic
-	menuIndex: 2
+	menuLink: yes
+	menuTopTitle: Classic
+	menuTopIndex: 2
+	menuSubTitle: "About Pages"
+	menuSubIndex: 4
 	---
 
-- menuInclude: Set to "yes" to link this page from the menu bar.
-- menuTitle: The title that will be used in the menu bar.
-- menuIndex: The place of the title within the menu bar. For top level menu items, lower numbers will be to the left of higher numbers. For sub-menu items, lower numbers will go above higher numbers. This theme only sorts on menuIndex numbers, not on other properties.
-- subMenuFrom:
-	- If absent, the page will be linked from a top level menu item. Top level menu items will always be visible when the menu bar is visible.
-	- If a subMenuFrom value is present, and there is a matching page with this value as its menuTitle, then this page will be linked from a drop-down (sub) menu item below that top level menu item.
-	- If a subMenuFrom value is present, and there is no matching page with this value as its menuTitle, then a top level menu item will be created with this as its title. This page will be linked from a drop down (sub) menu item below that menu item.
+- menuInclude: Set to "yes" to consider this page for a navigation bar menu item.
+- menuLink: Set to 'no' to disable a link creation from the navigation bar to this page. However the menu title or subtitle will be included. This allows the ordering of menu items that do not have an associated page. The default behaviour assumes 'yes'. So not including this tag will create a link. Note: This allows ordering of top level menu items. For submenu items this probably only makes sense if some kind of "divider" must be shown. Otherwise showing a submenu item without a link will probably confuse users.
+- menuTopTitle: The title of the menu item in the navigation bar. When used in conjunction with a menuSubTitle, this will be the title of the menu item to which this submenu item will be added in the drop down menu. 
+- menuTopIndex: The place of the title within the menu bar. Lower numbers will be to the left of higher numbers. Be aware that the "Home" menu item will always be first and the "Categories" will always be last.
+- menuSubIndex: The place of the submenu item within the dropdown menu. Lower numbers will go above higher numbers. This theme only sorts on menuIndex numbers, not on other properties.
 
 For a consistent user experience in the narrow layout, it is recommened not to link pages to top level menu items if these menu items have a drop-down submenu.
+
+## History
+
+0.2.6 Inital version (before this I was only getting acquainted with the gem-publishing mechanism)
+1.0.0 Fixed a problem with navigation menu generation. (Insufficient control over menu item placement)
+
+## Upgrade information
+
+### from 0.2.6 to 1.0.0
+
+#### Page creation
+
+The page creation YAML matter has changed. The old tags did not give full control over the menu buildup, the new tags do.
+
+	Old: menuInclude
+	New: menuInclude
+
+No changes, works as before.<br><br>
+
+	Old: -
+	New: menuLink true|false
+
+A new option that controls if a menu title has a link to a page. The default value is 'true' so when this tag is not included, a link to the page will be created. If set to 'false', then the menu item will show up in the specified place, but will not be linked to a page. Use this to order menu items that have a drop-down menu but do not have a page by itself.<br><br>
+
+	Old: menuTitle
+	New: menuTopTitle
+	New: menuSubTitle
+
+Specifies the string to be used for the menu item.<br><br>
+
+	Old: subMenuFrom
+	New: menuTopTitle
+
+Specifies the menu item from which this is a submenu item.<br><br>
+
+	Old: menuIndex
+	New: menuTopIndex
+	New: menuSubIndex
+	
+The index for a menu item. If not present, the menu ordering is undetermined. If only a part of the pages have this item then the menu items of the pages that do not have this item specified will be included first. If multiple specifications exist, then the highest number overrides the lower numbers. Like before, a lower number goes to the left -or on top- of the higher number.
+
+## Known problems (need your help)
+
+There is some odd behaviour in the navigation bar that I have not been able to nail down yet. It has to do with the space between top level menu items. There is some additional space that I am not able to trace down. For those who like a puzzle: there is some space around a ".navbanner-menu ul li" that has no obvious source. Please let me know if you happen to find where it comes from. (rien@balancingrock.nl)
 
 ## Feedback
 

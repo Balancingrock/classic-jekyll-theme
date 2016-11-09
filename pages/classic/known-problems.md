@@ -3,9 +3,9 @@ layout: page
 title: "Known problems"
 date: 2016-11-05
 menuInclude: yes
-menuTitle: "Known problems"
-subMenuFrom: Classic
-menuIndex: 4
+menuTopTitle: Classic
+menuSubTitle: "Known problems"
+menuSubIndex: 4
 description: A description can be up to 156 characters long...
 # end of description at 156 characters ----------| (last 3 chars will be replaced by '...' on overflow)
 ---
