@@ -1,6 +1,12 @@
 <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+{% assign usesCookies = 'This site uses cookies' %}
+{% if site.tUsesCookies %}{% assign usesCookies = site.tUsesCookies %}{% endif %}
+{% assign cookieOk = 'OK' %}
+{% if site.tCookieOk %}{% assign cookieOk = site.tCookieOk %}{% endif %}
+{% assign moreInfo = 'More info' %}
+{% if site.tMoreInfo %}{% assign moreInfo = site.tMoreInfo %}{% endif %}
 <script type="text/javascript">
-    window.cookieconsent_options = {"message":"This site uses cookies","dismiss":"OK","learnMore":"More info","link":"/pages/cookie-consent/cookie-consent.html","theme":"dark-top"};
+    window.cookieconsent_options = {"message":"{{ usesCookies }}","dismiss":"{{ cookieOk }}","learnMore":"{{ moreInfo}}","link":"/pages/cookie-consent/cookie-consent.html","theme":"dark-top"};
 </script>
 
 <script type="text/javascript" src="/assets/js/cookieconsent.min.js"></script>

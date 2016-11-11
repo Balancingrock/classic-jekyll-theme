@@ -29,10 +29,12 @@
 	<ul>
 			
 		<!-- Home page -->
+		{% assign home = 'Home' %}
+		{% if site.tHome %}{% assign home = site.tHome %}{% endif %}
 		<li>
 			<div class="menu-item">
 				<div class="menu-item-symbol"></div>
-				<div class="menu-item-title"><a href="/"><p>Home</p></a></div>
+				<div class="menu-item-title"><a href="/"><p>{{ home }}</p></a></div>
 			</div>
 		</li>
 		
@@ -115,6 +117,8 @@
 		{% endfor %}
 
 		<!-- Categories menu -->
+		{% assign categories = 'Categories' %}
+		{% if site.tCategories %}{% assign categories = site.tCategories %}{% endif %}
 		<li>
 			<input type="checkbox" id="category-checkbox">
 			<label for="category-checkbox">
@@ -124,7 +128,7 @@
 						<p><!-- empty but necessary! --></p>
 					</div>
 					<div class="menu-item-title">
-						<p>Categories</p>
+						<p>{{ categories }}</p>
 					</div>
 				</div>
 			</label>

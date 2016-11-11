@@ -42,6 +42,24 @@ number-of-recent-posts-in-widget: 10
 
 enable-cookies-policy: yes # yes to include, no to disable
 
+# Language customization, default is text of v1.0.1 if not defined.
+
+tHome: Home # Menu item
+tPosts: Posts # Title on home page
+tCategories: Categories # Menu item
+tCategory: Category # Title on categories page
+tNoBlogpostFound: No blogposts found for this category # Message on category page if no posts have been found
+tMore: more # Continuation text for abbreviated posts on a category page
+tTags: Tags # Tag label on category page
+
+tRecent: Recent # Title on recent posts widget
+tSocialMediaResources: Social Media & Resources # Part title of social media widget
+tSubscribe: Subscribe # Title of subscription widget
+
+tUsesCookies: This site uses cookies # Cookie warning message
+tCookieOk: OK # Text for OK button
+tMoreInfo: More info # More cookie info text
+
 # End Classic Jekyll Theme settings
 
 

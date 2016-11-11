@@ -4,8 +4,10 @@ layout: default
 
 <div>
 
-	<h1>Posts</h1>
-  
+	{% assign posts = 'Posts' %}
+	{% if site.tPosts %}{% assign posts = site.tPosts %}{% endif %}
+	<h1>{{ posts }}</h1>
+	
 <!--	{{ content }} -->
 
 	{% for post in site.posts %}

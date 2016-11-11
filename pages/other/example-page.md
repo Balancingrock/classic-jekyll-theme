@@ -11,4 +11,3 @@ description: A description can be up to 156 characters long...
 ---
 
 Example content.
-This theme can be configured in the file `classic-jekyll-theme.scss` in the `_sass` directory. The `assets/main.scss` file is not used.

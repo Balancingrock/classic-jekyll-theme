@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.0.1
+# Classic-Jekyll-Theme v1.1.0
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -62,7 +62,7 @@ It is possible to start the jekyll server now:
 	
 Then the site will show up at `localhost:4000` but it will not contain everything just yet.
 
-Next add the settings for __secondary_column__, __tertiary_column__, __number-of-posts-on-home-page__, __number-of-recent-posts-in-widget__ and __enable-cookies-policy__ to the `_config.yml` file with the values you would like to use. Alternatively simply copy and paste the following few lines to the `_config.yml` file:
+Next add the settings for __secondary_column__, __tertiary_column__, __number-of-posts-on-home-page__, __number-of-recent-posts-in-widget__ and __enable-cookies-policy__ to the `_config.yml` file with the values you would like to use. Also add translations if necessary. Alternatively simply copy and paste the following few lines to the `_config.yml` file:
 
     # Classic Jekyll Theme settings
 
@@ -80,6 +80,24 @@ Next add the settings for __secondary_column__, __tertiary_column__, __number-of
     number-of-recent-posts-in-widget: 10
 
     enable-cookies-policy: yes # yes to include, no to disable
+	
+	# Language customization, default is text of v1.0.1 if not defined.
+
+	tHome: Home # Menu item
+	tPosts: Posts # Title on home page
+	tCategories: Categories # Menu item
+	tCategory: Category # Title on categories page
+	tNoBlogpostFound: No blogposts found for this category # Message on category page if no posts have been found
+	tMore: more # Continuation text for abbreviated posts on a category page
+	tTags: Tags # Tag label on category page
+
+	tRecent: Recent # Title on recent posts widget
+	tSocialMediaResources: Social Media & Resources # Part title of social media widget
+	tSubscribe: Subscribe # Title of subscription widget
+
+	tUsesCookies: This site uses cookies # Cookie warning message
+	tCookieOk: OK # Text for OK button
+	tMoreInfo: More info # More cookie info text
 
     # End Classic Jekyll Theme settings
 
@@ -123,10 +141,41 @@ The following values are configurable:
  
 	`yes` to enable the cookies warning, `no` to disable. The cookies warning is from [Silktide](http://silktide.com/cookieconsent), distributed under the MIT license.
 
+- Some of the text elements in the theme can be translated with the following definitions:
+
+	If a definition is absent, the default shown will be used.
+
+	`tHome: Home` # Menu item
+	
+	`tPosts: Posts` # Title on home page
+	
+	`tCategories: Categories` # Menu item
+	
+	`tCategory: Category` # Title on categories page
+	
+	`tNoBlogpostFound: No blogposts found for this category` # Message on category page if no posts have been found
+	
+	`tMore: more` # Continuation text for abbreviated posts on a category page
+	
+	`tTags: Tags` # Tag label on category page
+	
+	`tRecent: Recent` # Title on recent posts widget
+	
+	`tSocialMediaResources: Social Media & Resources` # Part title of social media widget
+	
+	`tSubscribe: Subscribe` # Title of subscription widget
+
+	`tUsesCookies: This site uses cookies` # Cookie warning message
+	
+	`tCookieOk: OK` # Text for OK button
+	
+	`tMoreInfo: More info` # More cookie info text
 
 ### _sass/classic-jekyll-theme.scss
 
 The default `main.scss` file has been emptied. Hence all CSS configuration is done in the theme sass file.
+
+To start configuring this file, create a `_sass` directory and copy the `classic-jekyll-theme.scss` from the gem directory to the new directory.
 
 ## Creating Posts
 
@@ -171,8 +220,12 @@ For a consistent user experience in the narrow layout, it is recommened not to l
 ## History
 
 0.2.6 Inital version (before this I was only getting acquainted with the gem-publishing mechanism)
+
 1.0.0 Fixed a problem with navigation menu generation. (Insufficient control over menu item placement)
+
 1.0.1 Fixed some info in this readme file and in the example pages.
+
+1.1.0 Added language customization for default theme elements in the `_config.yml` file
 
 ## Upgrade information
 
@@ -209,7 +262,7 @@ Specifies the menu item from which this is a submenu item.<br><br>
 	
 The index for a menu item. If not present, the menu ordering is undetermined. If only a part of the pages have this item then the menu items of the pages that do not have this item specified will be included first. If multiple specifications exist, then the highest number overrides the lower numbers. Like before, a lower number goes to the left -or on top- of the higher number.
 
-### from 1.0.0 to 1.0.1
+### from 1.0.0 (and later) to 1.1.0
 
 No changes needed.
 
