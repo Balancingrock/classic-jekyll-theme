@@ -46,7 +46,7 @@ enable-cookies-policy: yes # yes to include, no to disable
 
 tHome: Home # Menu item
 tPosts: Posts # Title on home page
-tCategories: Categories # Menu item
+tCategories: Categorieën # Menu item
 tCategory: Category # Title on categories page
 tNoBlogpostFound: No blogposts found for this category # Message on category page if no posts have been found
 tMore: more # Continuation text for abbreviated posts on a category page
