@@ -75,7 +75,7 @@
 	@include narrow-layout {
 
 		// Disabled items.
-		.navbanner-menu, .nav-bottom-divider, input, .menu-item-separator { display: none; }
+		.navbanner-menu, .nav-bottom-divider, input, .menu-item-separator, .wide-icon, .medium-icon { display: none; }
 		
 		// Conditionally visible/invisible items (conditionally on the invisible checkbox, i.e. menu symbol)
 		input:checked ~ {
@@ -137,7 +137,7 @@
 	@include medium-layout {
 
 		// Disabled items
-		.navbanner-menu, input, .menu-item-symbol, .menu-subitem-symbol, .nav-bottom-divider { display: none; }
+		.navbanner-menu, input, .menu-item-symbol, .menu-subitem-symbol, .nav-bottom-divider, .wide-icon, .narrow-icon { display: none; }
 
 		// Conditionally visible/invisible items (conditionally on the invisible checkbox, i.e. menu symbol)
 		input:checked ~ {
@@ -200,7 +200,7 @@
 	@include wide-layout {
 
 		// Do not show the small butterfly icon, the short title, the checkbox label, the input(s) and the menu symbols
-		.navbanner-label, input, .menu-item-symbol, .menu-subitem-symbol { display: none; }
+		.navbanner-label, input, .menu-item-symbol, .menu-subitem-symbol, .medium-icon, .narrow-icon { display: none; }
 		
 		.navbanner-menu {
 		
@@ -285,7 +285,7 @@
 		.primary-column { flex: 1 1 auto; width: 1px; } // A width must be specified
 
 		// Unused
-		.tertiary-divder, .secondary-widget-divider, .tertiary-column { display: none; }
+		.tertiary-divider, .secondary-widget-divider, .tertiary-column { display: none; }
 	}
 	
 	@include wide-layout {

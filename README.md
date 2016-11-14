@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.1.1
+# Classic-Jekyll-Theme v1.2.0
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -24,11 +24,19 @@ An example screenshot:
 
 ![example](http://balancingrock.nl/img/classic-jekyll-theme-screenshot-half.png)
 
-The navigation bar is created automatically from the available pages when they have the proper YAML frontmatter. The navigation bar contains the top level menu items, while the submenu items show up as a drop-down menu when the cursor hovers over the corresponding menu item.
+Other features:
 
-Category pages are created semi-automatically; the web designer has to identify the categories for inclusion, but the menu entry and category pages are created automatically.
+- __Navigation bar__ is created automatically from the available pages when these have the proper YAML frontmatter. The navigation bar contains the top level menu items, while the submenu items show up as a drop-down menu when the cursor hovers over the corresponding menu item.
 
-For european users a cookies policy is included by default. It can be easily disabled for non-european websites though.
+- __Category pages__ are created semi-automatically; the web designer has to identify the categories for inclusion, but the menu entry and category pages are created automatically.
+
+- __Cookies policy__ for european users is included by default. It can be easily disabled for non-european websites though.
+
+- __Language customization__ (not multi-language support!) is available by way of the _config.yml file.
+
+- __Icon__ support for an icon in the upper left corner of the site.
+
+- __Background images__ and __Background color__ settings for major site elements.
 
 ## Installation & setup
 
@@ -219,15 +227,31 @@ For a consistent user experience in the narrow layout, it is recommened not to l
 
 ## History
 
-0.2.6 Inital version (before this I was only getting acquainted with the gem-publishing mechanism)
+Release 0.2.6
 
-1.0.0 Fixed a problem with navigation menu generation. (Insufficient control over menu item placement)
+- Inital version (before this I was only getting acquainted with the gem-publishing mechanism)
 
-1.0.1 Fixed some info in this readme file and in the example pages.
+Release 1.0.0
 
-1.1.0 Added language customization for default theme elements in the `_config.yml` file
+- Fixed a problem with navigation menu generation. (Insufficient control over menu item placement)
 
-1.1.1 Added clarification to upgrade information.
+Release 1.0.1
+
+- Fixed some info in this readme file and in the example pages.
+
+Release 1.1.0
+
+- Added language customization for default theme elements in the `_config.yml` file
+
+Release 1.1.1
+
+- Added clarification to upgrade information.
+
+Release 1.2.0
+
+- Added facilities for background images.
+- Added option for an icon on the top-left side of the site.
+- Fixed a problem where the tertiary column divider was not removed for medium layout.
 
 ## Upgrade information
 
@@ -267,6 +291,10 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 ### from 1.0.0 (and later) to 1.1.1
 
 No changes needed except for the `Gemfile` in which you should upgrade the version number for the classic-jekyll-theme.
+
+### from 1.1.1 to 1.2.0
+
+If changes were made to `_sass/classic-jekyll-theme.scss` then this file must be replaced with the new version that comes with this release and the changes must be re-applied. Note that background color setting has changed slightly.
 
 ## Known problems (need your help)
 

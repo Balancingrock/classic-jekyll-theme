@@ -1,27 +1,105 @@
 // The distinction between "layout" and "formatting" is as follows: If the resulting CCS affects the placement of and/or visibility of multiple items, it is placed in "layout". If the CSS affects only the appearance of an item, then it appears here. Of course the appearance may affect the layout, so there is no hard distinction.
 
+// Setting a background image on the entire site-title-color
+body {
+	@include wide-layout { background: $wide-body-background; }
+	@include medium-layout { background: $medium-body-background; }
+	@include narrow-layout { background: $narrow-body-background; }
+}
+
 // Formatting for the navbanner panel elements.
 .navbanner-panel {
 
-	// Formatting for the banner area
-	.navbanner-title, .navbanner-label {
+	.navbanner-icon {
+		@include wide-layout {
+			@if $wide-icon-url == none {
+				display: none;
+			} @else {
+				background: $wide-icon-url no-repeat center center;
+				width: $wide-icon-width;
+				height: $wide-icon-height;
+			}
+		}
+		@include medium-layout {
+			@if $medium-icon-url == none {
+				display: none;
+			} @else {
+				background: $medium-icon-url no-repeat center center;
+				width: $medium-icon-width;
+				height: $medium-icon-height;
+			}
+		}
+		@include narrow-layout {
+			@if $narrow-icon-url == none {
+				display: none;
+			} @else {
+				background: $narrow-icon-url no-repeat center center;
+				width: $narrow-icon-width;
+				height: $narrow-icon-height;
+			}
+		}
+	}
 	
-		// Color for the title itself
+	// Title formatting
+	.navbanner-title {
 		p { color: $site-title-color; }
-		
+		@include wide-layout {
+			@if $wide-icon-url == none {
+				margin-left: $wide-horizontal-title-shift;
+			} @else {
+				margin-left: $wide-horizontal-title-shift - $wide-icon-width;
+			}
+			margin-top: $wide-vertical-title-shift;
+			min-height: $wide-minimum-banner-height;
+			background: $wide-banner-background;
+			font-size: $wide-site-title-font-size;
+		}
+		@include medium-layout {
+			@if $medium-icon-url == none {
+				margin-left: $medium-horizontal-title-shift;
+			} @else {
+				margin-left: $medium-horizontal-title-shift - $medium-icon-width;
+			}
+			margin-top: $medium-vertical-title-shift;
+			min-height: $medium-minimum-banner-height;
+			background: $medium-banner-background;
+			font-size: $medium-site-title-font-size;
+		}
+		@include narrow-layout {	
+			@if $narrow-icon-url == none {
+				margin-left: $narrow-horizontal-title-shift;
+			} @else {
+				margin-left: $narrow-horizontal-title-shift - $narrow-icon-width;
+			}
+			margin-top: $narrow-vertical-title-shift;
+			min-height: $narrow-minimum-banner-height;
+			background: $narrow-banner-background;
+			font-size: $narrow-site-title-font-size;
+		}
+	}
+
+	// Label formatting
+	.navbanner-label {
+			
 		// Color for the menu symbol (only visible on narrow and medium sized layouts)
 		label p { color: $menu-symbol-color; }
 		
 		// Size of the title and menu symbol depends on the layout in effect.
 		@include narrow-layout {
+			min-height: $wide-minimum-banner-height;
+			background: $wide-banner-background;
 			font-size: $narrow-site-title-font-size;
 			label { padding: 0 $hspacing-unit; } // Give the menu label more area to make it easier to tap.
 		}
 		@include medium-layout {
+			min-height: $medium-minimum-banner-height;
+			background: $medium-banner-background;
 			font-size: $medium-site-title-font-size;
 			label { padding: 0 $hspacing-unit; } // Give the menu label more area to make it easier to tap.
 		}
 		@include wide-layout {
+			min-height: $narrow-minimum-banner-height;
+			background: $narrow-banner-background;
 			font-size: $wide-site-title-font-size;
 		}
 	}
@@ -34,6 +112,9 @@
 	
 	// Formatting for the menu (navigation) area
 	.navbanner-menu {
+
+		// Background settings
+		background: $menubar-background;
 
 		// Lists are used for the menu's. No spacing for the top level list and no item markers. There will be an item marker for the narrow layout but that marker is state-dependent and set via a content property.
 		ul { margin: 0;  list-style-type: none; }
@@ -130,18 +211,11 @@
 	padding-bottom: $vspacing-unit;
 	padding-left: $hspacing-unit;
 }
-.secondary-column { @extend .insets; }
-.primary-column { @extend .insets; }
-.tertiary-column { @extend .insets; }
-.footer-panel { @extend .insets; }
 
-// Set the background colors for the panels & columns
-.navbanner-panel { background-color: $navbanner-background-color; }
-.navbanner-panel .navbanner-menu { background-color: $navbanner-menubar-background-color; }
-.primary-column { background-color: $primary-column-background-color; }
-.secondary-column { background-color: $secondary-column-background-color; }
-.tertiary-column { background-color: $tertiary-column-background-color; }
-.footer-panel { background-color: $footer-background-color; }
+.column-panel { background: $column-panel-background; }
+.secondary-column { @extend .insets; background: $secondary-column-background; }
+.primary-column { @extend .insets; background: $primary-column-background; }
+.tertiary-column { @extend .insets; background: $tertiary-column-background; }
 
 // This is the element between the column panel and the footer.
 .footer-divider {
@@ -151,10 +225,13 @@
 	border-bottom: 1px solid $footer-divider-color;
 }
 
-// Formatting for the footer.
 .footer-panel {
+	@extend .insets;
 	font-size: $small-font-size;
-	text-align: center;
+	text-align: center;	
+	@include wide-layout { background: $wide-footer-background; }
+	@include medium-layout { background: $medium-footer-background; }
+	@include narrow-layout { background: $narrow-footer-background; }
 }
 
 // Formatting for the widgets. Note that widgets are small.

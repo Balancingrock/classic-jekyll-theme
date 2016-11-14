@@ -33,37 +33,78 @@ $grey-color-dark:				darken($grey-color, 25%);
 
 // The theme-color is the default for some of the other elements that can be colored in this theme.
 // Its value is only used in this file.
-$theme-color:					green;
+$theme-color:							green;
 
-$navbanner-background-color:			$background-color;
-$navbanner-menubar-background-color:	$background-color;
-$primary-column-background-color:		$background-color;
-$secondary-column-background-color:		$background-color;
-$tertiary-column-background-color:		$background-color;
-$footer-background-color:				$background-color;
+// Background color or pictures (keep in mind that some of these will overlap)
+// The value set is assigned to the CSS3 'background' property.
+// background: color image-url position/size repeat origin clip attachment initial|inherit;
+// The properties that can be set, are: background-color, background-image, background-position, background-size, background-repeat, background-origin, background-clip, and background-attachment.
+// See http://www.w3schools.com/cssref/css3_pr_background.asp for a full description.
+// Example: ...-background: url("/assets/img/bckgnd.png") repeat
+$wide-body-background:					initial;
+$medium-body-background:				initial;
+$narrow-body-background:				initial;
+$wide-banner-background:				initial;
+$medium-banner-background:				initial;
+$narrow-banner-background:				initial;
+$menubar-background:					initial;
+$column-panel-background:				initial;
+$primary-column-background:				initial;
+$secondary-column-background:			initial;
+$tertiary-column-background:			initial;
+$wide-footer-background:				initial;
+$medium-footer-background:				initial;
+$narrow-footer-background:				initial;
+
+// For an icon in the top left of the site (left side of the banner)
+// Set the url's to 'none' if no icon should be shown.
+// Note: width and height are ignored when the url is set to 'none'
+$wide-icon-url:							none;
+$wide-icon-width:						0px;
+$wide-icon-height:						0px;
+$medium-icon-url:						none;
+$medium-icon-width:						0px;
+$medium-icon-height:					0px;
+$narrow-icon-url:						none;
+$narrow-icon-width:						0px;
+$narrow-icon-height:					0px;
 
 // Colors for the dividers between the panels, columns and widgets
 // Set display to 'none' to get rid of the divider, 'block' to enable the divider
-$column-divider-color:				lighten($grey-color, 30%);
-$column-divider-display:			block; //none;
-$navbanner-menu-dividers-color:		$theme-color;
-$navbanner-menu-dividers-display:	block; //none;
-$footer-divider-color:				$theme-color;
-$footer-divider-display:			block; //none;
-$widget-divider-color:      		$theme-color;
-$widget-divider-display:			block; //none;
+$column-divider-color:					lighten($grey-color, 30%);
+$column-divider-display:				block; //none;
+$navbanner-menu-dividers-color:			$theme-color;
+$navbanner-menu-dividers-display:		block; //none;
+$footer-divider-color:					$theme-color;
+$footer-divider-display:				block; //none;
+$widget-divider-color:      			$theme-color;
+$widget-divider-display:				block; //none;
 
 // Site title and menu-label coloring and sizing
-$site-title-color:				$theme-color;
-$narrow-site-title-font-size:	2 * $base-font-size;
-$medium-site-title-font-size:  	2.5 * $base-font-size;
-$wide-site-title-font-size:		3.5 * $base-font-size;
+$site-title-color:						$theme-color;
+$narrow-site-title-font-size:			2 * $base-font-size;
+$medium-site-title-font-size:  			2.5 * $base-font-size;
+$wide-site-title-font-size:				3.5 * $base-font-size;
+
+// Shift the title this much to the right or left to fine-tune the title placement.
+// Implementation note: actually sets a margin-left and margin-top on the div that holds the title.
+$wide-horizontal-title-shift:			0px; // positive is to the right, negative is to the left
+$wide-vertical-title-shift:				0px; // positive is down, negative is up
+$medium-horizontal-title-shift:			0px; // positive is to the right, negative is to the left
+$medium-vertical-title-shift:			0px; // positive is down, negative is up
+$narrow-horizontal-title-shift:			0px; // positive is to the right, negative is to the left
+$narrow-vertical-title-shift:			0px; // positive is down, negative is up
+
+// Setting a minimum height for the banner. This can be helpfull if a background image has to be displayed. Note that for 'auto' the banner hight is determined by the tallest of either the icon image or title text.
+$wide-minimum-banner-height:			auto; // Set to 'auto' to disable a minimum height
+$medium-minimum-banner-height:			auto; // Set to 'auto' to disable a minimum height
+$narrow-minimum-banner-height:			auto; // Set to 'auto' to disable a minimum height
 
 // Special characters used for menu functions
-$menu-symbol-code:          	'\02261'; // ≡ Used in narrow and medium banner only
-$menu-closed-submenu-code:		'\021E8'; // ⇨ Used in narrow when the menu items are visible
-$menu-open-submenu-code:    	'\021E9'; // ⇩ Used in narrow when the submenu items are visible
-$menu-item-separator:			''; // Default = nothing
+$menu-symbol-code:          			'\02261'; // ≡ Used in narrow and medium banner only
+$menu-closed-submenu-code:				'\021E8'; // ⇨ Used in narrow when the menu items are visible
+$menu-open-submenu-code:    			'\021E9'; // ⇩ Used in narrow when the submenu items are visible
+$menu-item-separator:					''; // Default = nothing
 
 // Alignent of the menu items in the navigation bar.
 // This is done via the "justify-content" flex property, valid values are:
@@ -71,7 +112,7 @@ $menu-item-separator:			''; // Default = nothing
 // center     - to center the menu items in the middle of the navigation bar
 // flex-end   - to have them at the right most position possible
 // for more options, see "justif-content".
-$menu-alignment:				flex-start;
+$menu-alignment:						flex-start;
 
 // Navigation menu coloring and sizing
 $menu-symbol-color:						$theme-color;
@@ -89,19 +130,19 @@ $narrow-menu-item-height:				3 * $vspacing-unit;
 $narrow-menu-subitem-height:    		2.5 * $vspacing-unit;
 
 // Navigation bar formatting
-$navbar-side-margin:			$hspacing-unit; // Only for medium and wide navbars
-$navbar-menu-item-spacing:		$hspacing-unit; // Only for medium and wide navbars
+$navbar-side-margin:					$hspacing-unit; // Only for medium and wide navbars
+$navbar-menu-item-spacing:				$hspacing-unit; // Only for medium and wide navbars
 
 // Column width specification. The secondary and tertiary column can be removed in the _config.yml file.
-$primary-column-min-width:		480px;
-$secondary-column-width: 		240px;
-$tertiary-column-width:			240px;
+$primary-column-min-width:				480px;
+$secondary-column-width: 				240px;
+$tertiary-column-width:					240px;
 
 // There should be no need to change the next 4 definitions
-$wide-min-width:				$primary-column-min-width + $secondary-column-width + $tertiary-column-width;
-$medium-max-width:				$wide-min-width - 1;
-$medium-min-width:				$primary-column-min-width + $secondary-column-width;
-$narrow-max-width:				$medium-min-width - 1;
+$wide-min-width:						$primary-column-min-width + $secondary-column-width + $tertiary-column-width;
+$medium-max-width:						$wide-min-width - 1;
+$medium-min-width:						$primary-column-min-width + $secondary-column-width;
+$narrow-max-width:						$medium-min-width - 1;
 
 
 // Import partials.

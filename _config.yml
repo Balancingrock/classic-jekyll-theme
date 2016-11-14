@@ -42,6 +42,7 @@ number-of-recent-posts-in-widget: 10
 
 enable-cookies-policy: yes # yes to include, no to disable
 
+
 # Language customization, default is text of v1.0.1 if not defined.
 
 tHome: Home # Menu item
