@@ -1,5 +1,20 @@
 // The distinction between "layout" and "formatting" is as follows: If the resulting CCS affects the placement of and/or visibility of multiple items, it is placed in "layout". If the CSS affects only the appearance of an item, then it appears here. Of course the appearance may affect the layout, so there is no hard distinction.
 
+// Sets the background for the .navbanner-title
+@mixin titleBackgroundWithIcon($bgnd, $icn) {
+	 @if $bgnd != none {
+	 	@if $icn != none {
+			background: $icn left center no-repeat, $bgnd;
+	 	} @else {
+		 	background: $bgnd;
+	 	}
+	 } @else {
+	 	@if $icn != none {
+			background: $icn left center no-repeat;
+	 	}
+	 }
+}
+
 // Setting a background image on the entire site-title-color
 body {
 	@include wide-layout { background: $wide-body-background; }
@@ -9,72 +24,30 @@ body {
 
 // Formatting for the navbanner panel elements.
 .navbanner-panel {
-
-	.navbanner-icon {
-		@include wide-layout {
-			@if $wide-icon-url == none {
-				display: none;
-			} @else {
-				background: $wide-icon-url no-repeat center center;
-				width: $wide-icon-width;
-				height: $wide-icon-height;
-			}
-		}
-		@include medium-layout {
-			@if $medium-icon-url == none {
-				display: none;
-			} @else {
-				background: $medium-icon-url no-repeat center center;
-				width: $medium-icon-width;
-				height: $medium-icon-height;
-			}
-		}
-		@include narrow-layout {
-			@if $narrow-icon-url == none {
-				display: none;
-			} @else {
-				background: $narrow-icon-url no-repeat center center;
-				width: $narrow-icon-width;
-				height: $narrow-icon-height;
-			}
-		}
-	}
 	
 	// Title formatting
 	.navbanner-title {
 		p { color: $site-title-color; }
 		@include wide-layout {
-			@if $wide-icon-url == none {
-				margin-left: $wide-horizontal-title-shift;
-			} @else {
-				margin-left: $wide-horizontal-title-shift - $wide-icon-width;
-			}
+			font-size: $wide-site-title-font-size;
+			margin-left: $wide-horizontal-title-shift;
 			margin-top: $wide-vertical-title-shift;
 			min-height: $wide-minimum-banner-height;
-			background: $wide-banner-background;
-			font-size: $wide-site-title-font-size;
+			@include titleBackgroundWithIcon($wide-banner-background, $wide-icon-url);
 		}
 		@include medium-layout {
-			@if $medium-icon-url == none {
-				margin-left: $medium-horizontal-title-shift;
-			} @else {
-				margin-left: $medium-horizontal-title-shift - $medium-icon-width;
-			}
+			font-size: $medium-site-title-font-size;
+			margin-left: $medium-horizontal-title-shift;
 			margin-top: $medium-vertical-title-shift;
 			min-height: $medium-minimum-banner-height;
-			background: $medium-banner-background;
-			font-size: $medium-site-title-font-size;
+			@include titleBackgroundWithIcon($medium-banner-background, $medium-icon-url);
 		}
 		@include narrow-layout {	
-			@if $narrow-icon-url == none {
-				margin-left: $narrow-horizontal-title-shift;
-			} @else {
-				margin-left: $narrow-horizontal-title-shift - $narrow-icon-width;
-			}
+			font-size: $narrow-site-title-font-size;
+			margin-left: $narrow-horizontal-title-shift;
 			margin-top: $narrow-vertical-title-shift;
 			min-height: $narrow-minimum-banner-height;
-			background: $narrow-banner-background;
-			font-size: $narrow-site-title-font-size;
+			@include titleBackgroundWithIcon($narrow-banner-background, $narrow-icon-url);
 		}
 	}
 
@@ -86,8 +59,8 @@ body {
 		
 		// Size of the title and menu symbol depends on the layout in effect.
 		@include narrow-layout {
-			min-height: $wide-minimum-banner-height;
-			background: $wide-banner-background;
+			min-height: $narrow-minimum-banner-height;
+			background: $narrow-banner-background;
 			font-size: $narrow-site-title-font-size;
 			label { padding: 0 $hspacing-unit; } // Give the menu label more area to make it easier to tap.
 		}
@@ -100,7 +73,7 @@ body {
 		@include wide-layout {
 			min-height: $narrow-minimum-banner-height;
 			background: $narrow-banner-background;
-			font-size: $wide-site-title-font-size;
+			font-size: $narrow-site-title-font-size;
 		}
 	}
 

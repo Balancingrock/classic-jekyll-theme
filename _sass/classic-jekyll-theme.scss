@@ -36,38 +36,48 @@ $grey-color-dark:				darken($grey-color, 25%);
 $theme-color:							green;
 
 // Background color or pictures (keep in mind that some of these will overlap)
-// The value set is assigned to the CSS3 'background' property.
+// The value set is assigned to the CSS3 'background' property. Use 'none' if no background image or color is used.
 // background: color image-url position/size repeat origin clip attachment initial|inherit;
 // The properties that can be set, are: background-color, background-image, background-position, background-size, background-repeat, background-origin, background-clip, and background-attachment.
 // See http://www.w3schools.com/cssref/css3_pr_background.asp for a full description.
 // Example: ...-background: url("/assets/img/bckgnd.png") repeat
-$wide-body-background:					initial;
-$medium-body-background:				initial;
-$narrow-body-background:				initial;
-$wide-banner-background:				initial;
-$medium-banner-background:				initial;
-$narrow-banner-background:				initial;
-$menubar-background:					initial;
-$column-panel-background:				initial;
-$primary-column-background:				initial;
-$secondary-column-background:			initial;
-$tertiary-column-background:			initial;
-$wide-footer-background:				initial;
-$medium-footer-background:				initial;
-$narrow-footer-background:				initial;
+$wide-body-background:					none;
+$medium-body-background:				none;
+$narrow-body-background:				none;
+$wide-banner-background:				none;
+$medium-banner-background:				none;
+$narrow-banner-background:				none;
+$menubar-background:					none;
+$column-panel-background:				none;
+$primary-column-background:				none;
+$secondary-column-background:			none;
+$tertiary-column-background:			none;
+$wide-footer-background:				none;
+$medium-footer-background:				none;
+$narrow-footer-background:				none;
 
 // For an icon in the top left of the site (left side of the banner)
+// Set to 'url("/assets/img/site-icon.png")' to specify a url.
 // Set the url's to 'none' if no icon should be shown.
-// Note: width and height are ignored when the url is set to 'none'
 $wide-icon-url:							none;
-$wide-icon-width:						0px;
-$wide-icon-height:						0px;
 $medium-icon-url:						none;
-$medium-icon-width:						0px;
-$medium-icon-height:					0px;
 $narrow-icon-url:						none;
-$narrow-icon-width:						0px;
-$narrow-icon-height:					0px;
+
+// Setting a minimum height for the banner. This can be helpfull if a background image has to be displayed.
+// Note that for 'auto' the banner hight is determined by the title text. If a value is specified, the
+// actual height will be determined by the largest number of this value or the font height of the title.
+$wide-minimum-banner-height:			auto; // Set to 'auto' to disable a minimum height
+$medium-minimum-banner-height:			auto; // Set to 'auto' to disable a minimum height
+$narrow-minimum-banner-height:			auto; // Set to 'auto' to disable a minimum height
+
+// Shift the title this much to the right or left to fine-tune the title placement.
+// Implementation note: actually sets a margin-left and margin-top on the div that holds the title.
+$wide-horizontal-title-shift:			0px; // positive is to the right, negative is to the left
+$wide-vertical-title-shift:				0px; // positive is down, negative is up
+$medium-horizontal-title-shift:			0px; // positive is to the right, negative is to the left
+$medium-vertical-title-shift:			0px; // positive is down, negative is up
+$narrow-horizontal-title-shift:			0px; // positive is to the right, negative is to the left
+$narrow-vertical-title-shift:			0px; // positive is down, negative is up
 
 // Colors for the dividers between the panels, columns and widgets
 // Set display to 'none' to get rid of the divider, 'block' to enable the divider
@@ -85,20 +95,6 @@ $site-title-color:						$theme-color;
 $narrow-site-title-font-size:			2 * $base-font-size;
 $medium-site-title-font-size:  			2.5 * $base-font-size;
 $wide-site-title-font-size:				3.5 * $base-font-size;
-
-// Shift the title this much to the right or left to fine-tune the title placement.
-// Implementation note: actually sets a margin-left and margin-top on the div that holds the title.
-$wide-horizontal-title-shift:			0px; // positive is to the right, negative is to the left
-$wide-vertical-title-shift:				0px; // positive is down, negative is up
-$medium-horizontal-title-shift:			0px; // positive is to the right, negative is to the left
-$medium-vertical-title-shift:			0px; // positive is down, negative is up
-$narrow-horizontal-title-shift:			0px; // positive is to the right, negative is to the left
-$narrow-vertical-title-shift:			0px; // positive is down, negative is up
-
-// Setting a minimum height for the banner. This can be helpfull if a background image has to be displayed. Note that for 'auto' the banner hight is determined by the tallest of either the icon image or title text.
-$wide-minimum-banner-height:			auto; // Set to 'auto' to disable a minimum height
-$medium-minimum-banner-height:			auto; // Set to 'auto' to disable a minimum height
-$narrow-minimum-banner-height:			auto; // Set to 'auto' to disable a minimum height
 
 // Special characters used for menu functions
 $menu-symbol-code:          			'\02261'; // ≡ Used in narrow and medium banner only

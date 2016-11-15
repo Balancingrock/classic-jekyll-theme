@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.2.0
+# Classic-Jekyll-Theme v1.2.1
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -253,6 +253,10 @@ Release 1.2.0
 - Added option for an icon on the top-left side of the site.
 - Fixed a problem where the tertiary column divider was not removed for medium layout.
 
+Release 1.2.1
+
+- Fixed problem with Icon placement.
+
 ## Upgrade information
 
 ### from 0.2.6 to 1.0.0
@@ -295,6 +299,12 @@ No changes needed except for the `Gemfile` in which you should upgrade the versi
 ### from 1.1.1 to 1.2.0
 
 If changes were made to `_sass/classic-jekyll-theme.scss` then this file must be replaced with the new version that comes with this release and the changes must be re-applied. Note that background color setting has changed slightly.
+
+### from 1.2.0 to 1.2.1
+
+Replace the 'initial' values in `_sass/classic-jekyll-theme.scss` for the backgrounds with 'none'.
+The icon size (width and height) values are no longer used and can be removed.
+As always, update the version number in the `Gemfile`
 
 ## Known problems (need your help)
 
