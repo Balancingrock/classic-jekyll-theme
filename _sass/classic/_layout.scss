@@ -46,6 +46,7 @@
 		// Center the title.
 		display: flex;
 		justify-content: center;
+		align-items: center;
 	}
 
 	// The menu label is only visible in narrow and medium layout.
@@ -57,6 +58,7 @@
 		// The menu label (symbol) should be centered 
 		display: flex;
 		justify-content: center;
+		align-items: center;
 
 		// The label is used as checkbox-label, it should show a pointer when the mouse is above it.
 		label {

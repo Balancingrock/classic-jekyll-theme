@@ -57,21 +57,20 @@ $medium-footer-background:				none;
 $narrow-footer-background:				none;
 
 // For an icon in the top left of the site (left side of the banner)
-// Set to 'url("/assets/img/site-icon.png")' to specify a url.
 // Set the url's to 'none' if no icon should be shown.
+// Example: ...-icon-url: url("/assets/img/wide-icon.png");
 $wide-icon-url:							none;
 $medium-icon-url:						none;
 $narrow-icon-url:						none;
 
-// Setting a minimum height for the banner. This can be helpfull if a background image has to be displayed.
-// Note that for 'auto' the banner hight is determined by the title text. If a value is specified, the
-// actual height will be determined by the largest number of this value or the font height of the title.
-$wide-minimum-banner-height:			auto; // Set to 'auto' to disable a minimum height
-$medium-minimum-banner-height:			auto; // Set to 'auto' to disable a minimum height
-$narrow-minimum-banner-height:			auto; // Set to 'auto' to disable a minimum height
+// Setting a height for the banner. This can be helpfull if a background image or icon has to be displayed.
+// Note that for 'auto' the banner hight is determined by the title text.
+$wide-banner-height:					auto; // Set to 'auto' to disable a minimum height
+$medium-banner-height:					auto; // Set to 'auto' to disable a minimum height
+$narrow-banner-height:					auto; // Set to 'auto' to disable a minimum height
 
-// Shift the title this much to the right or left to fine-tune the title placement.
-// Implementation note: actually sets a margin-left and margin-top on the div that holds the title.
+// Shift the title this much to the right or left to fine-tune the title placement. Normally it is centered in wide and slightly to the right for medium and narrow (because of the menu symbol).
+// Implementation note: actually sets a margin-left and margin-top on the p that holds the title.
 $wide-horizontal-title-shift:			0px; // positive is to the right, negative is to the left
 $wide-vertical-title-shift:				0px; // positive is down, negative is up
 $medium-horizontal-title-shift:			0px; // positive is to the right, negative is to the left

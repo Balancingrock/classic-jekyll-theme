@@ -27,26 +27,34 @@ body {
 	
 	// Title formatting
 	.navbanner-title {
-		p { color: $site-title-color; }
+		.site-title-text {
+			color: $site-title-color;
+			@include wide-layout {
+				font-size: $wide-site-title-font-size;
+				margin-left: $wide-horizontal-title-shift;
+				margin-top: $wide-vertical-title-shift;
+			}
+			@include medium-layout {
+				font-size: $medium-site-title-font-size;
+				margin-left: $medium-horizontal-title-shift;
+				margin-top: $medium-vertical-title-shift;
+			}		
+			@include narrow-layout {
+				font-size: $narrow-site-title-font-size;
+				margin-left: $narrow-horizontal-title-shift;
+				margin-top: $narrow-vertical-title-shift;
+			}
+		}
 		@include wide-layout {
-			font-size: $wide-site-title-font-size;
-			margin-left: $wide-horizontal-title-shift;
-			margin-top: $wide-vertical-title-shift;
-			min-height: $wide-minimum-banner-height;
+			height: $wide-banner-height;
 			@include titleBackgroundWithIcon($wide-banner-background, $wide-icon-url);
 		}
 		@include medium-layout {
-			font-size: $medium-site-title-font-size;
-			margin-left: $medium-horizontal-title-shift;
-			margin-top: $medium-vertical-title-shift;
-			min-height: $medium-minimum-banner-height;
+			height: $medium-banner-height;
 			@include titleBackgroundWithIcon($medium-banner-background, $medium-icon-url);
 		}
 		@include narrow-layout {	
-			font-size: $narrow-site-title-font-size;
-			margin-left: $narrow-horizontal-title-shift;
-			margin-top: $narrow-vertical-title-shift;
-			min-height: $narrow-minimum-banner-height;
+			height: $narrow-banner-height;
 			@include titleBackgroundWithIcon($narrow-banner-background, $narrow-icon-url);
 		}
 	}
@@ -55,25 +63,35 @@ body {
 	.navbanner-label {
 			
 		// Color for the menu symbol (only visible on narrow and medium sized layouts)
-		label p { color: $menu-symbol-color; }
+		label {
+			padding: 0 $hspacing-unit; // Give the menu label more area to make it easier to tap.
+			p {
+				color: $menu-symbol-color;
+				@include wide-layout {
+					// Note: the label is not visible, but we set the correct values anyhow...
+					font-size: $narrow-site-title-font-size;
+				}
+				@include medium-layout {
+					font-size: $medium-site-title-font-size;
+				}
+				@include narrow-layout {
+					font-size: $narrow-site-title-font-size;
+				}
+			}
+		}
 		
 		// Size of the title and menu symbol depends on the layout in effect.
 		@include narrow-layout {
-			min-height: $narrow-minimum-banner-height;
+			height: $narrow-banner-height;
 			background: $narrow-banner-background;
-			font-size: $narrow-site-title-font-size;
-			label { padding: 0 $hspacing-unit; } // Give the menu label more area to make it easier to tap.
 		}
 		@include medium-layout {
-			min-height: $medium-minimum-banner-height;
+			height: $medium-banner-height;
 			background: $medium-banner-background;
-			font-size: $medium-site-title-font-size;
-			label { padding: 0 $hspacing-unit; } // Give the menu label more area to make it easier to tap.
 		}
 		@include wide-layout {
-			min-height: $narrow-minimum-banner-height;
+			height: $narrow-banner-height;
 			background: $narrow-banner-background;
-			font-size: $narrow-site-title-font-size;
 		}
 	}
 

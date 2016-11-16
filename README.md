@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.2.1
+# Classic-Jekyll-Theme v1.2.2
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -37,6 +37,8 @@ Other features:
 - __Icon__ support for an icon in the upper left corner of the site.
 
 - __Background images__ and __Background color__ settings for major site elements.
+
+You can get it from [github](https://github.com/Swiftrien/classic-jekyll-theme) or [rubygems](https://rubygems.org/gems/classic-jekyll-theme).
 
 ## Installation & setup
 
@@ -257,6 +259,12 @@ Release 1.2.1
 
 - Fixed problem with Icon placement.
 
+Release 1.2.2
+
+- Fixed problem with site title shifting when a background was used.
+- Now allows absolute fixing of banner height.
+
+
 ## Upgrade information
 
 ### from 0.2.6 to 1.0.0
@@ -294,17 +302,23 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 
 ### from 1.0.0 (and later) to 1.1.1
 
-No changes needed except for the `Gemfile` in which you should upgrade the version number for the classic-jekyll-theme.
+- Update the version number in the `Gemfile`.
 
 ### from 1.1.1 to 1.2.0
 
-If changes were made to `_sass/classic-jekyll-theme.scss` then this file must be replaced with the new version that comes with this release and the changes must be re-applied. Note that background color setting has changed slightly.
+- If changes were made to `_sass/classic-jekyll-theme.scss` then this file must be replaced with the new version that comes with this release and the changes must be re-applied. Note that background color setting has changed slightly.
+- As always, update the version number in the `Gemfile`
 
 ### from 1.2.0 to 1.2.1
 
-Replace the 'initial' values in `_sass/classic-jekyll-theme.scss` for the backgrounds with 'none'.
-The icon size (width and height) values are no longer used and can be removed.
-As always, update the version number in the `Gemfile`
+- Replace the 'initial' values in `_sass/classic-jekyll-theme.scss` for the backgrounds with 'none'.
+- The icon size (width and height) values are no longer used and can be removed.
+- As always, update the version number in the `Gemfile`
+
+### from 1.2.1 to 1.2.2
+
+- The banner height settings in `_sass/classic-jekyll-theme.scss` are no longer "minimum" specifications but absolute specifications and therefore have been renamed from `<layout-size>-minimum-banner-height` to `<layout-size>-banner-height`.
+- As always, update the version number in the `Gemfile`
 
 ## Known problems (need your help)
 
