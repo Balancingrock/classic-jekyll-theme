@@ -17,13 +17,9 @@
 
 	<!-- Create a list of top menu item titles -->
 	{% assign topTitles = "" | split: "" %}
-	{% assign sortedPages = site.pages | sort: 'menuTopIndex' %} <!-- sorts empty tags first, then numerically -->
-	{% for ape in sortedPages %}
-		{% if ape.menuInclude == true and ape.menuTopTitle %}
-			{% assign topTitles = topTitles | push: ape.menuTopTitle %}
-		{% endif %}
-	{% endfor %}
-	{% assign topTitles = topTitles | reverse | uniq | reverse %} <!-- remove emtpy, stay numerically -->
+	{% assign sortedPages = site.pages | where:'menuInclude', true | where_exp:'menuTopTitle', 'menuTopTitle != nil' | sort: 'menuTopIndex', 'last' %}
+	{% for ape in sortedPages %}{% assign topTitles = topTitles | push: ape.menuTopTitle %}{% endfor %}
+	{% assign topTitles = topTitles | uniq %}
 
 	<!-- Using the above list, create the menu and submenu's -->
 	<ul>
@@ -42,14 +38,7 @@
 		{% for topTitle in topTitles %}
 		
 			<!-- Create a list of sub menu item titles -->
-			{% assign subTitles = "" | split: "" %}
-			{% assign sortedPages = site.pages | sort: 'menuSubIndex' %}
-			{% for ape in sortedPages %}
-				{% if ape.menuInclude == true and ape.menuTopTitle == topTitle and ape.menuSubTitle %}
-					{% assign subTitles = subTitles | push: ape.menuSubTitle %}
-				{% endif %}
-			{% endfor %}
-			{% assign subTitles = subTitles | reverse | uniq | reverse %}
+			{% assign subTitles = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle | where_exp:'menuSubTitle', 'menuSubTitle != nil' | sort: 'menuSubIndex', 'last' %}
 
 			<li>
 
@@ -64,7 +53,7 @@
 						{% endif %}
 						</div>
 						<div class="menu-item-title">
-						<!-- Find page to link to -->
+							<!-- Find page to link to -->
 						{% assign pageFound = false %}
 						{% for ape in site.pages %}
 							{% if ape.menuTopTitle == topTitle and ape.menuSubTitle == nil %}
@@ -88,28 +77,23 @@
 				{% if subTitles.size > 0 %}
 					<ul>
 					{% for subTitle in subTitles %}
-						{% for ape in site.pages %}
-							{% if ape.menuTopTitle == topTitle and ape.menuSubTitle == subTitle %}
-								{% if ape.menuLink != false %}
-								<li>
-									<div class="menu-subitem">
-										<div class="menu-subitem-symbol"></div>
-										<div class="menu-subitem-title">
-											<a href="{{ ape.url }}"><p>{{ subTitle }}</p></a>
-										</div>
-									</div>
-								</li>
-								{% else %}
-								<li>
-									<div class="menu-subitem">
-										<div class="menu-subitem-symbol"></div>
-										<div class="menu-subitem-title"><p>{{ subTitle }}</p></div>
-									</div>
-								</li>
-								{% endif %}
-								{% break %}
-							{% endif %}
-						{% endfor %}
+						{% if subTitle.menuLink != false %}
+						<li>
+							<div class="menu-subitem">
+								<div class="menu-subitem-symbol"></div>
+								<div class="menu-subitem-title">
+									<a href="{{ subTitle.url }}"><p>{{ subTitle.menuSubTitle }}</p></a>
+								</div>
+							</div>
+						</li>
+						{% else %}
+						<li>
+							<div class="menu-subitem">
+								<div class="menu-subitem-symbol"></div>
+								<div class="menu-subitem-title"><p>{{ subTitle.menuSubTitle }}</p></div>
+							</div>
+						</li>
+						{% endif %}
 					{% endfor %}			
 					</ul>
 				{% endif %}
@@ -117,36 +101,37 @@
 		{% endfor %}
 
 		<!-- Categories menu -->
-		{% assign categories = 'Categories' %}
-		{% if site.tCategories %}{% assign categories = site.tCategories %}{% endif %}
-		<li>
-			<input type="checkbox" id="category-checkbox">
-			<label for="category-checkbox">
-				<div class="menu-item-separator"><p><!-- empty but necessary --></p></div>
-				<div class="menu-item">
-					<div class="menu-item-symbol">
-						<p><!-- empty but necessary! --></p>
-					</div>
-					<div class="menu-item-title">
-						<p>{{ categories }}</p>
-					</div>
-				</div>
-			</label>
-			<ul>
-			{% for ape in site.pages %}
-				{% if ape.layout == 'category-page' %}
-				<li>
-					<div class="menu-subitem">
-						<div class="menu-subitem-symbol"></div>
-						<div class="menu-subitem-title">
-							<a href="{{ ape.url }}"><p>{{ ape.title | capitalize }}</p></a>
+		{% assign cats = site.pages | where:'layout', 'category-page' | sort:'title' %}
+		{% if cats.size > 0 %}
+			{% assign categories = 'Categories' %}
+			{% if site.tCategories %}{% assign categories = site.tCategories %}{% endif %}
+			<li>
+				<input type="checkbox" id="category-checkbox">
+				<label for="category-checkbox">
+					<div class="menu-item-separator"><p><!-- empty but necessary --></p></div>
+					<div class="menu-item">
+						<div class="menu-item-symbol">
+							<p><!-- empty but necessary! --></p>
+						</div>
+						<div class="menu-item-title">
+							<p>{{ categories }}</p>
 						</div>
 					</div>
-				</li>
-				{% endif %}
-			{% endfor %}
-			</ul>
-		</li>
+				</label>
+				<ul>
+				{% for cat in cats %}
+					<li>
+						<div class="menu-subitem">
+							<div class="menu-subitem-symbol"></div>
+							<div class="menu-subitem-title">
+								<a href="{{ cat.url }}"><p>{{ cat.title | capitalize }}</p></a>
+							</div>
+						</div>
+					</li>
+				{% endfor %}
+				</ul>
+			</li>
+		{% endif %}
 	</ul>
 </nav>
 
