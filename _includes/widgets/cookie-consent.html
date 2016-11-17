@@ -1,10 +1,10 @@
 <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
 {% assign usesCookies = 'This site uses cookies' %}
-{% if site.tUsesCookies %}{% assign usesCookies = site.tUsesCookies %}{% endif %}
+{% if site.data.text-for.tUsesCookies %}{% assign usesCookies = site.data.text-for.tUsesCookies %}{% endif %}
 {% assign cookieOk = 'OK' %}
-{% if site.tCookieOk %}{% assign cookieOk = site.tCookieOk %}{% endif %}
+{% if site.data.text-for.tCookieOk %}{% assign cookieOk = site.data.text-for.tCookieOk %}{% endif %}
 {% assign moreInfo = 'More info' %}
-{% if site.tMoreInfo %}{% assign moreInfo = site.tMoreInfo %}{% endif %}
+{% if site.data.text-for.tMoreInfo %}{% assign moreInfo = site.data.text-for.tMoreInfo %}{% endif %}
 <script type="text/javascript">
     window.cookieconsent_options = {"message":"{{ usesCookies }}","dismiss":"{{ cookieOk }}","learnMore":"{{ moreInfo}}","link":"/pages/cookie-consent/cookie-consent.html","theme":"dark-top"};
 </script>

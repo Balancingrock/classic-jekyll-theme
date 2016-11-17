@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.2.3
+# Classic-Jekyll-Theme v1.3.0
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -32,7 +32,7 @@ Other features:
 
 - __Cookies policy__ for european users is included by default. It can be easily disabled for non-european websites though.
 
-- __Language customization__ (not multi-language support!) is available by way of the _config.yml file.
+- __Language customization__ (not multi-language support!).
 
 - __Icon__ support for an icon in the upper left corner of the site.
 
@@ -66,7 +66,7 @@ Change the directory:
 	
 Change in the Gemfile:
 
-	From `gem "minima", "~> 2.0"` to `gem "classic-jekyll-theme"`
+	From `gem "minima", "~> 2.0"` to `gem "classic-jekyll-theme", "~>1.3.0"`
 
 Change in the _config.yml:
 
@@ -80,60 +80,23 @@ It is possible to start the jekyll server now:
 
 	$ jekyll serve
 	
-Then the site will show up at `localhost:4000` but it will not contain everything just yet.
+Then the site will show up at `localhost:4000`.
 
-Next add the settings for __secondary_column__, __tertiary_column__, __number-of-posts-on-home-page__, __number-of-recent-posts-in-widget__ and __enable-cookies-policy__ to the `_config.yml` file with the values you would like to use. Also add translations if necessary. Alternatively simply copy and paste the following few lines to the `_config.yml` file:
-
-    # Classic Jekyll Theme settings
-
-    # Classic uses three columns Primary, Secondary and Tertiary.
-    # The primary column is always present and cannot be manipulated.
-    # The secondary column is optional and is either to the left or to the right of the primary.
-    # The tertiary column is optional and if present will be opposite the secondary column in the wide display and below the secondary in the medium display.
-    # In the narrow display all three columns will be below each other (if present)
-    # If the tertiary column is used, the secondary column *must* also be used.
-
-    secondary_column: left # must be either 'left', 'right' or 'none', other values are illegal.
-    tertiary_column: present # must be either 'present' or 'none', other values are illegal.
-
-    number-of-posts-on-home-page: 5
-    number-of-recent-posts-in-widget: 10
-
-    enable-cookies-policy: yes # yes to include, no to disable
-	
-	# Language customization, default is text of v1.0.1 if not defined.
-
-	tHome: Home # Menu item
-	tPosts: Posts # Title on home page
-	tCategories: Categories # Menu item
-	tCategory: Category # Title on categories page
-	tNoBlogpostFound: No blogposts found for this category # Message on category page if no posts have been found
-	tMore: more # Continuation text for abbreviated posts on a category page
-	tTags: Tags # Tag label on category page
-
-	tRecent: Recent # Title on recent posts widget
-	tSocialMediaResources: Social Media & Resources # Part title of social media widget
-	tSubscribe: Subscribe # Title of subscription widget
-
-	tUsesCookies: This site uses cookies # Cookie warning message
-	tCookieOk: OK # Text for OK button
-	tMoreInfo: More info # More cookie info text
-
-    # End Classic Jekyll Theme settings
-
-If the jekyll server was started, then it must be stopped now (CTRL-C) and restarted:
-
-	$ jekyll serve
-	
-Reload the website, and the columns will show up.
-
-To add sample content that illustrates how pages and categories are implemented, copy the folder `pages` from the gem to the current project. On MacOS the gems are located in: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. Replace the version's with the appropriate numbers (note: these are two different unrelated version numbers). These pages not only contain examples, but also some additional information about using the theme.
+To add sample content that illustrates how pages and categories are implemented, copy the folder `pages` from the gem to the current project. On MacOS the gems are located in: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. Replace the version's with the appropriate numbers (note: these are two different unrelated version numbers). These pages not only contain examples, but also some information about using the theme.
 
 ## Configuration
 
-The theme is configured in `_config.yml` and `_sass/classic-jekyll-theme.scss`.
+The theme is configured in:
 
-### _config.yml
+- `_sass/classic-jekyll-theme.scss`: For the graphical elements.
+- `_data/setup.yml`: For general layout and widget configuration.
+- `_data/text-for.yml`: For language customization of the textual elements of the theme.
+
+### _sass/classic-jekyll-theme.scss
+
+The default `main.scss` file has been emptied. Hence all CSS configuration is done in the theme sass file.
+
+### setup.yml
 
 The following values are configurable:
 
@@ -161,7 +124,9 @@ The following values are configurable:
  
 	`yes` to enable the cookies warning, `no` to disable. The cookies warning is from [Silktide](http://silktide.com/cookieconsent), distributed under the MIT license.
 
-- Some of the text elements in the theme can be translated with the following definitions:
+### text-for.yml
+
+Some of the text elements in the theme can be translated with the following definitions:
 
 	If a definition is absent, the default shown will be used.
 
@@ -191,11 +156,21 @@ The following values are configurable:
 	
 	`tMoreInfo: More info` # More cookie info text
 
-### _sass/classic-jekyll-theme.scss
+## Recommendation
 
-The default `main.scss` file has been emptied. Hence all CSS configuration is done in the theme sass file.
+Typically you will need to copy some files from the gem iteself to the project (web site) directory. The most common files are:
 
-To start configuring this file, create a `_sass` directory and copy the `classic-jekyll-theme.scss` from the gem directory to the new directory.
+- `_sass/classic-jekyll-theme.scss` for configuration
+- `_data/setup.yml` for configuration
+- `_data/text-for.yml` for configuration
+- `_includes/secondary-column.html` for the secondary column contents
+- `_includes/tertiary-column.html` for the tertiary column contents
+
+These files can be found in the gem directory. On macOS this directory is located at: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. When you copy these files, make sure they are in the same relative directory as in the gem itself.
+
+Besides the above mentioned files you should avoid making changes to the files provided in the gem. The more changes you make, the more difficult it will become to upgrade. Instead of chaning a file, include a new file that contains the stuff you want and include that file.
+
+For example, if you need to add to the SASS files, create a new file and include that at the end of `_sass/classic-jekyll-theme.scss`.
 
 ## Creating Posts
 
@@ -280,6 +255,10 @@ Release 1.2.3
 - Menu item 'Categories' will only be included if categorie pages are requested by the designer.
 - Categories pages submenu is now alphabetical.
 
+Release 1.3.0
+
+- Removed theme specific configuration from the `_config.yml` file into `_data/setup.yml` and `_data/text-for.yml`.
+
 ## Upgrade information
 
 ### from 0.2.6 to 1.0.0
@@ -338,6 +317,11 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 ### from 1.2.2 to 1.2.3
 
 - Update the version number in the `Gemfile`
+
+### from 1.2.3 to 1.3.0
+
+- Remove the classic-jekyll-theme configurations from the `_config.yml` file, and reapply any changes made to either `_data/setup.yml` and/or `_data/text-for.yml` as required.
+- As always, update the version number in the `Gemfile`
 
 ## Known problems (need your help)
 

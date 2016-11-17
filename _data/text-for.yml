@@ -1,0 +1,40 @@
+# Language customization for default theme elements
+
+# Menu item
+tHome: Home
+
+# Title on home page
+tPosts: Posts
+
+# Menu item
+tCategories: Categories
+
+# Title on categories page
+tCategory: Category
+
+# Message on category page if no posts have been found
+tNoBlogpostFound: No blogposts found for this category
+
+# Continuation text for abbreviated posts on a category page
+tMore: more
+
+# Tag label on category page
+tTags: Tags
+
+# Title on recent posts widget
+tRecent: Recent
+
+# Part title of social media widget
+tSocialMediaResources: Social Media & Resources
+
+# Title of subscription widget
+tSubscribe: Subscribe
+
+# Cookie warning message
+tUsesCookies: This site uses cookies
+
+# Text for OK button
+tCookieOk: OK
+
+# More cookie info text
+tMoreInfo: More info

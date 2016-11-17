@@ -1,0 +1,25 @@
+# Classic Jekyll Theme settings
+
+# Classic uses three columns Primary, Secondary and Tertiary.
+# The primary column is always present and cannot be manipulated.
+# The secondary column is optional and is either to the left or to the right of the primary.
+# The tertiary column is optional and if present will be opposite the secondary column in the wide display and below the secondary in the medium display.
+# In the narrow display all three columns will be below each other (if present)
+# If the tertiary column is used, the secondary column *must* also be used.
+
+# Possible values: 'left', 'right' or 'none', other values are illegal.
+secondary_column: left
+
+# Possible values: 'present' or 'none', other values are illegal.
+tertiary_column: present
+
+# For the number of posts visible on the home page. Must be > 0.
+number-of-posts-on-home-page: 5
+
+# For the number of posts titles shown in the 'recent' widget
+number-of-recent-posts-in-widget: 10
+
+# Enables or disables the cookies warning.
+enable-cookies-policy: yes
+
+# End of file

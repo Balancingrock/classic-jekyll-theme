@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "classic-jekyll-theme"
-  spec.version       = "1.2.3"
+  spec.version       = "1.3.0"
   spec.authors       = ["Rien"]
   spec.email         = ["rien@balancingrock.nl"]
 
@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://rubygems.org/gems/classic-jekyll-theme"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^(assets|pages|_layouts|_includes|_sass|LICENSE|README)}i) }
+  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^(assets|pages|_layouts|_includes|_sass|_data|LICENSE|README)}i) }
   
   spec.add_runtime_dependency "jekyll-feed", "~> 0.8"
   

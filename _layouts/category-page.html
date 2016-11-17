@@ -4,7 +4,7 @@ layout: default
 <article class="page">
 
 	{% assign category = 'Category' %}
-	{% if site.tCategory %}{% assign category = site.tCategory %}{% endif %}
+	{% if site.data.text-for.tCategory %}{% assign category = site.data.text-for.tCategory %}{% endif %}
 	<header class="page-header">
 		<h1 class="page-title">{{ category }}: {{ page.title | capitalize }}</h1>
 	</header>
@@ -24,7 +24,7 @@ layout: default
 
 						{% if post.tags.size > 0 %}
 						{% assign tags = 'Tags' %}
-						{% if site.tTags %}{% assign tags = site.tTags %}{% endif %}
+						{% if site.data.text-for.tTags %}{% assign tags = site.data.text-for.tTags %}{% endif %}
 						<p class="post-tags">{{ tags }}: <span>
 							{% for tag in post.tags %}
 							{{ tag }}{% if tag != post.tags.last %}, {% endif %}
@@ -33,7 +33,7 @@ layout: default
 						{% endif %}
 
 						{% assign more = 'more' %}
-						{% if site.tMore %}{% assign more = site.tMore %}{% endif %}
+						{% if site.data.text-for.tMore %}{% assign more = site.data.text-for.tMore %}{% endif %}
 						<p>{{ post.excerpt | remove: '<p>' | remove: '</p>' }}<a href="{{ post.url }}">{{ more }}...</a></p>
 					</div>
 

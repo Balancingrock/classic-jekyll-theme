@@ -5,7 +5,7 @@ layout: default
 <div>
 
 	{% assign posts = 'Posts' %}
-	{% if site.tPosts %}{% assign posts = site.tPosts %}{% endif %}
+	{% if site.data.text-for.tPosts %}{% assign posts = site.data.text-for.tPosts %}{% endif %}
 	<h1>{{ posts }}</h1>
 	
 <!--	{{ content }} -->

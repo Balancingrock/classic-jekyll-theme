@@ -24,46 +24,6 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
 
-
-# Classic Jekyll Theme settings
-
-# Classic uses three columns Primary, Secondary and Tertiary.
-# The primary column is always present and cannot be manipulated.
-# The secondary column is optional and is either to the left or to the right of the primary.
-# The tertiary column is optional and if present will be opposite the secondary column in the wide display and below the secondary in the medium display.
-# In the narrow display all three columns will be below each other (if present)
-# If the tertiary column is used, the secondary column *must* also be used.
-
-secondary_column: left # must be either 'left', 'right' or 'none', other values are illegal.
-tertiary_column: present # must be either 'present' or 'none', other values are illegal.
-
-number-of-posts-on-home-page: 5
-number-of-recent-posts-in-widget: 10
-
-enable-cookies-policy: yes # yes to include, no to disable
-
-
-# Language customization, default is text of v1.0.1 if not defined.
-
-tHome: Home # Menu item
-tPosts: Posts # Title on home page
-tCategories: Categories # Menu item
-tCategory: Category # Title on categories page
-tNoBlogpostFound: No blogposts found for this category # Message on category page if no posts have been found
-tMore: more # Continuation text for abbreviated posts on a category page
-tTags: Tags # Tag label on category page
-
-tRecent: Recent # Title on recent posts widget
-tSocialMediaResources: Social Media & Resources # Part title of social media widget
-tSubscribe: Subscribe # Title of subscription widget
-
-tUsesCookies: This site uses cookies # Cookie warning message
-tCookieOk: OK # Text for OK button
-tMoreInfo: More info # More cookie info text
-
-# End Classic Jekyll Theme settings
-
-
 # Build settings
 markdown: kramdown
 theme: classic-jekyll-theme

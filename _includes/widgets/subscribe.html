@@ -1,6 +1,6 @@
 <div>
 	{% assign subscribe = 'Subscribe' %}
-	{% if site.tSubscribe %}{% assign subscribe = site.tSubscribe %}{% endif %}
+	{% if site.data.text-for.tSubscribe %}{% assign subscribe = site.data.text-for.tSubscribe %}{% endif %}
 	<h1>{{ subscribe }}:</h1>
 	<p class="rss-subscribe"><a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
 </div>
