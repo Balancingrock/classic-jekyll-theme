@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.3.1
+# Classic-Jekyll-Theme v1.3.2
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -52,7 +52,9 @@ Suggested donation for commercial sites is the price of a good meal: $20
 
 ## Installation & setup
 
-Install it as:
+On MacOS the gems are located in: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. Replace the version's with the appropriate numbers (note: these are two different unrelated version numbers). These pages not only contain examples, but also some information about using the theme. Some of the steps below need the path to the gem, so make sure you know it.
+
+Install the theme:
 
     $ sudo gem install classic-jekyll-theme
 
@@ -76,13 +78,19 @@ Delete the file `about.md`:
 
 	$ rm about.md
 
+Copy from the gem the directory (with content) `_data` to the same relative path in the site. On MacOS the gems are located in: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. After copying the directory the following command:
+
+	$ ld _data
+
+should list the files `setup.yml` and `text-for.yml`
+
 It is possible to start the jekyll server now:
 
 	$ jekyll serve
 	
 Then the site will show up at `localhost:4000`.
 
-To add sample content that illustrates how pages and categories are implemented, copy the folder `pages` from the gem to the current project. On MacOS the gems are located in: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. Replace the version's with the appropriate numbers (note: these are two different unrelated version numbers). These pages not only contain examples, but also some information about using the theme.
+To add sample content that illustrates how pages and categories are implemented, copy the folder `pages` from the gem to the current project. 
 
 ## Configuration
 
@@ -263,6 +271,10 @@ Release 1.3.1
 
 - Quick fix for problem introduced in 1.3.0
 
+Release 1.3.2
+
+- Update of this README file.
+
 ## Upgrade information
 
 ### from 0.2.6 to 1.0.0
@@ -324,11 +336,13 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 
 ### from 1.2.3 to 1.3.0
 
+- Copy the `_data` directory from the gem to the website directory as per installation instructions in this document.
 - Remove the classic-jekyll-theme configurations from the `_config.yml` file, and reapply any changes made to either `_data/setup.yml` and/or `_data/text-for.yml` as required.
 - As always, update the version number in the `Gemfile`
 
-### from 1.3.0 to 1.3.1
+### from 1.3.0 to 1.3.2
 
+- If not done yet, copy the `_data` directory from the gem to the website directory as per installation instructions in this document.
 - Update the version number in the `Gemfile`
 
 ## Known problems (need your help)
