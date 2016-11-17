@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.3.0
+# Classic-Jekyll-Theme v1.3.1
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -259,6 +259,10 @@ Release 1.3.0
 
 - Removed theme specific configuration from the `_config.yml` file into `_data/setup.yml` and `_data/text-for.yml`.
 
+Release 1.3.1
+
+- Quick fix for problem introduced in 1.3.0
+
 ## Upgrade information
 
 ### from 0.2.6 to 1.0.0
@@ -322,6 +326,10 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 
 - Remove the classic-jekyll-theme configurations from the `_config.yml` file, and reapply any changes made to either `_data/setup.yml` and/or `_data/text-for.yml` as required.
 - As always, update the version number in the `Gemfile`
+
+### from 1.3.0 to 1.3.1
+
+- Update the version number in the `Gemfile`
 
 ## Known problems (need your help)
 

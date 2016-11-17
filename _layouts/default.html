@@ -9,16 +9,16 @@
 
 		<div class="column-panel">
 
-			{% if site.secondary_column == 'left' %}
+			{% if site.data.setup.secondary_column == 'left' %}
 			<div class="secondary-column">
 				<div class="secondary-column-content">{% include secondary-column.html %}</div>
-				{% if site.tertiary_column == 'present' %}	
+				{% if site.data.setup.tertiary_column == 'present' %}	
 					<div class="tertiary-column-content">{% include tertiary-column.html %}</div>
 				{% endif %}
 			</div>
 			<div class="secondary-divider"></div>
 			{% else %}
-				{% if site.tertiary_column == 'present' %}
+				{% if site.data.setup.tertiary_column == 'present' %}
 				<div class="tertiary-column">
 					<div class="tertiary-column-content">{% include tertiary-column.html %}</div>
 				</div>
@@ -32,16 +32,16 @@
 			</div>
 			
 			
-			{% if site.secondary_column == 'right' %}
+			{% if site.data.setup.secondary_column == 'right' %}
 			<div class="secondary-divider"></div>			
 			<div class="secondary-column">
 				<div class="secondary-column-content">{% include secondary-column.html %}</div>
-				{% if site.tertiary_column == 'present' %}	
+				{% if site.data.setup.tertiary_column == 'present' %}	
 					<div class="tertiary-column-content">{% include tertiary-column.html %}</div>
 				{% endif %}
 			</div>
 			{% else %}
-			   {% if site.tertiary_column == 'present' %}
+			   {% if site.data.setup.tertiary_column == 'present' %}
 				<div class="tertiary-divider"></div>
 				<div class="tertiary-column">
 					<div class="tertiary-column-content">{% include tertiary-column.html %}</div>

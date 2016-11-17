@@ -44,7 +44,7 @@ layout: default
 
 	{% if found == false %}
 		{% assign message = 'No blogposts found for this category' %}
-		{% if site.tNoBlogpostFound %}{% assign message = site.tNoBlogpostFound %}{% endif %}
+		{% if site.data.text-for.tNoBlogpostFound %}{% assign message = site.data.text-for.tNoBlogpostFound %}{% endif %}
 		<div><p style="text-align: center;">{{ message }}</p></div>
 	{% endif %}
 

@@ -3,7 +3,7 @@
 	{% if site.data.text-for.tRecent %}{% assign recent = site.data.text-for.tRecent %}{% endif %}
 	<h1>{{ recent }}:</h1>
 	{% for post in site.posts %}
-		{% if for.index > site.number-of-recent-posts-in-widget %}{% break %}{% endif %}
+		{% if for.index > site.data.setup.number-of-recent-posts-in-widget %}{% break %}{% endif %}
 		<p><a href="{{ post.url }}">{% if post.date %}{{ post.date | date: "%F" }}{% endif %} {{ post.title }}</a></p>
 	{% endfor %}
 </div>

@@ -17,7 +17,7 @@
   
   <!-- Include cookie consent for production build when enabled -->
   {% if jekyll.environment == 'production' %}
-  	{% if site.enable-cookies-policy %}
+  	{% if site.data.setup.enable-cookies-policy %}
 	  {% include widgets/cookie-consent.html %}
     {% endif %}
   {% endif %}
