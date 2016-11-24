@@ -314,43 +314,43 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 
 ### from 1.0.0 (and later) to 1.1.1
 
-- Update the version number in the `Gemfile`
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 
 ### from 1.1.1 to 1.2.0
 
 - If changes were made to `_sass/classic-jekyll-theme.scss` then this file must be replaced with the new version that comes with this release and the changes must be re-applied. Note that background color setting has changed slightly.
-- As always, update the version number in the `Gemfile`
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 
 ### from 1.2.0 to 1.2.1
 
 - Replace the 'initial' values in `_sass/classic-jekyll-theme.scss` for the backgrounds with 'none'.
 - The icon size (width and height) values are no longer used and can be removed.
-- As always, update the version number in the `Gemfile`
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 
 ### from 1.2.1 to 1.2.2
 
 - The banner height settings in `_sass/classic-jekyll-theme.scss` are no longer "minimum" specifications but absolute specifications and therefore have been renamed from `<layout-size>-minimum-banner-height` to `<layout-size>-banner-height`.
-- As always, update the version number in the `Gemfile`
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 
 ### from 1.2.2 to 1.2.3
 
-- Update the version number in the `Gemfile`
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 
 ### from 1.2.3 to 1.3.0
 
 - Copy the `_data` directory from the gem to the website directory as per installation instructions in this document.
 - Remove the classic-jekyll-theme configurations from the `_config.yml` file, and reapply any changes made to either `_data/setup.yml` and/or `_data/text-for.yml` as required.
-- As always, update the version number in the `Gemfile`
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 
 ### from 1.3.0 to 1.3.2
 
 - If not done yet, copy the `_data` directory from the gem to the website directory as per installation instructions in this document.
-- Update the version number in the `Gemfile`
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 
 ### from 1.3.2 to 1.3.3
 
 - It is no longer necessary to copy the `_data` folder content to the site directory.
-- Update the version number in the `Gemfile`
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 
 ## Known problems (need your help)
 
