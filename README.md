@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.3.2
+# Classic-Jekyll-Theme v1.3.3
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -68,7 +68,7 @@ Change the directory:
 	
 Change in the Gemfile:
 
-	From `gem "minima", "~> 2.0"` to `gem "classic-jekyll-theme", "~>1.3.0"`
+	From `gem "minima", "~> 2.0"` to `gem "classic-jekyll-theme", "~>1.3.3"`
 
 Change in the _config.yml:
 
@@ -77,12 +77,6 @@ Change in the _config.yml:
 Delete the file `about.md`:
 
 	$ rm about.md
-
-Copy from the gem the directory (with content) `_data` to the same relative path in the site. On MacOS the gems are located in: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. After copying the directory the following command:
-
-	$ ld _data
-
-should list the files `setup.yml` and `text-for.yml`
 
 It is possible to start the jekyll server now:
 
@@ -99,6 +93,9 @@ The theme is configured in:
 - `_sass/classic-jekyll-theme.scss`: For the graphical elements.
 - `_data/setup.yml`: For general layout and widget configuration.
 - `_data/text-for.yml`: For language customization of the textual elements of the theme.
+
+If it is necessary to change any of these settings, copy the file to your site (keeping the folder structure) and modify them as necessary.
+
 
 ### _sass/classic-jekyll-theme.scss
 
@@ -275,6 +272,11 @@ Release 1.3.2
 
 - Update of this README file.
 
+Release 1.3.3
+
+- Added the "jekyll-data" gem to simplify initial configuration/setup.
+
+
 ## Upgrade information
 
 ### from 0.2.6 to 1.0.0
@@ -343,6 +345,11 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 ### from 1.3.0 to 1.3.2
 
 - If not done yet, copy the `_data` directory from the gem to the website directory as per installation instructions in this document.
+- Update the version number in the `Gemfile`
+
+### from 1.3.2 to 1.3.3
+
+- It is no longer necessary to copy the `_data` folder content to the site directory.
 - Update the version number in the `Gemfile`
 
 ## Known problems (need your help)

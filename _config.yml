@@ -29,6 +29,7 @@ markdown: kramdown
 theme: classic-jekyll-theme
 gems:
   - jekyll-feed
+  - jekyll-data
 exclude:
   - Gemfile
   - Gemfile.lock
