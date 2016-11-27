@@ -1,3 +1,12 @@
+{% comment %}
+
+Usage:
+
+Configure the github-username and twitter-username in `_config.yml`.
+
+Configure the text for the header message in "_data/text-for.yml" for the item `tSocialMediaResources`.
+
+{% endcomment %}
 <div>
 	{% assign message = 'Social Media & Resources' %}
 	{% if site.data.text-for.tSocialMediaResources %}{% assign message = site.data.text-for.tSocialMediaResources %}{% endif %}

@@ -1,0 +1,38 @@
+{% comment %}
+
+Purpose:
+
+To include a youtube video player in HD format in a column. The player will size (dynamically) with te size of the column. It will take up the entire available width, so if margins are needed, apply these to the object this player is included in.
+
+
+Usage:
+
+	{% include youtube-hd-player.html
+		video = "Identifier of the video"
+	%}
+
+
+Also needs the following CSS (written in SASS, included in `_sass/_widget-support.scss`):
+
+.scaling-iframe-wrapper-hd {
+	position: relative;
+	padding-bottom: 56.25%; // HD ratio is 16:9 => (9/16)*100%= 56.25%
+	padding-top: 30px;
+	overflow: hidden;
+	margin-top: $vspacing-unit;
+	margin-bottom: $vspacing-unit;
+	iframe {
+		// Allows component to extend over the padding area
+		position: absolute;
+		// Let the upper left corner be the upper left corner of the containg element
+		top: 0;
+		left: 0;
+		// Make the iframe as big as its container.
+		width: 100%;
+		height: 100%;
+	}
+}
+
+{% endcomment %}
+
+<div class="scaling-iframe-wrapper-hd"><iframe src="https://www.youtube.com/embed/{{ include.video }}"></iframe></div>

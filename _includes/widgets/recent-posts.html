@@ -1,3 +1,12 @@
+{% comment %}
+
+Usage:
+
+Configure the number of referenced posts by assigning a value to `number-of-recent-posts-in-widget` in the file "_data/setup.yml".
+
+Configure the text for the header message in "_data/text-for.yml" for the item `tRecent`.
+
+{% endcomment %}
 <div>
 	{% assign recent = 'Recent' %}
 	{% if site.data.text-for.tRecent %}{% assign recent = site.data.text-for.tRecent %}{% endif %}

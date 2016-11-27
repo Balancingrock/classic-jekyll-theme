@@ -1,20 +1,5 @@
 // The distinction between "layout" and "formatting" is as follows: If the resulting CCS affects the placement of and/or visibility of multiple items, it is placed in "layout". If the CSS affects only the appearance of an item, then it appears here. Of course the appearance may affect the layout, so there is no hard distinction.
 
-// Sets the background for the .navbanner-title
-@mixin titleBackgroundWithIcon($bgnd, $icn) {
-	 @if $bgnd != none {
-	 	@if $icn != none {
-			background: $icn left center no-repeat, $bgnd;
-	 	} @else {
-		 	background: $bgnd;
-	 	}
-	 } @else {
-	 	@if $icn != none {
-			background: $icn left center no-repeat;
-	 	}
-	 }
-}
-
 // Setting a background image on the entire site-title-color
 body {
 	@include wide-layout { background: $wide-body-background; }
@@ -27,6 +12,7 @@ body {
 	
 	// Title formatting
 	.navbanner-title {
+		position: relative;
 		.site-title-text {
 			color: $site-title-color;
 			@include wide-layout {
@@ -45,17 +31,40 @@ body {
 				margin-top: $narrow-vertical-title-shift;
 			}
 		}
+		.banner-icon {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
 		@include wide-layout {
-			height: $wide-banner-height;
-			@include titleBackgroundWithIcon($wide-banner-background, $wide-icon-url);
+			background: $wide-banner-background;
+			@if $wide-icon-url != none {
+				.banner-icon {
+					top: $wide-icon-voffset;
+					left: $wide-icon-hoffset;
+					background: $wide-icon-url $wide-icon-hposition $wide-icon-vposition no-repeat;
+				}
+			}
 		}
 		@include medium-layout {
-			height: $medium-banner-height;
-			@include titleBackgroundWithIcon($medium-banner-background, $medium-icon-url);
+			background: $medium-banner-background;
+			@if $medium-icon-url != none {
+				.banner-icon {
+					top: $medium-icon-voffset;
+					left: $medium-icon-hoffset;
+					background: $medium-icon-url $medium-icon-hposition $medium-icon-vposition no-repeat;
+				}
+			}
 		}
 		@include narrow-layout {	
-			height: $narrow-banner-height;
-			@include titleBackgroundWithIcon($narrow-banner-background, $narrow-icon-url);
+			background: $narrow-banner-background;
+			@if $narrow-icon-url != none {
+				.banner-icon {
+					top: $narrow-icon-voffset;
+					left: $narrow-icon-hoffset;
+					background: $narrow-icon-url $narrow-icon-hposition $narrow-icon-vposition no-repeat;
+				}
+			}
 		}
 	}
 

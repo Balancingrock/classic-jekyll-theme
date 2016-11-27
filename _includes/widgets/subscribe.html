@@ -1,3 +1,10 @@
+{% comment %}
+
+Usage:
+
+Configure the text for the header message in "_data/text-for.yml" for the item `tSubscribe`.
+
+{% endcomment %}
 <div>
 	{% assign subscribe = 'Subscribe' %}
 	{% if site.data.text-for.tSubscribe %}{% assign subscribe = site.data.text-for.tSubscribe %}{% endif %}

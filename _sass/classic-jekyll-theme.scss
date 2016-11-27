@@ -56,12 +56,29 @@ $wide-footer-background:				none;
 $medium-footer-background:				none;
 $narrow-footer-background:				none;
 
-// For an icon in the top left of the site (left side of the banner)
+// To include an icon on the site.
 // Set the url's to 'none' if no icon should be shown.
 // Example: ...-icon-url: url("/assets/img/wide-icon.png");
+// The position of the icon can be controlled via the position and offset values. They area relative to the banner area.
+// Valid hposition values are 'left', 'center' and 'right'.
+// Valid vposition values are 'top', 'center' and 'bottom'.
+// Positive offset values are "to the right" and "down". Negative are "left" and "up".
+// Note that you may need to set the banner-height to ensure that the entire icon is contained in the banner area.
 $wide-icon-url:							none;
+$wide-icon-vposition:					center;
+$wide-icon-hposition:					left;
+$wide-icon-voffset:						0px;
+$wide-icon-hoffset:						0px;
 $medium-icon-url:						none;
+$medium-icon-vposition:					center;
+$medium-icon-hposition:					left;
+$medium-icon-voffset:					0px;
+$medium-icon-hoffset:					0px;
 $narrow-icon-url:						none;
+$narrow-icon-vposition:					center;
+$narrow-icon-hposition:					left;
+$narrow-icon-voffset:					0px;
+$narrow-icon-hoffset:					0px;
 
 // Setting a height for the banner. This can be helpfull if a background image or icon has to be displayed.
 // Note that for 'auto' the banner hight is determined by the title text.
@@ -147,5 +164,6 @@ $narrow-max-width:						$medium-min-width - 1;
   "classic/formatting",
   "classic/syntax-highlighting",
   "classic/post",
-  "classic/page"
+  "classic/page",
+  "classic/widget-support"
 ;

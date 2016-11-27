@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.3.3
+# Classic-Jekyll-Theme v1.4.0
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -38,6 +38,12 @@ Other features:
 
 - __Background images__ and __Background color__ settings for major site elements.
 
+- __Widgets__ the following widgets are included:
+	- recent-posts: Shows a list of the N most recent posts (N is configurable).
+	- social-media: Shows a list of social media sites with their links (Edit to add).
+	- subscribe: Shows how a visitor can subscribe to your site (Edit to add).
+	- youtube-player: Shows a youtube player that scales with the column it is used in (video id parameter).
+
 You can get it from [github](https://github.com/Swiftrien/classic-jekyll-theme) or [rubygems](https://rubygems.org/gems/classic-jekyll-theme).
 
 Subscribe to news about this theme (be informed of new releases) by sending a mail to: rien@balancingrock.nl with the subject "classic".
@@ -62,13 +68,13 @@ Create a new project:
 
 	$ jekyll new great-site
 	
-Change the directory:
+Goto to the directory:
 
 	$ cd great-site
 	
 Change in the Gemfile:
 
-	From `gem "minima", "~> 2.0"` to `gem "classic-jekyll-theme", "~>1.3.3"`
+	From `gem "minima", "~> 2.0"` to `gem "classic-jekyll-theme", "~>1.4.0"`
 
 Change in the _config.yml:
 
@@ -217,6 +223,12 @@ To create a page that must be included in the menu bar, add the following front 
 
 For a consistent user experience in the narrow layout, it is recommened not to link pages to top level menu items if these menu items have a drop-down submenu.
 
+## Editing the secondary and tertiary columns
+
+The prime column is populated by the 'normal' pages and posts. The secondary and tertairy columns have a fixed content that is created by directly editing the `_include/secondary-column.html` and `_include/tertiary-column.html`. These files must be copied from the gem dictionary to the directory with the jekyll files for the website at the path `_include`.
+
+Documentation for the widgets is included in the widget files themselves. The are located in the gem directory at `_includes/widgets/`.
+
 ## History
 
 Release 0.2.6
@@ -276,6 +288,10 @@ Release 1.3.3
 
 - Added the "jekyll-data" gem to simplify initial configuration/setup.
 
+Release 1.4.0
+
+- Added "youtube-player" widget.
+- Improved placement control of the site icon
 
 ## Upgrade information
 
@@ -350,6 +366,30 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 ### from 1.3.2 to 1.3.3
 
 - It is no longer necessary to copy the `_data` folder content to the site directory.
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
+
+### from 1.3.3 to 1.4.0
+
+- Add to `classic-jekyll-theme.scss` the import of `classic/widget-support` (at end of file)
+- Add the following definitions to the existing `classic-jekyll-theme.scss` in your project:
+^
+
+~~~~~~
+     $wide-icon-vposition:		center;
+     $wide-icon-hposition:		left;
+	 $wide-icon-voffset:		0px;
+	 $wide-icon-hoffset:		0px;
+	 $medium-icon-vposition:	center;
+	 $medium-icon-hposition:	left;
+	 $medium-icon-voffset:		0px;
+	 $medium-icon-hoffset:		0px;
+	 $narrow-icon-vposition:	center;
+	 $narrow-icon-hposition:	left;
+	 $narrow-icon-voffset:		0px;
+	 $narrow-icon-hoffset:		0px;
+~~~~~~
+
+- Alternatively copy the new `classic-jekyll-theme.scss` to your project and re-apply the changes you made.
 - Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 
 ## Known problems (need your help)

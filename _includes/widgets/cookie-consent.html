@@ -1,4 +1,12 @@
-<!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+{% comment %}
+
+Usage:
+
+Enable the cookie consent script by setting the "_data/setup.yml" item `enable-cookies-policy` to `yes`.
+
+Configure the text for the message and the buttons in "_data/text-for.yml" for the items `tUsesCookies`, `tCookieOk` and `tMoreInfo`
+
+{% endcomment %}
 {% assign usesCookies = 'This site uses cookies' %}
 {% if site.data.text-for.tUsesCookies %}{% assign usesCookies = site.data.text-for.tUsesCookies %}{% endif %}
 {% assign cookieOk = 'OK' %}
