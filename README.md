@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.4.0
+# Classic-Jekyll-Theme v1.4.1
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -74,7 +74,7 @@ Goto to the directory:
 	
 Change in the Gemfile:
 
-	From `gem "minima", "~> 2.0"` to `gem "classic-jekyll-theme", "~>1.4.0"`
+	From `gem "minima", "~> 2.0"` to `gem "classic-jekyll-theme", "~>1.4.1"`
 
 Change in the _config.yml:
 
@@ -286,12 +286,23 @@ Release 1.3.2
 
 Release 1.3.3
 
-- Added the "jekyll-data" gem to simplify initial configuration/setup.
+- Added the `jekyll-data` gem to simplify initial configuration/setup.
 
 Release 1.4.0
 
-- Added "youtube-player" widget.
+- Added `youtube-player` widget.
 - Improved placement control of the site icon
+
+Release 1.4.1
+
+- Added `_support.scss` with commonly used layout stuff for articles/posts like:
+	- Centered text
+	- Centered image
+	- Floating images
+	- Floating text boxes
+	
+	To be used in the mardown files as class definitions. Example is given in `_support.scss`
+
 
 ## Upgrade information
 
@@ -375,21 +386,26 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 ^
 
 ~~~~~~
-     $wide-icon-vposition:		center;
-     $wide-icon-hposition:		left;
-	 $wide-icon-voffset:		0px;
-	 $wide-icon-hoffset:		0px;
-	 $medium-icon-vposition:	center;
-	 $medium-icon-hposition:	left;
-	 $medium-icon-voffset:		0px;
-	 $medium-icon-hoffset:		0px;
-	 $narrow-icon-vposition:	center;
-	 $narrow-icon-hposition:	left;
-	 $narrow-icon-voffset:		0px;
-	 $narrow-icon-hoffset:		0px;
+     $wide-icon-vposition:    center;
+     $wide-icon-hposition:    left;
+     $wide-icon-voffset:      0px;
+     $wide-icon-hoffset:      0px;
+     $medium-icon-vposition:  center;
+     $medium-icon-hposition:  left;
+     $medium-icon-voffset:    0px;
+     $medium-icon-hoffset:    0px;
+     $narrow-icon-vposition:  center;
+     $narrow-icon-hposition:  left;
+     $narrow-icon-voffset:    0px;
+     $narrow-icon-hoffset:    0px;
 ~~~~~~
 
 - Alternatively copy the new `classic-jekyll-theme.scss` to your project and re-apply the changes you made.
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
+
+### from 1.4.0 to 1.4.1
+
+- Add to `classic-jekyll-theme.scss` the import of `classic/support` (at end of file)
 - Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 
 ## Known problems (need your help)
