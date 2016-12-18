@@ -1,6 +1,6 @@
 // The distinction between "layout" and "formatting" is as follows: If the resulting CCS affects the placement of and/or visibility of multiple items, it is placed in "layout". If the CSS affects only the appearance of an item, then it appears here. Of course the appearance may affect the layout, so there is no hard distinction.
 
-// Setting a background image on the entire site-title-color
+// Setting a background image on the entire site
 body {
 	@include wide-layout { background: $wide-body-background; }
 	@include medium-layout { background: $medium-body-background; }
@@ -38,6 +38,7 @@ body {
 			height: 100%;
 		}
 		@include wide-layout {
+			height: $wide-banner-height;
 			background: $wide-banner-background;
 			@if $wide-icon-url != none {
 				.banner-icon {
@@ -48,6 +49,7 @@ body {
 			}
 		}
 		@include medium-layout {
+			height: $medium-banner-height;
 			background: $medium-banner-background;
 			@if $medium-icon-url != none {
 				.banner-icon {
@@ -58,6 +60,7 @@ body {
 			}
 		}
 		@include narrow-layout {	
+			height: $narrow-banner-height;
 			background: $narrow-banner-background;
 			@if $narrow-icon-url != none {
 				.banner-icon {

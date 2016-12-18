@@ -312,6 +312,7 @@ Release 1.5.0
 - Fixed a problem where the menu button (medium and narrow layouts) was not usable in some browsers
 - Fixed a problem with the menu generation where additional, but empty, submenu items could be created
 - Rebased the CSS system to `normalized.css` (as `_sass/classic/_normalize.scss`). Though Jekyll 3.3.1 has made this update as well (for base.scss) it is now no longer necessary to wait for Jekyll releases to adopt the latest `normalize.css`. This can now be done manually by simply renaming & replacing the latest `normalize.css` to `_sass/classic/_normalize.scss` in the gem. (Note a link to the source is also found in the `_normalize.scss` file itself)
+- Fixed the missing banner height setting.
 
 ## Upgrade information
 
