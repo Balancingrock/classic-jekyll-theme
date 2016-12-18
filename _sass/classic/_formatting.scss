@@ -15,6 +15,7 @@ body {
 		position: relative;
 		.site-title-text {
 			color: $site-title-color;
+			margin-bottom: 0;
 			@include wide-layout {
 				font-size: $wide-site-title-font-size;
 				margin-left: $wide-horizontal-title-shift;
@@ -70,12 +71,17 @@ body {
 
 	// Label formatting
 	.navbanner-label {
-			
+	
+		// Introduction of an icon had an impact on the label behaviour (don't know why) this fixes it.
+		// I found this solution by second-guessing, would love to know why... (please mail me if you do)
+		position: relative;
+		
 		// Color for the menu symbol (only visible on narrow and medium sized layouts)
 		label {
 			padding: 0 $hspacing-unit; // Give the menu label more area to make it easier to tap.
 			p {
 				color: $menu-symbol-color;
+				margin: 0;
 				@include wide-layout {
 					// Note: the label is not visible, but we set the correct values anyhow...
 					font-size: $narrow-site-title-font-size;
@@ -117,8 +123,12 @@ body {
 		background: $menubar-background;
 
 		// Lists are used for the menu's. No spacing for the top level list and no item markers. There will be an item marker for the narrow layout but that marker is state-dependent and set via a content property.
-		ul { margin: 0;  list-style-type: none; }
-
+		ul {
+			list-style-type: none;
+		  	margin: 0;
+		  	padding: 0;
+		}
+		
 		// Set the color for the menu items
 		.menu-item-separator, .menu-item-symbol, .menu-item-title {
 			color: $menu-item-font-color;
@@ -139,8 +149,7 @@ body {
 
 		// The sub menu items are displayed in a box, make sure the text does not start at the box edge.
 		.menu-subitem {
-			padding-left: $hspacing-unit / 2;
-			padding-right: $hspacing-unit / 2;
+			padding: 0 $hspacing-unit / 2;
 		}
 		
 		// Specifics for the narrow sized layout
@@ -172,7 +181,7 @@ body {
 		@include medium-layout {
 		
 			// Keep the submenu tight
-			.menu-subitem p { margin-bottom: 0; }
+			.menu-subitem p { margin: 0; }
 			
 			// Formatting of the sub-menu items
 			ul li ul {
@@ -186,7 +195,7 @@ body {
 		@include wide-layout {
 
 			// Keep the submenu tight
-			.menu-subitem p { margin-bottom: 0; }
+			.menu-subitem p { margin: 0; }
 
 			// Formatting of the sub-menu items
 			ul li ul {

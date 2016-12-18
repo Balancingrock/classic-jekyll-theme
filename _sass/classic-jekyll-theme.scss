@@ -17,8 +17,7 @@ $hspacing-unit:					14px; // For best results, use even numbers only
 $vspacing-unit:					14px; // For best results, use even numbers only
 
 $text-color:					#111;
-$background-color:				#fdfdfd;
-$brand-color:					#2a7ae2;
+$background-color:				#fdfdfd; // Applied to the top element, override by background settings below
 
 $grey-color:					#828282;
 $grey-color-light:				lighten($grey-color, 40%);
@@ -159,10 +158,11 @@ $narrow-max-width:						$medium-min-width - 1;
 
 // Import partials.
 @import
-  "classic/base",
+  "classic/normalize",
+  "classic/normalize-override",
+  "classic/syntax-highlighting",
   "classic/layout",
   "classic/formatting",
-  "classic/syntax-highlighting",
   "classic/post",
   "classic/page",
   "classic/support",

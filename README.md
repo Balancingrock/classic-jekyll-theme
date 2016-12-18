@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.4.1
+# Classic-Jekyll-Theme v1.5.0
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -44,6 +44,8 @@ Other features:
 	- subscribe: Shows how a visitor can subscribe to your site (Edit to add).
 	- youtube-player: Shows a youtube player that scales with the column it is used in (video id parameter).
 
+- __Normalize.css__ As of release 1.5.0 [`normalize.css`](https://necolas.github.io/normalize.css/) is used directly instead of through the Jekyll adaptation. This allows for faster upgrade cycles.
+
 You can get it from [github](https://github.com/Swiftrien/classic-jekyll-theme) or [rubygems](https://rubygems.org/gems/classic-jekyll-theme).
 
 Subscribe to news about this theme (be informed of new releases) by sending a mail to: rien@balancingrock.nl with the subject "classic".
@@ -74,11 +76,12 @@ Goto to the directory:
 	
 Change in the Gemfile:
 
-	From `gem "minima", "~> 2.0"` to `gem "classic-jekyll-theme", "~>1.4.1"`
+	From `gem "minima", "~> 2.0"` to `gem "classic-jekyll-theme", "~>1.5.0"`
 
 Change in the _config.yml:
 
 	From `theme: minima` to `theme: classic-jekyll-theme`
+	Add `jekyll-data` to the gems.
 
 Delete the file `about.md`:
 
@@ -172,6 +175,7 @@ Some of the text elements in the theme can be translated with the following defi
 Typically you will need to copy some files from the gem iteself to the project (web site) directory. The most common files are:
 
 - `_sass/classic-jekyll-theme.scss` for configuration
+- `_sass/classic/_normalize-override.scss` if site wide updates must be made to `_normalize.scss`
 - `_data/setup.yml` for configuration
 - `_data/text-for.yml` for configuration
 - `_includes/secondary-column.html` for the secondary column contents
@@ -301,8 +305,13 @@ Release 1.4.1
 	- Floating images
 	- Floating text boxes
 	
-	To be used in the mardown files as class definitions. Example is given in `_support.scss`
+	To be used in the markdown files as class definitions. Example is given in `_support.scss`
 
+Release 1.5.0
+
+- Fixed a problem where the menu button (medium and narrow layouts) was not usable in some browsers
+- Fixed a problem with the menu generation where additional, but empty, submenu items could be created
+- Rebased the CSS system to `normalized.css` (as `_sass/classic/_normalize.scss`). Though Jekyll 3.3.1 has made this update as well (for base.scss) it is now no longer necessary to wait for Jekyll releases to adopt the latest `normalize.css`. This can now be done manually by simply renaming & replacing the latest `normalize.css` to `_sass/classic/_normalize.scss` in the gem. (Note a link to the source is also found in the `_normalize.scss` file itself)
 
 ## Upgrade information
 
@@ -408,9 +417,29 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 - Add to `classic-jekyll-theme.scss` the import of `classic/support` (at end of file)
 - Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 
-## Known problems (need your help)
+### from 1.4.1 to 1.5.0
 
-There is some odd behaviour in the navigation bar that I have not been able to nail down yet. It has to do with the space between top level menu items. There is some additional space that I am not able to trace down. For those who like a puzzle: there is some space around a ".navbanner-menu ul li" that has no obvious source. Please let me know if you happen to find where it comes from. (rien@balancingrock.nl)
+- Since `normalized.css` is now used instead of `base.scss` it is quite possible that the layout of your sites changes a little. Be sure to check the site after generation. If necessary, make any adjustments to `_sass/_normalize-override.scss` and leave the `_normalize.scss` as it is. This way it is very easy to upgrade to new versions of `normalize.css`.
+- Update the `classic-jekyll-theme.scss` imports as follows:
+^
+
+~~~~~
+    // Import partials.
+    @import
+      "classic/normalize",
+      "classic/normalize-override",
+      "classic/syntax-highlighting",
+      "classic/layout",
+      "classic/formatting",
+      "classic/post",
+      "classic/page",
+      "classic/support",
+      "classic/widget-support"
+    ;
+~~~~~
+- The `$brand-color:` definition in `classic-jekyll-theme.scss` is no longer used and can be removed.
+- Other files that have changed: `_includes/navbanner.html`, `_sass/classic/_formatting.scss` and `_sass/classic/_syntax-highlighting.scss`. The file `_sass/classic/_base.scss` has been deleted.
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 
 ## Feedback
 

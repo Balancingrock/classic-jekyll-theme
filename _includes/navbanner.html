@@ -18,7 +18,7 @@
 
 	<!-- Create a list of top menu item titles -->
 	{% assign topTitles = "" | split: "" %}
-	{% assign sortedPages = site.pages | where:'menuInclude', true | where_exp:'menuTopTitle', 'menuTopTitle != nil' | sort: 'menuTopIndex', 'last' %}
+	{% assign sortedPages = site.pages | where:'menuInclude', true | where_exp:'item', 'item.menuTopTitle != nil' | sort: 'menuTopIndex', 'last' %}
 	{% for ape in sortedPages %}{% assign topTitles = topTitles | push: ape.menuTopTitle %}{% endfor %}
 	{% assign topTitles = topTitles | uniq %}
 
@@ -39,7 +39,7 @@
 		{% for topTitle in topTitles %}
 		
 			<!-- Create a list of sub menu item titles -->
-			{% assign subTitles = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle | where_exp:'menuSubTitle', 'menuSubTitle != nil' | sort: 'menuSubIndex', 'last' %}
+			{% assign subTitles = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle | where_exp:'item', 'item.menuSubTitle != nil' | sort: 'menuSubIndex', 'last' %}
 
 			<li>
 

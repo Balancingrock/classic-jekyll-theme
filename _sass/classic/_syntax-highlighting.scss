@@ -3,7 +3,7 @@
  */
 .highlight {
   background: #fff;
-  @extend %vertical-rhythm;
+  margin-bottom: $vspacing-unit / 2; // Replaces :  @extend %vertical-rhythm;
 
   .highlighter-rouge & {
     background: #eef;
