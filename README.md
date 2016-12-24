@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.5.0
+# Classic-Jekyll-Theme v1.5.1
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -23,6 +23,8 @@ The menu bar (in yellow) is always deployed in the wide layout. In the medium an
 An example screenshot:
 
 ![example](http://balancingrock.nl/img/classic-jekyll-theme-screenshot-half.png)
+
+Or visit a site using this theme: [365posts.com](http://www.365posts.com)
 
 Other features:
 
@@ -76,7 +78,7 @@ Goto to the directory:
 	
 Change in the Gemfile:
 
-	From `gem "minima", "~> 2.0"` to `gem "classic-jekyll-theme", "~>1.5.0"`
+	From `gem "minima", "~> 2.0"` to `gem "classic-jekyll-theme"`
 
 Change in the _config.yml:
 
@@ -314,6 +316,11 @@ Release 1.5.0
 - Rebased the CSS system to `normalized.css` (as `_sass/classic/_normalize.scss`). Though Jekyll 3.3.1 has made this update as well (for base.scss) it is now no longer necessary to wait for Jekyll releases to adopt the latest `normalize.css`. This can now be done manually by simply renaming & replacing the latest `normalize.css` to `_sass/classic/_normalize.scss` in the gem. (Note a link to the source is also found in the `_normalize.scss` file itself)
 - Fixed the missing banner height setting.
 
+Release 1.5.1
+
+- Removed some non-ascii characters in the comments of `_sass/classic-jekyll-theme`.
+
+
 ## Upgrade information
 
 ### from 0.2.6 to 1.0.0
@@ -441,6 +448,12 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 - The `$brand-color:` definition in `classic-jekyll-theme.scss` is no longer used and can be removed.
 - Other files that have changed: `_includes/navbanner.html`, `_sass/classic/_formatting.scss` and `_sass/classic/_syntax-highlighting.scss`. The file `_sass/classic/_base.scss` has been deleted.
 - Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
+
+### from 1.5.0 to 1.5.1
+
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
+- Remove the ≡ , ⇨ and ⇩ characters from the `_sass/classic-jekyll-theme.scss` file to prevent future problems. (If you had problems, you have already removed them...)
+
 
 ## Feedback
 

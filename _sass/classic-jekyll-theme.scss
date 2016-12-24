@@ -112,9 +112,9 @@ $medium-site-title-font-size:  			2.5 * $base-font-size;
 $wide-site-title-font-size:				3.5 * $base-font-size;
 
 // Special characters used for menu functions
-$menu-symbol-code:          			'\02261'; // ≡ Used in narrow and medium banner only
-$menu-closed-submenu-code:				'\021E8'; // ⇨ Used in narrow when the menu items are visible
-$menu-open-submenu-code:    			'\021E9'; // ⇩ Used in narrow when the submenu items are visible
+$menu-symbol-code:          			'\02261'; // Used in narrow and medium banner only
+$menu-closed-submenu-code:				'\021E8'; // Used in narrow when the menu items are visible
+$menu-open-submenu-code:    			'\021E9'; // Used in narrow when the submenu items are visible
 $menu-item-separator:					''; // Default = nothing
 
 // Alignent of the menu items in the navigation bar.
