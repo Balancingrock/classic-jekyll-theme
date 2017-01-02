@@ -6,8 +6,7 @@ menuInclude: yes
 menuTopTitle: Classic
 menuSubTitle: "About Pages"
 menuSubIndex: 2
-description: A description can be up to 156 characters long...
-# end of description at 156 characters ----------| (last 3 chars will be replaced by '...' on overflow)
+excerpt: "An excerpt is used as the page description and can be up to 160 characters long..."
 ---
 
 Pages in classic can be linked to from the navigation menu. To do so there are some additional YAML tags that help building the navigation menu.

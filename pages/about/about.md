@@ -5,7 +5,7 @@ menuInclude: yes
 menuLink: yes
 menuTopTitle: About
 menuTopIndex: 100
-description: A short introduction to the content of this site.
+excerpt: A short introduction to the content of this site.
 # end of description at 156 characters ----------| (last 3 chars will be replaced by '...' on overflow)
 ---
 

@@ -1,10 +1,15 @@
 // This file contains class definitions for support of page and post layout. The classes are intended to be used in the markdown files as follows:
 //
+// ![image-name](image-source){:.image-centered}
+//
+// Or:
+//
 // ^
 // {:.text-boxed-float-left}
 // This is the text that will be in the box on the left hand side.
 // ^
 //
+// Note: The second method will not always work for images! For images, follow the image with a class definition.
 
 // text centered in a column
 .text-centered {

@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.5.1
+# Classic-Jekyll-Theme v1.5.2
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -47,6 +47,8 @@ Other features:
 	- youtube-player: Shows a youtube player that scales with the column it is used in (video id parameter).
 
 - __Normalize.css__ As of release 1.5.0 [`normalize.css`](https://necolas.github.io/normalize.css/) is used directly instead of through the Jekyll adaptation. This allows for faster upgrade cycles.
+
+- __Excerpt on pages__ Pages defining an explicit "excerpt" in their YAML will use this as the description for the header description meta tag (necessary for SEO purposes). Note that Jekyll does not generate excerpt information for pages, only posts. Hence it is necessary to define the excerpt as a YAML tag.
 
 You can get it from [github](https://github.com/Swiftrien/classic-jekyll-theme) or [rubygems](https://rubygems.org/gems/classic-jekyll-theme).
 
@@ -229,6 +231,17 @@ To create a page that must be included in the menu bar, add the following front 
 
 For a consistent user experience in the narrow layout, it is recommened not to link pages to top level menu items if these menu items have a drop-down submenu.
 
+## Specifying html header description meta tag content for pages
+
+The "description" meta tag is possibly the most important SEO information that we can put in our pages. It shows up as the "description" for a link in search engines. Jekyll does support this as the "excerpt" tag in YAML front matter. And if the "excerpt" is not defined, Jekyll will grab the first part of the post as its description. However, for pages there was no such support. As of verion 1.5.2 this theme adds a limited form of this support. If a page defines an excerpt in its YAML front matter, that excerpt information will be used as the information in a description meta tag.
+
+	---
+	...
+	excerpt: "Up to 160 characters can be used to provide a text for the description meta tag"
+	---
+
+Note that the "excerpt_separator" does *not* work on pages, only posts.
+
 ## Editing the secondary and tertiary columns
 
 The prime column is populated by the 'normal' pages and posts. The secondary and tertairy columns have a fixed content that is created by directly editing the `_include/secondary-column.html` and `_include/tertiary-column.html`. These files must be copied from the gem dictionary to the directory with the jekyll files for the website at the path `_include`.
@@ -320,6 +333,9 @@ Release 1.5.1
 
 - Removed some non-ascii characters in the comments of `_sass/classic-jekyll-theme`.
 
+Release 1.5.2
+
+- Added excerpt for pages. YAML only, no support for excerpts generated from the main content.
 
 ## Upgrade information
 
@@ -454,6 +470,10 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 - Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 - Remove the ≡ , ⇨ and ⇩ characters from the `_sass/classic-jekyll-theme.scss` file to prevent future problems. (If you had problems, you have already removed them...)
 
+### from 1.5.1 to 1.5.2
+
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
+- If the (undocumented) 'description' YAML tag was used, it must be changed to 'excerpt'.
 
 ## Feedback
 
