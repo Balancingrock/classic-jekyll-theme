@@ -1,28 +1,28 @@
-# Classic-Jekyll-Theme v1.5.2
+# Classic-Jekyll-Theme v1.6.0
 
-Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu, (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
+Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu (dropdown), (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
 Wide:
 
-![wide-layout](http://balancingrock.nl/img/classic-jekyll-theme-wide.png)
+![wide-layout](http://balancingrock.nl/assets/img/classic-jekyll-theme-wide.png)
 
 Medium:
 
-![medium-left-layout](http://balancingrock.nl/img/classic-jekyll-theme-medium-left.png)
+![medium-left-layout](http://balancingrock.nl/assets/img/classic-jekyll-theme-medium-left.png)
 
 Narrow:
 
-![narrow-layout](http://balancingrock.nl/img/classic-jekyll-theme-narrow.png)
+![narrow-layout](http://balancingrock.nl/assets/img/classic-jekyll-theme-narrow.png)
 
 The columns are called Primary (blue), Secondary (grey) and Tertiary (pink). In the above layouts the secondary column is on the left side. If it had been on the right side, the medium layout would have looked like this:
 
-![medium-right-layout](http://balancingrock.nl/img/classic-jekyll-theme-medium-right.png)
+![medium-right-layout](http://balancingrock.nl/assets/img/classic-jekyll-theme-medium-right.png)
 
 The menu bar (in yellow) is always deployed in the wide layout. In the medium and narrow layout the menu bar is shown in the deployed state. When not deployed, a menu-item symbol is shown in the banner that switches the menu between deployed and not.
 
 An example screenshot:
 
-![example](http://balancingrock.nl/img/classic-jekyll-theme-screenshot-half.png)
+![example](http://balancingrock.nl/assets/img/classic-jekyll-theme-screenshot-half.png)
 
 Or visit a site using this theme: [365posts.com](http://www.365posts.com)
 
@@ -50,7 +50,9 @@ Other features:
 
 - __Excerpt on pages__ Pages defining an explicit "excerpt" in their YAML will use this as the description for the header description meta tag (necessary for SEO purposes). Note that Jekyll does not generate excerpt information for pages, only posts. Hence it is necessary to define the excerpt as a YAML tag.
 
-You can get it from [github](https://github.com/Swiftrien/classic-jekyll-theme) or [rubygems](https://rubygems.org/gems/classic-jekyll-theme).
+- __Blocked layout support__ Styles and includes support the creation of blocked layout (like product pages). To see an example of blocked pages, see the [http://balancingrock.nl](http://balancingrock.nl) home page.
+
+You can get it from [github](https://github.com/Balancingrock/classic-jekyll-theme) or [rubygems](https://rubygems.org/gems/classic-jekyll-theme).
 
 Subscribe to news about this theme (be informed of new releases) by sending a mail to: rien@balancingrock.nl with the subject "classic".
 
@@ -337,6 +339,12 @@ Release 1.5.2
 
 - Added excerpt for pages. YAML only, no support for excerpts generated from the main content.
 
+Release 1.6.0
+
+- Added max width settings for CSS components _image-centered_ (80%), _image-float-center_ (40%), _image-float-right_ (50%) and _image-float-left_ (50%). These settings were updated in the file _/\_sass/classic/\_support.scss_
+
+- Added support for content blocks. The new include and support definitions make it easy to create a 'blocked' layout. Whole or partially. To see the example, download the theme from github and run it with "bundle exec jekyll serve". Then select the menu item "Other -> Content blocks". Or visit [http://balancingrock.nl](http://balancingrock.nl) which uses this theme and has the blocked layout on the home page.
+
 ## Upgrade information
 
 ### from 0.2.6 to 1.0.0
@@ -474,6 +482,12 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 
 - Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 - If the (undocumented) 'description' YAML tag was used, it must be changed to 'excerpt'.
+- The file `_includes/header.html` was updated.
+
+### from 1.5.2 to 1.6.0
+
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
+- The file `_sass/_support.html` was updated.
 
 ## Feedback
 

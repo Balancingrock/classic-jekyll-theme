@@ -1,0 +1,31 @@
+# Content blocks example
+
+- name: SwifterLog
+  description: A logging framewrok with 5 logging destinations.
+  link: https://github.com/Balancingrock/SwifterLog
+  image: http://balancingrock.nl/assets/img/swift-code-icon.png
+  
+- name: SwifterJSON
+  description: An easy to use single class JSON framework.
+  link: https://github.com/Balancingrock/SwifterJSON
+  image: http://balancingrock.nl/assets/img/swift-code-icon.png
+  
+- name: SwifterSockets
+  description: An API for POSIX sockets based networking software.
+  link: https://github.com/Balancingrock/SwifterSockets
+  image: http://balancingrock.nl/assets/img/swift-code-icon.png
+
+- name: SecureSockets
+  description: An API for OpenSSL based networking software.
+  link: https://github.com/Balancingrock/SecureSockets
+  image: http://balancingrock.nl/assets/img/swift-code-icon.png
+    
+- name: Swiftfire
+  description: An HTML server in Swift.
+  link: http://swiftfire.nl/
+  image: http://balancingrock.nl/assets/img/swift-code-icon.png
+
+- name: Classic Jekyll Theme
+  description: A theme for the Jekyll website builder.
+  link: http://balancingrock.nl/classic-jekyll-theme
+  image: http://balancingrock.nl/assets/img/classic-jekyll-theme-icon.png

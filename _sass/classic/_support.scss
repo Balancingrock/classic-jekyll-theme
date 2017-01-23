@@ -1,15 +1,12 @@
-// This file contains class definitions for support of page and post layout. The classes are intended to be used in the markdown files as follows:
+// This file contains class definitions for support of page and post layout.
 //
-// ![image-name](image-source){:.image-centered}
+// ===============================================================
+// Text styles, use as follows in *.md files:
 //
-// Or:
-//
-// ^
 // {:.text-boxed-float-left}
 // This is the text that will be in the box on the left hand side.
-// ^
-//
-// Note: The second method will not always work for images! For images, follow the image with a class definition.
+// 
+// ===============================================================
 
 // text centered in a column
 .text-centered {
@@ -20,31 +17,6 @@
 .text-centered-bold {
 	text-align: center;
 	font-weight: bold;
-}
-
-// An image centered in a column with nothing on either side
-.image-centered {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-// An image floating centered with text on both sides
-.image-float-center {
-	float: center;
-	margin: $vspacing-unit $hspacing-unit
-}
-
-// An image float right (with text flowing on the left side)
-.image-float-right {
-	float: right;
-	margin: $vspacing-unit 0 $vspacing-unit $hspacing-unit
-}
-
-// An image float left (with text flowing on the right side)
-.image-float-left {
-	float: left;
-	margin: $vspacing-unit $hspacing-unit $vspacing-unit 0
 }
 
 // A floating text box on the right hand side.
@@ -67,4 +39,88 @@
 	margin: $vspacing-unit/2 $hspacing-unit $vspacing-unit/2 0;
 	padding: 0 $hspacing-unit/2;
 	width: 25%
+}
+
+
+// ===============================================================
+// Image styles, use as follows in *.md files:
+//
+// ![image-name](image-source){:.image-centered}
+// 
+// ===============================================================
+
+// An image centered in a column with nothing on either side
+.image-centered {
+	display: block;
+	max-width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// An image floating centered with text on both sides
+.image-float-center {
+	display: block;
+	max-width: 40%;
+	float: center;
+	margin: $vspacing-unit $hspacing-unit
+}
+
+// An image float right (with text flowing on the left side)
+.image-float-right {
+	display: block;
+	max-width: 50%;
+	float: right;
+	margin: $vspacing-unit 0 $vspacing-unit $hspacing-unit
+}
+
+// An image float left (with text flowing on the right side)
+.image-float-left {
+	display: block;
+	max-width: 50%;
+	float: left;
+	margin: $vspacing-unit $hspacing-unit $vspacing-unit 0
+}
+
+
+// ===============================================================
+// Content blocks support.
+// ===============================================================
+
+.cblock-row-title {
+	text-align: center;
+}
+
+.cblock-row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.cblock {
+	display: block;
+	width: 200px;
+	margin: $vspacing-unit $hspacing-unit;
+}
+
+.cblock-name {
+	text-align: center;
+}
+
+.cblock-image {
+	display: block;
+	width: 150px;
+	height: 150px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cblock-description {
+	text-align: center;
+	font-size: $small-font-size;
+}
+
+.pblock-store {
+	text-align: center;
+	font-size: $small-font-size;
 }
