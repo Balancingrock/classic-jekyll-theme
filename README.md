@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.6.0
+# Classic-Jekyll-Theme v1.7.0
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu (dropdown), (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -24,9 +24,11 @@ An example screenshot:
 
 ![example](http://balancingrock.nl/assets/img/classic-jekyll-theme-screenshot-half.png)
 
-Or visit a site using this theme: [365posts.com](http://www.365posts.com)
+Or visit a site using this theme: [365posts.com](http://www.365posts.com) or [Balancing Rock](http://www.balancingrock.nl)
 
 Other features:
+
+- __Secondary and Tertiary Columns__ can be specified by default and on a page by page basis for presence, location and content.
 
 - __Navigation bar__ is created automatically from the available pages when these have the proper YAML frontmatter. The navigation bar contains the top level menu items, while the submenu items show up as a drop-down menu when the cursor hovers over the corresponding menu item.
 
@@ -120,17 +122,17 @@ The default `main.scss` file has been emptied. Hence all CSS configuration is do
 
 The following values are configurable:
 
-- secondary_column:
+- secondary-column:
 
-	Controls the placing of the secondary column on either the `left` side, the `right` side or `none` at all.
+	Controls the default placing of the secondary column on either the `left` side, the `right` side or `none` at all. Note that the YAML front matter variable `secondary-column` can be used to override this value on a per-page basis.
 
-	When the secondary column is present its contents is taken from the file: `_includes/secondary-column.html`
+	When the secondary column is present its contents is taken from the file: `_includes/secondary-column.html`. Note that this can be overriden by the YAML front matter variable `secondary-column-content`.
 
-- tertiary_column:
+- tertiary-column:
 
-	Controls the presence of the tertiary column, either `present` or `none`.
+	Controls the default presence of the tertiary column, either `present` or `none`. Note that the YAML front matter variable `tertiary-column` can be used to override this value on a per-page basis.
 
-	When the tertiary column is present its contents is taken from the file: `_includes/tertiary-column.html`
+	When the tertiary column is present its contents is taken from the file: `_includes/tertiary-column.html`.  Note that this can be overriden by the YAML front matter variable `tertiary-column-content`.
 
 - number-of-posts-on-home-page:
 
@@ -232,6 +234,22 @@ To create a page that must be included in the menu bar, add the following front 
 - menuSubIndex: The place of the submenu item within the dropdown menu. Lower numbers will go above higher numbers. This theme only sorts on menuIndex numbers, not on other properties.
 
 For a consistent user experience in the narrow layout, it is recommened not to link pages to top level menu items if these menu items have a drop-down submenu.
+
+##Creating pages with custom second and tertiary columns
+
+There are 4 YAML tags that control the custom placement and content of the secondary and tertiary columns:
+    
+    ---
+    ...
+    secondary-column: <'left'|'right'|'none'>
+    secondary-column-content: <include-file>
+    tertiary-column: <'present'|'none'>
+    tertiary-column-content: <include-file>
+    ---
+
+These YAML variables can be used to override the default settings and provide custom content for the columns.
+
+Notice that these settings take effect by their presence. Example: if a `secondary-column` YAML variable is present, it will prevent the global setting in the _data/seup.yml fro taking any effect.
 
 ## Specifying html header description meta tag content for pages
 
@@ -344,6 +362,10 @@ Release 1.6.0
 - Added max width settings for CSS components _image-centered_ (80%), _image-float-center_ (40%), _image-float-right_ (50%) and _image-float-left_ (50%). These settings were updated in the file _/\_sass/classic/\_support.scss_
 
 - Added support for content blocks. The new include and support definitions make it easy to create a 'blocked' layout. Whole or partially. To see the example, download the theme from github and run it with "bundle exec jekyll serve". Then select the menu item "Other -> Content blocks". Or visit [http://balancingrock.nl](http://balancingrock.nl) which uses this theme and has the blocked layout on the home page.
+
+Release 1.7.0
+
+- Added support for custom column settings & content on a page by page basis.
 
 ## Upgrade information
 
@@ -488,6 +510,13 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 
 - Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 - The file `_sass/_support.html` was updated.
+
+### from 1.6.0 to 1.7.0
+
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
+- The files `_layouts/default.html`, `_data/setup.yml` have been updated.
+	- Note that the global variable _secondary_column_ has been changed to _secondary-column_.
+	- And _tertiary_column_ has been changed to _tertiary-column_.
 
 ## Feedback
 

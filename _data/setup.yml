@@ -8,10 +8,10 @@
 # If the tertiary column is used, the secondary column *must* also be used.
 
 # Possible values: 'left', 'right' or 'none', other values are illegal.
-secondary_column: left
+secondary-column: left
 
 # Possible values: 'present' or 'none', other values are illegal.
-tertiary_column: present
+tertiary-column: present
 
 # For the number of posts visible on the home page. Must be > 0.
 number-of-posts-on-home-page: 5
