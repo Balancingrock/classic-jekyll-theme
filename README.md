@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.7.1
+# Classic-Jekyll-Theme v1.7.2
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu (dropdown), (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -371,6 +371,10 @@ Release 1.7.1
 
 - Fixed a problem in the `_includes/widgets/recent-posts.html`.
 
+Release 1.7.2
+
+- Fixed a bug in the blocked-layout.
+
 ## Upgrade information
 
 ### from 0.2.6 to 1.0.0
@@ -526,6 +530,11 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 
 - Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 - The file `_includes/widgets/recent-posts.html` has been updated.
+
+### from 1.7.1 to 1.7.2
+
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
+- The file `_sass/classic/_support.scss` has been updated.
 
 ## Feedback
 
