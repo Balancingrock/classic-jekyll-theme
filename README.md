@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.7.2
+# Classic-Jekyll-Theme v1.8.0
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu (dropdown), (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -30,7 +30,7 @@ Other features:
 
 - __Secondary and Tertiary Columns__ can be specified by default and on a page by page basis for presence, location and content.
 
-- __Navigation bar__ is created automatically from the available pages when these have the proper YAML frontmatter. The navigation bar contains the top level menu items, while the submenu items show up as a drop-down menu when the cursor hovers over the corresponding menu item.
+- __Navigation bar with drop-down menu__ is created automatically from the available pages when these have the proper YAML frontmatter. The navigation bar contains the top level menu items, while the submenu items show up as a drop-down menu when the cursor hovers over the corresponding menu item.
 
 - __Category pages__ are created semi-automatically; the web designer has to identify the categories for inclusion, but the menu entry and category pages are created automatically.
 
@@ -54,9 +54,12 @@ Other features:
 
 - __Blocked layout support__ Styles and includes support the creation of blocked layout (like product pages). To see an example of blocked pages, see the [http://balancingrock.nl](http://balancingrock.nl) home page.
 
-You can get it from [github](https://github.com/Balancingrock/classic-jekyll-theme) or [rubygems](https://rubygems.org/gems/classic-jekyll-theme).
+- __Enable/disable banner__ The banner at the top of the page can be disabled.
 
-Subscribe to news about this theme (be informed of new releases) by sending a mail to: rien@balancingrock.nl with the subject "classic".
+- __Move banner/menu to main column__ The banner & navigation can be moved to within the main column only. The secondary and tertiary columns will ten run right up to the top of the screen.
+
+
+You can download it from [github](https://github.com/Balancingrock/classic-jekyll-theme) or install it with [rubygems](https://rubygems.org/gems/classic-jekyll-theme).
 
 Like to help out?
 
@@ -375,6 +378,13 @@ Release 1.7.2
 
 - Fixed a bug in the blocked-layout.
 
+Release 1.8.0
+
+- Allow banner area to be removed.
+- Allow banner & menu area to be placed at the top of the main column only.
+- Added controls for setting the top and bottom free room of the column dividers.
+
+
 ## Upgrade information
 
 ### from 0.2.6 to 1.0.0
@@ -536,6 +546,31 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 - Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
 - The file `_sass/classic/_support.scss` has been updated.
 
+### from 1.7.2 to 1.8.0
+
+- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
+- In file `_data/setup.yml` added some documentation and a new setting: `navbanner-position`. This setting is described in that file.
+- Added the following new parameters in `_sass/classic-jekyll-theme.scss`:
+
+~~~~
+    $column-divider-top-spacing
+	$column-divider-bottom-spacing
+	
+	$navbanner-menu-dividers-thickness
+    $navbanner-menu-top-divider-disable
+
+    $navbanner-include-banner
+~~~~
+
+
+- In addition the following files have been changed:
+
+~~~~
+	_layouts/default.html
+	_sass/classic/_formatting.scss
+	_sass/classic/_layout.scss
+~~~~
+    
 ## Feedback
 
 Comments, bug reports, feature requests and improvements are eagerly anticipated via email: rien@balancingrock.nl.

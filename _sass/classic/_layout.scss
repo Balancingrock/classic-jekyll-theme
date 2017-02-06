@@ -37,14 +37,14 @@
 	flex-wrap: wrap;
 	justify-content: flex-start;
 
-	// The title is always visible, though the size of the title depends on the width of the window.
+	// The size of the title depends on the width of the window.
 	.navbanner-title {
-
+	
 		// The title area should take up all space not used by the menu label.
 		flex-grow: 1;
 
-		// Center the title.
-		display: flex;
+		// Center the title if visible
+		@if ($navbanner-include-banner == true) { display: flex; } @else { display: none }
 		justify-content: center;
 		align-items: center;
 	}
@@ -55,8 +55,8 @@
 		// Never grow the menu label (symbol)
 		flex-grow: 0;
 
-		// The menu label (symbol) should be centered 
-		display: flex;
+		// The menu label (symbol) should be centered if visible
+		@if ($navbanner-include-banner == true) { display: flex; } @else { display: none }
 		justify-content: center;
 		align-items: center;
 
@@ -75,6 +75,9 @@
 	.navbanner-menu { width: 100%; }
 	
 	@include narrow-layout {
+
+		// Override visibility of the label 
+		@if ($navbanner-include-banner == false) { .navbanner-label, .navbanner-title { display: flex; } }
 
 		// Disabled items.
 		.navbanner-menu, .nav-bottom-divider, input, .menu-item-separator { display: none; }
@@ -141,10 +144,11 @@
 		// Disabled items
 		.navbanner-menu, input, .menu-item-symbol, .menu-subitem-symbol, .nav-bottom-divider { display: none; }
 
-		// Conditionally visible/invisible items (conditionally on the invisible checkbox, i.e. menu symbol)
-		input:checked ~ {
 		
-			// Display the menu only when the menu-checkbox (invisible) is checked.
+		// Conditional visibility of the menu bar		
+		@if ($navbanner-include-banner == false) {
+				
+			// Display the menu because the input checkbox (label) in the banner is never visible.
 			.navbanner-menu {
 			
 				// Use flex to enable alignment of the top level menu items
@@ -156,6 +160,25 @@
 			
 			// Also display the bottom divider when the menu is visible.
 			.nav-bottom-divider { display: inline; }
+		}
+		@else {
+		
+			// Conditionally visible/invisible items (conditionally on the invisible checkbox, i.e. menu symbol)
+			input:checked ~ {
+		
+				// Display the menu only when the menu-checkbox (invisible) is checked.
+				.navbanner-menu {
+			
+					// Use flex to enable alignment of the top level menu items
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+					justify-content: $menu-alignment;
+				}
+			
+				// Also display the bottom divider when the menu is visible.
+				.nav-bottom-divider { display: inline; }
+			}
 		}
 
 		.navbanner-menu {

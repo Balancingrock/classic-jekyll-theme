@@ -115,8 +115,12 @@ body {
 
 	// Formating for the divider between the banner and menu.	
 	.nav-top-divider {
-		border-top: 2px solid $navbanner-menu-dividers-color;
-		display: $navbanner-menu-dividers-display;
+		border-top: $navbanner-menu-dividers-thickness solid $navbanner-menu-dividers-color;
+		@if ($navbanner-menu-top-divider-disable == true) {
+			display: none;
+		} @else {
+			display: $navbanner-menu-dividers-display;
+		}
 	}
 	
 	// Formatting for the menu (navigation) area
@@ -211,7 +215,7 @@ body {
 	
 	// Formatting for the divder between menu and column panel.
 	.nav-bottom-divider {
-		border-top: 2px solid $navbanner-menu-dividers-color;
+		border-top: $navbanner-menu-dividers-thickness solid $navbanner-menu-dividers-color;
 		display: $navbanner-menu-dividers-display;
 	}
 }
@@ -226,8 +230,9 @@ body {
 
 .column-panel { background: $column-panel-background; }
 .secondary-column { @extend .insets; background: $secondary-column-background; }
-.primary-column { @extend .insets; background: $primary-column-background; }
+main { @extend .insets; background: $primary-column-background; }
 .tertiary-column { @extend .insets; background: $tertiary-column-background; }
+
 
 // This is the element between the column panel and the footer.
 .footer-divider {
@@ -269,9 +274,9 @@ body {
 
 // The column dividers
 .secondary-divider, .tertiary-divider {
-	margin-top: $vspacing-unit;
+	margin-top: $column-divider-top-spacing;
 	margin-left: 0;
-	margin-bottom: $vspacing-unit;
+	margin-bottom: $column-divider-bottom-spacing;
 	margin-right: 0;
 	border-right: 1px solid $column-divider-color;
 	display: $column-divider-display;

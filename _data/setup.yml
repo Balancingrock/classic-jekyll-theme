@@ -7,19 +7,51 @@
 # In the narrow display all three columns will be below each other (if present)
 # If the tertiary column is used, the secondary column *must* also be used.
 
-# Possible values: 'left', 'right' or 'none', other values are illegal.
+# Controls the placing and visibility of the secondary column
+# Values: left | right | none
+# - left: The secondary column appears on the left side of the main column
+# - right: The secondary column appears on the right side of the main column
+# - none: There is no secondary column (note that this also inhibits the tertiary column)
+# Here the default value is defined, pages may override this in their front matter.
+# The secondary column must reside in the "_includes" directory and is called "secondary-column.html"
+# Front matter can specify a different file for the secondary column ("secondary-column-content").
+#
 secondary-column: left
 
-# Possible values: 'present' or 'none', other values are illegal.
+# Controls visibility of the tertiary column
+# Values: present | none
+# - present: The tertiary column is visible.
+# - none: There is no tertiary column.
+# The tertiary column is always on the opposite side of the main column from the secondary column.
+# Here the default value is defined, pages may override this in their front matter.
+# The tertiary column must reside in the "_includes" directory and is called "tertiary-column.html"
+# Front matter can specify a different file for the tertiary column ("tertiary-column-content").
+#
 tertiary-column: present
 
-# For the number of posts visible on the home page. Must be > 0.
+# For the number of posts visible on the home page.
+# Value: > 0
+#
 number-of-posts-on-home-page: 5
 
 # For the number of posts titles shown in the 'recent' widget
+# Value: > 0
+#
 number-of-recent-posts-in-widget: 10
 
 # Enables or disables the cookies warning.
+# Values: yes | no
+#
 enable-cookies-policy: yes
+
+# Place the navbanner in the main column
+# Values: top | main
+# - top: The navigation banner will be placed above all the columns
+# - main: The navigation banner will be placed inside the main column at the top.
+# This is the default value, it may be overriden by YAML frontmatter.
+#
+# Hint: It may be advantageous to set the $navbanner-include-banner value in the classic-jekyll-theme.scss to 'false' if this value here is set to 'true'.
+#
+navbanner-position: top
 
 # End of file

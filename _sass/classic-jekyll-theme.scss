@@ -98,8 +98,12 @@ $narrow-vertical-title-shift:			0px; // positive is down, negative is up
 // Set display to 'none' to get rid of the divider, 'block' to enable the divider
 $column-divider-color:					lighten($grey-color, 30%);
 $column-divider-display:				block; //none;
+$column-divider-top-spacing:			$vspacing-unit;
+$column-divider-bottom-spacing:         $vspacing-unit;
 $navbanner-menu-dividers-color:			$theme-color;
 $navbanner-menu-dividers-display:		block; //none;
+$navbanner-menu-dividers-thickness:     2px;
+$navbanner-menu-top-divider-disable:    false; //true;
 $footer-divider-color:					$theme-color;
 $footer-divider-display:				block; //none;
 $widget-divider-color:      			$theme-color;
@@ -110,6 +114,14 @@ $site-title-color:						$theme-color;
 $narrow-site-title-font-size:			2 * $base-font-size;
 $medium-site-title-font-size:  			2.5 * $base-font-size;
 $wide-site-title-font-size:				3.5 * $base-font-size;
+
+// Include the banner part in the navigation banner (banner contains icon, title and optionally the menu item)
+// Values: true | false
+// - true: Every layout (narrow, medium and wide) shows the banner with icon, title and optional menu symbol.
+// - false: The narrow layout is unaffected, it will still show the banner. The wide layout will no longer show the banner. The medium layout will no longer show the title nor the menu item but will show the menu bar (i.e. it is identical to the wide layout for this setting)
+//
+// Normally this should always be set to 'true'. However when the navbanner is put at the top of the main column instead of above it, then it may make sense to set this to 'false' as (presumably) the secondary column will show a banner kind of thing. Note that the navbanner location setting is done in the _data/setup.yml file.
+$navbanner-include-banner:              true;
 
 // Special characters used for menu functions
 $menu-symbol-code:          			'\02261'; // Used in narrow and medium banner only
@@ -123,7 +135,7 @@ $menu-item-separator:					''; // Default = nothing
 // center     - to center the menu items in the middle of the navigation bar
 // flex-end   - to have them at the right most position possible
 // for more options, see "justif-content".
-$menu-alignment:						flex-start;
+$menu-alignment:						center;
 
 // Navigation menu coloring and sizing
 $menu-symbol-color:						$theme-color;
