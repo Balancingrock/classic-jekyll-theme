@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.8.1
+# Classic-Jekyll-Theme v1.8.2
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu (dropdown), (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -388,6 +388,10 @@ Release 1.8.1
 
 - Bugfix: sites not hosted at the domain root would have the wrong 'home' link.
 
+Release 1.8.2
+
+- Quickfix for screwup in 1.8.1
+
 ## Upgrade information
 
 ### from 0.2.6 to 1.0.0
@@ -575,6 +579,10 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 ~~~~
     
 ### from 1.8.0 to 1.8.1
+
+- The file `_includes/navbanner.html` was changed.
+
+### from 1.8.0 to 1.8.2
 
 - The file `_includes/navbanner.html` was changed.
 
