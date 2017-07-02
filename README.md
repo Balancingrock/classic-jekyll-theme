@@ -592,7 +592,12 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 
 ### from 1.8.2 to 1.8.3
 
-- The file `_layouts/default.html` was changed (3rd line, replaced {{ with {% and }} with %})
+- The file `_layouts/default.html` was changed (3rd line)
+
+### from 1.8.3 to 1.8.4
+
+- The configuration file `_config.yml` updated to Jekyll 3.5 standard
+- Updated the file `_layouts/default.html` again (3rd line)
 
 ## Feedback
 
