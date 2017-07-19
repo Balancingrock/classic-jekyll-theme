@@ -54,4 +54,12 @@ enable-cookies-policy: yes
 #
 navbanner-position: top
 
+# Create a separate file containing the Navigation & Banner
+# Values: yes | no
+#
+# Using a separate navbanner file will speed up jekyll compilation a lot. However it also means that the browser has to make two additional fetches: the navbanner file and the JQuery library (the later from google). However this is mitigated by the fact that both files can be cached by the browser.
+# If another JQuery library has to be used, edit the _includes/head.html file accordingly.
+
+useSeparateNavBanner: yes
+
 # End of file
