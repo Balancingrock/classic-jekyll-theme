@@ -11,7 +11,11 @@
   	<body class="body-panel">
   	
   		{% if navbanner-position == 'top' %}
-  		<div class="navbanner-panel">{% include navbanner.html %}</div>
+  			{% if site.data.setup.useSeparateNavBanner %}
+  				<div id="navFrame" class="navbanner-panel"><script>$("#navFrame").load("/navbanner.html");</script></div>
+  			{% else %}
+  				<div class="navbanner-panel">{% include navbanner.html %}</div>
+  			{% endif %}
   		{% endif %}
 
 		<div class="column-panel">
@@ -36,7 +40,11 @@
 
 			<div class="primary-column">
 			  	{% if navbanner-position == 'main' %}
-  				<div class="navbanner-panel">{% include navbanner.html %}</div>
+  					{% if site.data.setup.useSeparateNavBanner %}
+  						<div id="navFrame" class="navbanner-panel"><script>$("#navFrame").load("/navbanner.html");</script></div>
+  					{% else %}
+  						<div class="navbanner-panel">{% include navbanner.html %}</div>
+  					{% endif %}
   				{% endif %}
 				<main>{{ content }}</main>
 			</div>
