@@ -34,8 +34,8 @@ body {
 		}
 		.banner-icon {
 			position: absolute;
-			width: 100%;
-			height: 100%;
+			//width: 100%;
+			//height: 100%;
 		}
 		@include wide-layout {
 			height: $wide-banner-height;
@@ -219,6 +219,7 @@ body {
 		display: $navbanner-menu-dividers-display;
 	}
 }
+
 
 // Defines the insets used in the columns and footer-panel. I.e the empty spaces between text and separators lines.
 .insets {
