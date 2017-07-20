@@ -58,6 +58,7 @@ Other features:
 
 - __Move banner/menu to main column__ The banner & navigation can be moved to within the main column only. The secondary and tertiary columns will ten run right up to the top of the screen.
 
+- __Split files for the menu's__ It is possible to generate the menu file separate from the content file. While this may slow down the loading of the site a little, it is a huge speed up for site generation under Jekyll.
 
 You can download it from [github](https://github.com/Balancingrock/classic-jekyll-theme) or install it with [rubygems](https://rubygems.org/gems/classic-jekyll-theme).
 
@@ -100,11 +101,11 @@ Delete the file `about.md`:
 
 It is possible to start the jekyll server now:
 
-	$ jekyll serve
+	$ bundle exec jekyll serve
 	
 Then the site will show up at `localhost:4000`.
 
-To add sample content that illustrates how pages and categories are implemented, copy the folder `pages` from the gem to the current project. 
+To add sample content that illustrates how pages and categories are implemented, copy the folder `pages` from the gem to the current project. To use the 'separate navbanner file' feature, also copy the `navbanner.md` from the gem to the project.
 
 ## Configuration
 
@@ -149,6 +150,16 @@ The following values are configurable:
  
 	`yes` to enable the cookies warning, `no` to disable. The cookies warning is from [Silktide](http://silktide.com/cookieconsent), distributed under the MIT license.
 
+- navbanner-position:
+
+	`top`: The navigation banner will be placed over the entire site (all columns)
+	`main`: The navigation banner will be placed at the top of the main column. Possibly next to or in between the secondary and tertiary columns.
+
+- useSeparateNavBanner:
+
+	`yes`: Use a separate file for the navigation banner. This may cause a slight performance hit for browsers, but is a huge performance enhancement for the site generation process. Note that this option necessitates a JQuery library. By default the google JQuery library is loaded. Update the `_includes/head.html` if a different JQuery library should be used or if the library should be upgraded.
+	`no`: Generate the navigation banner in-line into the posts and pages.
+
 ### text-for.yml
 
 Some of the text elements in the theme can be translated with the following definitions:
@@ -185,16 +196,17 @@ Some of the text elements in the theme can be translated with the following defi
 
 Typically you will need to copy some files from the gem iteself to the project (web site) directory. The most common files are:
 
-- `_sass/classic-jekyll-theme.scss` for configuration
-- `_sass/classic/_normalize-override.scss` if site wide updates must be made to `_normalize.scss`
-- `_data/setup.yml` for configuration
-- `_data/text-for.yml` for configuration
-- `_includes/secondary-column.html` for the secondary column contents
-- `_includes/tertiary-column.html` for the tertiary column contents
+- `_sass/classic-jekyll-theme.scss` for configuration.
+- `_sass/classic/_normalize-override.scss` if site wide updates must be made to `_normalize.scss`.
+- `_data/setup.yml` for configuration.
+- `_data/text-for.yml` for configuration.
+- `_includes/secondary-column.html` for the secondary column contents.
+- `_includes/tertiary-column.html` for the tertiary column contents.
+- `navbanner.md` for the navigation bar menu. This is mandatory if the `useSeparateNavBanner` setting is used, optional when not. Hence its easier to always copy this file.
 
 These files can be found in the gem directory. On macOS this directory is located at: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. When you copy these files, make sure they are in the same relative directory as in the gem itself.
 
-Besides the above mentioned files you should avoid making changes to the files provided in the gem. The more changes you make, the more difficult it will become to upgrade. Instead of chaning a file, include a new file that contains the stuff you want and include that file.
+Besides the above mentioned files you should avoid making changes to the files provided in the gem. The more changes you make, the more difficult it will become to upgrade. Instead of changing a file, include a new file that contains the stuff you want and include that file.
 
 For example, if you need to add to the SASS files, create a new file and include that at the end of `_sass/classic-jekyll-theme.scss`.
 
@@ -607,16 +619,19 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 ### from 1.8.4 to 1.9.0
 
 - The setup file in `_data/setup.yml` (added option to enable/disable separate navbanner file generation)
-- The following files have been updated or added to allow above mentioned feature:
+- The following files have been updated or added:
 
 ~~~~
 	_data/setup.yml
 	_includes/head.html
+	_includes/navbanner.html
 	_layouts/default.html
 	_layouts/navbanner-layout.html
 	_sass/classic/_formatting.scss
 	navbanner.md
 ~~~~
+
+- To use the separate navbanner file, copy the "navbanner.md" file from the theme folder to the project folder (at the same relative level)
 
 ## Feedback
 
