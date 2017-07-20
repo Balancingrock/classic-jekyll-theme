@@ -32,19 +32,39 @@ body {
 				margin-top: $narrow-vertical-title-shift;
 			}
 		}
-		.banner-icon {
+		.banner-icon-container {
 			position: absolute;
-			//width: 100%;
-			//height: 100%;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			overflow: hidden;
 		}
 		@include wide-layout {
 			height: $wide-banner-height;
-			background: $wide-banner-background;
+			background-color: $wide-banner-background;
 			@if $wide-icon-url != none {
 				.banner-icon {
-					top: $wide-icon-voffset;
-					left: $wide-icon-hoffset;
-					background: $wide-icon-url $wide-icon-hposition $wide-icon-vposition no-repeat;
+					margin-top: $wide-icon-voffset;
+					margin-left: $wide-icon-hoffset;
+					content: $wide-icon-url;
+				}
+				.banner-icon-container {
+					@if $wide-icon-vposition == top {
+						align-items: flex-start;
+					} @else if $wide-icon-vposition == bottom {
+						align-items: flex-end;
+					} @else {
+						align-items: $wide-icon-vposition;
+					}
+					@if $wide-icon-hposition == left {
+						justify-content: flex-start;
+					} @else if $wide-icon-hposition == right {
+						justify-content: flex-end;
+					} @else {
+						justify-content: $wide-icon-hposition;
+					}
 				}
 			}
 		}
@@ -53,9 +73,25 @@ body {
 			background: $medium-banner-background;
 			@if $medium-icon-url != none {
 				.banner-icon {
-					top: $medium-icon-voffset;
-					left: $medium-icon-hoffset;
-					background: $medium-icon-url $medium-icon-hposition $medium-icon-vposition no-repeat;
+					margin-top: $medium-icon-voffset;
+					margin-left: $medium-icon-hoffset;
+					content: $medium-icon-url;
+				}
+				.banner-icon-container {
+					@if $medium-icon-vposition == top {
+						align-items: flex-start;
+					} @else if $medium-icon-vposition == bottom {
+						align-items: flex-end;
+					} @else {
+						align-items: $medium-icon-vposition;
+					}
+					@if $medium-icon-hposition == left {
+						justify-content: flex-start;
+					} @else if $medium-icon-hposition == right {
+						justify-content: flex-end;
+					} @else {
+						justify-content: $medium-icon-hposition;
+					}
 				}
 			}
 		}
@@ -64,9 +100,25 @@ body {
 			background: $narrow-banner-background;
 			@if $narrow-icon-url != none {
 				.banner-icon {
-					top: $narrow-icon-voffset;
-					left: $narrow-icon-hoffset;
-					background: $narrow-icon-url $narrow-icon-hposition $narrow-icon-vposition no-repeat;
+					margin-top: $narrow-icon-voffset;
+					margin-left: $narrow-icon-hoffset;
+					content: $narrow-icon-url;
+				}
+				.banner-icon-container {
+					@if $narrow-icon-vposition == top {
+						align-items: flex-start;
+					} @else if $narrow-icon-vposition == bottom {
+						align-items: flex-end;
+					} @else {
+						align-items: $narrow-icon-vposition;
+					}
+					@if $narrow-icon-hposition == left {
+						justify-content: flex-start;
+					} @else if $narrow-icon-hposition == right {
+						justify-content: flex-end;
+					} @else {
+						justify-content: $narrow-icon-hposition;
+					}
 				}
 			}
 		}
