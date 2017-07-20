@@ -11,7 +11,7 @@
   	<body class="body-panel">
   	
   		{% if navbanner-position == 'top' %}
-  			{% if site.data.setup.useSeparateNavBanner %}
+  			{% if site.data.setup.use-separate-navbanner %}
   				<div id="navFrame" class="navbanner-panel"><script>$("#navFrame").load("/navbanner.html");</script></div>
   			{% else %}
   				<div class="navbanner-panel">{% include navbanner.html %}</div>
@@ -40,7 +40,7 @@
 
 			<div class="primary-column">
 			  	{% if navbanner-position == 'main' %}
-  					{% if site.data.setup.useSeparateNavBanner %}
+  					{% if site.data.setup.use-separate-navbanner %}
   						<div id="navFrame" class="navbanner-panel"><script>$("#navFrame").load("/navbanner.html");</script></div>
   					{% else %}
   						<div class="navbanner-panel">{% include navbanner.html %}</div>
