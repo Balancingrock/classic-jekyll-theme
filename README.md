@@ -250,7 +250,7 @@ To create a page that must be included in the menu bar, add the following front 
 
 For a consistent user experience in the narrow layout, it is recommended not to link pages to top level menu items if these menu items have a drop-down submenu.
 
-##Creating pages with custom second and tertiary columns
+## Creating pages with custom second and tertiary columns
 
 There are 4 YAML tags that control the custom placement and content of the secondary and tertiary columns:
 
