@@ -72,7 +72,7 @@ Suggested donation for commercial sites is the price of a good meal: $20
 
 ## Installation & setup
 
-On MacOS the gems are located in: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. Replace the versions with the appropriate numbers (note: these are two different unrelated version numbers). These pages not only contain examples, but also some information about using the theme. Some of the steps below need the path to the gem, so make sure you know it.
+On MacOS the gems are located in: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. Replace the versions with the appropriate numbers (note: these are two different unrelated version numbers). These pages not only contain examples, but also some information about using the theme. Some of the steps below need the path to the gem, so make sure you know it (do 'bundle show classic-jekyll-theme').
 
 Install the theme:
 
