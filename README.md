@@ -147,7 +147,7 @@ The following values are configurable:
 	The number of posts (titles) that will appear in the "Recent" widget.
 
 - enable-cookies-policy:
- 
+
 	`yes` to enable the cookies warning, `no` to disable. The cookies warning is from [Silktide](http://silktide.com/cookieconsent), distributed under the MIT license.
 
 - navbanner-position:
@@ -243,7 +243,7 @@ To create a page that must be included in the menu bar, add the following front 
 
 - menuInclude: Set to "yes" to consider this page for a navigation bar menu item.
 - menuLink: Set to 'no' to disable a link creation from the navigation bar to this page. However the menu title or subtitle will be included. This allows the ordering of menu items that do not have an associated page. The default behaviour assumes 'yes'. So not including this tag will create a link. Note: This allows ordering of top level menu items. For submenu items this probably only makes sense if some kind of "divider" must be shown. Otherwise showing a submenu item without a link will probably confuse users.
-- menuTopTitle: The title of the menu item in the navigation bar. When used in conjunction with a menuSubTitle, this will be the title of the menu item to which this submenu item will be added in the drop down menu. 
+- menuTopTitle: The title of the menu item in the navigation bar. When used in conjunction with a menuSubTitle, this will be the title of the menu item to which this submenu item will be added in the drop down menu.
 - menuTopIndex: The place of the title within the menu bar. Lower numbers will be to the left of higher numbers. Be aware that the "Home" menu item will always be first and the "Categories" will always be last.
 - menuSubTitle: The title of the submenu item in the drop down menu.
 - menuSubIndex: The place of the submenu item within the dropdown menu. Lower numbers will go above higher numbers. This theme only sorts on menuIndex numbers, not on other properties.
@@ -253,7 +253,7 @@ For a consistent user experience in the narrow layout, it is recommened not to l
 ##Creating pages with custom second and tertiary columns
 
 There are 4 YAML tags that control the custom placement and content of the secondary and tertiary columns:
-    
+
     ---
     ...
     secondary-column: <'left'|'right'|'none'>
@@ -598,7 +598,7 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 	_sass/classic/_formatting.scss
 	_sass/classic/_layout.scss
 ~~~~
-    
+
 ### from 1.8.0 to 1.8.1
 
 - The file `_includes/navbanner.html` was changed.
