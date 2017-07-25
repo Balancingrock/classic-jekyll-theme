@@ -264,7 +264,7 @@ There are 4 YAML tags that control the custom placement and content of the secon
 
 These YAML variables can be used to override the default settings and provide custom content for the columns.
 
-Notice that these settings take effect by their presence. Example: if a `secondary-column` YAML variable is present, it will prevent the global setting in the `_data/seup.yml` from having any effect.
+Notice that these settings take effect by their presence. Example: if a `secondary-column` YAML variable is present, it will prevent the global setting in the `_data/setup.yml` from having any effect.
 
 ## Specifying html header description meta tag content for pages
 
