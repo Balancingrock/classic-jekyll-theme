@@ -90,7 +90,7 @@ Change in the Gemfile:
 
 	From `gem "minima", "~> 2.0"` to `gem "classic-jekyll-theme"`
 
-Change in the _config.yml:
+Change in the `_config.yml`:
 
 	From `theme: minima` to `theme: classic-jekyll-theme`
 	Add `jekyll-data` to the gems.
@@ -264,7 +264,7 @@ There are 4 YAML tags that control the custom placement and content of the secon
 
 These YAML variables can be used to override the default settings and provide custom content for the columns.
 
-Notice that these settings take effect by their presence. Example: if a `secondary-column` YAML variable is present, it will prevent the global setting in the _data/seup.yml from having any effect.
+Notice that these settings take effect by their presence. Example: if a `secondary-column` YAML variable is present, it will prevent the global setting in the `_data/seup.yml` from having any effect.
 
 ## Specifying html header description meta tag content for pages
 
@@ -374,7 +374,7 @@ Release 1.5.2
 
 Release 1.6.0
 
-- Added max width settings for CSS components _image-centered_ (80%), _image-float-center_ (40%), _image-float-right_ (50%) and _image-float-left_ (50%). These settings were updated in the file _/\_sass/classic/\_support.scss_
+- Added max width settings for CSS components _image-centered_ (80%), _image-float-center_ (40%), _image-float-right_ (50%) and _image-float-left_ (50%). These settings were updated in the file `_sass/classic/_support.scss` file.
 
 - Added support for content blocks. The new include and support definitions make it easy to create a 'blocked' layout. Whole or partially. To see the example, download the theme from github and run it with "bundle exec jekyll serve". Then select the menu item "Other -> Content blocks". Or visit [http://balancingrock.nl](http://balancingrock.nl) which uses this theme and has the blocked layout on the home page.
 
