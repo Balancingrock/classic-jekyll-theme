@@ -56,9 +56,9 @@ Other features:
 
 - __Enable/disable banner__ The banner at the top of the page can be disabled.
 
-- __Move banner/menu to main column__ The banner & navigation can be moved to within the main column only. The secondary and tertiary columns will ten run right up to the top of the screen.
+- __Move banner/menu to main column__ The banner & navigation can be moved to within the main column only. The secondary and tertiary columns will then run right up to the top of the screen.
 
-- __Split files for the menu's__ It is possible to generate the menu file separate from the content file. While this may slow down the loading of the site a little, it is a huge speed up for site generation under Jekyll.
+- __Split files for the menus__ It is possible to generate the menu file separate from the content file. While this may slow down the loading of the site a little, it is a huge speed up for site generation under Jekyll.
 
 You can download it from [github](https://github.com/Balancingrock/classic-jekyll-theme) or install it with [rubygems](https://rubygems.org/gems/classic-jekyll-theme).
 
@@ -72,7 +72,7 @@ Suggested donation for commercial sites is the price of a good meal: $20
 
 ## Installation & setup
 
-On MacOS the gems are located in: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. Replace the version's with the appropriate numbers (note: these are two different unrelated version numbers). These pages not only contain examples, but also some information about using the theme. Some of the steps below need the path to the gem, so make sure you know it.
+On MacOS the gems are located in: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. Replace the versions with the appropriate numbers (note: these are two different unrelated version numbers). These pages not only contain examples, but also some information about using the theme. Some of the steps below need the path to the gem, so make sure you know it (do 'bundle show classic-jekyll-theme').
 
 Install the theme:
 
@@ -90,7 +90,7 @@ Change in the Gemfile:
 
 	From `gem "minima", "~> 2.0"` to `gem "classic-jekyll-theme"`
 
-Change in the _config.yml:
+Change in the `_config.yml`:
 
 	From `theme: minima` to `theme: classic-jekyll-theme`
 	Add `jekyll-data` to the gems.
@@ -147,7 +147,7 @@ The following values are configurable:
 	The number of posts (titles) that will appear in the "Recent" widget.
 
 - enable-cookies-policy:
- 
+
 	`yes` to enable the cookies warning, `no` to disable. The cookies warning is from [Silktide](http://silktide.com/cookieconsent), distributed under the MIT license.
 
 - navbanner-position:
@@ -194,7 +194,7 @@ Some of the text elements in the theme can be translated with the following defi
 
 ## Recommendation
 
-Typically you will need to copy some files from the gem iteself to the project (web site) directory. The most common files are:
+Typically you will need to copy some files from the gem itself to the project (web site) directory. The most common files are:
 
 - `_sass/classic-jekyll-theme.scss` for configuration.
 - `_sass/classic/_normalize-override.scss` if site wide updates must be made to `_normalize.scss`.
@@ -243,17 +243,17 @@ To create a page that must be included in the menu bar, add the following front 
 
 - menuInclude: Set to "yes" to consider this page for a navigation bar menu item.
 - menuLink: Set to 'no' to disable a link creation from the navigation bar to this page. However the menu title or subtitle will be included. This allows the ordering of menu items that do not have an associated page. The default behaviour assumes 'yes'. So not including this tag will create a link. Note: This allows ordering of top level menu items. For submenu items this probably only makes sense if some kind of "divider" must be shown. Otherwise showing a submenu item without a link will probably confuse users.
-- menuTopTitle: The title of the menu item in the navigation bar. When used in conjunction with a menuSubTitle, this will be the title of the menu item to which this submenu item will be added in the drop down menu. 
+- menuTopTitle: The title of the menu item in the navigation bar. When used in conjunction with a menuSubTitle, this will be the title of the menu item to which this submenu item will be added in the drop down menu.
 - menuTopIndex: The place of the title within the menu bar. Lower numbers will be to the left of higher numbers. Be aware that the "Home" menu item will always be first and the "Categories" will always be last.
 - menuSubTitle: The title of the submenu item in the drop down menu.
 - menuSubIndex: The place of the submenu item within the dropdown menu. Lower numbers will go above higher numbers. This theme only sorts on menuIndex numbers, not on other properties.
 
-For a consistent user experience in the narrow layout, it is recommened not to link pages to top level menu items if these menu items have a drop-down submenu.
+For a consistent user experience in the narrow layout, it is recommended not to link pages to top level menu items if these menu items have a drop-down submenu.
 
-##Creating pages with custom second and tertiary columns
+## Creating pages with custom second and tertiary columns
 
 There are 4 YAML tags that control the custom placement and content of the secondary and tertiary columns:
-    
+
     ---
     ...
     secondary-column: <'left'|'right'|'none'>
@@ -264,7 +264,7 @@ There are 4 YAML tags that control the custom placement and content of the secon
 
 These YAML variables can be used to override the default settings and provide custom content for the columns.
 
-Notice that these settings take effect by their presence. Example: if a `secondary-column` YAML variable is present, it will prevent the global setting in the _data/seup.yml fro taking any effect.
+Notice that these settings take effect by their presence. Example: if a `secondary-column` YAML variable is present, it will prevent the global setting in the `_data/setup.yml` from having any effect.
 
 ## Specifying html header description meta tag content for pages
 
@@ -279,7 +279,7 @@ Note that the "excerpt_separator" does *not* work on pages, only posts.
 
 ## Editing the secondary and tertiary columns
 
-The prime column is populated by the 'normal' pages and posts. The secondary and tertairy columns have a fixed content that is created by directly editing the `_include/secondary-column.html` and `_include/tertiary-column.html`. These files must be copied from the gem dictionary to the directory with the jekyll files for the website at the path `_include`.
+The prime column is populated by the 'normal' pages and posts. The secondary and tertiary columns have a fixed content that is created by directly editing the `_include/secondary-column.html` and `_include/tertiary-column.html`. These files must be copied from the gem dictionary to the directory with the jekyll files for the website at the path `_include`.
 
 Documentation for the widgets is included in the widget files themselves. The are located in the gem directory at `_includes/widgets/`.
 
@@ -287,7 +287,7 @@ Documentation for the widgets is included in the widget files themselves. The ar
 
 Release 0.2.6
 
-- Inital version (before this I was only getting acquainted with the gem-publishing mechanism)
+- Initial version (before this I was only getting acquainted with the gem-publishing mechanism)
 
 Release 1.0.0
 
@@ -323,7 +323,7 @@ Release 1.2.2
 Release 1.2.3
 
 - Faster generation of site
-- Menu item 'Categories' will only be included if categorie pages are requested by the designer.
+- Menu item 'Categories' will only be included if category pages are requested by the designer.
 - Categories pages submenu is now alphabetical.
 
 Release 1.3.0
@@ -374,7 +374,7 @@ Release 1.5.2
 
 Release 1.6.0
 
-- Added max width settings for CSS components _image-centered_ (80%), _image-float-center_ (40%), _image-float-right_ (50%) and _image-float-left_ (50%). These settings were updated in the file _/\_sass/classic/\_support.scss_
+- Added max width settings for CSS components _image-centered_ (80%), _image-float-center_ (40%), _image-float-right_ (50%) and _image-float-left_ (50%). These settings were updated in the file `_sass/classic/_support.scss` file.
 
 - Added support for content blocks. The new include and support definitions make it easy to create a 'blocked' layout. Whole or partially. To see the example, download the theme from github and run it with "bundle exec jekyll serve". Then select the menu item "Other -> Content blocks". Or visit [http://balancingrock.nl](http://balancingrock.nl) which uses this theme and has the blocked layout on the home page.
 
@@ -492,7 +492,6 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 
 - Add to `classic-jekyll-theme.scss` the import of `classic/widget-support` (at end of file)
 - Add the following definitions to the existing `classic-jekyll-theme.scss` in your project:
-^
 
 ~~~~~~
      $wide-icon-vposition:    center;
@@ -521,7 +520,6 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 
 - Since `normalized.css` is now used instead of `base.scss` it is quite possible that the layout of your sites changes a little. Be sure to check the site after generation. If necessary, make any adjustments to `_sass/_normalize-override.scss` and leave the `_normalize.scss` as it is. This way it is very easy to upgrade to new versions of `normalize.css`.
 - Update the `classic-jekyll-theme.scss` imports as follows:
-^
 
 ~~~~~
     // Import partials.
@@ -598,7 +596,7 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 	_sass/classic/_formatting.scss
 	_sass/classic/_layout.scss
 ~~~~
-    
+
 ### from 1.8.0 to 1.8.1
 
 - The file `_includes/navbanner.html` was changed.
