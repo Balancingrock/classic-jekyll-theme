@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.9.0
+# Classic-Jekyll-Theme v1.9.1
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu (dropdown), (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -413,6 +413,10 @@ Release 1.9.0
 - Bugfix: Fixed the sometimes horizontal scrollbar bug
 - Feature: Added option to generate a separately loaded navbanner file.
 
+Release 1.9.1
+
+- Bugfix: Added navbanner.md to the gemspec (file was missing)
+
 ## Upgrade information
 
 ### from 0.2.6 to 1.0.0
@@ -630,6 +634,10 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 ~~~~
 
 - To use the separate navbanner file, copy the "navbanner.md" file from the theme folder to the project folder (at the same relative level)
+
+### from 1.9.0 to 1.9.1
+
+No changes needed.
 
 ## Feedback
 
