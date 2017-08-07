@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.9.1
+# Classic-Jekyll-Theme v1.9.2
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu (dropdown), (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -204,7 +204,7 @@ Typically you will need to copy some files from the gem itself to the project (w
 - `_includes/tertiary-column.html` for the tertiary column contents.
 - `navbanner.md` for the navigation bar menu. This is mandatory if the `useSeparateNavBanner` setting is used, optional when not. Hence its easier to always copy this file.
 
-These files can be found in the gem directory. On macOS this directory is located at: `Library/Ruby/Gems/<version>/gems/classic-jekyll-theme-<version>`. When you copy these files, make sure they are in the same relative directory as in the gem itself.
+These files can be found in the gem directory. Try the command `bundle show classic-jekyll-theme` to see where the theme is located. When you copy these files, make sure they are in the same relative directory as in the gem itself.
 
 Besides the above mentioned files you should avoid making changes to the files provided in the gem. The more changes you make, the more difficult it will become to upgrade. Instead of changing a file, include a new file that contains the stuff you want and include that file.
 
@@ -285,111 +285,6 @@ Documentation for the widgets is included in the widget files themselves. The ar
 
 ## History
 
-Release 0.2.6
-
-- Initial version (before this I was only getting acquainted with the gem-publishing mechanism)
-
-Release 1.0.0
-
-- Fixed a problem with navigation menu generation. (Insufficient control over menu item placement)
-
-Release 1.0.1
-
-- Fixed some info in this readme file and in the example pages.
-
-Release 1.1.0
-
-- Added language customization for default theme elements in the `_config.yml` file
-
-Release 1.1.1
-
-- Added clarification to upgrade information.
-
-Release 1.2.0
-
-- Added facilities for background images.
-- Added option for an icon on the top-left side of the site.
-- Fixed a problem where the tertiary column divider was not removed for medium layout.
-
-Release 1.2.1
-
-- Fixed problem with Icon placement.
-
-Release 1.2.2
-
-- Fixed problem with site title shifting when a background was used.
-- Now allows absolute fixing of banner height.
-
-Release 1.2.3
-
-- Faster generation of site
-- Menu item 'Categories' will only be included if category pages are requested by the designer.
-- Categories pages submenu is now alphabetical.
-
-Release 1.3.0
-
-- Removed theme specific configuration from the `_config.yml` file into `_data/setup.yml` and `_data/text-for.yml`.
-
-Release 1.3.1
-
-- Quick fix for problem introduced in 1.3.0
-
-Release 1.3.2
-
-- Update of this README file.
-
-Release 1.3.3
-
-- Added the `jekyll-data` gem to simplify initial configuration/setup.
-
-Release 1.4.0
-
-- Added `youtube-player` widget.
-- Improved placement control of the site icon
-
-Release 1.4.1
-
-- Added `_support.scss` with commonly used layout stuff for articles/posts like:
-	- Centered text
-	- Centered image
-	- Floating images
-	- Floating text boxes
-	
-	To be used in the markdown files as class definitions. Example is given in `_support.scss`
-
-Release 1.5.0
-
-- Fixed a problem where the menu button (medium and narrow layouts) was not usable in some browsers
-- Fixed a problem with the menu generation where additional, but empty, submenu items could be created
-- Rebased the CSS system to `normalized.css` (as `_sass/classic/_normalize.scss`). Though Jekyll 3.3.1 has made this update as well (for base.scss) it is now no longer necessary to wait for Jekyll releases to adopt the latest `normalize.css`. This can now be done manually by simply renaming & replacing the latest `normalize.css` to `_sass/classic/_normalize.scss` in the gem. (Note a link to the source is also found in the `_normalize.scss` file itself)
-- Fixed the missing banner height setting.
-
-Release 1.5.1
-
-- Removed some non-ascii characters in the comments of `_sass/classic-jekyll-theme`.
-
-Release 1.5.2
-
-- Added excerpt for pages. YAML only, no support for excerpts generated from the main content.
-
-Release 1.6.0
-
-- Added max width settings for CSS components _image-centered_ (80%), _image-float-center_ (40%), _image-float-right_ (50%) and _image-float-left_ (50%). These settings were updated in the file `_sass/classic/_support.scss` file.
-
-- Added support for content blocks. The new include and support definitions make it easy to create a 'blocked' layout. Whole or partially. To see the example, download the theme from github and run it with "bundle exec jekyll serve". Then select the menu item "Other -> Content blocks". Or visit [http://balancingrock.nl](http://balancingrock.nl) which uses this theme and has the blocked layout on the home page.
-
-Release 1.7.0
-
-- Added support for custom column settings & content on a page by page basis.
-
-Release 1.7.1
-
-- Fixed a problem in the `_includes/widgets/recent-posts.html`.
-
-Release 1.7.2
-
-- Fixed a bug in the blocked-layout.
-
 Release 1.8.0
 
 - Allow banner area to be removed.
@@ -417,189 +312,12 @@ Release 1.9.1
 
 - Bugfix: Added navbanner.md to the gemspec (file was missing)
 
+Release 1.9.2
+
+- Bugfix: David Crossley fixed a bug where the filename of the column content was not properly used.
+- Removed pre v1.8.0 notes and update instructions to shorten the readme.
+
 ## Upgrade information
-
-### from 0.2.6 to 1.0.0
-
-#### Page creation
-
-The page creation YAML matter has changed. The old tags did not give full control over the menu buildup, the new tags do.
-
-	Old: menuInclude
-	New: menuInclude
-
-No changes, works as before.<br><br>
-
-	Old: -
-	New: menuLink true|false
-
-A new option that controls if a menu title has a link to a page. The default value is 'true' so when this tag is not included, a link to the page will be created. If set to 'false', then the menu item will show up in the specified place, but will not be linked to a page. Use this to order menu items that have a drop-down menu but do not have a page by itself.<br><br>
-
-	Old: menuTitle
-	New: menuTopTitle
-	New: menuSubTitle
-
-Specifies the string to be used for the menu item.<br><br>
-
-	Old: subMenuFrom
-	New: menuTopTitle
-
-Specifies the menu item from which this is a submenu item.<br><br>
-
-	Old: menuIndex
-	New: menuTopIndex
-	New: menuSubIndex
-	
-The index for a menu item. If not present, the menu ordering is undetermined. If only a part of the pages have this item then the menu items of the pages that do not have this item specified will be included first. If multiple specifications exist, then the highest number overrides the lower numbers. Like before, a lower number goes to the left -or on top- of the higher number.
-
-### from 1.0.0 (and later) to 1.1.1
-
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-
-### from 1.1.1 to 1.2.0
-
-- If changes were made to `_sass/classic-jekyll-theme.scss` then this file must be replaced with the new version that comes with this release and the changes must be re-applied. Note that background color setting has changed slightly.
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-
-### from 1.2.0 to 1.2.1
-
-- Replace the 'initial' values in `_sass/classic-jekyll-theme.scss` for the backgrounds with 'none'.
-- The icon size (width and height) values are no longer used and can be removed.
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-
-### from 1.2.1 to 1.2.2
-
-- The banner height settings in `_sass/classic-jekyll-theme.scss` are no longer "minimum" specifications but absolute specifications and therefore have been renamed from `<layout-size>-minimum-banner-height` to `<layout-size>-banner-height`.
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-
-### from 1.2.2 to 1.2.3
-
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-
-### from 1.2.3 to 1.3.0
-
-- Copy the `_data` directory from the gem to the website directory as per installation instructions in this document.
-- Remove the classic-jekyll-theme configurations from the `_config.yml` file, and reapply any changes made to either `_data/setup.yml` and/or `_data/text-for.yml` as required.
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-
-### from 1.3.0 to 1.3.2
-
-- If not done yet, copy the `_data` directory from the gem to the website directory as per installation instructions in this document.
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-
-### from 1.3.2 to 1.3.3
-
-- It is no longer necessary to copy the `_data` folder content to the site directory.
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-
-### from 1.3.3 to 1.4.0
-
-- Add to `classic-jekyll-theme.scss` the import of `classic/widget-support` (at end of file)
-- Add the following definitions to the existing `classic-jekyll-theme.scss` in your project:
-
-~~~~~~
-     $wide-icon-vposition:    center;
-     $wide-icon-hposition:    left;
-     $wide-icon-voffset:      0px;
-     $wide-icon-hoffset:      0px;
-     $medium-icon-vposition:  center;
-     $medium-icon-hposition:  left;
-     $medium-icon-voffset:    0px;
-     $medium-icon-hoffset:    0px;
-     $narrow-icon-vposition:  center;
-     $narrow-icon-hposition:  left;
-     $narrow-icon-voffset:    0px;
-     $narrow-icon-hoffset:    0px;
-~~~~~~
-
-- Alternatively copy the new `classic-jekyll-theme.scss` to your project and re-apply the changes you made.
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-
-### from 1.4.0 to 1.4.1
-
-- Add to `classic-jekyll-theme.scss` the import of `classic/support` (at end of file)
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-
-### from 1.4.1 to 1.5.0
-
-- Since `normalized.css` is now used instead of `base.scss` it is quite possible that the layout of your sites changes a little. Be sure to check the site after generation. If necessary, make any adjustments to `_sass/_normalize-override.scss` and leave the `_normalize.scss` as it is. This way it is very easy to upgrade to new versions of `normalize.css`.
-- Update the `classic-jekyll-theme.scss` imports as follows:
-
-~~~~~
-    // Import partials.
-    @import
-      "classic/normalize",
-      "classic/normalize-override",
-      "classic/syntax-highlighting",
-      "classic/layout",
-      "classic/formatting",
-      "classic/post",
-      "classic/page",
-      "classic/support",
-      "classic/widget-support"
-    ;
-~~~~~
-- The `$brand-color:` definition in `classic-jekyll-theme.scss` is no longer used and can be removed.
-- Other files that have changed: `_includes/navbanner.html`, `_sass/classic/_formatting.scss` and `_sass/classic/_syntax-highlighting.scss`. The file `_sass/classic/_base.scss` has been deleted.
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-
-### from 1.5.0 to 1.5.1
-
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-- Remove the ≡ , ⇨ and ⇩ characters from the `_sass/classic-jekyll-theme.scss` file to prevent future problems. (If you had problems, you have already removed them...)
-
-### from 1.5.1 to 1.5.2
-
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-- If the (undocumented) 'description' YAML tag was used, it must be changed to 'excerpt'.
-- The file `_includes/header.html` was updated.
-
-### from 1.5.2 to 1.6.0
-
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-- The file `_sass/_support.html` was updated.
-
-### from 1.6.0 to 1.7.0
-
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-- The files `_layouts/default.html`, `_data/setup.yml` have been updated.
-	- Note that the global variable _secondary_column_ has been changed to _secondary-column_.
-	- And _tertiary_column_ has been changed to _tertiary-column_.
-
-### from 1.7.0 to 1.7.1
-
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-- The file `_includes/widgets/recent-posts.html` has been updated.
-
-### from 1.7.1 to 1.7.2
-
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-- The file `_sass/classic/_support.scss` has been updated.
-
-### from 1.7.2 to 1.8.0
-
-- Update the version number in the `Gemfile` & delete the `Gemfile.lock` file.
-- In file `_data/setup.yml` added some documentation and a new setting: `navbanner-position`. This setting is described in that file.
-- Added the following new parameters in `_sass/classic-jekyll-theme.scss`:
-
-~~~~
-    $column-divider-top-spacing
-	$column-divider-bottom-spacing
-	
-	$navbanner-menu-dividers-thickness
-    $navbanner-menu-top-divider-disable
-
-    $navbanner-include-banner
-~~~~
-
-
-- In addition the following files have been changed:
-
-~~~~
-	_layouts/default.html
-	_sass/classic/_formatting.scss
-	_sass/classic/_layout.scss
-~~~~
 
 ### from 1.8.0 to 1.8.1
 
@@ -639,9 +357,13 @@ The index for a menu item. If not present, the menu ordering is undetermined. If
 
 No changes needed.
 
+### from 1.9.1 to 1.9.2
+
+The file `_layouts/default.html` was updated.
+
 ## Feedback
 
-Comments, bug reports, feature requests and improvements are eagerly anticipated via email: rien@balancingrock.nl.
+Comments, bug reports, feature requests and improvements are eagerly anticipated via email: rien@balancingrock.nl or via [github](https://github.com/Balancingrock/classic-jekyll-theme).
 
 ## License
 
