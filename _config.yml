@@ -27,9 +27,5 @@ github_username:  jekyll
 # Build settings
 markdown: kramdown
 theme: classic-jekyll-theme
-plugins_dir:
+plugins:
   - jekyll-feed
-  - jekyll-data
-exclude:
-  - Gemfile
-  - Gemfile.lock

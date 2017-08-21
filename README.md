@@ -93,7 +93,6 @@ Change in the Gemfile:
 Change in the `_config.yml`:
 
 	From `theme: minima` to `theme: classic-jekyll-theme`
-	Add `jekyll-data` to the gems.
 
 Delete the file `about.md`:
 
