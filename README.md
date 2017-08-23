@@ -154,7 +154,7 @@ The following values are configurable:
 	`top`: The navigation banner will be placed over the entire site (all columns)
 	`main`: The navigation banner will be placed at the top of the main column. Possibly next to or in between the secondary and tertiary columns.
 
-- useSeparateNavBanner:
+- use-separate-navbanner:
 
 	`yes`: Use a separate file for the navigation banner. This may cause a slight performance hit for browsers, but is a huge performance enhancement for the site generation process. Note that this option necessitates a JQuery library. By default the google JQuery library is loaded. Update the `_includes/head.html` if a different JQuery library should be used or if the library should be upgraded.
 	`no`: Generate the navigation banner in-line into the posts and pages.
@@ -201,7 +201,7 @@ Typically you will need to copy some files from the gem itself to the project (w
 - `_data/text-for.yml` for configuration.
 - `_includes/secondary-column.html` for the secondary column contents.
 - `_includes/tertiary-column.html` for the tertiary column contents.
-- `navbanner.md` for the navigation bar menu. This is mandatory if the `useSeparateNavBanner` setting is used, optional when not. Hence its easier to always copy this file.
+- `navbanner.md` for the navigation bar menu. This is mandatory if the `use-separate-navbanner` setting is used, optional when not. Hence its easier to always copy this file.
 
 These files can be found in the gem directory. Try the command `bundle show classic-jekyll-theme` to see where the theme is located. When you copy these files, make sure they are in the same relative directory as in the gem itself.
 

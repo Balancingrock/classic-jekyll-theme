@@ -18,6 +18,6 @@ Pages in classic can be linked to from the navigation menu. To do so there are s
 - menuSubTitle: The title of the submenu item in the drop down menu.
 - menuSubIndex: The place of the submenu item within the dropdown menu. Lower numbers will go above higher numbers. This theme only sorts on menuIndex numbers, not on other properties.
 
-For a consistent user experience in the narrow layout, it is recommened not to link pages to top level menu items if these menu items have a drop-down submenu.
+For a consistent user experience in the narrow layout, it is recommended not to link pages to top level menu items if these menu items have a drop-down submenu.
 
-Submenu's only go one level deep. If deeper nesting is necessary, send me a mail at: rien@balancingrock.nl
+Submenus only go one level deep. If deeper nesting is necessary, send me a mail at: rien@balancingrock.nl
