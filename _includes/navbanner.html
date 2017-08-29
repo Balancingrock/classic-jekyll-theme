@@ -16,9 +16,13 @@
 <!-- Navigation bar visibility depends on screen width. -->
 <nav class="navbanner-menu">
 
+	<!-- Get the potential list of other nav items -->
+	{% assign nav-other = '' | split: '' %}
+	{% if site.data.nav-other %}{% assign nav-other = site.data.nav-other %}{% endif %}
+
 	<!-- Create a list of top menu item titles -->
 	{% assign topTitles = "" | split: "" %}
-	{% assign sortedPages = site.pages | where:'menuInclude', true | where_exp:'item', 'item.menuTopTitle != nil' | sort: 'menuTopIndex', 'last' %}
+	{% assign sortedPages = site.pages | concat: nav-other | where:'menuInclude', true | where_exp:'item', 'item.menuTopTitle != nil' | sort: 'menuTopIndex', 'last' %}
 	{% for ape in sortedPages %}{% assign topTitles = topTitles | push: ape.menuTopTitle %}{% endfor %}
 	{% assign topTitles = topTitles | uniq %}
 
@@ -39,7 +43,7 @@
 		{% for topTitle in topTitles %}
 		
 			<!-- Create a list of sub menu item titles -->
-			{% assign subTitles = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle | where_exp:'item', 'item.menuSubTitle != nil' | sort: 'menuSubIndex', 'last' %}
+			{% assign subTitles = site.pages | concat: nav-other | where:'menuInclude', true | where:'menuTopTitle', topTitle | where_exp:'item', 'item.menuSubTitle != nil' | sort: 'menuSubIndex', 'last' %}
 
 			<li>
 
@@ -56,7 +60,8 @@
 						<div class="menu-item-title">
 							<!-- Find page to link to -->
 						{% assign pageFound = false %}
-						{% for ape in site.pages %}
+						{% assign topItems = site.pages | concat: nav-other %}
+						{% for ape in topItems %}
 							{% if ape.menuTopTitle == topTitle and ape.menuSubTitle == nil %}
 								{% if ape.menuLink == false %}
 									<p>{{ topTitle }}</p>
