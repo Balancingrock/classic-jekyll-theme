@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.9.2
+# Classic-Jekyll-Theme v1.9.3
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu (dropdown), (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -249,6 +249,40 @@ To create a page that must be included in the menu bar, add the following front 
 
 For a consistent user experience in the narrow layout, it is recommended not to link pages to top level menu items if these menu items have a drop-down submenu.
 
+### Alternate method for sub-menu's
+
+In addition to the method described above there is another way to generate the sub-menu items. This method is especially handy if multiple sub-menu entries must be made for a single page using Anchor-Id's.
+To create multiple sub menu entries:
+
+    ---
+    ...
+    menuInclude: yes
+    menuTopTitle: Classic
+    menuSubs:
+    -
+       title: Sub Menu Title
+       index: 3
+       anchorId: id-of-html-tag
+       url: /pages/menupage.html
+    -
+       title: '-------'
+       index: 4
+       link: no
+    -
+       title: Menu title below separator
+       index: 5
+       anchorId: second-anchor
+    ...
+    ---
+
+The fields of the menuSubs YAML tag are interpreted as follows:
+
+- title: The title of the submenu item in the drop down menu.
+- index: The place of the submenu item within the dropdown menu. Lower numbers will go above higher numbers. This theme only sorts on menuIndex numbers, not on other properties.
+- anchorId: The id of an HTML tag that the link will be made to. Do not include the '#' tag as this is gerenated automatically. I.e. the relative URL of the first entry above will be: `/pages/menupage.html#id-of-html-tag`.
+- url: The url of the page to link to. If no url is specified it will link to the page this YAML matter is in.
+- link: Set to 'no' to disable a link creation from the navigation bar to this page. However the submenu title will be included. The default behaviour assumes 'yes'. So not including this tag will create a link. Note: This probably only makes sense if some kind of "divider" must be shown. Otherwise showing a submenu item without a link will probably confuse users.
+
 ## Creating pages with custom second and tertiary columns
 
 There are 4 YAML tags that control the custom placement and content of the secondary and tertiary columns:
@@ -316,6 +350,15 @@ Release 1.9.2
 - Bugfix: David Crossley fixed a bug where the filename of the column content was not properly used.
 - Removed pre v1.8.0 notes and update instructions to shorten the readme.
 
+Release 1.9.3
+
+- Version constraint on jekyll-data from 0.4 up to < 2.0 (Ashmaroli)
+- Requires at least jekyll 3.5.1 (Ashmaroli)
+- Typo's fixed (David Crossley)
+- Added older-posts.html widget (Rien)
+- Added image to posts (Rien)
+- Added support for sub-menu links with anchor id's. Allows multiple sub-menu entries per file. (Rien)
+
 ## Upgrade information
 
 ### from 1.8.0 to 1.8.1
@@ -359,6 +402,24 @@ No changes needed.
 ### from 1.9.1 to 1.9.2
 
 The file `_layouts/default.html` was updated.
+
+### from 1.9.2 to 1.9.3
+
+- Added a new widget: `_includes/widgets/older-posts.html`
+- Updated the following files:
+
+~~~~
+	_config.yml
+	classic-jekyll-theme.gemspec
+	_data/setup.yml
+	_data/text-for.yml
+	_includes/secondary-column.html
+	_includes/navbanner.html
+	_layouts/post.html
+	_sass/classic/_widget-support.scss
+	pages/classic/categories.md
+	pages/classic/pages.md
+~~~~
 
 ## Feedback
 

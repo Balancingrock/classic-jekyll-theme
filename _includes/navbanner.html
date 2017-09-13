@@ -39,8 +39,74 @@
 		{% for topTitle in topTitles %}
 		
 			<!-- Create a list of sub menu item titles -->
-			{% assign subTitles = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle | where_exp:'item', 'item.menuSubTitle != nil' | sort: 'menuSubIndex', 'last' %}
+			
+			{% comment %}<!-- note: the html comment tags are for editor coloring support
+			
+			Due to the poor support for variables in Liquid we have to resort to some fairly laborious code.
+			
+			First determine all pages that contain sub menu information for the running top menu item. These are collected in "titlePages"
+			
+			Then create four lists containing the sub menu title, index, url and link respectively. These lists are all in the same sequence such that entry [n] is applicable to the same sub menu in all lists. (I.e. they are synchronous)
+			
+			Then sort the lists into four new lists. Again these lists must be kept synchronous.
+			
+			Lastly, step through the lists to create the actual sub menu's
+			
+			-->{% endcomment %}
+			
+			{% assign titlePages = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle %}
+			
+			{% assign subMenuTitles = "" | split: "" %}
+			{% assign subMenuIndexes = "" | split: "" %}
+			{% assign subMenuUrls = "" | split: "" %}
+			{% assign subMenuLinks = "" | split: "" %}
 
+			{% for ape in titlePages %}
+				{% if ape.menuSubTitle != nil %}
+					{% assign subMenuTitles = subMenuTitles | push: ape.menuSubTitle %}
+					{% assign subMenuIndexes = subMenuIndexes | push: ape.menuSubIndex %}
+					{% assign subMenuUrls = subMenuUrls | push: ape.url %}
+					{% assign subMenuLinks = subMenuLinks | push: ape.menuLink %}
+				{% endif %}
+				{% if ape.menuSubs != nil %}
+					{% for sub in ape.menuSubs %}
+						{% assign subMenuTitles = subMenuTitles | push: sub.title %}
+						{% assign subMenuIndexes = subMenuIndexes | push: sub.index %}
+						{% if sub.url != nil %}
+							{% if sub.anchorId != nil %}
+								{% assign urlWithAnchorId = sub.url | append: '#' | append: sub.anchorId %}
+							{% else %}
+								{% assign urlWithAnchorId = sub.url %}
+							{% endif %}
+						{% else %}
+							{% if sub.anchorId != nil %}
+								{% assign urlWithAnchorId = ape.url | append: '#' | append: sub.anchorId %}
+							{% else %}
+								{% assign urlWithAnchorId = ape.url %}
+							{% endif %}
+						{% endif %}
+						{% assign subMenuUrls = subMenuUrls | push: urlWithAnchorId %}
+					{% assign subMenuLinks = subMenuLinks | push: sub.link %}
+					{% endfor %}
+				{% endif %}
+			{% endfor %}
+
+			{% assign sortedSubMenuTitles = "" | split: "" %}
+			{% assign sortedSubMenuIndexes = subMenuIndexes | sort %}
+			{% assign sortedSubMenuUrls = "" | split: "" %}
+			{% assign sortedSubMenuLinks = "" | split: "" %}
+
+			{% for menuIndex in sortedSubMenuIndexes %}
+				{% for aMenuIndex in subMenuIndexes %}
+					{% if aMenuIndex == menuIndex %}
+						{% assign sortedSubMenuTitles = sortedSubMenuTitles | push: subMenuTitles[forloop.index0] %}
+						{% assign sortedSubMenuUrls = sortedSubMenuUrls | push: subMenuUrls[forloop.index0] %}
+						{% assign sortedSubMenuLinks = sortedSubMenuLinks | push: subMenuLinks[forloop.index0] %}
+						{% continue %}
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+			
 			<li>
 
 				<!-- Create top menu item -->
@@ -49,7 +115,7 @@
 					<div class="menu-item-separator"><p><!-- empty but necessary --></p></div>
 					<div class="menu-item">
 						<div class="menu-item-symbol">
-						{% if subTitles.size > 0 %}
+						{% if sortedSubMenuTitles.size > 0 %}
 							<p><!-- will be filled by disclosure indicator --></p>
 						{% endif %}
 						</div>
@@ -57,7 +123,7 @@
 							<!-- Find page to link to -->
 						{% assign pageFound = false %}
 						{% for ape in site.pages %}
-							{% if ape.menuTopTitle == topTitle and ape.menuSubTitle == nil %}
+							{% if ape.menuTopTitle == topTitle and ape.menuSubTitle == nil and ape.menuSubs == nil %}
 								{% if ape.menuLink == false %}
 									<p>{{ topTitle }}</p>
 								{% else %}
@@ -75,15 +141,15 @@
 				</label>
 				
 				<!-- Create sub menu items -->
-				{% if subTitles.size > 0 %}
+				{% if sortedSubMenuTitles.size > 0 %}
 					<ul>
-					{% for subTitle in subTitles %}
-						{% if subTitle.menuLink != false %}
+					{% for subTitle in sortedSubMenuTitles %}
+						{% if sortedSubMenuLinks[forloop.index0] != false %}
 						<li>
 							<div class="menu-subitem">
 								<div class="menu-subitem-symbol"></div>
 								<div class="menu-subitem-title">
-									<a href="{{ subTitle.url }}"><p>{{ subTitle.menuSubTitle }}</p></a>
+									<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subTitle }}</p></a>
 								</div>
 							</div>
 						</li>
@@ -91,7 +157,7 @@
 						<li>
 							<div class="menu-subitem">
 								<div class="menu-subitem-symbol"></div>
-								<div class="menu-subitem-title"><p>{{ subTitle.menuSubTitle }}</p></div>
+								<div class="menu-subitem-title"><p>{{ subTitle }}</p></div>
 							</div>
 						</li>
 						{% endif %}
