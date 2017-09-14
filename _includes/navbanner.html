@@ -64,14 +64,26 @@
 			{% for ape in titlePages %}
 				{% if ape.menuSubTitle != nil %}
 					{% assign subMenuTitles = subMenuTitles | push: ape.menuSubTitle %}
-					{% assign subMenuIndexes = subMenuIndexes | push: ape.menuSubIndex %}
+					{% if ape.menuSubIndex != nil %}
+						{% assign subMenuIndexes = subMenuIndexes | push: ape.menuSubIndex %}
+					{% else %}
+						{% assign subMenuIndexes = subMenuIndexes | push: -1 %}
+					{% endif %}
 					{% assign subMenuUrls = subMenuUrls | push: ape.url %}
-					{% assign subMenuLinks = subMenuLinks | push: ape.menuLink %}
+					{% if ape.menuLink != nil %}
+						{% assign subMenuLinks = subMenuLinks | push: ape.menuLink %}
+					{% else %}
+						{% assign subMenuLinks = subMenuLinks | push: true %}
+					{% endif %}
 				{% endif %}
 				{% if ape.menuSubs != nil %}
 					{% for sub in ape.menuSubs %}
 						{% assign subMenuTitles = subMenuTitles | push: sub.title %}
-						{% assign subMenuIndexes = subMenuIndexes | push: sub.index %}
+						{% if sub.index != nil %}
+							{% assign subMenuIndexes = subMenuIndexes | push: sub.index %}
+						{% else %}
+							{% assign subMenuIndexes = subMenuIndexes | push: -1 %}
+						{% endif %}
 						{% if sub.url != nil %}
 							{% if sub.anchorId != nil %}
 								{% assign urlWithAnchorId = sub.url | append: '#' | append: sub.anchorId %}
@@ -86,7 +98,11 @@
 							{% endif %}
 						{% endif %}
 						{% assign subMenuUrls = subMenuUrls | push: urlWithAnchorId %}
-					{% assign subMenuLinks = subMenuLinks | push: sub.link %}
+						{% if sub.link != nil %}
+							{% assign subMenuLinks = subMenuLinks | push: sub.link %}
+						{% else %}
+							{% assign subMenuLinks = subMenuLinks | push: true %}
+						{% endif %}
 					{% endfor %}
 				{% endif %}
 			{% endfor %}
@@ -97,14 +113,24 @@
 			{% assign sortedSubMenuLinks = "" | split: "" %}
 
 			{% for menuIndex in sortedSubMenuIndexes %}
-				{% for aMenuIndex in subMenuIndexes %}
-					{% if aMenuIndex == menuIndex %}
-						{% assign sortedSubMenuTitles = sortedSubMenuTitles | push: subMenuTitles[forloop.index0] %}
-						{% assign sortedSubMenuUrls = sortedSubMenuUrls | push: subMenuUrls[forloop.index0] %}
-						{% assign sortedSubMenuLinks = sortedSubMenuLinks | push: subMenuLinks[forloop.index0] %}
-						{% continue %}
-					{% endif %}
-				{% endfor %}
+				{% if menuIndex != -1 %}
+					{% for aMenuIndex in subMenuIndexes %}
+						{% if aMenuIndex == menuIndex %}
+							{% assign sortedSubMenuTitles = sortedSubMenuTitles | push: subMenuTitles[forloop.index0] %}
+							{% assign sortedSubMenuUrls = sortedSubMenuUrls | push: subMenuUrls[forloop.index0] %}
+							{% assign sortedSubMenuLinks = sortedSubMenuLinks | push: subMenuLinks[forloop.index0] %}
+							{% continue %}
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+			{% endfor %}
+			{% for aMenuIndex in subMenuIndexes %}
+				{% if aMenuIndex == -1 %}
+					{% assign sortedSubMenuTitles = sortedSubMenuTitles | push: subMenuTitles[forloop.index0] %}
+					{% assign sortedSubMenuUrls = sortedSubMenuUrls | push: subMenuUrls[forloop.index0] %}
+					{% assign sortedSubMenuLinks = sortedSubMenuLinks | push: subMenuLinks[forloop.index0] %}
+					{% continue %}
+				{% endif %}
 			{% endfor %}
 			
 			<li>
