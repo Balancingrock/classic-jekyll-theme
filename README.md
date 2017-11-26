@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v1.9.3
+# Classic-Jekyll-Theme v1.9.4
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu (dropdown), (up to) three columns and a footer. The design is fully responsive for three different screen widths: wide, medium and narrow. It is probably best shown in an example:
 
@@ -359,6 +359,10 @@ Release 1.9.3
 - Added image to posts (Rien)
 - Added support for sub-menu links with anchor id's. Allows multiple sub-menu entries per file. (Rien)
 
+Release 1.9.4
+
+- Bugfix: Fixed a problem that would cause all posts to appear om home layout instead of the specified number.
+
 ## Upgrade information
 
 ### from 1.8.0 to 1.8.1
@@ -420,6 +424,10 @@ The file `_layouts/default.html` was updated.
 	pages/classic/categories.md
 	pages/classic/pages.md
 ~~~~
+
+### from 1.9.3 to 1.9.4
+
+- The layout file 'home.html' was updated. If you made changes to this file, make sure to verify if the bugfix must be applied to your own version.
 
 ## Feedback
 
