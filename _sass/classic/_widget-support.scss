@@ -40,3 +40,28 @@
 		}
 	}
 }
+
+// For the categories
+.categories {
+	
+	// Do not display the checkbox
+	input { display: none; }
+	
+	p { margin: 0 }
+	
+	a {
+		text-decoration: none;
+		display: block;
+		background-color: $category-item-background-color;
+	}
+	a:hover { background-color: $category-item-background-hover-color; }
+	
+	label h1 { background-color: $category-header-background-color; }
+	label h1:hover { background-color: $category-header-background-hover-color; }
+	
+	.title { padding: $category-item-padding; }
+	
+	// Only display the categories when the cat input checkbox is active
+	.title { display: none; }
+	input:checked ~ { .title { display: block; } }
+}

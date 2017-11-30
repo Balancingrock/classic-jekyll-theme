@@ -1,6 +1,10 @@
 <!-- This widget divider will only show up in the narrow layout -->
 <div class="secondary-widget-divider"></div>
 
+{% if site.data.setup.drop-down-menu %}{% else %}
+<div class="widget-divider"></div>
+{% endif %}
+
 <div class="widget">{% include widgets/recent-posts.html %}</div>
 
 <div class="widget-divider"></div>
@@ -14,3 +18,7 @@
 <div class="widget-divider"></div>
 
 <div class="widget">{% include widgets/older-posts.html %}</div>
+
+<div class="widget-divider"></div>
+
+<div class="widget">{% include widgets/categories.html label-modifier=include.label-modifier %}</div>

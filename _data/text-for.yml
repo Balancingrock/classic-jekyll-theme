@@ -12,6 +12,9 @@ tCategories: Categories
 # Title on categories page
 tCategory: Category
 
+# When no categories are present
+tNoCategories: None
+
 # Message on category page if no posts have been found
 tNoBlogpostFound: No blogposts found for this category
 

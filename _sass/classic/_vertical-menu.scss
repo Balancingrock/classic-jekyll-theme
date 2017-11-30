@@ -1,0 +1,158 @@
+// For the vertical menu that can be used on top of the secondary column (wide & mediaum layout) or the primary column (narrow layout).
+//
+// This menu is shown when site.data.setup.navbanner-drop-down-menu is set to 'no'.
+//
+.vmenu {
+
+	// Stack the child elements on top of each other (the child elements are of class 'item')
+	display: flex;
+	flex-direction: column;
+
+	// Backgound color for the entire vmenu
+	background-color: $vmenu-background-color;
+	
+	// Box appearance for the entire vmenu
+	box-shadow: $vmenu-box-shadow;
+
+	// The p's should not drive the display, make them as small as possible
+	p { margin: 0px; }
+
+	a {
+		// Remove link underline
+	 	text-decoration: none;
+
+		// Make sure the whole width and height of the link area is clickable
+		display: block;
+	}
+		
+	// Make sure the link in the title takes up the entire available area
+	.title { flex-grow: 1; }
+	
+	.item {
+			
+		// Make the input checkbox invisible
+		input { display: none }
+
+		// Place the components below each other.
+		display: flex;
+		flex-direction: column;
+	
+		input:checked ~ {
+		
+			// Show the correct symbol for this state.
+			.sub label .symbol:after { content: $vmenu-disclosure-symbol-open; }
+			
+			// Show the subsub's
+			.subsub { display: flex }
+		}
+
+		.sub {
+				
+			// Place the components next to each other
+			display: flex;
+					
+			.disclosure {
+		
+				// Center the disclosure symbol
+				display: flex;
+				justify-content: center;
+				align-items: center;
+								
+				// Display the proper disclosure symbol
+				.symbol:after { content: $vmenu-disclosure-symbol-closed; }
+			}
+		}
+		
+		// Not visible unless the checkbox is active
+		.subsub { display: none; }
+
+		// For the narrow layout only
+		@include narrow-layout {
+	
+			.sub {
+				
+				// Appearance
+				border: $vmenu-subitem-border-narrow;
+				background-color: $vmenu-subitem-background-color-narrow;
+	
+				// Create a small separator between symbol and title
+				.disclosure {
+					border-right: 2px solid $vmenu-background-color;					
+					width: $vmenu-disclosure-symbol-width-narrow;
+				}
+				
+				// Allow for some padding to change the size of this element
+				.title p { padding: $vmenu-subitem-padding-narrow; }
+			}
+			
+			.subsub {
+											
+				// Set border and background
+				border: $vmenu-subsubitem-border-narrow;
+				background-color: $vmenu-subsubitem-background-color-narrow;
+				
+				.disclosure {
+
+					width: $vmenu-subsubitem-indent-narrow;
+
+					// Create a small separator between symbol and title
+					border-right: 2px solid $vmenu-background-color;
+				}
+				
+				// Allow for some padding to change the size of this element
+				.title { p { padding: $vmenu-subsubitem-padding-narrow; } }
+			}			
+		}
+		
+		// For the medium layout only
+		@include medium-and-wide-layout {
+		
+			.sub {
+
+				// Color control
+				color: $vmenu-subitem-color;
+				background-color: $vmenu-subitem-background-color;
+				
+				// Set disclosure width
+				.disclosure { width: $vmenu-disclosure-symbol-width; }
+
+				// Show that this is the active page
+				.active-page { background-color: $vmenu-subitem-hover-background-color; }
+				
+				// The show-hover class is used to show hovering for non-link subitems
+				a:hover, .show-hover:hover {
+					color: $vmenu-subitem-hover-color;
+					background-color: $vmenu-subitem-hover-background-color;
+				}
+
+				p {
+					font: $vmenu-subitem-font;
+					padding: $vmenu-subitem-padding;
+				}
+			}
+	
+			.subsub {
+
+				// Color control
+				color: $vmenu-subitem-color;
+				background-color: $vmenu-subitem-background-color;
+				
+				// Compensate for the 
+				.disclosure { width: $vmenu-subsubitem-indent; }
+					
+				p {
+					font: $vmenu-subsubitem-font;
+					padding: $vmenu-subsubitem-padding;
+				}
+				
+				// Show that this is the active page
+				.active-page { background-color: $vmenu-subsubitem-hover-background-color; }
+
+				a:hover {
+					color: $vmenu-subitem-hover-color;
+					background-color: $vmenu-subsubitem-hover-background-color;
+				}
+			}
+		}		
+	}
+}

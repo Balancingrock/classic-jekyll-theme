@@ -43,10 +43,10 @@ $theme-color:							green;
 $wide-body-background:					none;
 $medium-body-background:				none;
 $narrow-body-background:				none;
-$wide-banner-background:				none;
-$medium-banner-background:				none;
-$narrow-banner-background:				none;
-$menubar-background:					none;
+$wide-banner-background:				white; // Must have color to show proper scrolling for top-fixed option
+$medium-banner-background:				white; // Must have color to show proper scrolling for top-fixed option
+$narrow-banner-background:				white; // Must have color to show proper scrolling for top-fixed option
+$menubar-background:					white; // Must have color to show proper scrolling for top-fixed option
 $column-panel-background:				none;
 $primary-column-background:				none;
 $secondary-column-background:			none;
@@ -80,10 +80,16 @@ $narrow-icon-voffset:					0px;
 $narrow-icon-hoffset:					0px;
 
 // Setting a height for the banner. This can be helpfull if a background image or icon has to be displayed.
-// Note that for 'auto' the banner height is determined by the title text.
-$wide-banner-height:					auto; // Set to 'auto' to disable a minimum height
-$medium-banner-height:					auto; // Set to 'auto' to disable a minimum height
-$narrow-banner-height:					auto; // Set to 'auto' to disable a minimum height
+// Note1: for 'auto' or percentages the banner height is determined by the title text.
+// Note2: when site.data.setup.navbanner-position is set to 'top-fixed' the values for wide and medium *must* be set to a pixel value.
+$wide-banner-height:					80; // Set to 'auto' to disable a minimum height
+$medium-banner-height:					64; // Set to 'auto' to disable a minimum height
+$narrow-banner-height:					48; // Set to 'auto' to disable a minimum height
+
+// These values are only used if the navbanner is fixed to the top of the browser window.
+$wide-menu-height:                 		32px; // Must be set for site.data.setup.navbanner-position == 'top-fixed'
+$medium-menu-height:               		20px; // Must be set for site.data.setup.navbanner-position == 'top-fixed'
+$narrow-menu-height:                     4px; // Must be set for site.data.setup.navbanner-position == 'top-fixed'
 
 // Shift the title this much to the right or left to fine-tune the title placement. Normally it is centered in wide and slightly to the right for medium and narrow (because of the menu symbol).
 // Implementation note: actually sets a margin-left and margin-top on the p that holds the title.
@@ -137,6 +143,14 @@ $menu-item-separator:					''; // Default = nothing
 // for more options, see "justif-content".
 $menu-alignment:						center;
 
+// Set the wrapping of (top) menu items in the main menu bar.
+// Values: normal | nowrap
+// - normal: to allow wrapping
+// - nowrap: to prevent wrapping
+//
+// Hint: If the navbanner bar is top-fixed then resizing the window could cause wrapping of the menu items. Which in turn could cause problems with the content below it. If a wrap is necessary then make sure to choose a $xxx-menu-height that allows a wrap to occur without obscuring content.
+$menu-item-wrap:						nowrap;
+
 // Navigation menu coloring and sizing
 $menu-symbol-color:						$theme-color;
 $menu-item-font-color:					$theme-color;
@@ -156,25 +170,96 @@ $narrow-menu-subitem-height:    		2.5 * $vspacing-unit;
 $navbar-side-margin:					$hspacing-unit; // Only for medium and wide navbars
 $navbar-menu-item-spacing:				$hspacing-unit; // Only for medium and wide navbars
 
-// Column width specification. The secondary and tertiary column can be removed in the _config.yml file.
-$primary-column-min-width:				480px;
-$secondary-column-width: 				240px;
-$tertiary-column-width:					240px;
+// *********************************************************************************************************************
+// Vertical menu
+// ---------------------------------------------------------------------------------------------------------------------
+// The vertical menu is shown when the site.data.setup.drop-down-menu is set to 'no'.
+// It is inserted above the secondary column in the wide and medium layouts.
+// It is inserted above the primary column in the narrow layout.
+// The vertical menu contains sub-menu entries as well as sub-sub-menu entries.
+// The sub-sub-menu entries are disclosed by clicking the sub entry containing the sub-sub entry.
+//
+$vmenu-background-color:					white;
+$vmenu-box-shadow:							0 0.25em 0.25em 0 rgba(0,0,0,0.2); // none;
+//
+$vmenu-disclosure-symbol-closed:			'\021E8';
+$vmenu-disclosure-symbol-open:				'\021E9';
+$vmenu-disclosure-symbol-width:				1.2em;
+$vmenu-disclosure-symbol-width-narrow:		10%;
+$vmenu-disclosure-separator-color-narrow: 	$vmenu-background-color;
+//
+$vmenu-subitem-font:						$small-font-size $base-font-family; // size & family are required
+$vmenu-subitem-padding:						$vspacing-unit/8 $hspacing-unit/4;
+$vmenu-subitem-padding-narrow:				$vspacing-unit $hspacing-unit;
+$vmenu-subitem-border-narrow:				1px solid $vmenu-background-color;
+//
+$vmenu-subitem-color:						black;
+$vmenu-subitem-hover-color:					black;
+$vmenu-subitem-background-color:			none;
+$vmenu-subitem-background-color-narrow:		$grey-color-light;
+$vmenu-subitem-hover-background-color:		$grey-color-light;
+//
+$vmenu-subsubitem-font:						$small-font-size $base-font-family; // size & family are required
+$vmenu-subsubitem-indent:					2em; // Should also compensate for the disclosure symbol width
+$vmenu-subsubitem-indent-narrow:			20%; // Should also compensate for the disclosure symbol width
+$vmenu-subsubitem-padding:					$vspacing-unit/8 $hspacing-unit/4;
+$vmenu-subsubitem-padding-narrow:			$vspacing-unit $hspacing-unit;
+$vmenu-subsubitem-border-narrow:			1px solid $vmenu-background-color;
+//
+$vmenu-subsubitem-color:					black;
+$vmenu-subsubitem-hover-color:				black;
+$vmenu-subsubitem-background-color:			none;
+$vmenu-subsubitem-background-color-narrow:	$grey-color-light;
+$vmenu-subsubitem-hover-background-color:	$grey-color-light;
 
-// There should be no need to change the next 4 definitions
-$wide-min-width:						$primary-column-min-width + $secondary-column-width + $tertiary-column-width;
-$medium-max-width:						$wide-min-width - 1;
-$medium-min-width:						$primary-column-min-width + $secondary-column-width;
-$narrow-max-width:						$medium-min-width - 1;
+
+// *********************************************************************************************************************
+// Columns
+// ---------------------------------------------------------------------------------------------------------------------
+// The visibility and placing of the columns is done in site.data.setup.
+// Here only the width of the columns is controlled. Note that the width of the columns in relation to the width of
+// the browser window determine which of the layouts is used.
+//
+$primary-column-min-width:		480px;
+$secondary-column-width: 		240px;
+$tertiary-column-width:			240px;
 
 
-// Import partials.
+// *********************************************************************************************************************
+// Categories
+// ---------------------------------------------------------------------------------------------------------------------
+// These settings are used for the categories widget
+//
+$category-header-background-color: 			none;
+$category-header-background-hover-color:	$grey-color-light;
+$category-item-background-color:			none;
+$category-item-background-hover-color:		$grey-color-light;
+$category-item-padding:						$vspacing-unit/8 $hspacing-unit/4 $vspacing-unit/8 $hspacing-unit;
+
+
+// *********************************************************************************************************************
+// Internals
+// ---------------------------------------------------------------------------------------------------------------------
+// Do not change these definitions
+//
+$wide-min-width:				$primary-column-min-width + $secondary-column-width + $tertiary-column-width;
+$medium-max-width:				$wide-min-width - 1;
+$medium-min-width:				$primary-column-min-width + $secondary-column-width;
+$narrow-max-width:				$medium-min-width - 1;
+
+
+// *********************************************************************************************************************
+// Imports
+// ---------------------------------------------------------------------------------------------------------------------
+// Note that later imports will override the settings in earlier imports
+//
 @import
   "classic/normalize",
   "classic/normalize-override",
   "classic/syntax-highlighting",
   "classic/layout",
   "classic/formatting",
+  "classic/vertical-menu",
   "classic/post",
   "classic/page",
   "classic/support",
