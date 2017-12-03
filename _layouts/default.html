@@ -4,7 +4,7 @@
 {% if page.tertiary-column %}{% if page.tertiary-column == 'present' %}{% assign tertiary-column = 'present' %}{% endif %}{% else %}{% if site.data.setup.tertiary-column == 'present' %}{% assign tertiary-column = 'present' %}{% endif %}{% endif %}
 {% if page.tertiary-column-content %}{% assign tertiary-column-content = page.tertiary-column-content %}{% else %}{% assign tertiary-column-content = 'tertiary-column.html' %}{% endif %}
 {% if page.navbanner-position %}{% assign navbanner-position = page.navbanner-position %}{% else %}{% assign navbanner-position = site.data.setup.navbanner-position %}{% endif %}
-{% if navbanner-position == 'top-fixed' %}{% assign navbanner-classes = 'navbanner-panel-fixed' %}{% assign column-panel-classes = 'column-panel column-panel-fixed' %}{% else %}{% assign navbanner-classes = 'navbanner-panel' %}{% assign column-panel-classes = 'column-panel' %}{% endif%}
+{% if navbanner-position == 'top-fixed' %}{% assign navbanner-classes = 'navbanner-panel navbanner-panel-fixed-menubar' %}{% assign column-panel-classes = 'column-panel column-panel-fixed-menubar' %}{% else %}{% assign navbanner-classes = 'navbanner-panel' %}{% assign column-panel-classes = 'column-panel' %}{% endif%}
 <html>
 
 	{% include head.html %}

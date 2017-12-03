@@ -89,7 +89,7 @@ $narrow-banner-height:					48; // Set to 'auto' to disable a minimum height
 // These values are only used if the navbanner is fixed to the top of the browser window.
 $wide-menu-height:                 		32px; // Must be set for site.data.setup.navbanner-position == 'top-fixed'
 $medium-menu-height:               		20px; // Must be set for site.data.setup.navbanner-position == 'top-fixed'
-$narrow-menu-height:                     4px; // Must be set for site.data.setup.navbanner-position == 'top-fixed'
+$narrow-menu-height:                    4px; // Must be set for site.data.setup.navbanner-position == 'top-fixed'
 
 // Shift the title this much to the right or left to fine-tune the title placement. Normally it is centered in wide and slightly to the right for medium and narrow (because of the menu symbol).
 // Implementation note: actually sets a margin-left and margin-top on the p that holds the title.
@@ -130,46 +130,11 @@ $wide-site-title-font-size:				3.5 * $base-font-size;
 $navbanner-include-banner:              true;
 
 // Special characters used for menu functions
-$menu-symbol-code:          			'\02261'; // Used in narrow and medium banner only
-$menu-closed-submenu-code:				'\021E8'; // Used in narrow when the menu items are visible
-$menu-open-submenu-code:    			'\021E9'; // Used in narrow when the submenu items are visible
-$menu-item-separator:					''; // Default = nothing
+$menu-symbol-code:          			'\02261'; // Used in narrow only
 
-// Alignent of the menu items in the navigation bar.
-// This is done via the "justify-content" flex property, valid values are:
-// flex-start - to start the menu items at the left hand side of the screen
-// center     - to center the menu items in the middle of the navigation bar
-// flex-end   - to have them at the right most position possible
-// for more options, see "justif-content".
-$menu-alignment:						center;
-
-// Set the wrapping of (top) menu items in the main menu bar.
-// Values: normal | nowrap
-// - normal: to allow wrapping
-// - nowrap: to prevent wrapping
-//
-// Hint: If the navbanner bar is top-fixed then resizing the window could cause wrapping of the menu items. Which in turn could cause problems with the content below it. If a wrap is necessary then make sure to choose a $xxx-menu-height that allows a wrap to occur without obscuring content.
-$menu-item-wrap:						nowrap;
 
 // Navigation menu coloring and sizing
 $menu-symbol-color:						$theme-color;
-$menu-item-font-color:					$theme-color;
-$menu-item-hover-color:         		black;
-$menu-subitem-font-color:   			$theme-color;
-$menu-subitem-hover-color:      		black;
-$narrow-menu-item-background-color:		$grey-color-light;
-$narrow-menu-subitem-background-color:	$grey-color-light;
-$medium-menu-subitem-background-color:	$grey-color-light-light;
-$wide-menu-subitem-background-color:	$medium-menu-subitem-background-color;
-$menu-item-font-size:       			$base-font-size;
-$menu-subitem-font-size:				$small-font-size;
-$narrow-menu-item-height:				3 * $vspacing-unit;
-$narrow-menu-subitem-height:    		2.5 * $vspacing-unit;
-
-// Navigation bar formatting
-$navbar-side-margin:					$hspacing-unit; // Only for medium and wide navbars
-$navbar-menu-item-spacing:				$hspacing-unit; // Only for medium and wide navbars
-
 
 // *********************************************************************************************************************
 // Menu bar (& dropdown)
@@ -202,6 +167,8 @@ $menubar-item-separator-line-width-narrow:			4px;
 $menubar-item-separator-line-color-narrow:			$menubar-background-color;
 $menubar-item-padding-medium:						$vspacing-unit/4 $hspacing-unit;
 $menubar-item-padding-wide:							$vspacing-unit/4 $hspacing-unit;
+$menubar-item-title-symbol-code-closed-narrow:		'\021E8';
+$menubar-item-title-symbol-code-open-narrow:		'\021E9';
 $menubar-item-disclosure-symbol-width-narrow:		10%;
 //
 $menubar-separator-symbol-medium:					'';
