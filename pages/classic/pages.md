@@ -20,4 +20,4 @@ Pages in classic can be linked to from the navigation menu. To do so there are s
 
 For a consistent user experience in the narrow layout, it is recommended not to link pages to top level menu items if these menu items have a drop-down submenu.
 
-Submenus only go one level deep. If deeper nesting is necessary, send me a mail at: rien@balancingrock.nl
+Dropdown menus only go one level deep. If deeper nesting is necessary, use the vertical menu.

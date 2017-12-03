@@ -29,6 +29,16 @@ secondary-column: left
 #
 tertiary-column: present
 
+# Skip some of the build process for faster recompilation during content creation.
+# Values: yes | no
+# - yes: If the jekyll.environment variable is *not* set to 'production', then various aspects (menu, categories) are skipped during jekyll compilation. This speeds up the content development cycle quite a lot.
+# - no: Always generate the site completely.
+#
+# Currently applies to the dropdown menu, the vertical-menu, the categories (widget), the older-posts widget and the recent-post widget.
+# Since the menu structure is not available for site navigation, use the url to view the content under creation. Or first view the new content, then enable fast content build and use refresh in the browser.
+#
+fast-content-build: no
+
 # For the number of posts visible on the home page.
 # Value: > 0
 #
@@ -62,14 +72,14 @@ navbanner-position: top-fixed
 #
 # Note: The drop down menu does not display sub-sub menu items, the vertical menu does. This setting can affect the use-separate-navbanner setting.
 #
-drop-down-menu: no 
+drop-down-menu: yes 
 
 # Controls the generation of the categories menu entry in the menu bar. Has no impact on the categories widget.
 # Values: yes | no
 # - yes: The categories menu entry is generated.
 # - no : The categories menu entry is not generated.
 #
-generate-categories-menu: no
+generate-categories-menu: yes
 
 # Create a separate file containing the Navigation & Banner.
 # Values: yes | no
@@ -83,8 +93,12 @@ generate-categories-menu: no
 # Using a separate navbanner file can speed up jekyll compilation a lot. However it also means that the browser has to make two additional fetches: the navbanner file and the jQuery library (the latter from google). However this is mitigated by the fact that both files can be cached by the browser.
 # If another jQuery library has to be used, edit the _includes/head.html file accordingly.
 #
-# Note: If this option is set to 'yes', then make sure the file 'navbanner.md' is present (can be found in the theme folder) in the same project folder as the index.md file.
+# Note 1: If this option is set to 'yes', then make sure the file 'navbanner.md' is present (can be found in the theme folder) in the same project folder as the index.md file.
+#
+# Note 2: When a separate navbanner file is used the menubar will not be able to highlight the active page.
+#
+# Hint: Keep this option set to 'yes' during development when jekyll auto regeneration is used during content development. Then switch it back to 'no' for the version that is published.
 
-use-separate-navbanner: yes
+use-separate-navbanner: no
 
 # End of file

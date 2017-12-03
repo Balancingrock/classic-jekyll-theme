@@ -333,71 +333,133 @@
 	// The dividers should run accross the entire window. Note that they are not always visible, that depends on the active layout.
 	.nav-top-divider { width: 100%; }
 	.nav-bottom-divider { width: 100%; }
-	
-	// The menu is always the entire width.
-	.navbanner-menu { width: 100%; }
-	
+		
 	@include narrow-layout {
 
 		// Override visibility of the label 
 		@if ($navbanner-include-banner == false) { .navbanner-label, .navbanner-title { display: flex; } }
 
 		// Disabled items.
-		.navbanner-menu, .nav-bottom-divider, input, .menu-item-separator { display: none; }
+		.nav-bottom-divider, input { display: none; }
 		
-		// Conditionally visible/invisible items (conditionally on the invisible checkbox, i.e. menu symbol)
-		input:checked ~ {
-		
-			// Display the menu only when the menu-checkbox (invisible) is checked.
-			.navbanner-menu { display: block; }
+		// Display the menu only when the menu-checkbox (invisible) is checked.
+		input:checked ~ { .menubar { display: flex; } }
+
+		.menubar {
+
+			// Is only visible when the menu symbol is selected
+			display: none;
+
+			// This forces the menu items below the banner.
+			width: 100%;
 			
-			// Do not display the top divider when the menu is visible.
-			.nav-top-divider { display: none; }
-		}
+			// Display the menu items vertically.
+			flex-direction: column;
+			
+			// Appearances
+			background-color: $menubar-background-color;
+			
+			// Make sure the separator is empty
+			.separator:after { content: ''; }
+			.separator {
+				//display: block;
+				width: 100%;
+				height: $menubar-item-separator-line-width-narrow;
+				background-color: $menubar-item-separator-line-color-narrow;
+			}
+			
+			.item {
+			
+				// Layout
+				display: flex;
+				flex-direction: column;
+				
+				// Appearance
+				background-color: $menubar-item-background-color-narrow;
 
-		// Only visible when the menu symbol invisible checkbox is selected
-		.navbanner-menu {
-		
-			// For the top level list (menu) items
-			li {
+				// Make the link areas as big as possible
+				a {	width: 100%; height: 100%; }
+				
+				// Remove link underlining
+				a { text-decoration: none; }
 
-				// Disable submenu by default
-				ul { display: none; }
-
-				// When the submenu is closed, show the appropriate symbol
-				label .menu-item .menu-item-symbol p:after { content: $menu-closed-submenu-code; }
+				// Use the item color for all elements
+				p { color: $menubar-item-color }
 
 				// If the checkbox is checked
 				input:checked ~ {
 
 					// Show submenu
-					ul { display: block; }
+					.dropdown { display: flex; }
 
 					// When the submenu is open, show the appropriate symbol
-					label .menu-item .menu-item-symbol p:after { content: $menu-open-submenu-code; }
+					.title .symbol .code:after { content: $menu-open-submenu-code; }
 				}
 
-				// Ensure that the whole width and height of a link is clickable
-				a { display: block; }	
-			}
+				.title {
+				
+					// Layout
+					display: flex;
+					height: $menubar-item-height-narrow;
+					.symbol { width: $menubar-item-disclosure-symbol-width-narrow; }
+					.text { width: 100%; } // Takes up remainder of .title width
+					
+					.symbol {
 
-			// Use the flex layout for the menu items
-			.menu-item, .menu-subitem {
-			
-				display: flex;
-				flex-direction: row;
+						// Layout: Center the disclosure symbol
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						
+						// Load the disclosure symbol for the closed state
+						.code:after { content: $menu-closed-submenu-code; }
+					}
+					
+					.text {
 
-				// Align all items in the center
-				align-items: center;
-
-				// Fix the display property for the menu item symbol and title area's when a <p> is included
-				.menu-item-symbol { p { display: inline; } }
-		
-				// The symbol area does not grow
-				.menu-item-symbol, .menu-subitem-symbol { flex-grow: 0; width: 3 * $hspacing-unit; }
-
-				// The title area must grow
-				.menu-item-title, .menu-subitem-title { flex-grow: 1; }
+						// Layout: Center vertically and justify-left
+						display: flex;
+						justify-content: start;
+						align-items: center;
+					}
+				}
+								
+				.dropdown {
+				
+					// Disable submenu by default
+					display: none;
+					
+					// Subitems are stacked vertically
+					flex-direction: column;
+					
+					.separator {
+						display: block;
+						width: 100%;
+						height: $menubar-subitem-separator-line-width-narrow;
+						background-color: $menubar-subitem-separator-line-color-narrow;
+					}
+					
+					.subitem .title {
+						
+						// Layout (row oriented)
+						display: flex;
+						
+						// Appearance
+						background-color: $menubar-subitem-background-color-narrow;
+						
+						.symbol { width: $menubar-item-disclosure-symbol-width-narrow; }
+						
+						.text a {
+							display: flex;
+							justify-content: start;
+							align-items: center;
+						}
+						
+						p { padding-left: $menubar-subitem-indent; }
+					}
+					
+					//a, paddingAsLink { padding: $menubar-subitem-padding-narrow; }
+				}
 			}
 		}
 	}
@@ -405,115 +467,221 @@
 	@include medium-layout {
 
 		// Do not show the checkbox label, the input(s) and the menu symbols
-		.navbanner-label, input, .menu-item-symbol { display: none; }
+		.navbanner-label, input, .symbol { display: none; }
 		
-		.navbanner-menu {
+		.menubar {
 		
 			// Use flex to enable alignment of the top level menu items
 			display: flex;
 			flex-direction: row;
 			flex-wrap: nowrap;
-			justify-content: $menu-alignment;
+			justify-content: $menubar-justify-content;
 
-			// Create a left and right spacing
-			border-left: ($navbar-side-margin - ($navbar-menu-item-spacing / 2)) solid transparent;
-			border-right: $navbar-side-margin solid transparent;
+			// Appearances
+			background-color: $menubar-background-color;
+			padding: $menubar-padding-medium;
+			border: $menubar-border;
+			box-shadow: $menubar-box-shadow;
 			
-			// Menu item spacing
-			.menu-item {
-				border-left: ($navbar-menu-item-spacing / 2) solid transparent;
-				border-right: ($navbar-menu-item-spacing / 2) solid transparent;
-			}
-			.menu-item-separator p:after { content: $menu-item-separator; }
+			.separator {
+	
+				// Set padding
+				padding: $menubar-separator-padding-medium;
+	
+				// Set the separator symbol
+				p:after { content: $menubar-separator-symbol-medium; }
 
-			// This menu is horizontal, all list components should be inline
-			.menu-item, .menu-item-separator, .menu-item-title, menu-subitem-title {
-				display: inline;
-				p { display: inline; }
-			}
+				// The font for the separator
+				p { font: $menubar-separator-font-medium; }
 
-			ul {
-				// Controls wrapping of the menu items.
-				white-space: $menu-item-wrap;
+				// Color it
+				color: $menubar-separator-color;
+				background-color: $menubar-separator-background-color;
+			}
+			
+			// Make all p's as small as possible
+			p { margin: 0; padding: 0; }
+			
+			.item {
+			
+				// Vertical layout
+				display: flex;
+				flex-direction: column;
+			
+				// Hover effect
+				p { color: $menubar-item-color; }
+				background-color: $menubar-item-background-color;
+				&:hover {
+					p { color: $menubar-item-hover-color; }
+					background-color: $menubar-item-background-hover-color;
+				}
 				
-				li {
-					
-					// This menu is horizontal
-					display: inline-block;
-					
-					// The submenu display
-					ul {
-						display: none; // Initially disabled
-						position: absolute; // Display the submenu below the corresponding menu item
-						li { display: block; } // Makes the submenu vertical
+				// Make the entire hightlight block clickable
+				a {	display: block; }
+				
+				// Remove the link underlining
+				a { text-decoration: none; }
+
+				// Sizing of the items
+				a, .paddingAsLink { padding: $menubar-item-padding-medium;}
+
+				// Font for the item text
+				p { font: $menubar-item-font-medium; }
+
+				// Display the submenu if the user hovers the mouse over it
+				&:hover .dropdown { display: block; }
+
+				// Display the submenu if the user taps the corresponding menu item
+				input:checked ~ .dropdown { display: block; }					
+
+				.dropdown {
+						
+					// Visibility depends on hovering over the item
+					display: none;
+
+					// Keep the size of the item unaffected by the subitems
+					position: absolute;
+						
+					// Appearances
+					border: $menubar-dropdown-border;
+					box-shadow: $menubar-dropdown-box-shadow;
+
+					.subitem {
+							
+						// Hover effect
+						p { color: $menubar-subitem-color; }
+						background-color: $menubar-subitem-background-color;
+						&:hover {
+							p { color: $menubar-subitem-hover-color; }
+							background-color: $menubar-subitem-background-hover-color;
+						}
+							
+						// Sizing of the subitems
+						a, .paddingAsLink { padding: $menubar-subitem-padding-medium; }
+							
+						// Font for subitem text
+						p { font: $menubar-subitem-font-medium; }
 					}
 
-					// Display the submenu if the user hovers the mouse over it
-					&:hover ul { display: block; }
-
-					// Display the submenu if the user taps the corresponding menu item
-					input:checked ~ ul { display: block; }
+					// Show selection for pages that match a menu entry
+					.isActiveSelection { background-color: $menubar-subitem-active-selection-background-color; }
 				}
 			}
+			
+			// Show selection for pages that match a menu entry
+			.isActiveSelection { background-color: $menubar-item-active-selection-background-color; }
 		}
 	}
 
 	@include wide-layout {
 
 		// Do not show the checkbox label, the input(s) and the menu symbols
-		.navbanner-label, input, .menu-item-symbol { display: none; }
+		.navbanner-label, input, .symbol { display: none; }
 		
-		.navbanner-menu {
+		.menubar {
 		
 			// Use flex to enable alignment of the top level menu items
 			display: flex;
 			flex-direction: row;
 			flex-wrap: nowrap;
-			justify-content: $menu-alignment;
+			justify-content: $menubar-justify-content;
 
-			// Create a left and right spacing
-			border-left: ($navbar-side-margin - ($navbar-menu-item-spacing / 2)) solid transparent;
-			border-right: $navbar-side-margin solid transparent;
+			// Appearances
+			background-color: $menubar-background-color;
+			padding: $menubar-padding-wide;
+			border: $menubar-border;
+			box-shadow: $menubar-box-shadow;
 			
-			// Menu item spacing
-			.menu-item {
-				border-left: ($navbar-menu-item-spacing / 2) solid transparent;
-				border-right: ($navbar-menu-item-spacing / 2) solid transparent;
+			.separator {
+
+				// Set padding
+				padding: $menubar-separator-padding-wide;
+	
+				// Set the separator symbol
+				p:after { content: $menubar-separator-symbol-wide; }
+				
+				// The font for the separator
+				p { font: $menubar-separator-font-wide; }
+
+				// Color it
+				color: $menubar-separator-color;
+				background-color: $menubar-separator-background-color;
 			}
-			.menu-item-separator p:after { content: $menu-item-separator; }
+			
+			// Make all p's as small as possible
+			p { margin: 0; padding: 0; }
+						
+			.item {
+			
+				// Vertical layout
+				display: flex;
+				flex-direction: column;
+						
+				// Hover effect
+				p { color: $menubar-item-color; }
+				background-color: $menubar-item-background-color;
+				&:hover {
+					p { color: $menubar-item-hover-color; }
+					background-color: $menubar-item-background-hover-color;
+				}
+				
+				// Make the entire hightlight block clickable
+				a {	display: block; }
+				
+				// Remove the link underlining
+				a { text-decoration: none; }
+				
+				// Sizing of the items
+				a, .paddingAsLink { padding: $menubar-item-padding-wide;}
+				
+				// Font for the item text
+				p { font: $menubar-item-font-wide; }
 
-			// This menu is horizontal
-			.menu-item, .menu-item-separator, .menu-item-title, menu-subitem-title {
-				display: inline;
-				p { display: inline; }
-			}
-
-			ul {
-				// Controls wrapping of the menu items.
-				white-space: $menu-item-wrap;
-
-				li {
 					
-					// This menu is horizontal
-					display: inline-block;
+				// Display the submenu if the user hovers the mouse over it
+				&:hover .dropdown { display: block; }
+
+				// Display the submenu if the user taps the corresponding menu item
+				input:checked ~ .dropdown { display: block; }					
+
+				.dropdown {
 					
-					// The submenu display
-					ul {
-						display: none; // Initially disabled
-						position: absolute; // Display the submenu below the corresponding menu item
-						li { display: block; } // Makes the submenu vertical
+					// Visibility depends on hovering over the item
+					display: none;
+					
+					// Keep the size of the item unaffected by the subitems
+					position: absolute;
+						
+					// Appearances
+					border: $menubar-dropdown-border;
+					box-shadow: $menubar-dropdown-box-shadow;
+
+					.subitem {
+						
+						// Hover effect
+						p {	color: $menubar-subitem-color; }
+						background-color: $menubar-subitem-background-color;
+						&:hover {
+							p {	color: $menubar-subitem-hover-color; }
+							background-color: $menubar-subitem-background-hover-color;
+						}
+							
+						// Sizing of the subitems
+						a, .paddingAsLink { padding: $menubar-subitem-padding-wide; }
+
+						// Font for the subitem text
+						p { font: $menubar-subitem-font-wide; }
 					}
-
-					// Display the submenu if the user hovers the mouse over it
-					&:hover ul { display: block; }
-
-					// Display the submenu if the user taps the corresponding menu item
-					input:checked ~ ul { display: block; }
+						
+					// Show selection for pages that match a menu entry
+					.isActiveSelection { background-color: $menubar-subitem-active-selection-background-color; }
 				}
 			}
+			
+			// Show selection for pages that match a menu entry
+			.isActiveSelection { background-color: $menubar-item-active-selection-background-color; }
 		}
 	}
-
 }
 
 

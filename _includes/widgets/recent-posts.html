@@ -1,3 +1,4 @@
+{% if jekyll.environment != 'production' and site.data.setup.fast-content-build %}{% else %}
 {% comment %}
 
 Usage:
@@ -15,4 +16,4 @@ Configure the text for the header message in "_data/text-for.yml" for the item `
 		<p><a href="{{ post.url }}">{% if post.date %}{{ post.date | date: "%F" }}{% endif %} {{ post.title }}</a></p>
 	{% endfor %}
 </div>
-
+{% endif %}

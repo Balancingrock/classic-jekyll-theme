@@ -14,7 +14,7 @@
 <div class="nav-top-divider"></div>
 
 <!-- Navigation bar visibility depends on screen width. -->
-<nav class="navbanner-menu">
+<nav class="menubar">
 
 	<!-- Create a list of top menu item titles -->
 	{% assign topTitles = "" | split: "" %}
@@ -22,39 +22,42 @@
 	{% for ape in sortedPages %}{% assign topTitles = topTitles | push: ape.menuTopTitle %}{% endfor %}
 	{% assign topTitles = topTitles | uniq %}
 
-	<!-- Using the above list, create the menu and submenu's -->
-	<ul>
-			
-		<!-- Home page -->
-		{% assign home = 'Home' %}
-		{% if site.data.text-for.tHome %}{% assign home = site.data.text-for.tHome %}{% endif %}
-		<li>
-			<div class="menu-item">
-				<div class="menu-item-symbol"></div>
-				<div class="menu-item-title"><a href="{{ site.url }}{{ site.baseurl }}"><p>{{ home }}</p></a></div>
+	<!-- Home page -->
+	{% assign home = 'Home' %}
+	{% if site.data.text-for.tHome %}{% assign home = site.data.text-for.tHome %}{% endif %}
+	<div class="item">
+		<div class="title">
+			<label class="symbol">
+				<p></p>
+			</label>
+			<div class="text">
+				<a href="{{ site.url }}{{ site.baseurl }}"><p>{{ home }}</p></a>
 			</div>
-		</li>
+		</div>
+	</div>
+	
+	<!-- Page menus -->
+	{% for topTitle in topTitles %}
 		
-		<!-- Page menus -->
-		{% for topTitle in topTitles %}
-		
+		{% if jekyll.environment != 'production' and site.data.setup.fast-content-build %}{% else %}
+
 			{% if site.data.setup.drop-down-menu %}
 
 				<!-- Create a list of sub menu item titles -->
 			
 				{% comment %}<!-- note: the html comment tags are for editor coloring support
 			
-				Due to the poor support for variables in Liquid we have to resort to some fairly laborious code.
+			Due to the poor support for variables in Liquid we have to resort to some fairly laborious code.
 			
-				First determine all pages that contain sub menu information for the running top menu item. These are collected in "titlePages"
+			First determine all pages that contain sub menu information for the running top menu item. These are collected in "titlePages"
 			
-				Then create four lists containing the sub menu title, index, url and link respectively. These lists are all in the same sequence such that entry [n] is applicable to the same sub menu in all lists. (I.e. they are synchronous)
+			Then create four lists containing the sub menu title, index, url and link respectively. These lists are all in the same sequence such that entry [n] is applicable to the same sub menu in all lists. (I.e. they are synchronous)
 			
-				Then sort the lists into four new lists. Again these lists must be kept synchronous.
+			Then sort the lists into four new lists. Again these lists must be kept synchronous.
 			
-				Lastly, step through the lists to create the actual sub menu's
+			Lastly, step through the lists to create the actual sub menu's
 			
-				-->{% endcomment %}
+			-->{% endcomment %}
 			
 				{% assign titlePages = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle %}
 			
@@ -134,113 +137,136 @@
 						{% continue %}
 					{% endif %}
 				{% endfor %}
-			
+		
 			{% endif %}
-			
-			<li>
+		{% endif %}
+		
+		<div class="separator"><p><!-- empty but necessary --></p></div>
+		
+		<!-- If the menu selection and active page are the same, show it -->
+		{% if page.menuTopTitle == topTitle  %}
+			{% if page.menuLink == false %}
+				<div class="item">
+			{% else %}
+				<div class="item isActiveSelection">
+			{% endif %}
+		{% else %}
+			<div class="item">
+		{% endif %}
 
-				<!-- Create top menu item -->
-				<input type="checkbox" id="{{ topTitle | append:'-checkbox'}}">
-				<label for="{{ topTitle | append:'-checkbox'}}">
-					<div class="menu-item-separator"><p><!-- empty but necessary --></p></div>
-					<div class="menu-item">
-						<div class="menu-item-symbol">
-						{% if sortedSubMenuTitles.size > 0 %}
-							<p><!-- will be filled by disclosure indicator --></p>
-						{% endif %}
-						</div>
-						<div class="menu-item-title">
-							<!-- Find page to link to -->
-						{% assign pageFound = false %}
-						{% for ape in site.pages %}
-							{% if ape.menuTopTitle == topTitle and ape.menuSubTitle == nil and ape.menuSubs == nil %}
-								{% if ape.menuLink == false %}
-									<p>{{ topTitle }}</p>
-								{% else %}
-									<a href="{{ ape.url }}"><p>{{ topTitle }}</p></a>
-								{% endif %}
-								{% assign pageFound == true %}
-								{% break %}
-							{% endif %}
-						{% endfor %}
-						{% if pageFound == false %}
-							<p>{{ topTitle }}</p>
-						{% endif %}
-						</div>
-					</div>
+			<!-- Create top menu item -->
+			<input type="checkbox" id="{{ topTitle | append:'-checkbox'}}">
+			<div class="title">
+				<label class="symbol" for="{{ topTitle | append:'-checkbox'}}">
+					{% if sortedSubMenuTitles.size > 0 %}
+						<p class="code"><!-- will be filled by disclosure indicator --></p>
+					{% else %}
+						<p></p>
+					{% endif %}
 				</label>
-			
+				<div class="text">
+					<!-- Find page to link to -->
+					{% assign pageFound = false %}
+					{% for ape in site.pages %}
+						{% if ape.menuTopTitle == topTitle and ape.menuSubTitle == nil and ape.menuSubs == nil %}
+							{% if ape.menuLink == false %}
+								<p class="paddingAsLink">{{ topTitle }}</p>
+							{% else %}
+								<a href="{{ ape.url }}"><p>{{ topTitle }}</p></a>
+							{% endif %}
+							{% assign pageFound = true %}
+							{% break %}
+						{% endif %}
+					{% endfor %}
+					{% if pageFound == false %}
+						<p class="paddingAsLink">{{ topTitle }}</p>
+					{% endif %}
+				</div>
+			</div>
+				
+
+			{% if jekyll.environment != 'production' and site.data.setup.fast-content-build %}{% else %}
 				{% if site.data.setup.drop-down-menu %}
 
 					<!-- Create sub menu items -->
 					{% if sortedSubMenuTitles.size > 0 %}
-						<ul>
-						{% for subTitle in sortedSubMenuTitles %}
-							{% if sortedSubMenuLinks[forloop.index0] != false %}
-							<li>
-								<div class="menu-subitem">
-									<div class="menu-subitem-symbol"></div>
-									<div class="menu-subitem-title">
-										<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subTitle }}</p></a>
+						<div class="dropdown">
+							{% for subTitle in sortedSubMenuTitles %}
+								<div class="separator"><p></p></div>
+								{% if sortedSubMenuLinks[forloop.index0] != false %}
+									{% if sortedSubMenuUrls[forloop.index0] == page.url %}
+										<div class="subitem isActiveSelection">
+									{% else %}
+										<div class="subitem">
+									{% endif %}
+											<div class="title">
+												<div class="symbol"><p></p></div>
+												<div class="text">
+													<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subTitle }}</p></a>
+												</div>
+											</div>
+										</div>
+								{% else %}
+									<div class="subitem">
+										<div class="title">
+											<div class="symbol"><p></p></div>
+											<div class="text"><p class="paddingAsLink">{{ subTitle }}</p></div>
+										</div>
 									</div>
-								</div>
-							</li>
-							{% else %}
-							<li>
-								<div class="menu-subitem">
-									<div class="menu-subitem-symbol"></div>
-									<div class="menu-subitem-title"><p>{{ subTitle }}</p></div>
-								</div>
-							</li>
-							{% endif %}
-						{% endfor %}			
-						</ul>
+								{% endif %}
+							{% endfor %}
+						</div>			
 					{% endif %}
-
 				{% endif %}
-			</li>
-		{% endfor %}
+			{% endif %}
+		</div>
+	{% endfor %}
 
-		<!-- Categories menu -->
+
+	<!-- Categories menu -->
+	{% if jekyll.environment != 'production' and site.data.setup.fast-content-build %}{% else %}
 		{% if site.data.setup.generate-categories-menu %}
 			{% assign cats = site.pages | where:'layout', 'category-page' | sort:'title' %}
 			{% if cats.size > 0 %}
 				{% assign categories = 'Categories' %}
-				{% if site.data.text-for.tCategories %}{% assign categories = site.data.text-for.tCategories %}{% endif %}
-				<li>
+				{% if site.data.text-for.tCategories %}{% assign categories = site.data.text-for.tCategories %}{% endif 	%}
+				<div class="separator"><p><!-- empty but necessary --></p></div>
+				<div class="item">
 					<input type="checkbox" id="category-checkbox">
-					<label for="category-checkbox">
-						<div class="menu-item-separator"><p><!-- empty but necessary --></p></div>
-						<div class="menu-item">
-							<div class="menu-item-symbol">
-								<p><!-- empty but necessary! --></p>
-							</div>
-							<div class="menu-item-title">
-								<p>{{ categories }}</p>
-							</div>
-						</div>
-					</label>
-					<ul>
+					<div class="title">
+						<label class="symbol" for="category-checkbox">
+							{% if cats.size > 0 %}
+								<p class="code"><!-- will be filled by disclosure indicator --></p>
+							{% else %}
+								<p></p>
+							{% endif %}
+						</label>
+						<div class="text"><p class="paddingAsLink">{{ categories }}</p></div>
+					</div>
 				
 					{% if site.data.setup.drop-down-menu %}
-
-						{% for cat in cats %}
-							<li>
-								<div class="menu-subitem">
-									<div class="menu-subitem-symbol"></div>
-									<div class="menu-subitem-title">
-										<a href="{{ cat.url }}"><p>{{ cat.title | capitalize }}</p></a>
+						<div class="dropdown">
+							{% for cat in cats %}
+								<div class="separator"><p></p></div>
+								{% if cat.url == page.url %}
+									<div class="subitem isActiveSelection">
+								{% else %}
+									<div class="subitem">
+								{% endif %}
+										<div class="title">
+											<div class="symbol"></div>
+											<div class="title">
+												<a href="{{ cat.url }}"><p>{{ cat.title | capitalize }}</p></a>
+											</div>
+										</div>
 									</div>
-								</div>
-							</li>
-						{% endfor %}
-						</ul>
-				
+							{% endfor %}
+						</div>
 					{% endif %}
-				</li>
+				</div>
 			{% endif %}
 		{% endif %}
-	</ul>
+	{% endif %}
 </nav>
 
 <!-- Separator between navigation bar and column panel. Visibility depends on screen width. -->

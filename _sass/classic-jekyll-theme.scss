@@ -170,8 +170,69 @@ $narrow-menu-subitem-height:    		2.5 * $vspacing-unit;
 $navbar-side-margin:					$hspacing-unit; // Only for medium and wide navbars
 $navbar-menu-item-spacing:				$hspacing-unit; // Only for medium and wide navbars
 
+
 // *********************************************************************************************************************
-// Vertical menu
+// Menu bar (& dropdown)
+// ---------------------------------------------------------------------------------------------------------------------
+// When comparing the html code to the names used here, be advised that the names here refer to the logical element.
+// Actual HTML elements and CSS id/properties may be named differently according to the needs of the code. For example
+// the $menubar-item-padding-medium is not neccesarily applied to the CSS id 'item'.
+//
+// The menubar contains a sequence of menubar items and menubar separators. The menubar items correspond to the
+// menuTopTitle in the YAML frontmatter. Below the menu item there can be a dropdown box containing the subitems.
+// The subitems correspond to menuSubTitle and menuSubs.title YAML frontmatter.
+//
+$menubar-justify-content:							center; // Flexbox property
+$menubar-background-color:							white;
+$menubar-padding-medium:							0;
+$menubar-padding-wide:								0;
+$menubar-border:									none;
+$menubar-box-shadow:								none;
+//
+$menubar-item-font-medium:							$base-font-size $base-font-family; // size & family are required
+$menubar-item-font-wide:							$base-font-size $base-font-family; // size & family are required
+$menubar-item-color:								$theme-color;
+$menubar-item-hover-color:							black;
+$menubar-item-background-color:						white;
+$menubar-item-background-color-narrow:				$grey-color-light;
+$menubar-item-background-hover-color:				$grey-color-light;
+$menubar-item-active-selection-background-color:	$grey-color-light;
+$menubar-item-height-narrow:						3 * $hspacing-unit;
+$menubar-item-separator-line-width-narrow:			4px;
+$menubar-item-separator-line-color-narrow:			$menubar-background-color;
+$menubar-item-padding-medium:						$vspacing-unit/4 $hspacing-unit;
+$menubar-item-padding-wide:							$vspacing-unit/4 $hspacing-unit;
+$menubar-item-disclosure-symbol-width-narrow:		10%;
+//
+$menubar-separator-symbol-medium:					'';
+$menubar-separator-symbol-wide:						'';
+$menubar-separator-font-medium:						$base-font-size $base-font-family; // size & family are required
+$menubar-separator-font-wide:						$base-font-size $base-font-family; // size & family are required
+$menubar-separator-color:							$theme-color;
+$menubar-separator-background-color:				$menubar-item-background-color;
+$menubar-separator-padding-medium:					$vspacing-unit/4 0;
+$menubar-separator-padding-wide:					$vspacing-unit/4 0;
+//
+$menubar-dropdown-border:							none;
+$menubar-dropdown-box-shadow:						0 0.25em 0.25em 0 rgba(0,0,0,0.2);
+//
+$menubar-subitem-font-medium:						$small-font-size $base-font-family; // size & family are required
+$menubar-subitem-font-wide:							$small-font-size $base-font-family; // size & family are required
+$menubar-subitem-color:								$theme-color;
+$menubar-subitem-hover-color:						black;
+$menubar-subitem-background-color: 					white;
+$menubar-subitem-background-color-narrow: 			$grey-color-light;
+$menubar-subitem-background-hover-color:			$grey-color-light;
+$menubar-subitem-active-selection-background-color:	$grey-color-light;
+$menubar-subitem-separator-line-width-narrow:		2px;
+$menubar-subitem-separator-line-color-narrow:		$menubar-background-color;
+$menubar-subitem-indent:							$hspacing-unit;
+$menubar-subitem-padding-medium:					$vspacing-unit/4 $hspacing-unit;
+$menubar-subitem-padding-wide:						$vspacing-unit/4 $hspacing-unit;
+
+
+// *********************************************************************************************************************
+// Vertical menu widget
 // ---------------------------------------------------------------------------------------------------------------------
 // The vertical menu is shown when the site.data.setup.drop-down-menu is set to 'no'.
 // It is inserted above the secondary column in the wide and medium layouts.

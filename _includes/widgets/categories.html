@@ -1,3 +1,4 @@
+{% if jekyll.environment != 'production' and site.data.setup.fast-content-build %}{% else %}
 <!-- Categories widget -->
 <div class="categories">
 	{% assign categories = 'Categories' %}
@@ -15,3 +16,4 @@
 		<div class="title"><p>{{ no-categories | capitalize }}</p></div>
 	{% endif %}
 </div>
+{% endif %}

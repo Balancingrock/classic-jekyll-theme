@@ -1,3 +1,5 @@
+{% if jekyll.environment != 'production' and site.data.setup.fast-content-build %}{% else %}
+
 <!-- Get the top menu item for which to create the menu -->
 {% assign topTitle = page.menuTopTitle %}
 
@@ -233,3 +235,5 @@
 		
 	{% endfor %}
 </div>
+
+{% endif %}

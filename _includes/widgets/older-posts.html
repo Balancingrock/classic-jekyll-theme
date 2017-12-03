@@ -1,3 +1,4 @@
+{% if jekyll.environment != 'production' and site.data.setup.fast-content-build %}{% else %}
 {% comment %}
 
 Usage:
@@ -47,4 +48,4 @@ Translations can be configure in the _data/text-for.yml file for the items `tOld
 	{% if monthDetails == yes %}</details>{% assign monthDetails == no %}{% endif %}
 	{% if yearDetails == yes %}</details>{% assign yearDetails == no %}{% endif %}
 </div>
-
+{% endif %}
