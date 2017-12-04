@@ -1,3 +1,24 @@
+// Formatting for the widgets. Note that widgets are small.
+.widget {
+	font-size: $small-small-font-size;
+	h1 { font-size: $small-font-size; font-weight: bold; }
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure { margin-bottom: 0; }
+}
+
+// The divider between widgets, a thin horizontal line.
+.widget-divider {
+	margin-top: $vspacing-unit / 2;
+	margin-left: 0;
+	margin-bottom: $vspacing-unit / 2;
+	margin-right: 0;
+	border-bottom: 1px solid $widget-divider-color;
+	display: $widget-divider-display;
+}
+
+// Divider between primary, secondary and tertiary
+.secondary-widget-divider { @extend .widget-divider; }
+.tertiary-widget-divider { @extend .widget-divider; }
+
 // Used to include an iframe that scales with the column width in HD (16:9) format.
 // To be used for the div that wraps an iframe like:
 // <div class="scaling-iframe-wrapper-hd"><iframe>...</iframe></div>

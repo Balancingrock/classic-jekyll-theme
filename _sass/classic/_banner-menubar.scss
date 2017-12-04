@@ -1,39 +1,179 @@
-// The distinction between "layout" and "formatting" is as follows: If the resulting CCS affects the placement of and/or visibility of multiple items, it is done here. If the CSS affects only the appearance of an item, then it appears in "formatting". Of course the appearance may affect the layout, so there is no hard distinction.
 
 
-@mixin narrow-layout {
-	@media screen and (min-width: 0px) and (max-width: $narrow-max-width) {
-		@content
+// Formatting for the navbanner panel elements.
+.navbanner-panel {
+	
+	// Title formatting
+	.navbanner-title {
+		position: relative;
+		.site-title-text {
+			color: $site-title-color;
+			margin-bottom: 0;
+			@include wide-layout {
+				font-size: $wide-site-title-font-size;
+				margin-left: $wide-horizontal-title-shift;
+				margin-top: $wide-vertical-title-shift;
+			}
+			@include medium-layout {
+				font-size: $medium-site-title-font-size;
+				margin-left: $medium-horizontal-title-shift;
+				margin-top: $medium-vertical-title-shift;
+			}		
+			@include narrow-layout {
+				font-size: $narrow-site-title-font-size;
+				margin-left: $narrow-horizontal-title-shift;
+				margin-top: $narrow-vertical-title-shift;
+			}
+		}
+		.banner-icon-container {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			overflow: hidden;
+		}
+		@include wide-layout {
+			height: $wide-banner-height;
+			background-color: $wide-banner-background;
+			@if $wide-icon-url != none {
+				.banner-icon {
+					margin-top: $wide-icon-voffset;
+					margin-left: $wide-icon-hoffset;
+					content: $wide-icon-url;
+				}
+				.banner-icon-container {
+					@if $wide-icon-vposition == top {
+						align-items: flex-start;
+					} @else if $wide-icon-vposition == bottom {
+						align-items: flex-end;
+					} @else {
+						align-items: $wide-icon-vposition;
+					}
+					@if $wide-icon-hposition == left {
+						justify-content: flex-start;
+					} @else if $wide-icon-hposition == right {
+						justify-content: flex-end;
+					} @else {
+						justify-content: $wide-icon-hposition;
+					}
+				}
+			}
+		}
+		@include medium-layout {
+			height: $medium-banner-height;
+			background: $medium-banner-background;
+			@if $medium-icon-url != none {
+				.banner-icon {
+					margin-top: $medium-icon-voffset;
+					margin-left: $medium-icon-hoffset;
+					content: $medium-icon-url;
+				}
+				.banner-icon-container {
+					@if $medium-icon-vposition == top {
+						align-items: flex-start;
+					} @else if $medium-icon-vposition == bottom {
+						align-items: flex-end;
+					} @else {
+						align-items: $medium-icon-vposition;
+					}
+					@if $medium-icon-hposition == left {
+						justify-content: flex-start;
+					} @else if $medium-icon-hposition == right {
+						justify-content: flex-end;
+					} @else {
+						justify-content: $medium-icon-hposition;
+					}
+				}
+			}
+		}
+		@include narrow-layout {	
+			height: $narrow-banner-height;
+			background: $narrow-banner-background;
+			@if $narrow-icon-url != none {
+				.banner-icon {
+					margin-top: $narrow-icon-voffset;
+					margin-left: $narrow-icon-hoffset;
+					content: $narrow-icon-url;
+				}
+				.banner-icon-container {
+					@if $narrow-icon-vposition == top {
+						align-items: flex-start;
+					} @else if $narrow-icon-vposition == bottom {
+						align-items: flex-end;
+					} @else {
+						align-items: $narrow-icon-vposition;
+					}
+					@if $narrow-icon-hposition == left {
+						justify-content: flex-start;
+					} @else if $narrow-icon-hposition == right {
+						justify-content: flex-end;
+					} @else {
+						justify-content: $narrow-icon-hposition;
+					}
+				}
+			}
+		}
+	}
+
+	// Label formatting
+	.navbanner-label {
+	
+		// Introduction of an icon had an impact on the label behaviour (don't know why) this fixes it.
+		// I found this solution by second-guessing, would love to know why... (please mail me if you do)
+		position: relative;
+		
+		// Color for the menu symbol (only visible on narrow and medium sized layouts)
+		label {
+			padding: 0 $hspacing-unit; // Give the menu label more area to make it easier to tap.
+			p {
+				color: $menu-symbol-color;
+				margin: 0;
+				@include wide-layout {
+					// Note: the label is not visible, but we set the correct values anyhow...
+					font-size: $narrow-site-title-font-size;
+				}
+				@include medium-layout {
+					font-size: $medium-site-title-font-size;
+				}
+				@include narrow-layout {
+					font-size: $narrow-site-title-font-size;
+				}
+			}
+		}
+		
+		// Size of the title and menu symbol depends on the layout in effect.
+		@include narrow-layout {
+			height: $narrow-banner-height;
+			background: $narrow-banner-background;
+		}
+		@include medium-layout {
+			height: $medium-banner-height;
+			background: $medium-banner-background;
+		}
+		@include wide-layout {
+			height: $narrow-banner-height;
+			background: $narrow-banner-background;
+		}
+	}
+
+	// Formating for the separator between the banner and menubar.	
+	.menubar-separator-top {
+		border-top: $navbanner-menu-dividers-thickness solid $navbanner-menu-dividers-color;
+		@if ($navbanner-menu-top-divider-disable == true) {
+			display: none;
+		} @else {
+			display: $navbanner-menu-dividers-display;
+		}
+	}
+	
+	// Formatting for the separator between menubar and column panel.
+	.menubar-separator-bottom {
+		border-top: $navbanner-menu-dividers-thickness solid $navbanner-menu-dividers-color;
+		display: $navbanner-menu-dividers-display;
 	}
 }
-
-@mixin medium-layout {
-	@media screen and (min-width: $medium-min-width) and (max-width: $medium-max-width) {
-		@content
-	}
-}
-
-@mixin wide-layout {
-	@media screen and (min-width: $wide-min-width) {
-		@content
-	}
-}
-
-@mixin medium-and-wide-layout {
-	@media screen and (min-width: $medium-min-width) {
-		@content
-	}
-}
-
-
-// Layout top-to-bottom for the top level
-// This arranges the navbanner-panel, column-panel, footer-separator and footer-panel (from "default.html")
-.body-panel {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-}
-
 
 // The navigation & banner (these two have to be together to enable a RWD design with an input/label in the banner area.)
 //
@@ -368,7 +508,6 @@
 	}
 }
 
-
 // This bit of CSS is needed to fix the banner and menubar in place at the top of the screen.
 //
 .navbanner-panel-fixed-menubar {
@@ -380,77 +519,3 @@
 }
 
 
-// The layout for the column panel uses flex, but lays out the columns either column or row based depending on the size of the window (screen).
-//
-.column-panel {
-
-	// Use flex, layout as a row or column, based on the screenwidth
-	display: flex;
-		
-	@include narrow-layout {
-	
-		// This layout is column based, i.e. the content is displayed over one another.
-		flex-direction: column;
-				
-		// The primary column must be displayed on top, use the 'order' property to enforce this.
-		.primary-column { order: 1; }
-
-		// The secondary column is put below the primary the second place
-		.secondary-column { order: 2; }
-
-		// Unused		
-		.tertiary-column, .secondary-divider, .tertiary-divider { display: none; }
-		.secondary-column .vmenu { display: none }
-	}
-	
-	@include medium-layout {
-		
-		// This layout is row based
-		flex-direction: row;
-		
-		// The secondary column uses a fixed witdh and hosts both the secondary and tertiary column content
-		.secondary-column { width: $secondary-column-width; }
-
-		// The primary column can grow
-		.primary-column { flex: 1 1 auto; width: 1px; } // A width must be specified
-
-		// Unused
-		.tertiary-divider, .secondary-widget-divider, .tertiary-column { display: none; }
-		.primary-column .vmenu { display: none; }
-	}
-	
-	@include wide-layout {
-	
-		// This layout is row based
-		flex-direction: row;
-		
-		// The secondary and tertiary columns uses a fixed witdh 
-		.secondary-column { width: $secondary-column-width; }
-		.tertiary-column { width: $tertiary-column-width; }
-							
-		// The primary column can grow
-		.primary-column { flex: 1 1 auto; width: 1px; } // A width must be specified
-
-		// Unused
-		.secondary-column .tertiary-column-content, .tertiary-widget-divider, .secondary-widget-divider { display: none }
-		.primary-column .vmenu { display: none; }
-	}
-}
-
-
-// Add top margins for when the navbanner is fixed at the top of the screen. This prevents the content of the column panels from being placed behind the navbanner.
-//
-.column-panel-fixed-menubar {
-	
-	@include narrow-layout {
-		margin-top: $narrow-banner-height + $narrow-menu-height;
-	}
-	
-	@include medium-layout {
-		margin-top: $medium-banner-height + $medium-menu-height;
-	}
-	
-	@include wide-layout {
-		margin-top: $wide-banner-height + $wide-menu-height;
-	}
-}

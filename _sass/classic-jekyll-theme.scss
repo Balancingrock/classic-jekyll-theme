@@ -1,9 +1,8 @@
-// =========================================================================================
-// Defaults for the Classic-Jekyll-Theme
+// *********************************************************************************************************************
+// Defaults
+// ---------------------------------------------------------------------------------------------------------------------
 // Note: the definitions in main.scss have been deactivated.
-// =========================================================================================
-
-// Primary defaults
+//
 $base-font-family:				"Helvetica Neue", Helvetica, Arial, sans-serif;
 $base-font-size:				16px;
 $base-font-weight:				400;
@@ -12,37 +11,35 @@ $small-small-font-size:			$small-font-size * 0.875;
 $large-font-size:				$base-font-size * 1.125;
 $large-large-font-size:			$large-font-size * 1.125;
 $base-line-height:				1.5;
-
+//
 $hspacing-unit:					14px; // For best results, use even numbers only
 $vspacing-unit:					14px; // For best results, use even numbers only
-
+//
 $text-color:					#111;
 $background-color:				#fdfdfd; // Applied to the top element, override by background settings below
-
+//
 $grey-color:					#828282;
 $grey-color-light:				lighten($grey-color, 40%);
 $grey-color-light-light:		lighten($grey-color-light, 40%);
 $grey-color-dark:				darken($grey-color, 25%);
 
 
-// =========================================================================================
-// From here one, element properties are set.
-// The easiest way to become familiar with them is to change a value and see what happens. 
-// =========================================================================================
-
+// *********************************************************************************************************************
+// General theme settings
+// ---------------------------------------------------------------------------------------------------------------------
 // The theme-color is the default for some of the other elements that can be colored in this theme.
-// Its value is only used in this file.
+//
 $theme-color:							green;
-
+//
 // Background color or pictures (keep in mind that some of these will overlap)
 // The value set is assigned to the CSS3 'background' property. Use 'none' if no background image or color is used.
 // background: color image-url position/size repeat origin clip attachment initial|inherit;
 // The properties that can be set, are: background-color, background-image, background-position, background-size, background-repeat, background-origin, background-clip, and background-attachment.
 // See http://www.w3schools.com/cssref/css3_pr_background.asp for a full description.
 // Example: ...-background: url("/assets/img/bckgnd.png") repeat
-$wide-body-background:					none;
-$medium-body-background:				none;
-$narrow-body-background:				none;
+$body-panel-background-wide:			none;
+$body-panel-background-medium:			none;
+$body-panel-background-narrow:			none;
 $wide-banner-background:				white; // Must have color to show proper scrolling for top-fixed option
 $medium-banner-background:				white; // Must have color to show proper scrolling for top-fixed option
 $narrow-banner-background:				white; // Must have color to show proper scrolling for top-fixed option
@@ -266,17 +263,6 @@ $category-item-padding:						$vspacing-unit/8 $hspacing-unit/4 $vspacing-unit/8 
 
 
 // *********************************************************************************************************************
-// Internals
-// ---------------------------------------------------------------------------------------------------------------------
-// Do not change these definitions
-//
-$wide-min-width:				$primary-column-min-width + $secondary-column-width + $tertiary-column-width;
-$medium-max-width:				$wide-min-width - 1;
-$medium-min-width:				$primary-column-min-width + $secondary-column-width;
-$narrow-max-width:				$medium-min-width - 1;
-
-
-// *********************************************************************************************************************
 // Imports
 // ---------------------------------------------------------------------------------------------------------------------
 // Note that later imports will override the settings in earlier imports
@@ -284,9 +270,11 @@ $narrow-max-width:				$medium-min-width - 1;
 @import
   "classic/normalize",
   "classic/normalize-override",
+  "classic/mixins",
   "classic/syntax-highlighting",
-  "classic/layout",
-  "classic/formatting",
+  "classic/body",
+  "classic/banner-menubar",
+  "classic/columns-footer",
   "classic/vertical-menu",
   "classic/post",
   "classic/page",
