@@ -1,10 +1,10 @@
 /*! Override and add to the settings of _normalize.scss in this file */
 
 html {
-	font-family: $base-font-family;
-	font-weight: $base-font-weight;
-	line-height: $base-line-height;
-	font-size: $base-font-size;
+	font-family: $theme-font-family;
+	font-weight: $theme-font-weight;
+	line-height: $theme-line-height;
+	font-size: $theme-font-size;
 	color: $text-color;
 	background-color: $background-color;
 }
@@ -14,9 +14,9 @@ input,
 optgroup,
 select,
 textarea {
-	font-family: $base-font-family;
-	font-weight: $base-font-weight;
-	line-height: $base-line-height;
-	font-size: $base-font-size;
-	color: $text-color;
+	font-family: $theme-font-family;
+	font-weight: $theme-font-weight;
+	line-height: $theme-line-height;
+	font-size: $theme-font-size;
+	color: $theme-color;
 }

@@ -1,0 +1,110 @@
+// *********************************************************************************************************************
+// Internals
+// ---------------------------------------------------------------------------------------------------------------------
+// Do not change these definitions
+//
+
+// Caculate the width ranges where the layout changes take place
+//
+$wide-min-width:				$primary-column-min-width + $secondary-column-width + $tertiary-column-width;
+$medium-max-width:				$wide-min-width - 1;
+$medium-min-width:				$primary-column-min-width + $secondary-column-width;
+$narrow-max-width:				$medium-min-width - 1;
+
+
+@mixin narrow-layout {
+	@media screen and (min-width: 0px) and (max-width: $narrow-max-width) {
+		@content
+	}
+}
+
+@mixin medium-layout {
+	@media screen and (min-width: $medium-min-width) and (max-width: $medium-max-width) {
+		@content
+	}
+}
+
+@mixin wide-layout {
+	@media screen and (min-width: $wide-min-width) {
+		@content
+	}
+}
+
+@mixin medium-and-wide-layout {
+	@media screen and (min-width: $medium-min-width) {
+		@content
+	}
+}
+
+
+// Return the value if the flag is gate is true.
+// Return 0 otherwise.
+//
+@function value-when-enabled($gate, $value) {
+	@if $gate { @return $value }
+	@return 0
+}
+
+
+// Calculate the offset of the separator above the menubar.
+//
+$internal-menubar-top-separator-offset-narrow:	value-when-enabled($banner-enabled-narrow, $banner-height-narrow) !global;
+$internal-menubar-top-separator-offset-medium:	value-when-enabled($banner-enabled-medium, $banner-height-medium) !global;
+$internal-menubar-top-separator-offset-wide:	value-when-enabled($banner-enabled-wide, $banner-height-wide) !global;
+
+
+// Calculate offset of the menubar
+//
+$internal-menubar-offset-narrow:
+	$internal-menubar-top-separator-offset-narrow
+	+ value-when-enabled($menubar-top-separator-enabled-narrow , $menubar-top-separator-height-narrow) !global;
+
+$internal-menubar-offset-medium:
+	$internal-menubar-top-separator-offset-medium
+	+ value-when-enabled($menubar-top-separator-enabled-medium, $menubar-top-separator-height-medium) !global;
+
+$internal-menubar-offset-wide:
+	$internal-menubar-top-separator-offset-wide
+	+ value-when-enabled($menubar-top-separator-enabled-wide, $menubar-top-separator-height-wide) !global;
+
+// Calculate offset of the separator below the menubar-bottom-separator-enabled-medium
+//
+$internal-menubar-bottom-separator-offset-narrow:
+	$internal-menubar-offset-narrow
+	+ value-when-enabled($menubar-enabled-narrow, $menubar-height-narrow) !global;
+
+$internal-menubar-bottom-separator-offset-medium:
+	$internal-menubar-offset-medium
+	+ value-when-enabled($menubar-enabled-medium, $menubar-height-medium) !global;
+
+$internal-menubar-bottom-separator-offset-wide:
+	$internal-menubar-offset-wide
+	+ value-when-enabled($menubar-enabled-wide, $menubar-height-wide) !global;
+
+
+// Calculate total banner height (including seperators and menubar)
+//
+@if $banner-area-overall-height-narrow >= 0 {
+	$internal-banner-area-height-narrow: 	$banner-area-overall-height-narrow !global;
+} @else {
+	$internal-banner-area-height-narrow:
+	 	$internal-menubar-bottom-separator-offset-narrow
+		+ value-when-enabled($menubar-bottom-separator-enabled-narrow, $menubar-bottom-separator-height-narrow) !global;
+}
+
+@if $banner-area-overall-height-medium >= 0 {
+	$internal-banner-area-height-medium: 	$banner-area-overall-height-medium !global;
+} @else {
+	$internal-banner-area-height-medium:
+	 	$internal-menubar-bottom-separator-offset-medium
+		+ value-when-enabled($menubar-bottom-separator-enabled-medium, $menubar-bottom-separator-height-medium) !global;
+}
+
+@if $banner-area-overall-height-wide >= 0 {
+	$internal-banner-area-height-wide: 		$banner-area-overall-height-wide !global;
+} @else {
+	$internal-banner-area-height-wide:
+		$internal-menubar-bottom-separator-offset-wide
+		+ value-when-enabled($menubar-bottom-separator-enabled-wide, $menubar-bottom-separator-height-wide) !global;
+}
+

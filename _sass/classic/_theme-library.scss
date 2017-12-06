@@ -1,0 +1,28 @@
+// *********************************************************************************************************************
+// Insets
+// ---------------------------------------------------------------------------------------------------------------------
+// Defines the insets used in the columns and the footer-panel. I.e the empty spaces between text and separators.
+//
+.theme-insets {
+	padding-top: $vspacing-unit;
+	padding-right: $hspacing-unit;
+	padding-bottom: $vspacing-unit;
+	padding-left: $hspacing-unit;
+}
+
+
+// *********************************************************************************************************************
+// Overlay
+// ---------------------------------------------------------------------------------------------------------------------
+// Will place an element over its parent and make it the exact same size.
+//
+// The parent must have its css 'position' property set to 'relative'.
+//
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}

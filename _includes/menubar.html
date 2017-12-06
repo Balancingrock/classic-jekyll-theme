@@ -1,21 +1,5 @@
-<!-- Title of the site is always visible -->
-<div class="navbanner-title">
-	<div class="banner-icon-container"><div class="banner-icon"></div></div>
-	<p class="site-title-text">{{ site.title }}</p>
-</div>
-
-<!-- The menu symbol will only be shown on narrow layout -->
-<div class="navbanner-label">
-	<label for="menu-checkbox"><p><!-- empty but necessary! --></p></label> 
-</div>
-<input type="checkbox" id="menu-checkbox">
-
-<!-- Separator between banner and navigation bar -->
-<div class="menubar-separator-top"></div>
-
-<!-- Navigation bar visibility depends on screen width -->
 <nav class="menubar">
-
+	
 	<!-- Create a list of top menu item titles -->
 	{% assign topTitles = "" | split: "" %}
 	{% assign sortedPages = site.pages | where:'menuInclude', true | where_exp:'item', 'item.menuTopTitle != nil' | sort: 'menuTopIndex', 'last' %}

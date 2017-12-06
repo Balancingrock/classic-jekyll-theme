@@ -54,7 +54,7 @@ number-of-recent-posts-in-widget: 10
 #
 enable-cookies-policy: yes
 
-# Controls the position of the navbanner.
+# Controls the position of the banner and menubar.
 # Values: top | main | top-fixed
 # - top: The navigation banner will be placed above all the columns
 # - main: The navigation banner will be placed inside the main column at the top.
@@ -63,7 +63,7 @@ enable-cookies-policy: yes
 #
 # Hint: When the 'top-fixed' is used the height of the banner and menu for the layouts must be specified in classic-jekyll-theme.scss. Also a background color should be specified for the banner and menu. 
 #
-navbanner-position: top
+banner-position: top
 
 # Switches between drop-down menu's en the vertical menu for the subMenuTitles. It does not affect the top menu items.
 # Values: yes | no
@@ -81,7 +81,7 @@ drop-down-menu: yes
 #
 generate-categories-menu: yes
 
-# Create a separate file containing the Navigation & Banner.
+# Create a separate file containing the banner and menubar.
 # Values: yes | no
 # - yes: An external file will be used to store the menubar.
 # - no: Generated the menubar inline.
@@ -99,6 +99,6 @@ generate-categories-menu: yes
 #
 # Hint: Keep this option set to 'yes' during development when jekyll auto regeneration is used during content development. Then switch it back to 'no' for the version that is published.
 
-use-separate-navbanner: no
+use-separate-banner-menubar-file: no
 
 # End of file

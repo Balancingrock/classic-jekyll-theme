@@ -1,0 +1,18 @@
+
+
+// This is the element between the column panel and the footer.
+.footer-divider {
+	display: $footer-divider-display;
+	width: 100%;
+	margin: 0;
+	border-bottom: 1px solid $footer-divider-color;
+}
+
+.footer-panel {
+	@extend .theme-insets;
+	font-size: $small-font-size;
+	text-align: center;	
+	@include wide-layout { background: $footer-background-wide; }
+	@include medium-layout { background: $footer-background-medium; }
+	@include narrow-layout { background: $footer-background-narrow; }
+}

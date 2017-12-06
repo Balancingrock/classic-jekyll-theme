@@ -1,0 +1,285 @@
+.menubar {
+		
+	// Place it in front of the other elements at this position
+	z-index: 1;
+	
+	// Positioning & size
+	position: absolute;
+	width: 100%;
+	left: 0px;
+			
+	@include narrow-layout {
+
+		// Only displayed when the menu symbol is checked
+		display: none;
+
+		// Positioning
+		top: $internal-menubar-offset-narrow;
+		height: $menubar-height-narrow;
+
+		// Display the menu items vertically.
+		flex-direction: column;
+			
+		// Appearances
+		background-color: $menubar-background-color;
+			
+		// Make sure the separator is empty
+		.separator:after { content: ''; }
+		.separator {
+			//display: block;
+			width: 100%;
+			height: $menubar-item-separator-line-width-narrow;
+			background-color: $menubar-item-separator-line-color-narrow;
+		}
+			
+		.item {
+			
+			// Layout
+			display: flex;
+			flex-direction: column;
+				
+			// Appearance
+			background-color: $menubar-item-background-color-narrow;
+
+			// Make the link areas as big as possible
+			a {	width: 100%; height: 100%; }
+				
+			// Remove link underlining
+			a { text-decoration: none; }
+
+			// Use the item color for all elements
+			p { color: $menubar-item-color }
+
+			// If the checkbox is checked
+			input:checked ~ {
+
+				// Show submenu
+				.dropdown { display: flex; }
+
+				// When the submenu is open, show the appropriate symbol
+				.title .symbol .code:after { content: $menubar-item-title-symbol-code-open-narrow; }
+			}
+
+			.title {
+				
+				// Layout
+				display: flex;
+				height: $menubar-item-height-narrow;
+				.symbol { width: $menubar-item-disclosure-symbol-width-narrow; }
+				.text { width: 100%; } // Takes up remainder of .title width
+					
+				.symbol {
+
+					// Layout: Center the disclosure symbol
+					display: flex;
+					justify-content: center;
+					align-items: center;
+						
+					// Load the disclosure symbol for the closed state
+					.code:after { content: $menubar-item-title-symbol-code-closed-narrow; }
+				
+					// Show a clickable symbol over the disclosure symbol
+					.code { cursor: pointer; }
+				}
+					
+				.text {
+
+					// Layout: Center vertically and justify-left
+					display: flex;
+					justify-content: start;
+					align-items: center;
+				}
+			}
+		
+			.dropdown {
+				
+				// Disable submenu by default
+				display: none;
+				
+				// Subitems are stacked vertically
+				flex-direction: column;
+					
+				.separator {
+					display: block;
+					width: 100%;
+					height: $menubar-subitem-separator-line-width-narrow;
+					background-color: $menubar-subitem-separator-line-color-narrow;
+				}
+					
+				.subitem .title {
+						
+					// Layout (row oriented)
+					display: flex;
+						
+					// Appearance
+					background-color: $menubar-subitem-background-color-narrow;
+						
+					.symbol { width: $menubar-item-disclosure-symbol-width-narrow; }
+						
+					.text a {
+						display: flex;
+						justify-content: start;
+						align-items: center;
+					}
+						
+					p { padding-left: $menubar-subitem-indent; }
+				}
+			}
+		}
+	}
+			
+	@include medium-and-wide-layout {
+		
+		// Display by default
+		display: flex;
+		
+		// Positioning
+		@include medium-layout {
+			top: $internal-menubar-offset-medium;
+			height: $menubar-height-narrow;
+		}
+		@include wide-layout {
+			top: $internal-menubar-offset-wide;
+			height: $menubar-height-narrow;
+		}
+
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: $menubar-justify-content;
+			
+		// Appearances
+		background-color: $menubar-background-color;
+		border: $menubar-border;
+		box-shadow: $menubar-box-shadow;
+		@include medium-layout { padding: $menubar-padding-medium; }
+		@include wide-layout { padding: $menubar-padding-wide; }
+
+		.separator {
+	
+			// Color it
+			color: $menubar-separator-color;
+			background-color: $menubar-separator-background-color;
+
+			@include medium-layout {
+				
+				// Set padding
+				padding: $menubar-separator-padding-medium;
+	
+				// Set the separator symbol
+				p:after { content: $menubar-separator-symbol-medium; }
+
+				// The font for the separator
+				p { font: $menubar-separator-font-medium; }
+			}
+					
+			@include wide-layout {
+				
+				// Set padding
+				padding: $menubar-separator-padding-wide;
+	
+				// Set the separator symbol
+				p:after { content: $menubar-separator-symbol-wide; }
+
+				// The font for the separator
+				p { font: $menubar-separator-font-wide; }
+			}
+		}
+			
+		// Make all p's as small as possible
+		p { margin: 0; padding: 0; }
+			
+		.item {
+			
+			// Vertical layout
+			display: flex;
+			flex-direction: column;
+			
+			// Hover effect
+			p { color: $menubar-item-color; }
+			background-color: $menubar-item-background-color;
+			&:hover {
+				p { color: $menubar-item-hover-color; }
+				background-color: $menubar-item-background-hover-color;
+			}
+				
+			// Make the entire hightlight block clickable
+			a {	display: block; }
+				
+			// Remove the link underlining
+			a { text-decoration: none; }
+
+			@include medium-layout {
+				
+				// Sizing of the items
+				a, .paddingAsLink { padding: $menubar-item-padding-medium;}
+					
+				// Font for the item text
+				p { font: $menubar-item-font-medium; }
+			}
+			@include wide-layout {
+
+				// Sizing of the items
+				a, .paddingAsLink { padding: $menubar-item-padding-wide;}
+	
+				// Font for the item text
+				p { font: $menubar-item-font-wide; }
+			}
+
+			// Display the submenu if the user hovers the mouse over it
+			&:hover .dropdown { display: block; }
+
+			// Display the submenu if the user taps the corresponding menu item
+			input:checked ~ .dropdown { display: block; }					
+
+			.dropdown {
+						
+				// Visibility depends on hovering over the item
+				display: none;
+
+				// Don't show the separators
+				.separator { display: none; }
+					
+				// Keep the size of the item unaffected by the subitems
+				position: absolute;
+						
+				// Appearances
+				border: $menubar-dropdown-border;
+				box-shadow: $menubar-dropdown-box-shadow;
+
+				.subitem {
+							
+					// Hover effect
+					p { color: $menubar-subitem-color; }
+					background-color: $menubar-subitem-background-color;
+					&:hover {
+						p { color: $menubar-subitem-hover-color; }
+						background-color: $menubar-subitem-background-hover-color;
+					}
+						
+					@include medium-layout {
+							
+						// Sizing of the subitems
+						a, .paddingAsLink { padding: $menubar-subitem-padding-medium; }
+							
+						// Font for subitem text
+						p { font: $menubar-subitem-font-medium; }
+					}
+					@include wide-layout {
+							
+						// Sizing of the subitems
+						a, .paddingAsLink { padding: $menubar-subitem-padding-wide; }
+							
+						// Font for subitem text
+						p { font: $menubar-subitem-font-wide; }
+					}
+				}
+
+				// Show selection for pages that match a menu entry
+				.isActiveSelection { background-color: $menubar-subitem-active-selection-background-color; }
+			}
+		}
+			
+		// Show selection for pages that match a menu entry
+		.isActiveSelection { background-color: $menubar-item-active-selection-background-color; }
+	}
+}

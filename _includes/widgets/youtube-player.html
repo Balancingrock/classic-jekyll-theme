@@ -7,12 +7,10 @@ To include a youtube video player in HD format in a column. The player will size
 
 Usage:
 
-	{% include youtube-hd-player.html
-		video = "Identifier of the video"
-	%}
+	{% include widgets/youtube-player.html video='Identifier of the video' %}
 
 
-Also needs the following CSS (written in SASS, included in `_sass/_widget-support.scss`):
+Also needs the following CSS (written in SASS, included in `_sass/_widgets.scss`):
 
 .scaling-iframe-wrapper-hd {
 	position: relative;
