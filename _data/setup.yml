@@ -29,6 +29,10 @@ secondary-column: left
 #
 tertiary-column: present
 
+# A subtitle can be displayed in de banner
+#
+subtitle: "Build with Classic-Jekyll-Theme"
+
 # Skip some of the build process for faster recompilation during content creation.
 # Values: yes | no
 # - yes: If the jekyll.environment variable is *not* set to 'production', then various aspects (menu, categories) are skipped during jekyll compilation. This speeds up the content development cycle quite a lot.

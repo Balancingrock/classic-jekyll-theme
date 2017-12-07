@@ -1,31 +1,25 @@
 .menubar {
 		
-	// Place it in front of the other elements at this position
-	z-index: 1;
-	
 	// Positioning & size
-	position: absolute;
 	width: 100%;
-	left: 0px;
-			
+	@include narrow-layout { height: $menubar-height-narrow; }
+	@include medium-layout { height: $menubar-height-medium; }
+	@include wide-layout { height: $menubar-height-wide; }
+
 	@include narrow-layout {
 
 		// Only displayed when the menu symbol is checked
 		display: none;
 
-		// Positioning
-		top: $internal-menubar-offset-narrow;
-		height: $menubar-height-narrow;
-
 		// Display the menu items vertically.
 		flex-direction: column;
 			
 		// Appearances
-		background-color: $menubar-background-color;
+		background: $menubar-background;
 			
 		// Make sure the separator is empty
-		.separator:after { content: ''; }
-		.separator {
+		.item-separator:after { content: none; }
+		.item-separator {
 			//display: block;
 			width: 100%;
 			height: $menubar-item-separator-line-width-narrow;
@@ -39,7 +33,7 @@
 			flex-direction: column;
 				
 			// Appearance
-			background-color: $menubar-item-background-color-narrow;
+			background: $menubar-item-background-narrow;
 
 			// Make the link areas as big as possible
 			a {	width: 100%; height: 100%; }
@@ -112,7 +106,7 @@
 					display: flex;
 						
 					// Appearance
-					background-color: $menubar-subitem-background-color-narrow;
+					background: $menubar-subitem-background-narrow;
 						
 					.symbol { width: $menubar-item-disclosure-symbol-width-narrow; }
 						
@@ -132,56 +126,47 @@
 		
 		// Display by default
 		display: flex;
-		
-		// Positioning
-		@include medium-layout {
-			top: $internal-menubar-offset-medium;
-			height: $menubar-height-narrow;
-		}
-		@include wide-layout {
-			top: $internal-menubar-offset-wide;
-			height: $menubar-height-narrow;
-		}
 
 		flex-direction: row;
 		flex-wrap: nowrap;
 		justify-content: $menubar-justify-content;
+		align-items: $menubar-align-items;
 			
 		// Appearances
-		background-color: $menubar-background-color;
+		background: $menubar-background;
 		border: $menubar-border;
 		box-shadow: $menubar-box-shadow;
 		@include medium-layout { padding: $menubar-padding-medium; }
 		@include wide-layout { padding: $menubar-padding-wide; }
 
-		.separator {
+		.item-separator {
 	
 			// Color it
-			color: $menubar-separator-color;
-			background-color: $menubar-separator-background-color;
+			color: $menubar-item-separator-symbol-color;
+			background: $menubar-item-separator-symbol-background;
 
 			@include medium-layout {
 				
 				// Set padding
-				padding: $menubar-separator-padding-medium;
+				padding: $menubar-item-separator-symbol-padding-medium;
 	
 				// Set the separator symbol
-				p:after { content: $menubar-separator-symbol-medium; }
+				p:after { content: $menubar-item-separator-symbol-medium; }
 
 				// The font for the separator
-				p { font: $menubar-separator-font-medium; }
+				p { font: $menubar-item-separator-symbol-font-medium; }
 			}
 					
 			@include wide-layout {
 				
 				// Set padding
-				padding: $menubar-separator-padding-wide;
+				padding: $menubar-item-separator-symbol-padding-wide;
 	
 				// Set the separator symbol
-				p:after { content: $menubar-separator-symbol-wide; }
+				p:after { content: $menubar-item-separator-symbol-wide; }
 
 				// The font for the separator
-				p { font: $menubar-separator-font-wide; }
+				p { font: $menubar-item-separator-symbol-font-wide; }
 			}
 		}
 			
@@ -196,10 +181,10 @@
 			
 			// Hover effect
 			p { color: $menubar-item-color; }
-			background-color: $menubar-item-background-color;
+			background: $menubar-item-background;
 			&:hover {
 				p { color: $menubar-item-hover-color; }
-				background-color: $menubar-item-background-hover-color;
+				background: $menubar-item-background-hover;
 			}
 				
 			// Make the entire hightlight block clickable
@@ -250,10 +235,10 @@
 							
 					// Hover effect
 					p { color: $menubar-subitem-color; }
-					background-color: $menubar-subitem-background-color;
+					background: $menubar-subitem-background;
 					&:hover {
 						p { color: $menubar-subitem-hover-color; }
-						background-color: $menubar-subitem-background-hover-color;
+						background: $menubar-subitem-background-hover;
 					}
 						
 					@include medium-layout {
@@ -275,11 +260,11 @@
 				}
 
 				// Show selection for pages that match a menu entry
-				.isActiveSelection { background-color: $menubar-subitem-active-selection-background-color; }
+				.isActiveSelection { background: $menubar-subitem-active-selection-background; }
 			}
 		}
 			
 		// Show selection for pages that match a menu entry
-		.isActiveSelection { background-color: $menubar-item-active-selection-background-color; }
+		.isActiveSelection { background: $menubar-item-active-selection-background; }
 	}
 }

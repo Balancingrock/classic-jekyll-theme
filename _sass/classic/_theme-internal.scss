@@ -37,8 +37,8 @@ $narrow-max-width:				$medium-min-width - 1;
 }
 
 
-// Return the value if the flag is gate is true.
-// Return 0 otherwise.
+// Return the value if the gate is true.
+// Return 0 if the gate is not true.
 //
 @function value-when-enabled($gate, $value) {
 	@if $gate { @return $value }
@@ -84,24 +84,24 @@ $internal-menubar-bottom-separator-offset-wide:
 
 // Calculate total banner height (including seperators and menubar)
 //
-@if $banner-area-overall-height-narrow >= 0 {
-	$internal-banner-area-height-narrow: 	$banner-area-overall-height-narrow !global;
+@if $banner-area-height-narrow >= 0 {
+	$internal-banner-area-height-narrow: $banner-area-height-narrow !global;
 } @else {
 	$internal-banner-area-height-narrow:
 	 	$internal-menubar-bottom-separator-offset-narrow
 		+ value-when-enabled($menubar-bottom-separator-enabled-narrow, $menubar-bottom-separator-height-narrow) !global;
 }
 
-@if $banner-area-overall-height-medium >= 0 {
-	$internal-banner-area-height-medium: 	$banner-area-overall-height-medium !global;
+@if $banner-area-height-medium >= 0 {
+	$internal-banner-area-height-medium: $banner-area-height-medium !global;
 } @else {
 	$internal-banner-area-height-medium:
 	 	$internal-menubar-bottom-separator-offset-medium
 		+ value-when-enabled($menubar-bottom-separator-enabled-medium, $menubar-bottom-separator-height-medium) !global;
 }
 
-@if $banner-area-overall-height-wide >= 0 {
-	$internal-banner-area-height-wide: 		$banner-area-overall-height-wide !global;
+@if $banner-area-height-wide >= 0 {
+	$internal-banner-area-height-wide: $banner-area-height-wide !global;
 } @else {
 	$internal-banner-area-height-wide:
 		$internal-menubar-bottom-separator-offset-wide

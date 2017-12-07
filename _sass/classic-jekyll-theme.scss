@@ -62,125 +62,10 @@ $body-panel-background-narrow:			none;
 
 
 // *********************************************************************************************************************
-// Column settings
+// Banner area
 // ---------------------------------------------------------------------------------------------------------------------
-// The column panel encompasses the three columns and column separators.
-//
-$column-panel-background:				none;
-
-// For the primary column.
-//
-$primary-column-background-narrow:		none;
-$primary-column-background-medium:		none;
-$primary-column-background-wide:		none;
-
-// For the secondary column.
-//
-$secondary-column-background-narrow:	none;
-$secondary-column-background-medium:	none;
-$secondary-column-background-wide:		none;
-
-// For the tertiary column.
-//
-$tertiary-column-background-narrow:		none;
-$tertiary-column-background-medium:		none;
-$tertiary-column-background-wide:		none;
-
-// Color for the dividers between the columns
-//
-$column-divider-color:					lighten($grey-color, 30%);
-
-// Enable/disable display of the column dividers
-//
-$column-divider-display:				block; //none;
-
-// Set the space between the top of the divider and the menubar-bottom-separator.
-// The background for the divider is the background of the column panel.
-//
-$column-divider-top-spacing:			$vspacing-unit;
-
-// Set the space between the bottom of the divider and the footer divider.
-// The background for the divider is the background of the column panel.
-//
-$column-divider-bottom-spacing:         $vspacing-unit;
-
-
-// *********************************************************************************************************************
-// Footer settings
-// ---------------------------------------------------------------------------------------------------------------------
-//
-
-// Footer background.
-//
-$footer-background-narrow:				none;
-$footer-background-medium:				none;
-$footer-background-wide:				none;
-
-// The footer divider is placed between the columns panel and the footer panel.
-//
-$footer-divider-color:					$theme-color;
-$footer-divider-display:				block; //none;
-
-
-// *********************************************************************************************************************
-// Banner and menubar area element visibility
-// ---------------------------------------------------------------------------------------------------------------------
-// These are grouped here because they affect the layout of the banner & menubar area.
-// Note that formatting/layout of the menubar items is done in its own section.
-
-// Controls display of the area above the menubar: icon, title, banner-background and menu-symbol.
-//
-$banner-enabled-narrow:						true;
-$banner-enabled-medium:						true;
-$banner-enabled-wide:						true;
-
-// Controls display of the icon.
-// Depends on banner visibility.
-//
-$banner-icon-enabled-narrow:				true;
-$banner-icon-enabled-medium:				true;
-$banner-icon-enabled-wide:					true;
-
-// Controls display of the title.
-// Depends on banner visibility.
-//
-$banner-title-enabled-narrow:				true;
-$banner-title-enabled-medium:				true;
-$banner-title-enabled-wide:					true;
-
-// Controls display of the banner menu symbol.
-// Depends on banner visibility.
-// Note that this does NOT control usage/visibility of the menubar!
-//
-$banner-menu-symbol-enabled-narrow:			true;
-$banner-menu-symbol-enabled-medium:			true;
-$banner-menu-symbol-enabled-wide:			true;
-
-// Controls visibility of the separator above the menubar. I.e. between banner and menubar.
-//
-$menubar-top-separator-enabled-narrow:		true;
-$menubar-top-separator-enabled-medium:		true;
-$menubar-top-separator-enabled-wide:		true;
-
-// Controls visibility of the menubar.
-// Use this to disable the menubar permanently.
-//
-$menubar-enabled-narrow:					true;
-$menubar-enabled-medium:					true;
-$menubar-enabled-wide:						true;
-
-// Controls visibility of the separator below the menubar. I.e. between menubar and column content.
-//
-$menubar-bottom-separator-enabled-narrow:	true;
-$menubar-bottom-separator-enabled-medium:	true;
-$menubar-bottom-separator-enabled-wide:		true;
-
-
-// *********************************************************************************************************************
-// Banner and menubar area visibility
-// ---------------------------------------------------------------------------------------------------------------------
-// These are grouped here because they affect the layout of the banner & menubar area.
-// Note that formatting/layout of the menubar items is done in its own section.
+// The banner area encompasses the banner ( banner-icon, banner-title, banner-subtitle, banner-menu-symbol ),
+// menubar-top-separator, menubar, menubar-bottom-separator.
 
 // The overall height for the banner class is calculated from the other heights in this section. Thus all
 // heights must use the same units. I.e. everything in em or pixel etc.
@@ -188,91 +73,104 @@ $menubar-bottom-separator-enabled-wide:		true;
 // If the overall height can be calculated, then set the banner-menubar-overall-height-... to negative. If the overall
 // height cannot be calculated, then set the necessary value for the banner-menubar-overall-height-...
 //
-$banner-area-overall-height-narrow:		-1;	// < 0 means: calculate from other (enabled) heights
-$banner-area-overall-height-medium:		-1;	// < 0 means: calculate from other (enabled) heights
-$banner-area-overall-height-wide:		-1;	// < 0 means: calculate from other (enabled) heights
-
-// The height of a banner.
-// Written to a CSS 'height' property.
-//
-$banner-height-wide:					80px;
-$banner-height-medium:					64px;
-$banner-height-narrow:					48px;
-
-// The height of the seperator between banner and menubar.
-// Written to a CSS 'height' property.
-// 
-$menubar-top-separator-height-narrow:	2px;
-$menubar-top-separator-height-medium:	2px;
-$menubar-top-separator-height-wide:		2px;
-
-// The height of the menubar.
-// Written to a CSS 'height' property.
-// 
-$menubar-height-narrow:					32px;
-$menubar-height-medium:					32px;
-$menubar-height-wide:					32px;
-
-// The height of the seperator between the menubar and the column panel (main content)
-// Written to a CSS 'height' property.
-// 
-$menubar-bottom-separator-height-narrow:	2px;
-$menubar-bottom-separator-height-medium:	2px;
-$menubar-bottom-separator-height-wide:		2px;
+$banner-area-height-narrow:		-1;	// < 0 means: calculate from other (enabled) heights
+$banner-area-height-medium:		-1;	// < 0 means: calculate from other (enabled) heights
+$banner-area-height-wide:		-1;	// < 0 means: calculate from other (enabled) heights
 
 
 // *********************************************************************************************************************
-// Banner background
+// Banner
 // ---------------------------------------------------------------------------------------------------------------------
-// The banner background must be set when site.data.setup.navbanner-position is set to 'top-fixed' otherwise the
-// text of the main column will visibly scroll behind the banner.
+// The banner is a complex element as it is part real and part virtual. It is real with respect to the background.
+// It is also virtual with respect to the banner-icon, banner-title, banner-subtitle and banner-menu-symbol.
+// Disabling the banner wil also disable all of the components of the banner.
 //
+// The z-index of the banner is fixed at 1
+//
+$banner-enabled-narrow:					true;
+$banner-enabled-medium:					true;
+$banner-enabled-wide:					true;
+
+// The height of the banner.
+// Note that this is also the height of the elements contained in (above!) it.
+// Written to a CSS 'height' property.
+//
+// When this height is not specified, the banner-area-height must be specified.
+//
+// When this height is specified it must use the same units as the menubar-top-separator-height, menubar-height and
+// menubar-bottom-separator-height.
+//
+$banner-height-narrow:					48px;
+$banner-height-medium:					64px;
+$banner-height-wide:					80px;
+
+// The background of the banner.
 // Written to a CSS 'background' property
 //
-$banner-background-wide:				white;
-$banner-background-medium:				white;
 $banner-background-narrow:				white;
-
+$banner-background-medium:				white;
+$banner-background-wide:				white;
 
 // *********************************************************************************************************************
-// Banner Icon settings
+// Banner Icon
 // ---------------------------------------------------------------------------------------------------------------------
-// This value is written to the css 'justify-content' property and will place the icon horizontally in the banner area.
+// The banner icon is positioned in a container with the same size as the banner.
+//
+// Controls display of the icon.
+// Note: Disabling the banner also disables the icon.
+//
+$banner-icon-enabled-narrow:			false;
+$banner-icon-enabled-medium:			false;
+$banner-icon-enabled-wide:				false;
+
+// The z-order of the icon. Use this to position the icon relative to the title-area and the menu-symbol.
+// Written to a css 'z-index' property.
+//
+$banner-icon-z-index-narrow:			1;
+$banner-icon-z-index-medium:			1;
+$banner-icon-z-index-wide:				1;
+
+// Places the icon horizontally in the banner area.
+// Written to a css 'justify-content' property.
+//
+// Useful values: flex-start, center, flex-end.
 //
 $banner-icon-justify-content-narrow:	flex-start;
 $banner-icon-justify-content-medium:	flex-start;
 $banner-icon-justify-content-wide:		flex-start;
 
-// This value will place the icon vertically in the banner area.
-// It is written to the css 'align-items' property.
+// Places the icon verticall in the banner area.
+// Written to a css 'align-items' property.
+//
+// Useful values: flex-start, center, flex-end.
 //
 $banner-icon-align-items-narrow:		center;
 $banner-icon-align-items-medium:		center;
 $banner-icon-align-items-wide:			center;
 
-// This value determines the width of the div that contains the icon image.
-// It is written to the css 'width' property.
+// The width of the icon.
+// Written to a css 'width' property.
 //
 $banner-icon-width-narrow:				0;
 $banner-icon-width-medium:				0;
 $banner-icon-width-wide:				0;
 
-// This value determines the height of the div that contains the icon image.
-// It is written to the css 'height' property.
+// The height of the icon.
+// Written to a css 'height' property.
 //
 $banner-icon-height-narrow:				0;
 $banner-icon-height-medium:				0;
 $banner-icon-height-wide:				0;
 
-// The padding can be used to tweak the position of the icon image inside its div.
-// It is written to the css 'padding' property.
+// The padding can be used to tweak the position of the icon image inside its html div element.
+// Written to a css 'padding' property.
 //
 $banner-icon-padding-narrow:			0;
 $banner-icon-padding-medium:			0;
 $banner-icon-padding-wide:				0;
 
-// The url for the icon image to be loaded into the icon container.
-// Written to the css 'content' property.
+// The url for the icon image to be loaded into the html div element.
+// Written to a css 'content' property.
 //
 // Example: $banner-icon-url-...: url("/assets/img/wide-icon.png");
 // Set to 'none' if there is no banner icon.
@@ -283,27 +181,97 @@ $banner-icon-url-wide:					none;
 
 
 // *********************************************************************************************************************
-// Banner Title settings
+// Banner Title and Subtitle
 // ---------------------------------------------------------------------------------------------------------------------
-// The menu symbol is positioned in a container that is overlayed over the entire banner.
+// The banner title and banner subtitle are placed in an html div element (called title-area) that is placed in
+// a container with the same size as the banner.
 
-// Horizontally position the menu symbol tap area.
-// Written to a css flex box property 'justify-content'.
+// Controls display of the title.
+// Note: Disabling the banner also disables the title.
+//
+$banner-title-enabled-narrow:					true;
+$banner-title-enabled-medium:					true;
+$banner-title-enabled-wide:						true;
+
+// Controls display of the subtitle.
+// Note: Disabling the banner also disables the subtitle.
+//
+$banner-subtitle-enabled-narrow:				false;
+$banner-subtitle-enabled-medium:				false;
+$banner-subtitle-enabled-wide:					true;
+
+// The z-order of the title-area. Use this to position the title-area relative to the icon and the menu-symbol.
+// Written to a css 'z-index' property.
+//
+$banner-title-area-z-index-narrow:				2;
+$banner-title-area-z-index-medium:				2;
+$banner-title-area-z-index-wide:				2;
+
+// Size the title area horizontally
+// Written to a css 'width' property.
+//
+$banner-title-area-width-narrow:				auto;
+$banner-title-area-width-medium:				auto;
+$banner-title-area-width-wide:					auto;
+
+// Size the title area vertically
+// Written to a css 'height' property.
+//
+$banner-title-area-height-narrow:				auto;
+$banner-title-area-height-medium:				auto;
+$banner-title-area-height-wide:					auto;
+
+// Background of the title area
+// Written to a css 'background' property.
+//
+$banner-title-area-background-narrow:			none;
+$banner-title-area-background-medium:			none;
+$banner-title-area-background-wide:				none;
+
+// Horizontally position the title area.
+// Written to a css 'justify-content' property.
 //
 // Useful values are: flex-start | center | flex-end
 //
-$banner-title-justify-content-narrow:	center;
-$banner-title-justify-content-medium:	center;
-$banner-title-justify-content-wide:		center;
+$banner-title-area-justify-content-narrow:		center;
+$banner-title-area-justify-content-medium:		center;
+$banner-title-area-justify-content-wide:		center;
 
-// Vertically position the menu symbol tap area.
-// Written to a css flex box property 'align-items'.
+// Vertically position the title area.
+// Written to a css 'align-items' property.
 //
 // Useful values are: flex-start | center | flex-end
 //
-$banner-title-align-items-narrow:		center;
-$banner-title-align-items-medium:		center;
-$banner-title-align-items-wide:			center;
+$banner-title-area-align-items-narrow:			center;
+$banner-title-area-align-items-medium:			center;
+$banner-title-area-align-items-wide:			center;
+
+// Position the title and subtitle relative to each other
+// Written to a css 'flex-direction' property.
+//
+// Possible values: column | row
+//
+$banner-title-subtitle-flex-direction-narrow:	column;
+$banner-title-subtitle-flex-direction-medium:	column;
+$banner-title-subtitle-flex-direction-wide:		row;
+
+// Horizontally place the title and subtitle in the title area
+// Written to a css 'justify-content' property.
+//
+// Useful values are: flex-start | center | flex-end
+//
+$banner-title-subtitle-justify-content-narrow:	center;
+$banner-title-subtitle-justify-content-medium:	center;
+$banner-title-subtitle-justify-content-wide:	center;
+
+// Vertically place the title and subtitle in the title area
+// Written to a css 'align-items' property.
+//
+// Useful values are: flex-start | center | flex-end
+//
+$banner-title-subtitle-align-items-narrow:		center;
+$banner-title-subtitle-align-items-medium:		center;
+$banner-title-subtitle-align-items-wide:		flex-end;
 
 // Fine tuning the title position.
 //
@@ -312,34 +280,77 @@ $banner-title-align-items-wide:			center;
 //
 // Assigned to the css property 'padding'.
 //
-$banner-title-padding-narrow:			0;
-$banner-title-padding-medium:			0;
-$banner-title-padding-wide:				0;
+$banner-title-padding-narrow:					0;
+$banner-title-padding-medium:					0;
+$banner-title-padding-wide:						0;
+
+// Fine tuning the subtitle position.
+//
+// If the subtitle must be moved a little left, add some padding on the right.
+// If it must be moved a little down, add some padding on top. Etc.
+//
+// Assigned to the css property 'padding'.
+//
+$banner-subtitle-padding-narrow:				0;
+$banner-subtitle-padding-medium:				0;
+$banner-subtitle-padding-wide:					0 0 2px 2em;
 
 // The font for the title.
 // Written to a css 'font' property.
 //
 // Note that a valid font specification requires as a minimum the size and font family
 //
-$banner-title-font-narrow:				$large-large-font-size $theme-font-family;
-$banner-title-font-medium:				$large-large-font-size $theme-font-family;
-$banner-title-font-wide:				$large-large-font-size $theme-font-family;
+$banner-title-font-narrow:						20px $theme-font-family;
+$banner-title-font-medium:						25px $theme-font-family;
+$banner-title-font-wide:						30px $theme-font-family;
+
+// The font for the subtitle.
+// Written to a css 'font' property.
+//
+// Note that a valid font specification requires as a minimum the size and font family
+//
+$banner-subtitle-font-narrow:					12px $theme-font-family;
+$banner-subtitle-font-medium:					15px $theme-font-family;
+$banner-subtitle-font-wide:						18px $theme-font-family;
 
 // The color for the title.
 // Written to a css 'color' property.
 //
-$banner-title-color-narrow:				$theme-color;
-$banner-title-color-medium:				$theme-color;
-$banner-title-color-wide:				$theme-color;
+$banner-title-color-narrow:						$theme-color;
+$banner-title-color-medium:						$theme-color;
+$banner-title-color-wide:						$theme-color;
+
+// The color for the subtitle.
+// Written to a css 'color' property.
+//
+$banner-subtitle-color-narrow:					$theme-color;
+$banner-subtitle-color-medium:					$theme-color;
+$banner-subtitle-color-wide:					lighten(black, 50%);
 
 
 // *********************************************************************************************************************
-// Banner menu symbol settings
+// Banner Menu Symbol
 // ---------------------------------------------------------------------------------------------------------------------
-// The menu symbol is positioned in a container that is overlayed over the entire banner.
+// The banner menu symbol is used to hide or disclose the menu bar.
+// The banner menu symbol is centered in a tap area that is positioned in a container with the same size as the banner.
+
+// Controls display of the banner menu symbol.
+// Note: Disabling the banner also disables the title.
+// Note: This does NOT control visibility of the menubar!
+//
+$banner-menu-symbol-enabled-narrow:			true;
+$banner-menu-symbol-enabled-medium:			true;
+$banner-menu-symbol-enabled-wide:			false;
+
+// The z-order of the menu symbol. Use this to position the menu symbol relative to the title-area and the icon.
+// Written to a css 'z-index' property.
+//
+$banner-menu-symbol-z-index-narrow:			3;
+$banner-menu-symbol-z-index-medium:			3;
+$banner-menu-symbol-z-index-wide:			3;
 
 // Horizontally position the menu symbol tap area.
-// Written to a css flex box property 'justify-content'.
+// Written to a css 'justify-content' property.
 //
 // Useful values are: flex-start | center | flex-end
 //
@@ -348,7 +359,7 @@ $banner-menu-symbol-justify-content-medium:	flex-end;
 $banner-menu-symbol-justify-content-wide:	flex-end;
 
 // Vertically position the menu symbol tap area.
-// Written to a css flex box property 'align-items'.
+// Written to a css 'align-items' property.
 //
 // Useful values are: flex-start | center | flex-end
 //
@@ -409,27 +420,211 @@ $banner-menu-symbol-color-wide:				$theme-color;
 //
 // Note that a valid font specification requires as a minimum the size and font family
 //
-$banner-menu-symbol-font-narrow:			$large-large-font-size $theme-font-family;
-$banner-menu-symbol-font-medium:			$large-large-font-size $theme-font-family;
-$banner-menu-symbol-font-wide:				$large-font-size $theme-font-family;
+$banner-menu-symbol-font-narrow:			30px $theme-font-family;
+$banner-menu-symbol-font-medium:			35px $theme-font-family;
+$banner-menu-symbol-font-wide:				40px $theme-font-family;
 
 
 // *********************************************************************************************************************
-// Menubar separators
+// Menubar top separator
+// ---------------------------------------------------------------------------------------------------------------------
+// The menubar top separator is placed between the banner and the menubar.
+//
+
+// Controls visibility
+//
+$menubar-top-separator-enabled-narrow:		true;
+$menubar-top-separator-enabled-medium:		true;
+$menubar-top-separator-enabled-wide:		true;
+
+// The height of the seperator.
+// Written to a CSS 'height' property.
+//
+// This height must use the same units as the banner-height, menubar-height and menubar-bottom-separator-height.
+//
+// Note: The 'auto' value does not work.
+//
+$menubar-top-separator-height-narrow:		2px;
+$menubar-top-separator-height-medium:		2px;
+$menubar-top-separator-height-wide:			2px;
+
+// The background of the separator
+// Written to a css 'background' property.
+//
+$menubar-top-separator-background-narrow:	$theme-color;
+$menubar-top-separator-background-medium:	$theme-color;
+$menubar-top-separator-background-wide:		$theme-color;
+
+
+// *********************************************************************************************************************
+// Menubar bottom separator
+// ---------------------------------------------------------------------------------------------------------------------
+// The menubar bottom separator is placed between the menubar and the column panel.
+// This separator will be disabled and enabled together with the menubar itself.
+//
+
+// Controls visibility
+//
+$menubar-bottom-separator-enabled-narrow:		true;
+$menubar-bottom-separator-enabled-medium:		true;
+$menubar-bottom-separator-enabled-wide:			true;
+
+// The height of the seperator.
+// Written to a CSS 'height' property.
+//
+// This height must use the same units as the banner-height, menubar-height and menubar-bottom-separator-height.
+//
+// Note: The 'auto' value does not work.
+//
+$menubar-bottom-separator-height-narrow:		2px;
+$menubar-bottom-separator-height-medium:		2px;
+$menubar-bottom-separator-height-wide:			2px;
+
+// The background of the separator
+// Written to a css 'background' property.
+//
+$menubar-bottom-separator-background-narrow:	$theme-color;
+$menubar-bottom-separator-background-medium:	$theme-color;
+$menubar-bottom-separator-background-wide:		$theme-color;
+
+
+// *********************************************************************************************************************
+// Menu bar (& dropdown)
+// ---------------------------------------------------------------------------------------------------------------------
+// The menubar contains a sequence of menubar items and menubar separators. The menubar items correspond to the
+// menuTopTitle in the YAML frontmatter. Below the menu item there can be a dropdown box containing the subitems.
+// The subitems correspond to menuSubTitle and menuSubs.title YAML frontmatter.
+//
+
+// Controls visibility of the menubar.
+// Use this to disable the menubar permanently.
+//
+$menubar-enabled-narrow:						true;
+$menubar-enabled-medium:						true;
+$menubar-enabled-wide:							true;
+
+// The height of the menubar.
+// Written to a CSS 'height' property.
+// 
+$menubar-height-narrow:							26px;
+$menubar-height-medium:							26px;
+$menubar-height-wide:							30px;
+
+//
+$menubar-justify-content:						center; // Flexbox property
+$menubar-align-items:							center; // Flexbox property
+$menubar-background:							white; // Its recommended to always set a background color.
+$menubar-padding-medium:						0;
+$menubar-padding-wide:							0;
+$menubar-border:								none;
+$menubar-box-shadow:							none;
+//
+$menubar-item-font-medium:						$theme-font-size $theme-font-family; // size & family are required
+$menubar-item-font-wide:						$theme-font-size $theme-font-family; // size & family are required
+$menubar-item-color:							$theme-color;
+$menubar-item-hover-color:						black;
+$menubar-item-background:						white;
+$menubar-item-background-narrow:				$grey-color-light;
+$menubar-item-background-hover:					$grey-color-light;
+$menubar-item-active-selection-background:		$grey-color-light;
+$menubar-item-height-narrow:					3 * $hspacing-unit;
+$menubar-item-separator-line-width-narrow:		4px;
+$menubar-item-separator-line-color-narrow:		$menubar-background;
+$menubar-item-padding-medium:					$vspacing-unit/4 $hspacing-unit;
+$menubar-item-padding-wide:						$vspacing-unit/4 $hspacing-unit;
+$menubar-item-title-symbol-code-closed-narrow:	'\021E8';
+$menubar-item-title-symbol-code-open-narrow:	'\021E9';
+$menubar-item-disclosure-symbol-width-narrow:	10%;
+//
+$menubar-item-separator-symbol-medium:			'';
+$menubar-item-separator-symbol-wide:			'';
+$menubar-item-separator-symbol-font-medium:		$theme-font-size $theme-font-family; // size & family are required
+$menubar-item-separator-symbol-font-wide:		$theme-font-size $theme-font-family; // size & family are required
+$menubar-item-separator-symbol-color:			$theme-color;
+$menubar-item-separator-symbol-background:		$menubar-item-background;
+$menubar-item-separator-symbol-padding-medium:	$vspacing-unit/4 0;
+$menubar-item-separator-symbol-padding-wide:	$vspacing-unit/4 0;
+//
+$menubar-dropdown-border:						none;
+$menubar-dropdown-box-shadow:					0 0.25em 0.25em 0 rgba(0,0,0,0.2);
+//
+$menubar-subitem-font-medium:					$small-font-size $theme-font-family; // size & family are required
+$menubar-subitem-font-wide:						$small-font-size $theme-font-family; // size & family are required
+$menubar-subitem-color:							$theme-color;
+$menubar-subitem-hover-color:					black;
+$menubar-subitem-background: 					white;
+$menubar-subitem-background-narrow: 			$grey-color-light;
+$menubar-subitem-background-hover:				$grey-color-light;
+$menubar-subitem-active-selection-background:	$grey-color-light;
+$menubar-subitem-separator-line-width-narrow:	2px;
+$menubar-subitem-separator-line-color-narrow:	$menubar-background;
+$menubar-subitem-indent:						$hspacing-unit;
+$menubar-subitem-padding-medium:				$vspacing-unit/4 $hspacing-unit;
+$menubar-subitem-padding-wide:					$vspacing-unit/4 $hspacing-unit;
+
+
+
+
+
+
+// *********************************************************************************************************************
+// Column settings
+// ---------------------------------------------------------------------------------------------------------------------
+// The column panel encompasses the three columns and column separators.
+//
+$column-panel-background:				none;
+
+// For the primary column.
+//
+$primary-column-background-narrow:		none;
+$primary-column-background-medium:		none;
+$primary-column-background-wide:		none;
+
+// For the secondary column.
+//
+$secondary-column-background-narrow:	none;
+$secondary-column-background-medium:	none;
+$secondary-column-background-wide:		none;
+
+// For the tertiary column.
+//
+$tertiary-column-background-narrow:		none;
+$tertiary-column-background-medium:		none;
+$tertiary-column-background-wide:		none;
+
+// Color for the dividers between the columns
+//
+$column-divider-color:					lighten($grey-color, 30%);
+
+// Enable/disable display of the column dividers
+//
+$column-divider-display:				block; //none;
+
+// Set the space between the top of the divider and the menubar-bottom-separator.
+// The background for the divider is the background of the column panel.
+//
+$column-divider-top-spacing:			$vspacing-unit;
+
+// Set the space between the bottom of the divider and the footer divider.
+// The background for the divider is the background of the column panel.
+//
+$column-divider-bottom-spacing:         $vspacing-unit;
+
+
+// *********************************************************************************************************************
+// Footer settings
 // ---------------------------------------------------------------------------------------------------------------------
 //
-
-// Color of the menubar separator on top of the menu (between banner and menubar)
+// Footer background.
 //
-$menubar-top-separator-color-narrow:		$theme-color;
-$menubar-top-separator-color-medium:		$theme-color;
-$menubar-top-separator-color-wide:			$theme-color;
+$footer-background-narrow:				none;
+$footer-background-medium:				none;
+$footer-background-wide:				none;
 
-// Color of the menubar separator below the menubar (between menubar and column panel)
+// The footer divider is placed between the columns panel and the footer panel.
 //
-$menubar-bottom-separator-color-narrow:		$theme-color;
-$menubar-bottom-separator-color-medium:		$theme-color;
-$menubar-bottom-separator-color-wide:		$theme-color;
+$footer-divider-color:					$theme-color;
+$footer-divider-display:				block; //none;
 
 
 // *********************************************************************************************************************
@@ -439,68 +634,6 @@ $menubar-bottom-separator-color-wide:		$theme-color;
 
 $widget-divider-color:      			$theme-color;
 $widget-divider-display:				block; //none;
-
-
-// *********************************************************************************************************************
-// Menu bar (& dropdown)
-// ---------------------------------------------------------------------------------------------------------------------
-// When comparing the html code to the names used here, be advised that the names here refer to the logical element.
-// Actual HTML elements and CSS id/properties may be named differently according to the needs of the code. For example
-// the $menubar-item-padding-medium is not neccesarily applied to the CSS id 'item'.
-//
-// The menubar contains a sequence of menubar items and menubar separators. The menubar items correspond to the
-// menuTopTitle in the YAML frontmatter. Below the menu item there can be a dropdown box containing the subitems.
-// The subitems correspond to menuSubTitle and menuSubs.title YAML frontmatter.
-//
-$menubar-justify-content:							center; // Flexbox property
-$menubar-background-color:							white;
-$menubar-padding-medium:							0;
-$menubar-padding-wide:								0;
-$menubar-border:									none;
-$menubar-box-shadow:								none;
-//
-$menubar-item-font-medium:							$theme-font-size $theme-font-family; // size & family are required
-$menubar-item-font-wide:							$theme-font-size $theme-font-family; // size & family are required
-$menubar-item-color:								$theme-color;
-$menubar-item-hover-color:							black;
-$menubar-item-background-color:						white;
-$menubar-item-background-color-narrow:				$grey-color-light;
-$menubar-item-background-hover-color:				$grey-color-light;
-$menubar-item-active-selection-background-color:	$grey-color-light;
-$menubar-item-height-narrow:						3 * $hspacing-unit;
-$menubar-item-separator-line-width-narrow:			4px;
-$menubar-item-separator-line-color-narrow:			$menubar-background-color;
-$menubar-item-padding-medium:						$vspacing-unit/4 $hspacing-unit;
-$menubar-item-padding-wide:							$vspacing-unit/4 $hspacing-unit;
-$menubar-item-title-symbol-code-closed-narrow:		'\021E8';
-$menubar-item-title-symbol-code-open-narrow:		'\021E9';
-$menubar-item-disclosure-symbol-width-narrow:		10%;
-//
-$menubar-separator-symbol-medium:					'';
-$menubar-separator-symbol-wide:						'';
-$menubar-separator-font-medium:						$theme-font-size $theme-font-family; // size & family are required
-$menubar-separator-font-wide:						$theme-font-size $theme-font-family; // size & family are required
-$menubar-separator-color:							$theme-color;
-$menubar-separator-background-color:				$menubar-item-background-color;
-$menubar-separator-padding-medium:					$vspacing-unit/4 0;
-$menubar-separator-padding-wide:					$vspacing-unit/4 0;
-//
-$menubar-dropdown-border:							none;
-$menubar-dropdown-box-shadow:						0 0.25em 0.25em 0 rgba(0,0,0,0.2);
-//
-$menubar-subitem-font-medium:						$small-font-size $theme-font-family; // size & family are required
-$menubar-subitem-font-wide:							$small-font-size $theme-font-family; // size & family are required
-$menubar-subitem-color:								$theme-color;
-$menubar-subitem-hover-color:						black;
-$menubar-subitem-background-color: 					white;
-$menubar-subitem-background-color-narrow: 			$grey-color-light;
-$menubar-subitem-background-hover-color:			$grey-color-light;
-$menubar-subitem-active-selection-background-color:	$grey-color-light;
-$menubar-subitem-separator-line-width-narrow:		2px;
-$menubar-subitem-separator-line-color-narrow:		$menubar-background-color;
-$menubar-subitem-indent:							$hspacing-unit;
-$menubar-subitem-padding-medium:					$vspacing-unit/4 $hspacing-unit;
-$menubar-subitem-padding-wide:						$vspacing-unit/4 $hspacing-unit;
 
 
 // *********************************************************************************************************************
@@ -584,7 +717,7 @@ $category-item-padding:						$vspacing-unit/8 $hspacing-unit/4 $vspacing-unit/8 
   "classic/theme-library",			// General class definitions used in several other scss files
   //
   "classic/body",
-  "classic/banner",
+  "classic/banner-area",
   "classic/menubar",
   "classic/columns",
   "classic/footer",

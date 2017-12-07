@@ -1,0 +1,556 @@
+.banner-area {
+
+	// Establish a baseline position for the container elements
+	position: relative;
+
+	// Layout
+	width: 100%;
+		
+	.banner {
+	
+		// Sizing: The container occupies the entire width and height as specified
+		width: 100%;
+		@include narrow-layout { height: $banner-height-narrow; }
+		@include medium-layout { height: $banner-height-medium; }
+		@include wide-layout   { height: $banner-height-wide; }
+
+		// background
+		@include narrow-layout { background: $banner-background-narrow; }
+		@include medium-layout { background: $banner-background-medium; }
+		@include wide-layout   { background: $banner-background-wide; }
+		
+		z-index: 1;
+	}
+
+	.icon-container {
+		
+		// Sizing: This is an overlay container over the entire banner
+		@extend .overlay;
+		@include narrow-layout { height: $banner-height-narrow; }
+		@include medium-layout { height: $banner-height-medium; }
+		@include wide-layout   { height: $banner-height-wide; }
+
+		// Display or not
+		@include narrow-layout {
+			@if ($banner-enabled-narrow and $banner-icon-enabled-narrow) { display: flex; }
+			@else { display: none; }
+		}
+		@include medium-layout {
+			@if ($banner-enabled-medium and $banner-icon-enabled-medium) { display: flex; }
+			@else { display: none; }
+		}
+		@include wide-layout {
+			@if ($banner-enabled-wide and $banner-icon-enabled-wide) { display: flex; }
+			@else { display: none; }
+		}
+
+		// Position the icon
+		@include narrow-layout {
+			justify-content: $banner-icon-justify-content-narrow;
+			align-items: $banner-icon-align-items-narrow;
+		}
+		@include medium-layout {
+			justify-content: $banner-icon-justify-content-medium;
+			align-items: $banner-icon-align-items-medium;
+		}
+		@include wide-layout {
+			justify-content: $banner-icon-justify-content-wide;
+			align-items: $banner-icon-align-items-wide;
+		}
+		
+		// Ordering
+		@include narrow-layout { z-index: $banner-icon-z-index-narrow; }
+		@include medium-layout { z-index: $banner-icon-z-index-medium; }
+		@include wide-layout   { z-index: $banner-icon-z-index-wide; }
+
+			
+		.icon {				
+
+			@include narrow-layout {
+
+				// Position tweaks
+				padding: $banner-icon-padding-narrow;
+
+				// Sizing
+				width: $banner-icon-width-narrow;
+				height: $banner-icon-height-narrow;
+				
+				// Content (icon image)
+				content: $banner-icon-url-narrow;
+			}
+			@include medium-layout {
+			
+				// Position tweaks
+				padding: $banner-icon-padding-medium;
+
+				// Sizing
+				width: $banner-icon-width-medium;
+				height: $banner-icon-height-medium;
+				
+				// Content (icon image)
+				content: $banner-icon-url-medium;
+			}
+			@include wide-layout {
+			
+				// Position tweaks
+				padding: $banner-icon-padding-wide;
+
+				// Sizing
+				width: $banner-icon-width-wide;
+				height: $banner-icon-height-wide;
+				
+				// Content (icon image)
+				content: $banner-icon-url-wide;
+			}
+		}
+	}
+		
+	.title-area-container {
+		
+		// Sizing: This is an overlay container over the entire banner
+		@extend .overlay;
+		@include narrow-layout { height: $banner-height-narrow; }
+		@include medium-layout { height: $banner-height-medium; }
+		@include wide-layout   { height: $banner-height-wide; }
+		
+		// Display or not
+		@include narrow-layout {
+			@if ($banner-enabled-narrow and ($banner-title-enabled-narrow or $banner-subtitle-enabled-narrow)) { display: flex; }
+			@else { display: none; }
+		}
+		@include medium-layout {
+			@if ($banner-enabled-medium and ($banner-title-enabled-medium or $banner-subtitle-enabled-medium)) { display: flex; }
+			@else { display: none; }
+		}
+		@include wide-layout {
+			@if ($banner-enabled-wide and ($banner-title-enabled-wide or $banner-subtitle-enabled-wide)) { display: flex; }
+			@else { display: none; }
+		}
+
+		// Ordering
+		@include narrow-layout { z-index: $banner-title-area-z-index-narrow; }
+		@include medium-layout { z-index: $banner-title-area-z-index-medium; }
+		@include wide-layout   { z-index: $banner-title-area-z-index-wide; }
+
+		// Position the title area
+		@include narrow-layout {			
+			justify-content: $banner-title-area-justify-content-narrow;
+			align-items: $banner-title-area-align-items-narrow;
+		}		
+		@include medium-layout {
+			justify-content: $banner-title-area-justify-content-medium;
+			align-items: $banner-title-area-align-items-medium;
+		}
+		@include wide-layout {
+			justify-content: $banner-title-area-justify-content-wide;
+			align-items: $banner-title-area-align-items-wide;
+		}
+		
+		.title-area {
+			
+			// Sizing
+			@include narrow-layout {
+				width: $banner-title-area-width-narrow;
+				height: $banner-title-area-height-narrow;
+			}
+			@include medium-layout {
+				width: $banner-title-area-width-medium;
+				height: $banner-title-area-height-medium;
+			}
+			@include wide-layout {
+				width: $banner-title-area-width-wide;
+				height: $banner-title-area-height-wide;
+			}
+
+			// Positioning of title and subtitle
+			display: flex;
+			@include narrow-layout {
+				flex-direction: $banner-title-subtitle-flex-direction-narrow;
+				justify-content: $banner-title-subtitle-justify-content-narrow;
+				align-items: $banner-title-subtitle-align-items-narrow;
+			}
+			@include medium-layout {
+				flex-direction: $banner-title-subtitle-flex-direction-medium;
+				justify-content: $banner-title-subtitle-justify-content-medium;
+				align-items: $banner-title-subtitle-align-items-medium;
+			}
+			@include wide-layout {
+				flex-direction: $banner-title-subtitle-flex-direction-wide;
+				justify-content: $banner-title-subtitle-justify-content-wide;
+				align-items: $banner-title-subtitle-align-items-wide;
+			}
+
+			// background
+			@include narrow-layout { background: $banner-title-area-background-narrow; }
+			@include medium-layout { background: $banner-title-area-background-medium; }
+			@include wide-layout { background: $banner-title-area-background-wide; }
+
+			// Title appearance
+			@include narrow-layout {
+				@if ($banner-title-enabled-narrow) {
+	
+					.title p {
+			
+						// Set the margins to zero to avoid shifts in placing.
+						margin: 0;
+					
+						// Position fine tuning uses padding
+						padding: $banner-title-padding-narrow;
+					
+						// Appearance of the title
+						font: $banner-title-font-narrow;
+						color: $banner-title-color-narrow;
+					}
+					
+				} @else {
+				
+					.title { display: none; }
+				}
+			}
+			@include medium-layout {
+				@if ($banner-title-enabled-medium) {
+	
+					.title p {
+			
+						// Set the margins to zero to avoid shifts in placing.
+						margin: 0;
+					
+						// Position fine tuning uses padding
+						padding: $banner-title-padding-medium;
+					
+						// Appearance of the title
+						font: $banner-title-font-medium;
+						color: $banner-title-color-medium;
+					}
+					
+				} @else {
+				
+					.title { display: none; }
+				}
+			}
+			@include wide-layout {
+				@if ($banner-title-enabled-wide) {
+	
+					.title p {
+			
+						// Set the margins to zero to avoid shifts in placing.
+						margin: 0;
+					
+						// Position fine tuning uses padding
+						padding: $banner-title-padding-wide;
+					
+						// Appearance of the title
+						font: $banner-title-font-wide;
+						color: $banner-title-color-wide;
+					}
+					
+				} @else {
+				
+					.title { display: none; }
+				}
+			}
+			
+			// Subtitle appearance
+			@include narrow-layout {
+				@if ($banner-subtitle-enabled-narrow) {
+
+					.subtitle p {
+			
+						// Set the margins to zero to avoid shifts in placing.
+						margin: 0;
+					
+						// Position fine tuning uses padding
+						padding: $banner-subtitle-padding-narrow;
+					
+						// Appearance of the title
+						font: $banner-subtitle-font-narrow;
+						color: $banner-subtitle-color-narrow;
+					}
+				
+				} @else {
+				
+					.subtitle { display: none; }
+				}
+			}
+			@include medium-layout {
+				@if ($banner-subtitle-enabled-medium) {
+
+					.subtitle p {
+			
+						// Set the margins to zero to avoid shifts in placing.
+						margin: 0;
+					
+						// Position fine tuning uses padding
+						padding: $banner-subtitle-padding-medium;
+					
+						// Appearance of the title
+						font: $banner-subtitle-font-medium;
+						color: $banner-subtitle-color-medium;
+					}
+				
+				} @else {
+				
+					.subtitle { display: none; }
+				}
+			}
+			@include wide-layout {
+				@if ($banner-subtitle-enabled-wide) {
+
+					.subtitle p {
+			
+						// Set the margins to zero to avoid shifts in placing.
+						margin: 0;
+					
+						// Position fine tuning uses padding
+						padding: $banner-subtitle-padding-wide;
+					
+						// Appearance of the title
+						font: $banner-subtitle-font-wide;
+						color: $banner-subtitle-color-wide;
+					}
+				
+				} @else {
+				
+					.subtitle { display: none; }
+				}
+			}
+		}
+	}
+		
+	input {
+		
+		// Don't display the checkbox
+		display: none;
+			
+		// When selected, display the menu bar and lower
+		&:checked ~ {
+			@include narrow-layout {
+				.menubar { display: flex; }
+				.menubar-bottom-separator { display: block }
+			}
+			@include medium-layout {
+				@if $banner-menu-symbol-enabled-medium {
+					.menubar { display: none; }
+					.menubar-bottom-separator { display: none }
+				} @else {
+					.menubar { display: flex; }
+					.menubar-bottom-separator { display: block }
+				}
+			}
+			@include wide-layout {
+				@if $banner-menu-symbol-enabled-wide {
+					.menubar { display: none; }
+					.menubar-bottom-separator { display: none }
+				} @else {
+					.menubar { display: flex; }
+					.menubar-bottom-separator { display: block }
+				}
+			}
+
+		}
+	}
+		
+	.label-container {
+			
+		// The container occupies the entire banner area
+		@extend .overlay;
+		@include narrow-layout { height: $banner-height-narrow; }
+		@include medium-layout { height: $banner-height-medium; }
+		@include wide-layout   { height: $banner-height-wide; }
+
+		// Display or not
+		@include narrow-layout {
+			@if ($banner-enabled-narrow and $banner-menu-symbol-enabled-narrow) { display: flex; }
+			@else { display: none; }
+		}
+		@include medium-layout {
+			@if ($banner-enabled-medium and $banner-menu-symbol-enabled-medium) { display: flex; }
+			@else { display: none; }
+		}
+		@include wide-layout {
+			@if ($banner-enabled-wide and $banner-menu-symbol-enabled-wide) { display: flex; }
+			@else { display: none; }
+		}
+
+		// Position the label (tap area)
+		display: flex;
+		@include narrow-layout {
+			justify-content: $banner-menu-symbol-justify-content-narrow;
+			align-items: $banner-menu-symbol-align-items-narrow;
+		}
+		@include medium-layout {
+			justify-content: $banner-menu-symbol-justify-content-medium;
+			align-items: $banner-menu-symbol-align-items-medium;
+		}
+		@include wide-layout {
+			justify-content: $banner-menu-symbol-justify-content-wide;
+			align-items: $banner-menu-symbol-align-items-wide;
+		}
+
+		// Ordering
+		@include narrow-layout { z-index: $banner-menu-symbol-z-index-narrow; }
+		@include medium-layout { z-index: $banner-menu-symbol-z-index-medium; }
+		@include wide-layout   { z-index: $banner-menu-symbol-z-index-wide; }
+
+		label {
+
+			// Position the menu symbol
+			display:flex;
+			justify-content: center;
+			align-items: center;
+
+			@include narrow-layout {
+				
+				// Insert the menu symbol		
+				p:after { content: $banner-menu-symbol-code-narrow; }
+
+				// Size the tap area 
+				width: $banner-menu-symbol-tap-area-width-narrow;
+				height: $banner-menu-symbol-tap-area-height-narrow;
+					
+				// The background
+				background: $banner-menu-symbol-tap-area-background-narrow;
+					
+				// The border
+				border: $banner-menu-symbol-tap-area-border-narrow;
+			}
+			@include medium-layout {
+				
+				// Insert the menu symbol		
+				p:after { content: $banner-menu-symbol-code-medium; }
+
+				// Size the tap area 
+				width: $banner-menu-symbol-tap-area-width-medium;
+				height: $banner-menu-symbol-tap-area-height-medium;
+					
+				// The background
+				background: $banner-menu-symbol-tap-area-background-medium;
+					
+				// The border
+				border: $banner-menu-symbol-tap-area-border-medium;
+			}
+			@include wide-layout {
+				
+				// Insert the menu symbol		
+				p:after { content: $banner-menu-symbol-code-wide; }
+
+				// Size the tap area 
+				width: $banner-menu-symbol-tap-area-width-wide;
+				height: $banner-menu-symbol-tap-area-height-wide;
+					
+				// The background
+				background: $banner-menu-symbol-tap-area-background-wide;
+					
+				// The border
+				border: $banner-menu-symbol-tap-area-border-wide;
+			}
+
+
+			// The label is used as checkbox-label, it should show a pointer when the mouse is above it.
+			cursor: pointer;
+				
+			p {
+				@include narrow-layout {
+				
+					// Fine tune the position of the menu symbol in the tap area
+					padding: $banner-menu-symbol-padding-narrow;
+						
+					// The font
+					font: $banner-menu-symbol-font-narrow;
+						
+					// The color
+					color: $banner-menu-symbol-color-narrow;
+				}
+				@include medium-layout {
+					
+					// Fine tune the position of the menu symbol in the tap area
+					padding: $banner-menu-symbol-padding-medium;
+						
+					// The font
+					font: $banner-menu-symbol-font-medium;
+						
+					// The color
+					color: $banner-menu-symbol-color-medium;
+				}
+				@include wide-layout {
+					
+					// Fine tune the position of the menu symbol in the tap area
+					padding: $banner-menu-symbol-padding-wide;
+						
+					// The font
+					font: $banner-menu-symbol-font-wide;
+						
+					// The color
+					color: $banner-menu-symbol-color-wide;
+				}
+			}
+		}
+	}		
+	
+	.menubar-top-separator {
+
+		// Use the entire width to force vertical appearance
+		width: 100%;
+		
+		// Sizing
+		@include narrow-layout { height: $menubar-top-separator-height-narrow; }
+		@include medium-layout { height: $menubar-top-separator-height-medium; }
+		@include wide-layout   { height: $menubar-top-separator-height-wide; }
+
+		// Appearance
+		@include narrow-layout { background: $menubar-top-separator-background-narrow; }
+		@include medium-layout { background: $menubar-top-separator-background-medium; }
+		@include wide-layout   { background: $menubar-top-separator-background-wide; }
+
+		// Enable or disable display
+		@include narrow-layout {
+			@if $menubar-top-separator-enabled-narrow { display: block; } @else { display: none; }
+		}
+		@include medium-layout {
+			@if $menubar-top-separator-enabled-medium { display: block; } @else { display: none; }
+		}
+		@include wide-layout {
+			@if $menubar-top-separator-enabled-wide { display: block; } @else { display: none; }
+		}
+	}
+		
+	.menubar-bottom-separator {
+
+		// Use the entire width to force vertical appearance
+		width: 100%;
+
+		// Sizing
+		@include narrow-layout { height: $menubar-bottom-separator-height-narrow; }
+		@include medium-layout { height: $menubar-bottom-separator-height-medium; }
+		@include wide-layout   { height: $menubar-bottom-separator-height-wide; }
+
+		// Appearance
+		@include narrow-layout { background: $menubar-bottom-separator-background-narrow; }
+		@include medium-layout { background: $menubar-bottom-separator-background-medium; }
+		@include wide-layout   { background: $menubar-bottom-separator-background-wide; }
+
+		// Enable or disable display
+		@include narrow-layout {
+			@if $menubar-bottom-separator-enabled-narrow { display: none; } @else { display: none; }
+		}
+		@include medium-layout {
+			@if $menubar-bottom-separator-enabled-medium { display: block; } @else { display: none; }
+		}
+		@include wide-layout {
+			@if $menubar-bottom-separator-enabled-wide { display: block; } @else { display: none; }
+		}
+	}
+}
+
+// This bit is needed to fix the banner and menubar in place at the top of the screen.
+//
+.banner-area-fixed {
+
+	// Fix the menu and banner bar to the top of the screen
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+
+

@@ -1,0 +1,13 @@
+<div class="banner-area">
+	<div class="spacer-for-fixed-banner"></div>
+	<div class="banner"></div>
+	<!-- the following elements are outide the DOM (positioned absolute relative to the banner-area) -->
+	<div class="icon-container"><div class="icon"></div></div>
+	<div class="title-area-container"><div class="title-area"><div class="title"><p>{{ site.title }}</p></div><div class="subtitle"><p>{{ site.data.setup.subtitle }}</p></div></div></div>
+	<div class="label-container"><label for="banner-menu-symbol"><p><!-- empty but necessary! --></p></label></div>
+	<!-- from here on the elements are part of the DOM again -->
+	<input type="checkbox" id="banner-menu-symbol">
+	<div class="menubar-top-separator"></div>
+	{% include menubar.html %}
+	<div class="menubar-bottom-separator"></div>
+</div>

@@ -4,7 +4,7 @@
 {% if page.tertiary-column %}{% if page.tertiary-column == 'present' %}{% assign tertiary-column = 'present' %}{% endif %}{% else %}{% if site.data.setup.tertiary-column == 'present' %}{% assign tertiary-column = 'present' %}{% endif %}{% endif %}
 {% if page.tertiary-column-content %}{% assign tertiary-column-content = page.tertiary-column-content %}{% else %}{% assign tertiary-column-content = 'tertiary-column.html' %}{% endif %}
 {% if page.navbanner-position %}{% assign navbanner-position = page.navbanner-position %}{% else %}{% assign navbanner-position = site.data.setup.navbanner-position %}{% endif %}
-{% if site.data.setup.banner-position == 'top-fixed' %}{% assign banner-classes = 'banner-menubar banner-menubar-fixed' %}{% assign column-panel-classes = 'column-panel column-panel-fixed-menubar' %}{% else %}{% assign banner-classes = 'banner-menubar' %}{% assign column-panel-classes = 'column-panel' %}{% endif%}
+{% if site.data.setup.banner-position == 'top-fixed' %}{% assign banner-classes = 'banner banner-menubar-fixed' %}{% assign column-panel-classes = 'column-panel column-panel-fixed-menubar' %}{% else %}{% assign banner-classes = 'banner-menubar' %}{% assign column-panel-classes = 'column-panel' %}{% endif%}
 <html>
 
 	{% include head.html %}
@@ -13,9 +13,9 @@
   	
   		{% if site.data.setup.banner-position == 'top' or site.data.setup.banner-position == 'top-fixed' %}
   			{% if site.data.setup.use-separate-banner-menubar-file and site.data.setup.drop-down-menu %}
-  				<div id="navFrame" class="{{ banner-classes }}"><script>$("#navFrame").load("/banner.html");</script></div>
+  				<div id="navFrame" class="{{ banner-classes }}"><script>$("#navFrame").load("/banner-area.html");</script></div>
   			{% else %}
-  				<div class="{{ banner-classes }}">{% include banner.html %}</div>
+  				<div class="{{ banner-classes }}">{% include banner-area.html %}</div>
   			{% endif %}
   		{% endif %}
 
@@ -47,9 +47,9 @@
 			<div class="primary-column">
 			  	{% if site.data.setup.banner-position == 'main' %}
   					{% if site.data.setup.use-separate-banner-menubar-file %}
-  						<div id="navFrame" class="banner-menubar"><script>$("#navFrame").load("/banner.html");</script></div>
+  						<div id="navFrame" class="banner-menubar"><script>$("#navFrame").load("/banner-area.html");</script></div>
   					{% else %}
-  						<div class="banner-menubar">{% include banner.html %}</div>
+  						<div class="banner-menubar">{% include banner-area.html %}</div>
   					{% endif %}
   				{% endif %}
   				{% if site.data.setup.drop-down-menu %}{% else %}
