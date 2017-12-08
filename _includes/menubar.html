@@ -31,17 +31,17 @@
 			
 				{% comment %}<!-- note: the html comment tags are for editor coloring support
 			
-			Due to the poor support for variables in Liquid we have to resort to some fairly laborious code.
+				Due to the poor support for variables in Liquid we have to resort to some fairly laborious code.
 			
-			First determine all pages that contain sub menu information for the running top menu item. These are collected in "titlePages"
+				First determine all pages that contain sub menu information for the running top menu item. These are collected in "titlePages"
 			
-			Then create four lists containing the sub menu title, index, url and link respectively. These lists are all in the same sequence such that entry [n] is applicable to the same sub menu in all lists. (I.e. they are synchronous)
+				Then create four lists containing the sub menu title, index, url and link respectively. These lists are all in the same sequence such that entry [n] is applicable to the same sub menu in all lists. (I.e. they are synchronous)
 			
-			Then sort the lists into four new lists. Again these lists must be kept synchronous.
+				Then sort the lists into four new lists. Again these lists must be kept synchronous.
 			
-			Lastly, step through the lists to create the actual sub menu's
+				Lastly, step through the lists to create the actual sub menu's
 			
-			-->{% endcomment %}
+				-->{% endcomment %}
 			
 				{% assign titlePages = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle %}
 			
@@ -209,7 +209,8 @@
 
 	<!-- Categories menu -->
 	{% if jekyll.environment != 'production' and site.data.setup.fast-content-build %}{% else %}
-		{% if site.data.setup.generate-categories-menu %}
+		{% if site.data.setup.generate-categories-menu and site.data.setup.drop-down-menu %}
+
 			{% assign cats = site.pages | where:'layout', 'category-page' | sort:'title' %}
 			{% if cats.size > 0 %}
 				{% assign categories = 'Categories' %}
@@ -228,25 +229,23 @@
 						<div class="text"><p class="paddingAsLink">{{ categories }}</p></div>
 					</div>
 				
-					{% if site.data.setup.drop-down-menu %}
-						<div class="dropdown">
-							{% for cat in cats %}
-								<div class="subitem-separator"><p></p></div>
-								{% if cat.url == page.url %}
-									<div class="subitem isActiveSelection">
-								{% else %}
-									<div class="subitem">
-								{% endif %}
-										<div class="title">
-											<div class="symbol"></div>
-											<div class="text">
-												<a href="{{ cat.url }}"><p>{{ cat.title | capitalize }}</p></a>
-											</div>
+					<div class="dropdown">
+						{% for cat in cats %}
+							<div class="subitem-separator"><p></p></div>
+							{% if cat.url == page.url %}
+								<div class="subitem isActiveSelection">
+							{% else %}
+								<div class="subitem">
+							{% endif %}
+									<div class="title">
+										<div class="symbol"></div>
+										<div class="text">
+											<a href="{{ cat.url }}"><p>{{ cat.title | capitalize }}</p></a>
 										</div>
 									</div>
-							{% endfor %}
-						</div>
-					{% endif %}
+								</div>
+						{% endfor %}
+					</div>
 				</div>
 			{% endif %}
 		{% endif %}

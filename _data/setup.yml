@@ -69,18 +69,18 @@ enable-cookies-policy: yes
 #
 banner-position: top-fixed
 
-# Switches between drop-down menu's en the vertical menu for the subMenuTitles. It does not affect the top menu items.
+# Switches between drop-down menu's en the vertical menu for the subMenuTitles. It does not affect the top menu items with the exception of the 'Categories' item.
 # Values: yes | no
-# - yes: The drop down menu is used, the vertical menu is not shown.
-# - no: The vertical menu is used, the drop down menu is not shown.
+# - yes: The drop down menu is used, the vertical menu is not shown. The Categories menu item is generated when the generate-categories-menu is set to 'yes'.
+# - no: The vertical menu is used, the drop down menu is not shown. The Categories menu is not created, even when the generate-categories-menu is set to 'yes'.
 #
 # Note: The drop down menu does not display sub-sub menu items, the vertical menu does. This setting can affect the use-separate-navbanner setting.
 #
-drop-down-menu: yes 
+drop-down-menu: no 
 
-# Controls the generation of the categories menu entry in the menu bar. Has no impact on the categories widget.
+# Controls the generation of the categories menu entry in the menu bar if the drop-down-menu option is set to 'yes'. Has no impact on the categories widget.
 # Values: yes | no
-# - yes: The categories menu entry is generated.
+# - yes: The categories menu entry is generated if -and only if- the drop-down-menu option is set to 'yes'.
 # - no : The categories menu entry is not generated.
 #
 generate-categories-menu: yes
