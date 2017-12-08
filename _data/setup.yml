@@ -67,7 +67,7 @@ enable-cookies-policy: yes
 #
 # Hint: When the 'top-fixed' is used the height of the banner and menu for the layouts must be specified in classic-jekyll-theme.scss. Also a background color should be specified for the banner and menu. 
 #
-banner-position: top
+banner-position: top-fixed
 
 # Switches between drop-down menu's en the vertical menu for the subMenuTitles. It does not affect the top menu items.
 # Values: yes | no

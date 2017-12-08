@@ -1,11 +1,52 @@
-.banner-area {
+#banner-menu-symbol {
 
-	// Establish a baseline position for the container elements
-	position: relative;
+	// Don't display the checkbox
+	display: none;
+			
+	// When selected, display the menu bar and lower
+	&:checked ~ {
+		@include narrow-layout {
+			.banner-area .menubar {
+				@if $menubar-enabled-narrow { display: flex; } @else { display: none; }
+			}
+			.banner-area .menubar-bottom-separator {
+				@if $menubar-bottom-separator-enabled-narrow { display: block; } @else { display: none; }
+			}
+		}
+		@include medium-layout {
+			@if $banner-menu-symbol-enabled-medium {
+				.banner-area .menubar { display: none; }
+				.banner-area .menubar-bottom-separator { display: none }
+			} @else {
+				.banner-area .menubar {
+					@if $menubar-enabled-medium { display: flex; } @else { display: none; }
+				}
+				.banner-area .menubar-bottom-separator {
+					@if $menubar-bottom-separator-enabled-medium { display: block; } @else { display: none; }
+				}
+			}
+		}
+		@include wide-layout {
+			@if $banner-menu-symbol-enabled-wide {
+				.banner-area .menubar { display: none; }
+				.banner-area .menubar-bottom-separator { display: none }
+			} @else {
+				.banner-area .menubar  {
+					@if $menubar-enabled-wide { display: flex; } @else { display: none; }
+				}
+				.banner-area .menubar-bottom-separator {
+					@if $menubar-bottom-separator-enabled-wide { display: block; } @else { display: none; }
+				}
+			}
+		}
+	}
+}
+
+.banner-area {
 
 	// Layout
 	width: 100%;
-		
+
 	.banner {
 	
 		// Sizing: The container occupies the entire width and height as specified
@@ -317,39 +358,6 @@
 		}
 	}
 		
-	input {
-		
-		// Don't display the checkbox
-		display: none;
-			
-		// When selected, display the menu bar and lower
-		&:checked ~ {
-			@include narrow-layout {
-				.menubar { display: flex; }
-				.menubar-bottom-separator { display: block }
-			}
-			@include medium-layout {
-				@if $banner-menu-symbol-enabled-medium {
-					.menubar { display: none; }
-					.menubar-bottom-separator { display: none }
-				} @else {
-					.menubar { display: flex; }
-					.menubar-bottom-separator { display: block }
-				}
-			}
-			@include wide-layout {
-				@if $banner-menu-symbol-enabled-wide {
-					.menubar { display: none; }
-					.menubar-bottom-separator { display: none }
-				} @else {
-					.menubar { display: flex; }
-					.menubar-bottom-separator { display: block }
-				}
-			}
-
-		}
-	}
-		
 	.label-container {
 			
 		// The container occupies the entire banner area
@@ -544,13 +552,24 @@
 
 // This bit is needed to fix the banner and menubar in place at the top of the screen.
 //
-.banner-area-fixed {
+.banner-area-outside-dom {
 
-	// Fix the menu and banner bar to the top of the screen
+	// Fix the banner to the top of the screen
 	position: fixed;
 	top: 0;
-	width: 100%;
 }
 
+// The banner area is placed inside the DOM
+//
+.banner-area-in-dom {
+	position: relative;
+}
 
-
+// Added to the banner-area that is used as a placeholder to keep the column-panel from appearing below the
+// banner-area. It does not seem to be necessary though.
+//
+.invisible {
+	opacity: 0;
+	z-index: -1;
+	position: relative;
+}

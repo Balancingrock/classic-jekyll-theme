@@ -97,16 +97,6 @@ main {
 }
 
 
-// Add top margins for when the banner is fixed at the top of the screen.
-// This prevents the content of the column panels from "shining through" the banner.
-//
-.column-panel-fixed-menubar {
-	
-	@include narrow-layout { margin-top: $internal-banner-area-height-narrow; }
-	@include medium-layout { margin-top: $internal-banner-area-height-medium; }
-	@include wide-layout { margin-top: $internal-banner-area-height-wide; }
-}
-
 // The column dividers
 .secondary-divider, .tertiary-divider {
 	margin-top: $column-divider-top-spacing;

@@ -6,6 +6,9 @@
 	@include medium-layout { height: $menubar-height-medium; }
 	@include wide-layout { height: $menubar-height-wide; }
 
+	// Never display input elements
+	input { display: none; }
+	
 	@include narrow-layout {
 
 		// Only displayed when the menu symbol is checked

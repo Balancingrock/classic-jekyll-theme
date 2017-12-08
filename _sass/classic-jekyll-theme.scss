@@ -508,8 +508,8 @@ $menubar-enabled-wide:							true;
 //
 // Note: For the narrow layout it is always set to 'auto'
 //
-$menubar-height-medium:							26px;
-$menubar-height-wide:							30px;
+$menubar-height-medium:							auto;
+$menubar-height-wide:							auto;
 
 //
 $menubar-justify-content:						center; // Flexbox property
