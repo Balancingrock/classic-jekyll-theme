@@ -176,7 +176,7 @@
 					{% if sortedSubMenuTitles.size > 0 %}
 						<div class="dropdown">
 							{% for subTitle in sortedSubMenuTitles %}
-								<div class="separator"><p></p></div>
+								<div class="subitem-separator"><p></p></div>
 								{% if sortedSubMenuLinks[forloop.index0] != false %}
 									{% if sortedSubMenuUrls[forloop.index0] == page.url %}
 										<div class="subitem isActiveSelection">
@@ -214,7 +214,7 @@
 			{% if cats.size > 0 %}
 				{% assign categories = 'Categories' %}
 				{% if site.data.text-for.tCategories %}{% assign categories = site.data.text-for.tCategories %}{% endif 	%}
-				<div class="separator"><p><!-- empty but necessary --></p></div>
+				<div class="item-separator"><p><!-- empty but necessary --></p></div>
 				<div class="item">
 					<input type="checkbox" id="category-checkbox">
 					<div class="title">
@@ -231,7 +231,7 @@
 					{% if site.data.setup.drop-down-menu %}
 						<div class="dropdown">
 							{% for cat in cats %}
-								<div class="separator"><p></p></div>
+								<div class="subitem-separator"><p></p></div>
 								{% if cat.url == page.url %}
 									<div class="subitem isActiveSelection">
 								{% else %}
@@ -239,7 +239,7 @@
 								{% endif %}
 										<div class="title">
 											<div class="symbol"></div>
-											<div class="title">
+											<div class="text">
 												<a href="{{ cat.url }}"><p>{{ cat.title | capitalize }}</p></a>
 											</div>
 										</div>

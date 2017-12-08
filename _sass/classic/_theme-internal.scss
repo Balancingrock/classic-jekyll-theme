@@ -67,11 +67,9 @@ $internal-menubar-offset-wide:
 	$internal-menubar-top-separator-offset-wide
 	+ value-when-enabled($menubar-top-separator-enabled-wide, $menubar-top-separator-height-wide) !global;
 
-// Calculate offset of the separator below the menubar-bottom-separator-enabled-medium
+// Calculate offset of the separator below the menubar
 //
-$internal-menubar-bottom-separator-offset-narrow:
-	$internal-menubar-offset-narrow
-	+ value-when-enabled($menubar-enabled-narrow, $menubar-height-narrow) !global;
+$internal-menubar-bottom-separator-offset-narrow: $internal-menubar-offset-narrow !global;
 
 $internal-menubar-bottom-separator-offset-medium:
 	$internal-menubar-offset-medium
@@ -82,7 +80,7 @@ $internal-menubar-bottom-separator-offset-wide:
 	+ value-when-enabled($menubar-enabled-wide, $menubar-height-wide) !global;
 
 
-// Calculate total banner height (including seperators and menubar)
+// Calculate total banner area height
 //
 @if $banner-area-height-narrow >= 0 {
 	$internal-banner-area-height-narrow: $banner-area-height-narrow !global;

@@ -2,7 +2,7 @@
 		
 	// Positioning & size
 	width: 100%;
-	@include narrow-layout { height: $menubar-height-narrow; }
+	@include narrow-layout { height: auto; }
 	@include medium-layout { height: $menubar-height-medium; }
 	@include wide-layout { height: $menubar-height-wide; }
 
@@ -31,7 +31,7 @@
 			// Layout
 			display: flex;
 			flex-direction: column;
-				
+			
 			// Appearance
 			background: $menubar-item-background-narrow;
 
@@ -44,6 +44,9 @@
 			// Use the item color for all elements
 			p { color: $menubar-item-color }
 
+			// Do not display the checkbox
+			input { display: none; }
+			
 			// If the checkbox is checked
 			input:checked ~ {
 
@@ -93,7 +96,7 @@
 				// Subitems are stacked vertically
 				flex-direction: column;
 					
-				.separator {
+				.subitem-separator {
 					display: block;
 					width: 100%;
 					height: $menubar-subitem-separator-line-width-narrow;
@@ -222,7 +225,7 @@
 				display: none;
 
 				// Don't show the separators
-				.separator { display: none; }
+				.subitem-separator { display: none; }
 					
 				// Keep the size of the item unaffected by the subitems
 				position: absolute;

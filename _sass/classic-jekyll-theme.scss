@@ -505,8 +505,9 @@ $menubar-enabled-wide:							true;
 
 // The height of the menubar.
 // Written to a CSS 'height' property.
-// 
-$menubar-height-narrow:							26px;
+//
+// Note: For the narrow layout it is always set to 'auto'
+//
 $menubar-height-medium:							26px;
 $menubar-height-wide:							30px;
 
