@@ -3,7 +3,7 @@
 <!-- Get the top menu item for which to create the menu -->
 {% assign topTitle = page.menuTopTitle %}
 
-<div class="vmenu">
+<nav class="vmenu">
 
 	<!-- Find all pages that belong to the menuTopTitle of this page -->
 	{% assign topTitlePages = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle %}
@@ -234,6 +234,6 @@
 		</div>
 		
 	{% endfor %}
-</div>
+</nav>
 
 {% endif %}
