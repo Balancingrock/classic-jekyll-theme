@@ -1,4 +1,4 @@
-{% if site.data.setup.banner-position == 'top-fixed' %}{% assign banner-classes = 'banner-area banner-area-outside-dom' %}{% assign column-panel-classes = 'column-panel column-panel-fixed-menubar' %}{% else %}{% assign banner-classes = 'banner-area banner-area-in-dom' %}{% assign column-panel-classes = 'column-panel' %}{% endif%}
+{% if site.data.setup.banner-position == 'top-fixed' %}{% assign banner-classes = 'banner-area banner-area-outside-dom' %}{% else %}{% assign banner-classes = 'banner-area banner-area-in-dom' %}{% endif%}
 
 <input type="checkbox" id="banner-menu-symbol">
 <div class="{{ banner-classes }}">
