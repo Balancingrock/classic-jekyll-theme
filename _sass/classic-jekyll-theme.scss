@@ -504,68 +504,250 @@ $menubar-enabled-medium:						true;
 $menubar-enabled-wide:							true;
 
 // The height of the menubar.
+// To fill out the entire height of the menubar, leave the height set to 'auto' and set the height of a menu-item
+// instead.
 // Written to a CSS 'height' property.
 //
-// Note: For the narrow layout it is always set to 'auto'
+// Note: For the narrow layout it is always set to 'auto'.
 //
 $menubar-height-medium:							auto;
 $menubar-height-wide:							auto;
 
+// Horizontally position the icon, items and item-separators in the menubar.
+// Written to a css 'justify-content' property.
 //
-$menubar-justify-content:						center; // Flexbox property
-$menubar-align-items:							center; // Flexbox property
-$menubar-background:							white; // Its recommended to always set a background color.
-$menubar-padding-medium:						0;
-$menubar-padding-wide:							0;
-$menubar-border:								none;
-$menubar-box-shadow:							none;
+$menubar-justify-content-medium:				center;
+$menubar-justify-content-wide:					flex-start;
+
+// Vertically position the items and item-separators in the menubar.
+// Written to a css 'align-items' property.
 //
-$menubar-item-font-medium:						$theme-font-size $theme-font-family; // size & family are required
-$menubar-item-font-wide:						$theme-font-size $theme-font-family; // size & family are required
-$menubar-item-color:							$theme-color;
-$menubar-item-hover-color:						black;
-$menubar-item-background:						white;
+// Useful values: flex-start | center | flex-end
+//
+$menubar-align-items-medium:					center;
+$menubar-align-items-wide:						center;
+
+// Background for the menubar.
+// Written to a css 'background' property.
+//
+$menubar-background-narrow:						white;
+$menubar-background-medium:						white;
+$menubar-background-wide:						white;
+
+// Border for the menubar.
+// Written to a css 'border' property.
+//
+$menubar-border-medium:							none;
+$menubar-border-wide:							none;
+
+// Shadow for the menubar.
+// Written to a css 'shadow' property.
+//
+$menubar-box-shadow-medium:						none;
+$menubar-box-shadow-wide:						none;
+
+// The font to be used for the text of an item
+// Written to a css 'font' property.
+//
+$menubar-item-font-narrow:						$theme-font-size $theme-font-family;
+$menubar-item-font-medium:						$theme-font-size $theme-font-family;
+$menubar-item-font-wide:						$theme-font-size $theme-font-family;
+
+// The color & hover color to be used for the text of an item
+// Written to a css 'color' property.
+//
+$menubar-item-color-narrow:						$theme-color;
+$menubar-item-color-medium:						$theme-color;
+$menubar-item-color-wide:						$theme-color;
+$menubar-item-hover-color-narrow:				black;
+$menubar-item-hover-color-medium:				black;
+$menubar-item-hover-color-wide:					black;
+
+// The background & hover background & active-page background to be used for an item
+// The selected background is used when a menu item is visible and the page that is linked to that item is visible.
+// Written to a css 'background' property.
+//
 $menubar-item-background-narrow:				$grey-color-light;
-$menubar-item-background-hover:					$grey-color-light;
-$menubar-item-active-selection-background:		$grey-color-light;
+$menubar-item-background-medium:				white;
+$menubar-item-background-wide:					white;
+$menubar-item-background-hover-narrow:			$grey-color-light;
+$menubar-item-background-hover-medium:			$grey-color-light;
+$menubar-item-background-hover-wide:			$grey-color-light;
+$menubar-item-background-selected-narrow:		$grey-color-light;
+$menubar-item-background-selected-medium:		$grey-color-light;
+$menubar-item-background-selected-wide:			$grey-color-light;
+
+// The height of a menubar item.
+// For medium and wide layout it is recommended to set the height to 'auto' and drive the height by the font
+// and padding of the item.
+// For narrow the height of the item should be big enough to tap.
+// Written to a css 'height' property.
+//
 $menubar-item-height-narrow:					3 * $hspacing-unit;
+$menubar-item-height-medium:					auto;
+$menubar-item-height-wide:						auto;
+
+// The height of the item separator line.
+// This line is only visible in the narrow layout (which is vertical).
+// Written to a css 'height' property.
+//
 $menubar-item-separator-line-width-narrow:		4px;
-$menubar-item-separator-line-color-narrow:		$menubar-background;
+
+// The color of the item separator line.
+// This line is only visible in the narrow layout (which is vertical).
+// Written to a css 'color' property.
+//
+$menubar-item-separator-line-color-narrow:		$menubar-background-narrow;
+
+// Padding of the menu items
+// Written to a css 'padding' property.
+//
+$menubar-item-padding-narrow:					$vspacing-unit/4 $hspacing-unit;
 $menubar-item-padding-medium:					$vspacing-unit/4 $hspacing-unit;
 $menubar-item-padding-wide:						$vspacing-unit/4 $hspacing-unit;
+
+// The disclosure symbol definitions for the narrow vertical menubar.
+// Written to a <p> with the :after selector.
+//
 $menubar-item-title-symbol-code-closed-narrow:	'\021E8';
 $menubar-item-title-symbol-code-open-narrow:	'\021E9';
+
+// The width of the disclosure area in the narrow vertical menubar.
+// Written to a scc 'width' property.
+//
 $menubar-item-disclosure-symbol-width-narrow:	10%;
+
+// The menubar item separator symbol.
+// This symbol appears between items when the menubar is horizontal, i.e. in de medium and wide layout.
+// Written to a <p> with the :after selector.
 //
 $menubar-item-separator-symbol-medium:			'';
 $menubar-item-separator-symbol-wide:			'';
-$menubar-item-separator-symbol-font-medium:		$theme-font-size $theme-font-family; // size & family are required
-$menubar-item-separator-symbol-font-wide:		$theme-font-size $theme-font-family; // size & family are required
-$menubar-item-separator-symbol-color:			$theme-color;
-$menubar-item-separator-symbol-background:		$menubar-item-background;
-$menubar-item-separator-symbol-padding-medium:	$vspacing-unit/4 0;
-$menubar-item-separator-symbol-padding-wide:	$vspacing-unit/4 0;
+
+// The font to be used for the item separator.
+// Written to a css 'font' property.
 //
-$menubar-dropdown-border:						none;
-$menubar-dropdown-box-shadow:					0 0.25em 0.25em 0 rgba(0,0,0,0.2);
+$menubar-item-separator-symbol-font-medium:		$theme-font-size $theme-font-family;
+$menubar-item-separator-symbol-font-wide:		$theme-font-size $theme-font-family;
+
+// The color for the item separator.
+// Written to a css 'color' property.
 //
-$menubar-subitem-font-medium:					$small-font-size $theme-font-family; // size & family are required
-$menubar-subitem-font-wide:						$small-font-size $theme-font-family; // size & family are required
-$menubar-subitem-color:							$theme-color;
-$menubar-subitem-hover-color:					black;
-$menubar-subitem-background: 					white;
+$menubar-item-separator-symbol-color-medium:	$theme-color;
+$menubar-item-separator-symbol-color-wide:		$theme-color;
+
+// The background behind the item separator
+// Written to a css 'background' property.
+//
+$menubar-item-separator-symbol-background-medium:	$menubar-item-background-medium;
+$menubar-item-separator-symbol-background-wide:		$menubar-item-background-wide;
+
+// The padding around the item separator
+// Written to a css 'padding' property.
+//
+$menubar-item-separator-symbol-padding-medium:	$vspacing-unit/4 0px;
+$menubar-item-separator-symbol-padding-wide:	$vspacing-unit/4 0px;
+
+// The margin around the dropdown part of the menubar containing the sub-items.
+// The default shows a left-indent such that the submenu items appear below and to the right the menu title.
+// Written to a css 'margin' property.
+//
+$menubar-dropdown-margin-medium:				0px 0px 0px $hspacing-unit;
+$menubar-dropdown-margin-wide:					0px 0px 0px $hspacing-unit;
+
+// The padding inside the dropdown part of the menubar containing the sub-items.
+// Written to a css 'padding' property.
+//
+$menubar-dropdown-padding-medium:				0px;
+$menubar-dropdown-padding-wide:					0px;
+
+// The border around the dropdown part of the menubar containing sub-items.
+// Written to a css 'border' property.
+//
+$menubar-dropdown-border-medium:				none;
+$menubar-dropdown-border-wide:					none;
+
+// The shadow around the dropdown part of the menubar containing sub-items.
+// Written to a css 'box-shadow' property.
+//
+$menubar-dropdown-box-shadow-medium:			0 0.25em 0.25em 0 rgba(0,0,0,0.2);
+$menubar-dropdown-box-shadow-wide:				0 0.25em 0.25em 0 rgba(0,0,0,0.2);
+
+// The font for the subitem menu title.
+// Written to a css 'font' property.
+//
+$menubar-subitem-font-medium:					$small-font-size $theme-font-family;
+$menubar-subitem-font-wide:						$small-font-size $theme-font-family;
+
+// The colors for the subitem menu title.
+// Written to a css 'color' property.
+//
+$menubar-subitem-color-medium:					$theme-color;
+$menubar-subitem-color-wide:					$theme-color;
+$menubar-subitem-hover-color-medium:			black;
+$menubar-subitem-hover-color-wide:				black;
+
+// The background for the submenu item.
+// Written to a css 'background' property.
+//
 $menubar-subitem-background-narrow: 			$grey-color-light;
-$menubar-subitem-background-hover:				$grey-color-light;
-$menubar-subitem-active-selection-background:	$grey-color-light;
-$menubar-subitem-separator-line-width-narrow:	2px;
-$menubar-subitem-separator-line-color-narrow:	$menubar-background;
+$menubar-subitem-background-medium:				white;
+$menubar-subitem-background-wide:				white;
+$menubar-subitem-background-hover-narrow:		$grey-color-light;
+$menubar-subitem-background-hover-medium:		$grey-color-light;
+$menubar-subitem-background-hover-wide:			$grey-color-light;
+$menubar-subitem-background-selected-narrow:	$grey-color-light;
+$menubar-subitem-background-selected-medium:	$grey-color-light;
+$menubar-subitem-background-selected-wide:		$grey-color-light;
+
+
 $menubar-subitem-indent:						$hspacing-unit;
 $menubar-subitem-padding-medium:				$vspacing-unit/4 $hspacing-unit;
 $menubar-subitem-padding-wide:					$vspacing-unit/4 $hspacing-unit;
 
+// The width of the submenu item separator line.
+// This line is only visible in the narrow layout (which is vertical).
+// Written to a css 'height' property.
+//
+$menubar-subitem-separator-line-width-narrow:	2px;
+
+// The color of the submenu item separator line.
+// This line is only visible in the narrow layout (which is vertical).
+// Written to a css 'background-color' property.
+//
+$menubar-subitem-separator-line-color-narrow:	$menubar-background-narrow;
 
 
+// *********************************************************************************************************************
+// Menubar Icon
+// ---------------------------------------------------------------------------------------------------------------------
+// Before the items and item separators are loaded into the menubar, a menubar icon can be loaded.
+// The file _included/menubar-icon.html can be used for complex icons, or the icon can be assigned here.
+// The menubar icon can also be used to provide some padding before the home item in the menubar.
+// Note that the menubar icon is not shown in the narrow layout. 
+//
+// The icon (image)
+// Written to a css 'content' property.
+//
+$menubar-icon-url-medium:						none;
+$menubar-icon-url-wide:							none; //url("/assets/img/test-pattern-55.png");
 
+// Height of the icon
+// Written to a css 'height' property
+//
+$menubar-icon-height-medium:					auto;
+$menubar-icon-height-wide:						auto;
+
+// Width of the icon
+// Written to a css 'width' property
+//
+$menubar-icon-width-medium:						auto;
+$menubar-icon-width-wide:						auto;
+
+// Padding for the icon or to insert some extra padding (indent) before the first item.
+//
+$menubar-icon-padding-medium:					0px;
+$menubar-icon-padding-wide:						0px;
 
 
 // *********************************************************************************************************************

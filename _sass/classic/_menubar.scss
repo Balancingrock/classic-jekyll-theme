@@ -18,7 +18,7 @@
 		flex-direction: column;
 			
 		// Appearances
-		background: $menubar-background;
+		background: $menubar-background-narrow;
 			
 		// Make sure the separator is empty
 		.item-separator:after { content: none; }
@@ -35,20 +35,19 @@
 			display: flex;
 			flex-direction: column;
 			
-			// Appearance
-			background: $menubar-item-background-narrow;
-
 			// Make the link areas as big as possible
 			a {	width: 100%; height: 100%; }
 				
 			// Remove link underlining
 			a { text-decoration: none; }
 
-			// Use the item color for all elements
-			p { color: $menubar-item-color }
-
-			// Do not display the checkbox
-			input { display: none; }
+			// Use the item color for all elements & Hover effect
+			p { color: $menubar-item-color-narrow; }
+			background: $menubar-item-background-narrow;
+			&:hover {
+				p { color: $menubar-item-hover-color-narrow; }
+				background: $menubar-item-background-hover-narrow;
+			}
 			
 			// If the checkbox is checked
 			input:checked ~ {
@@ -126,6 +125,8 @@
 				}
 			}
 		}
+		
+		.isActiveSelection { background: $menubar-item-background-selected-narrow; }
 	}
 			
 	@include medium-and-wide-layout {
@@ -133,26 +134,53 @@
 		// Display by default
 		display: flex;
 
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: $menubar-justify-content;
-		align-items: $menubar-align-items;
-			
 		// Appearances
-		background: $menubar-background;
-		border: $menubar-border;
-		box-shadow: $menubar-box-shadow;
-		@include medium-layout { padding: $menubar-padding-medium; }
-		@include wide-layout { padding: $menubar-padding-wide; }
+		@include medium-layout {
+			background: $menubar-background-medium;
+			border: $menubar-border-medium;
+			box-shadow: $menubar-box-shadow-medium;
+		}
+		@include wide-layout {
+			background: $menubar-background-wide;
+			border: $menubar-border-wide;
+			box-shadow: $menubar-box-shadow-wide;
+		}
+
+		// Positioning of items and item-separators.
+		flex-direction: row;
+		@include medium-layout {
+			justify-content: $menubar-justify-content-medium;
+			align-items: $menubar-align-items-medium;
+		}
+		@include wide-layout {
+			justify-content: $menubar-justify-content-wide;
+			align-items: $menubar-align-items-wide;
+		}
+
+		.menubar-icon {
+				
+			@include medium-layout {
+				width: $menubar-icon-width-medium;
+				height: $menubar-icon-height-medium;
+				content: $menubar-icon-url-medium;
+				padding: $menubar-icon-padding-medium;
+			}
+			@include wide-layout {
+				width: $menubar-icon-width-wide;
+				height: $menubar-icon-height-wide;
+				content: $menubar-icon-url-wide;
+				padding: $menubar-icon-padding-wide;
+			}
+		}
 
 		.item-separator {
 	
-			// Color it
-			color: $menubar-item-separator-symbol-color;
-			background: $menubar-item-separator-symbol-background;
-
 			@include medium-layout {
-				
+
+				// Appearance
+				color: $menubar-item-separator-symbol-color-medium;
+				background: $menubar-item-separator-symbol-background-medium;
+			
 				// Set padding
 				padding: $menubar-item-separator-symbol-padding-medium;
 	
@@ -165,6 +193,10 @@
 					
 			@include wide-layout {
 				
+				// Appearance
+				color: $menubar-item-separator-symbol-color-wide;
+				background: $menubar-item-separator-symbol-background-wide;
+
 				// Set padding
 				padding: $menubar-item-separator-symbol-padding-wide;
 	
@@ -183,14 +215,24 @@
 			
 			// Vertical layout
 			display: flex;
-			flex-direction: column;
+			flex-direction: column;		
 			
 			// Hover effect
-			p { color: $menubar-item-color; }
-			background: $menubar-item-background;
-			&:hover {
-				p { color: $menubar-item-hover-color; }
-				background: $menubar-item-background-hover;
+			@include medium-layout {
+				p { color: $menubar-item-color-medium; }
+				background: $menubar-item-background-medium;
+				&:hover {
+					p { color: $menubar-item-hover-color-medium; }
+					background: $menubar-item-background-hover-medium;
+				}
+			}
+			@include wide-layout {
+				p { color: $menubar-item-color-wide; }
+				background: $menubar-item-background-wide;
+				&:hover {
+					p { color: $menubar-item-hover-color-wide; }
+					background: $menubar-item-background-hover-wide;
+				}
 			}
 				
 			// Make the entire hightlight block clickable
@@ -222,6 +264,11 @@
 			// Display the submenu if the user taps the corresponding menu item
 			input:checked ~ .dropdown { display: block; }					
 
+			.title {
+				@include medium-layout { height: $menubar-item-height-medium; }
+				@include wide-layout { height: $menubar-item-height-wide; }
+			}
+			
 			.dropdown {
 						
 				// Visibility depends on hovering over the item
@@ -234,21 +281,31 @@
 				position: absolute;
 						
 				// Appearances
-				border: $menubar-dropdown-border;
-				box-shadow: $menubar-dropdown-box-shadow;
+				@include medium-layout {
+					margin: $menubar-dropdown-margin-medium;
+					padding: $menubar-dropdown-padding-medium;
+					border: $menubar-dropdown-border-medium;
+					box-shadow: $menubar-dropdown-box-shadow-medium;
+				}
+				@include wide-layout {
+					margin: $menubar-dropdown-margin-wide;
+					padding: $menubar-dropdown-padding-wide;
+					border: $menubar-dropdown-border-wide;
+					box-shadow: $menubar-dropdown-box-shadow-wide;
+				}
 
 				.subitem {
-							
-					// Hover effect
-					p { color: $menubar-subitem-color; }
-					background: $menubar-subitem-background;
-					&:hover {
-						p { color: $menubar-subitem-hover-color; }
-						background: $menubar-subitem-background-hover;
-					}
-						
+													
 					@include medium-layout {
-							
+						
+						// Hover effect
+						p { color: $menubar-subitem-color-medium; }
+						background: $menubar-subitem-background-medium;
+						&:hover {
+							p { color: $menubar-subitem-hover-color-medium; }
+							background: $menubar-subitem-background-hover-medium;
+						}
+
 						// Sizing of the subitems
 						a, .paddingAsLink { padding: $menubar-subitem-padding-medium; }
 							
@@ -256,7 +313,15 @@
 						p { font: $menubar-subitem-font-medium; }
 					}
 					@include wide-layout {
-							
+						
+						// Hover effect
+						p { color: $menubar-subitem-color-wide; }
+						background: $menubar-subitem-background-wide;
+						&:hover {
+							p { color: $menubar-subitem-hover-color-wide; }
+							background: $menubar-subitem-background-hover-wide;
+						}
+
 						// Sizing of the subitems
 						a, .paddingAsLink { padding: $menubar-subitem-padding-wide; }
 							
@@ -265,12 +330,14 @@
 					}
 				}
 
-				// Show selection for pages that match a menu entry
-				.isActiveSelection { background: $menubar-subitem-active-selection-background; }
+		// Show selection for pages that match a menu entry
+		@include medium-layout { .isActiveSelection { background: $menubar-subitem-background-selected-medium; } }
+		@include wide-layout { .isActiveSelection { background: $menubar-subitem-background-selected-wide; } }
 			}
 		}
 			
 		// Show selection for pages that match a menu entry
-		.isActiveSelection { background: $menubar-item-active-selection-background; }
+		@include medium-layout { .isActiveSelection { background: $menubar-item-background-selected-medium; } }
+		@include wide-layout { .isActiveSelection { background: $menubar-item-background-selected-wide; } }
 	}
 }

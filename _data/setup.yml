@@ -67,7 +67,7 @@ enable-cookies-policy: yes
 #
 # Hint: When the 'top-fixed' is used the height of the banner and menu for the layouts must be specified in classic-jekyll-theme.scss. Also a background color should be specified for the banner and menu. 
 #
-banner-position: main
+banner-position: top
 
 # Switches between drop-down menu's en the vertical menu for the subMenuTitles. It does not affect the top menu items with the exception of the 'Categories' item.
 # Values: yes | no
@@ -76,7 +76,7 @@ banner-position: main
 #
 # Note: The drop down menu does not display sub-sub menu items, the vertical menu does. This setting can affect the use-separate-navbanner setting.
 #
-drop-down-menu: no 
+drop-down-menu: yes 
 
 # Controls the generation of the categories menu entry in the menu bar if the drop-down-menu option is set to 'yes'. Has no impact on the categories widget.
 # Values: yes | no
