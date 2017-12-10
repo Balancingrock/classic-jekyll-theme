@@ -1,4 +1,4 @@
-
+// Footer related SCCS
 
 // This is the element between the column panel and the footer.
 .footer-divider {
@@ -10,9 +10,20 @@
 
 .footer-panel {
 	@extend .theme-insets;
-	font-size: $small-font-size;
 	text-align: center;	
-	@include wide-layout { background: $footer-background-wide; }
-	@include medium-layout { background: $footer-background-medium; }
-	@include narrow-layout { background: $footer-background-narrow; }
+	@include narrow-layout {
+		font: $footer-font-narrow;
+		color: $footer-color-narrow;
+		background: $footer-background-narrow;
+	}
+	@include medium-layout {
+		font: $footer-font-medium;
+		color: $footer-color-medium;
+		background: $footer-background-medium;
+	}
+	@include wide-layout {
+		font: $footer-font-wide;
+		color: $footer-color-wide;
+		background: $footer-background-wide;
+	}
 }

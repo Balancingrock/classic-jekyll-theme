@@ -869,9 +869,25 @@ $vmenu-subsubitem-hover-background-color:	$grey-color-light;
 // Here only the width of the columns is controlled. Note that the width of the columns in relation to the width of
 // the browser window determine which of the layouts is used.
 //
-$primary-column-min-width:		480px;
-$secondary-column-width: 		240px;
-$tertiary-column-width:			240px;
+$primary-column-min-width:					480px;
+$secondary-column-width: 					240px;
+$tertiary-column-width:						240px;
+
+
+// *********************************************************************************************************************
+// Footer
+// ---------------------------------------------------------------------------------------------------------------------
+// The font to be used for the footer text.
+//
+$footer-font-narrow:						$small-font-size $theme-font-family;
+$footer-font-medium:						$small-font-size $theme-font-family;
+$footer-font-wide:							$small-font-size $theme-font-family;
+
+// The color for the footer text.
+//
+$footer-color-narrow:						black;
+$footer-color-medium:						black;
+$footer-color-wide:							black;
 
 
 // *********************************************************************************************************************

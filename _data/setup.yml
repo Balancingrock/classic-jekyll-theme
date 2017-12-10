@@ -76,7 +76,7 @@ banner-position: top
 #
 # Note: The drop down menu does not display sub-sub menu items, the vertical menu does. This setting can affect the use-separate-navbanner setting.
 #
-drop-down-menu: yes 
+drop-down-menu: no 
 
 # Controls the generation of the categories menu entry in the menu bar if the drop-down-menu option is set to 'yes'. Has no impact on the categories widget.
 # Values: yes | no
