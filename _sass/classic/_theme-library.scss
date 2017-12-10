@@ -18,11 +18,68 @@
 //
 // The parent must have its css 'position' property set to 'relative'.
 //
-
 .overlay {
 	position: absolute;
 	top: 0;
 	left: 0;
 	height: 100%;
 	width: 100%;
+}
+
+
+// *********************************************************************************************************************
+// display-flex-...
+// ---------------------------------------------------------------------------------------------------------------------
+// Will switch a display property to 'flex' for the narrow, medium resp wide layout and 'none' for all others.
+//
+// Can be used in custom html code to enable/disable elements.
+//
+.display-flex-narrow {
+	@include narrow-layout { display: flex; }
+	@include medium-layout { display: none; }
+	@include wide-layout { display: none; }
+}
+.display-flex-medium {
+	@include narrow-layout { display: none; }
+	@include medium-layout { display: flex; }
+	@include wide-layout { display: none; }
+}
+.display-flex-wide {
+	@include narrow-layout { display: none; }
+	@include medium-layout { display: none; }
+	@include wide-layout { display: flex; }
+}
+.display-flex-medium-and-wide {
+	@include narrow-layout { display: none; }
+	@include medium-layout { display: flex; }
+	@include wide-layout { display: flex; }
+}
+
+
+// *********************************************************************************************************************
+// display-block-...
+// ---------------------------------------------------------------------------------------------------------------------
+// Will switch a display property to 'block' for the narrow, medium resp wide layout and 'none' for all others.
+//
+// Can be used in custom html code to enable/disable elements.
+//
+.display-block-narrow {
+	@include narrow-layout { display: block; }
+	@include medium-layout { display: none; }
+	@include wide-layout { display: none; }
+}
+.display-block-medium {
+	@include narrow-layout { display: none; }
+	@include medium-layout { display: block; }
+	@include wide-layout { display: none; }
+}
+.display-block-wide {
+	@include narrow-layout { display: none; }
+	@include medium-layout { display: none; }
+	@include wide-layout { display: block; }
+}
+.display-block-medium-and-wide {
+	@include narrow-layout { display: none; }
+	@include medium-layout { display: block; }
+	@include wide-layout { display: block; }
 }

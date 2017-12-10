@@ -4,32 +4,33 @@
 <div class="{{ banner-classes }}">
 	<div class="banner"></div>
 	<!-- the following elements are outide the DOM (positioned absolute relative to the banner-area) -->
-	<div class="icon-container"><div class="icon"></div></div>
-	<div class="title-area-container"><div class="title-area"><div class="title"><p>{{ site.title }}</p></div><div class="subtitle"><p>{{ site.data.setup.subtitle }}</p></div></div></div>
+	<div class="icon-container">{% include banner-icon.html %}</div>
+	<div class="title-area-container">{% include banner-title-area.html %}</div>
 	<div class="label-container"><label for="banner-menu-symbol"><p><!-- empty but necessary! --></p></label></div>
 	<!-- from here on the elements are part of the DOM again -->
 	<div class="menubar-top-separator"></div>
 	{% include menubar.html %}
 	<div class="menubar-bottom-separator"></div>
 </div>
-{% if site.data.setup.banner-position == 'top-fixed' %}{% comment %}<!--
+{% if site.data.setup.banner-position == 'top-fixed' %}
+	{% comment %}<!--
 
-When the top of the banner position is fixed then the 'banner-area' is removed from the DOM
+	When the top of the banner position is fixed then the 'banner-area' is removed from the DOM
 
-The spacer-for-fixed-banner is then used to ensure that the column panel does not scroll below the banner or menu.
+	The spacer-for-fixed-banner is then used to ensure that the column panel does not scroll below the banner or menu.
 
--->{% endcomment %}
-<div class="banner-area invisible">
-	<div class="banner"></div>
-	<div class="menubar-top-separator"></div>
-	<div class="menubar">
-		{% include menubar-icon.html %}
-		<div class="item">
-			<div class="title">
-				<a href=""><p>Home</p></a>
+	-->{% endcomment %}
+	<div class="banner-area invisible">
+		<div class="banner"></div>
+		<div class="menubar-top-separator"></div>
+		<div class="menubar">
+			{% include menubar-icon.html %}
+			<div class="item">
+				<div class="title">
+					<a href=""><p>Home</p></a>
+				</div>
 			</div>
 		</div>
+		<div class="menubar-bottom-separator"></div>
 	</div>
-	<div class="menubar-bottom-separator"></div>
-</div>
 {% endif %}

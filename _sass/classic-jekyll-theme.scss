@@ -101,8 +101,8 @@ $banner-enabled-wide:					true;
 // menubar-bottom-separator-height.
 //
 $banner-height-narrow:					48px;
-$banner-height-medium:					64px;
-$banner-height-wide:					80px;
+$banner-height-medium:					68px;
+$banner-height-wide:					135px;
 
 // The background of the banner.
 // Written to a CSS 'background' property
@@ -119,9 +119,9 @@ $banner-background-wide:				white;
 // Controls display of the icon.
 // Note: Disabling the banner also disables the icon.
 //
-$banner-icon-enabled-narrow:			false;
-$banner-icon-enabled-medium:			false;
-$banner-icon-enabled-wide:				false;
+$banner-icon-enabled-narrow:			true;
+$banner-icon-enabled-medium:			true;
+$banner-icon-enabled-wide:				true;
 
 // The z-order of the icon. Use this to position the icon relative to the title-area and the menu-symbol.
 // Written to a css 'z-index' property.
@@ -151,23 +151,23 @@ $banner-icon-align-items-wide:			center;
 // The width of the icon.
 // Written to a css 'width' property.
 //
-$banner-icon-width-narrow:				0;
-$banner-icon-width-medium:				0;
-$banner-icon-width-wide:				0;
+$banner-icon-width-narrow:				60px;
+$banner-icon-width-medium:				120px;
+$banner-icon-width-wide:				240px;
 
 // The height of the icon.
 // Written to a css 'height' property.
 //
 $banner-icon-height-narrow:				0;
-$banner-icon-height-medium:				0;
-$banner-icon-height-wide:				0;
+$banner-icon-height-medium:				auto;
+$banner-icon-height-wide:				auto;
 
 // The padding can be used to tweak the position of the icon image inside its html div element.
 // Written to a css 'padding' property.
 //
-$banner-icon-padding-narrow:			0;
-$banner-icon-padding-medium:			0;
-$banner-icon-padding-wide:				0;
+$banner-icon-padding-narrow:			0px;
+$banner-icon-padding-medium:			0px;
+$banner-icon-padding-wide:				0px;
 
 // The url for the icon image to be loaded into the html div element.
 // Written to a css 'content' property.
@@ -176,8 +176,8 @@ $banner-icon-padding-wide:				0;
 // Set to 'none' if there is no banner icon.
 //
 $banner-icon-url-narrow:				none;
-$banner-icon-url-medium:				none;
-$banner-icon-url-wide:					none;
+$banner-icon-url-medium:				url("/assets/img/cog-wheels-120x68.png");
+$banner-icon-url-wide:					url("/assets/img/cog-wheels-240x135.png");
 
 
 // *********************************************************************************************************************
@@ -253,7 +253,7 @@ $banner-title-area-align-items-wide:			center;
 //
 $banner-title-subtitle-flex-direction-narrow:	column;
 $banner-title-subtitle-flex-direction-medium:	column;
-$banner-title-subtitle-flex-direction-wide:		row;
+$banner-title-subtitle-flex-direction-wide:		column;
 
 // Horizontally place the title and subtitle in the title area
 // Written to a css 'justify-content' property.
@@ -280,9 +280,9 @@ $banner-title-subtitle-align-items-wide:		flex-end;
 //
 // Assigned to the css property 'padding'.
 //
-$banner-title-padding-narrow:					0;
-$banner-title-padding-medium:					0;
-$banner-title-padding-wide:						0;
+$banner-title-padding-narrow:					0px;
+$banner-title-padding-medium:					0px;
+$banner-title-padding-wide:						0px;
 
 // Fine tuning the subtitle position.
 //
@@ -291,9 +291,9 @@ $banner-title-padding-wide:						0;
 //
 // Assigned to the css property 'padding'.
 //
-$banner-subtitle-padding-narrow:				0;
-$banner-subtitle-padding-medium:				0;
-$banner-subtitle-padding-wide:					0 0 2px 2em;
+$banner-subtitle-padding-narrow:				0px;
+$banner-subtitle-padding-medium:				0px;
+$banner-subtitle-padding-wide:					0px;
 
 // The font for the title.
 // Written to a css 'font' property.
@@ -302,7 +302,7 @@ $banner-subtitle-padding-wide:					0 0 2px 2em;
 //
 $banner-title-font-narrow:						20px $theme-font-family;
 $banner-title-font-medium:						25px $theme-font-family;
-$banner-title-font-wide:						30px $theme-font-family;
+$banner-title-font-wide:						40px $theme-font-family;
 
 // The font for the subtitle.
 // Written to a css 'font' property.
