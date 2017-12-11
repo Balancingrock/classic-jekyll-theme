@@ -217,6 +217,9 @@
 			display: flex;
 			flex-direction: column;		
 			
+			// Make this the baseline reverence for the dropdown box
+			position: relative;
+			
 			// Hover effect
 			@include medium-layout {
 				p { color: $menubar-item-color-medium; }
@@ -241,6 +244,9 @@
 			// Remove the link underlining
 			a { text-decoration: none; }
 
+			// Prevent wrapping of the (sub) menu items
+			p { white-space: nowrap; }
+			
 			@include medium-layout {
 				
 				// Sizing of the items
@@ -277,8 +283,9 @@
 				// Don't show the separators
 				.subitem-separator { display: none; }
 					
-				// Keep the size of the item unaffected by the subitems
+				// Position the dropdown below the item.
 				position: absolute;
+				top: 100%;
 								
 				// Appearances
 				@include medium-layout {
