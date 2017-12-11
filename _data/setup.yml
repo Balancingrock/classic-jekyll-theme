@@ -74,7 +74,9 @@ banner-position: top-fixed
 # - yes: The drop down menu is used, the vertical menu is not shown. The Categories menu item is generated when the generate-categories-menu is set to 'yes'.
 # - no: The vertical menu is used, the drop down menu is not shown. The Categories menu is not created, even when the generate-categories-menu is set to 'yes'.
 #
-# Note: The drop down menu does not display sub-sub menu items, the vertical menu does. This setting can affect the use-separate-navbanner setting.
+# Note 1: The drop down menu does not display sub-sub menu items, the vertical menu does.
+# Note 2: This setting can affect the use-separate-navbanner setting.
+# Note 3: When the drop-down menus are not used, any items in the menubar without a linked page will become useless.
 #
 drop-down-menu: yes 
 
