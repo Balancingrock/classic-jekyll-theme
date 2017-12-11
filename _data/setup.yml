@@ -65,9 +65,9 @@ enable-cookies-policy: yes
 # - top-fixed: The navigation banner will be placed above all the columns and remain in place when scrolling down.
 # This is the default value, pages may override this in their YAML frontmatter.
 #
-# Hint: When the 'top-fixed' is used the height of the banner and menu for the layouts must be specified in classic-jekyll-theme.scss. Also a background color should be specified for the banner and menu. 
+# Hint: When the 'top-fixed' is used a background color should be specified for the banner and menu. 
 #
-banner-position: top
+banner-position: top-fixed
 
 # Switches between drop-down menu's en the vertical menu for the subMenuTitles. It does not affect the top menu items with the exception of the 'Categories' item.
 # Values: yes | no
@@ -94,7 +94,7 @@ generate-categories-menu: yes
 #
 # This option uses javascript. Choosing 'yes' will download the jQuery javascript library from google.
 #
-# Using a separate navbanner file can speed up jekyll compilation a lot. However it also means that the browser has to make two additional fetches: the navbanner file and the jQuery library (the latter from google). However this is mitigated by the fact that both files can be cached by the browser.
+# Using a separate navbanner file can speed up jekyll compilation a lot. However it also means that the browser has to make two additional fetches: the navbanner file and the jQuery library (the latter from google). This is mitigated by the fact that both files can be cached by the browser.
 # If another jQuery library has to be used, edit the _includes/head.html file accordingly.
 #
 # Note 1: If this option is set to 'yes', then make sure the file 'navbanner.md' is present (can be found in the theme folder) in the same project folder as the index.md file.

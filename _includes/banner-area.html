@@ -15,9 +15,9 @@
 {% if site.data.setup.banner-position == 'top-fixed' %}
 	{% comment %}<!--
 
-	When the top of the banner position is fixed then the 'banner-area' is removed from the DOM
-
-	The spacer-for-fixed-banner is then used to ensure that the column panel does not scroll below the banner or menu.
+	In the top-fixed banner position, the banner-area is placed outside the DOM. Without the HTML in this part the content area would show up behind the menubar and behind the banner (possibly hidden by the background settings).
+	
+	If changes are made to this file that increase the height of the banner-area that is placed outside the DOM, the HTML code in this part can compensate for that height increase by specifying a height for the add-to-banner-area-height class and giving it an appropriate background color when needed.
 
 	-->{% endcomment %}
 	<div class="banner-area invisible">
@@ -32,5 +32,6 @@
 			</div>
 		</div>
 		<div class="menubar-bottom-separator"></div>
+		<div class="add-to-banner-area-height"></div>
 	</div>
 {% endif %}

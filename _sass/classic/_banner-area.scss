@@ -3,25 +3,25 @@
 	// Don't display the checkbox
 	display: none;
 			
-	// When selected, display the menu bar and lower
+	// When selected, display the menu bar and bottom separator
 	&:checked ~ {
 		@include narrow-layout {
 			.banner-area .menubar {
 				@if $menubar-enabled-narrow { display: flex; } @else { display: none; }
 			}
-			.banner-area .menubar-bottom-separator {
+			.banner-area .menubar-bottom-separator, .banner-area .add-to-banner-area-height {
 				@if $menubar-bottom-separator-enabled-narrow { display: block; } @else { display: none; }
 			}
 		}
 		@include medium-layout {
 			@if $banner-menu-symbol-enabled-medium {
 				.banner-area .menubar { display: none; }
-				.banner-area .menubar-bottom-separator { display: none }
+				.banner-area .menubar-bottom-separator, .banner-area .add-to-banner-area-height { display: none }
 			} @else {
 				.banner-area .menubar {
 					@if $menubar-enabled-medium { display: flex; } @else { display: none; }
 				}
-				.banner-area .menubar-bottom-separator {
+				.banner-area .menubar-bottom-separator, .banner-area .add-to-banner-area-height {
 					@if $menubar-bottom-separator-enabled-medium { display: block; } @else { display: none; }
 				}
 			}
@@ -29,12 +29,12 @@
 		@include wide-layout {
 			@if $banner-menu-symbol-enabled-wide {
 				.banner-area .menubar { display: none; }
-				.banner-area .menubar-bottom-separator { display: none }
+				.banner-area .menubar-bottom-separator, .banner-area .add-to-banner-area-height { display: none }
 			} @else {
 				.banner-area .menubar  {
 					@if $menubar-enabled-wide { display: flex; } @else { display: none; }
 				}
-				.banner-area .menubar-bottom-separator {
+				.banner-area .menubar-bottom-separator, .banner-area .add-to-banner-area-height {
 					@if $menubar-bottom-separator-enabled-wide { display: block; } @else { display: none; }
 				}
 			}
@@ -547,6 +547,13 @@
 		@include wide-layout {
 			@if $menubar-bottom-separator-enabled-wide { display: block; } @else { display: none; }
 		}
+	}
+	
+	.add-to-banner-area-height {
+		width: 100%;
+		@include narrow-layout { height: $add-to-banner-area-height-narrow; }
+		@include medium-layout { height: $add-to-banner-area-height-medium; }
+		@include wide-layout { height: $add-to-banner-area-height-wide; }
 	}
 }
 
