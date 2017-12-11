@@ -279,17 +279,19 @@
 					
 				// Keep the size of the item unaffected by the subitems
 				position: absolute;
-						
+								
 				// Appearances
 				@include medium-layout {
 					margin: $menubar-dropdown-margin-medium;
 					padding: $menubar-dropdown-padding-medium;
+					background: $menubar-dropdown-background-medium;
 					border: $menubar-dropdown-border-medium;
 					box-shadow: $menubar-dropdown-box-shadow-medium;
 				}
 				@include wide-layout {
 					margin: $menubar-dropdown-margin-wide;
 					padding: $menubar-dropdown-padding-wide;
+					background: $menubar-dropdown-background-wide;
 					border: $menubar-dropdown-border-wide;
 					box-shadow: $menubar-dropdown-box-shadow-wide;
 				}

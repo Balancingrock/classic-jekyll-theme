@@ -25,7 +25,7 @@
 	
 	<!-- Page menus -->
 	{% for topTitle in topTitles %}
-		
+
 		{% if jekyll.environment != 'production' and site.data.setup.fast-content-build %}{% else %}
 
 			{% if site.data.setup.drop-down-menu %}
@@ -166,7 +166,20 @@
 						{% endif %}
 					{% endfor %}
 					{% if pageFound == false %}
-						<p class="paddingAsLink">{{ topTitle }}</p>
+						{% for ape in site.pages %}
+							{% if ape.menuTopTitle == topTitle and ape.menuTopIndex %}
+								{% if ape.menuLink == false %}
+									<p class="paddingAsLink">{{ topTitle }}</p>
+								{% else %}
+									<a href="{{ ape.url }}"><p>{{ topTitle }}</p></a>
+								{% endif %}
+								{% assign pageFound = true %}
+								{% break %}
+							{% endif %}
+						{% endfor %}
+						{% if pageFound == false %}
+							<p class="paddingAsLink">{{ topTitle }}</p>
+						{% endif %}
 					{% endif %}
 				</div>
 			</div>

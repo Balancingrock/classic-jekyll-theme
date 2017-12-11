@@ -653,6 +653,12 @@ $menubar-dropdown-margin-wide:					0px 0px 0px $hspacing-unit;
 $menubar-dropdown-padding-medium:				0px;
 $menubar-dropdown-padding-wide:					0px;
 
+// The background for the dropdown box
+// Written to a css 'background' property.
+//
+$menubar-dropdown-background-medium:			white;
+$menubar-dropdown-background-wide:				white;
+
 // The border around the dropdown part of the menubar containing sub-items.
 // Written to a css 'border' property.
 //
