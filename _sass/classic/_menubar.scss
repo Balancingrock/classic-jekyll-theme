@@ -1,7 +1,6 @@
 .menubar {
-		
+	
 	// Positioning & size
-	width: 100%;
 	@include narrow-layout { height: auto; }
 	@include medium-layout { height: $menubar-height-medium; }
 	@include wide-layout { height: $menubar-height-wide; }
@@ -135,9 +134,10 @@
 	}
 			
 	@include medium-and-wide-layout {
-		
-		// Display by default
-		display: flex;
+
+		// Check if it must be displayed
+		@include medium-layout { @if $menubar-enabled-medium { display: flex; } @else { display: none; } }
+		@include wide-layout { @if $menubar-enabled-wide { display: flex; } @else { display: none; } }
 
 		// Appearances
 		@include medium-layout {

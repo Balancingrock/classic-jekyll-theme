@@ -82,7 +82,7 @@ $add-to-banner-area-height-wide:		0px;
 // *********************************************************************************************************************
 // Banner
 // ---------------------------------------------------------------------------------------------------------------------
-// Disabling the banner also dsiables the banner-icon, banner-title, banner-subtitle and banner-menu-symbol.
+// Disabling the banner also disables the banner-icon, banner-title, banner-subtitle and banner-menu-symbol.
 //
 $banner-enabled-narrow:					true;
 $banner-enabled-medium:					true;
@@ -144,14 +144,14 @@ $banner-icon-align-items-wide:			center;
 // The width of the icon div.
 // CSS property: width
 //
-$banner-icon-width-narrow:				60px;
-$banner-icon-width-medium:				120px;
-$banner-icon-width-wide:				240px;
+$banner-icon-width-narrow:				auto;
+$banner-icon-width-medium:				auto;
+$banner-icon-width-wide:				auto;
 
 // The height of the icon div.
 // CSS property: height
 //
-$banner-icon-height-narrow:				0;
+$banner-icon-height-narrow:				auto;
 $banner-icon-height-medium:				auto;
 $banner-icon-height-wide:				auto;
 
@@ -168,7 +168,7 @@ $banner-icon-padding-wide:				0px;
 // Example: $banner-icon-url-...: url("/assets/img/wide-icon.png");
 // Set to 'none' if there is no banner icon.
 //
-$banner-icon-url-narrow:				none;
+$banner-icon-url-narrow:				url("/assets/img/cog-wheels-60x43.png");
 $banner-icon-url-medium:				url("/assets/img/cog-wheels-120x68.png");
 $banner-icon-url-wide:					url("/assets/img/cog-wheels-240x135.png");
 
@@ -189,12 +189,16 @@ $banner-icon-background-wide:			none;
 // Controls display of the title.
 // Note: Disabling the banner also disables the title.
 //
+// Values: true | false
+//
 $banner-title-enabled-narrow:					true;
 $banner-title-enabled-medium:					true;
 $banner-title-enabled-wide:						true;
 
 // Controls display of the subtitle.
 // Note: Disabling the banner also disables the subtitle.
+//
+// Values: true | false
 //
 $banner-subtitle-enabled-narrow:				false;
 $banner-subtitle-enabled-medium:				false;
@@ -509,7 +513,7 @@ $menubar-height-wide:							auto;
 // CSS property: justify-content
 //
 $menubar-justify-content-medium:				center;
-$menubar-justify-content-wide:					flex-start;
+$menubar-justify-content-wide:					center;
 
 // Vertically position the items and item-separators in the menubar.
 // CSS property: align-items
@@ -583,7 +587,7 @@ $menubar-item-height-wide:						auto;
 // This line is only visible in the narrow layout (which is vertical).
 // CSS property: height
 //
-$menubar-item-separator-line-width-narrow:		4px;
+$menubar-item-separator-line-width-narrow:		2px;
 
 // The color of the item separator line.
 // This line is only visible in the narrow layout (which is vertical).
@@ -591,10 +595,9 @@ $menubar-item-separator-line-width-narrow:		4px;
 //
 $menubar-item-separator-line-color-narrow:		$menubar-background-narrow;
 
-// Padding of the menu items
+// Padding of the menu items for the medium and wide layout
 // CSS property: padding
 //
-$menubar-item-padding-narrow:					$vspacing-unit/4 $hspacing-unit;
 $menubar-item-padding-medium:					$vspacing-unit/4 $hspacing-unit;
 $menubar-item-padding-wide:						$vspacing-unit/4 $hspacing-unit;
 
@@ -654,6 +657,7 @@ $menubar-dropdown-padding-medium:				0px;
 $menubar-dropdown-padding-wide:					0px;
 
 // The background for the dropdown box
+// The background for the box is only visible when no background for the subitem has been specified.
 // CSS property: background
 //
 $menubar-dropdown-background-medium:			white;
@@ -689,8 +693,8 @@ $menubar-subitem-hover-color-wide:				black;
 // CSS property: background
 //
 $menubar-subitem-background-narrow: 			$grey-color-light;
-$menubar-subitem-background-medium:				white;
-$menubar-subitem-background-wide:				white;
+$menubar-subitem-background-medium:				none;
+$menubar-subitem-background-wide:				none;
 $menubar-subitem-background-hover-narrow:		$grey-color-light;
 $menubar-subitem-background-hover-medium:		$grey-color-light;
 $menubar-subitem-background-hover-wide:			$grey-color-light;
@@ -713,7 +717,7 @@ $menubar-subitem-padding-wide:					$vspacing-unit/4 $hspacing-unit;
 // This line is only visible in the narrow layout (which is vertical).
 // CSS property: height
 //
-$menubar-subitem-separator-line-width-narrow:	2px;
+$menubar-subitem-separator-line-width-narrow:	1px;
 
 // The color of the submenu item separator line.
 // This line is only visible in the narrow layout (which is vertical).

@@ -51,9 +51,9 @@
 	
 		// Sizing: The container occupies the entire width and height as specified
 		width: 100%;
-		@include narrow-layout { height: $banner-height-narrow; }
-		@include medium-layout { height: $banner-height-medium; }
-		@include wide-layout   { height: $banner-height-wide; }
+		@include narrow-layout { @if $banner-enabled-narrow { height: $banner-height-narrow; } }
+		@include medium-layout { @if $banner-enabled-medium { height: $banner-height-medium; } }
+		@include wide-layout   { @if $banner-enabled-wide { height: $banner-height-wide; } }
 
 		// background
 		@include narrow-layout { background: $banner-background-narrow; }
