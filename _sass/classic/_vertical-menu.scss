@@ -8,8 +8,8 @@
 	display: flex;
 	flex-direction: column;
 
-	// Backgound color for the entire vmenu
-	background-color: $vmenu-background-color;
+	// Backgound for the entire vmenu
+	background: $vmenu-background;
 	
 	// Box appearance for the entire vmenu
 	box-shadow: $vmenu-box-shadow;
@@ -73,11 +73,11 @@
 				
 				// Appearance
 				border: $vmenu-subitem-border-narrow;
-				background-color: $vmenu-subitem-background-color-narrow;
+				background: $vmenu-subitem-background-narrow;
 	
 				// Create a small separator between symbol and title
 				.disclosure {
-					border-right: 2px solid $vmenu-background-color;					
+					border-right: 2px solid $vmenu-disclosure-separator-color-narrow;					
 					width: $vmenu-disclosure-symbol-width-narrow;
 				}
 				
@@ -89,14 +89,14 @@
 											
 				// Set border and background
 				border: $vmenu-subsubitem-border-narrow;
-				background-color: $vmenu-subsubitem-background-color-narrow;
+				background: $vmenu-subsubitem-background-narrow;
 				
 				.disclosure {
 
 					width: $vmenu-subsubitem-indent-narrow;
 
 					// Create a small separator between symbol and title
-					border-right: 2px solid $vmenu-background-color;
+					border-right: 2px solid $vmenu-disclosure-separator-color-narrow;
 				}
 				
 				// Allow for some padding to change the size of this element
@@ -111,18 +111,18 @@
 
 				// Color control
 				color: $vmenu-subitem-color;
-				background-color: $vmenu-subitem-background-color;
+				background: $vmenu-subitem-background;
 				
 				// Set disclosure width
 				.disclosure { width: $vmenu-disclosure-symbol-width; }
 
 				// Show that this is the active page
-				.active-page { background-color: $vmenu-subitem-hover-background-color; }
+				.active-page { background: $vmenu-subitem-background-hover; }
 				
 				// The show-hover class is used to show hovering for non-link subitems
 				a:hover, .show-hover:hover {
-					color: $vmenu-subitem-hover-color;
-					background-color: $vmenu-subitem-hover-background-color;
+					color: $vmenu-subitem-color-hover;
+					background: $vmenu-subitem-background-hover;
 				}
 
 				p {
@@ -135,7 +135,7 @@
 
 				// Color control
 				color: $vmenu-subitem-color;
-				background-color: $vmenu-subitem-background-color;
+				background: $vmenu-subitem-background;
 				
 				// Compensate for the 
 				.disclosure { width: $vmenu-subsubitem-indent; }
@@ -146,11 +146,11 @@
 				}
 				
 				// Show that this is the active page
-				.active-page { background-color: $vmenu-subsubitem-hover-background-color; }
+				.active-page { background: $vmenu-subsubitem-background-hover; }
 
 				a:hover {
-					color: $vmenu-subitem-hover-color;
-					background-color: $vmenu-subsubitem-hover-background-color;
+					color: $vmenu-subitem-color-hover;
+					background: $vmenu-subsubitem-background-hover;
 				}
 			}
 		}		

@@ -12,7 +12,7 @@
 	margin-bottom: $vspacing-unit / 2;
 	margin-right: 0;
 	border-bottom: 1px solid $widget-divider-color;
-	display: $widget-divider-display;
+	@if $widget-divider-display { display: block; } @else { display: none; }
 }
 
 // Divider between primary, secondary and tertiary
@@ -73,12 +73,12 @@
 	a {
 		text-decoration: none;
 		display: block;
-		background-color: $category-item-background-color;
+		background: $category-item-background;
 	}
-	a:hover { background-color: $category-item-background-hover-color; }
+	a:hover { background: $category-item-background-hover; }
 	
-	label h1 { background-color: $category-header-background-color; }
-	label h1:hover { background-color: $category-header-background-hover-color; }
+	label h1 { background: $category-header-background; }
+	label h1:hover { background: $category-header-background-hover; }
 	
 	.title { padding: $category-item-padding; }
 	

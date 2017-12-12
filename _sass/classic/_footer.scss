@@ -2,10 +2,12 @@
 
 // This is the element between the column panel and the footer.
 .footer-divider {
-	display: $footer-divider-display;
+	@if $footer-divider-display { display: block; } @else { display: none; }
 	width: 100%;
 	margin: 0;
-	border-bottom: 1px solid $footer-divider-color;
+	@include narrow-layout { border-bottom: 1px solid $footer-divider-color-narrow; }
+	@include medium-layout { border-bottom: 1px solid $footer-divider-color-medium; }
+	@include wide-layout { border-bottom: 1px solid $footer-divider-color-wide; }
 }
 
 .footer-panel {

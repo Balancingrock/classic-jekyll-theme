@@ -118,6 +118,9 @@
 				
 				// Content (icon image)
 				content: $banner-icon-url-narrow;
+				
+				// Background
+				background: $banner-icon-background-narrow;
 			}
 			@include medium-layout {
 			
@@ -130,6 +133,9 @@
 				
 				// Content (icon image)
 				content: $banner-icon-url-medium;
+				
+				// Background
+				background: $banner-icon-background-medium;
 			}
 			@include wide-layout {
 			
@@ -142,6 +148,9 @@
 				
 				// Content (icon image)
 				content: $banner-icon-url-wide;
+				
+				// Background
+				background: $banner-icon-background-wide;
 			}
 		}
 	}

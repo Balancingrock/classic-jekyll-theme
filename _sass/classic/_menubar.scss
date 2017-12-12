@@ -114,7 +114,7 @@
 						
 					// Layout (row oriented)
 					display: flex;
-						
+					
 					// Appearance
 					background: $menubar-subitem-background-narrow;
 						
@@ -126,7 +126,7 @@
 						align-items: center;
 					}
 						
-					p { padding-left: $menubar-subitem-indent; }
+					p { padding-left: $menubar-subitem-indent-narrow; }
 				}
 			}
 		}

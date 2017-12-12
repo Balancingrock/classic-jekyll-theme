@@ -45,6 +45,9 @@ main {
 	
 	@include narrow-layout {
 	
+		// Background for the entire panel
+		background: $column-panel-background-narrow;
+	
 		// This layout is column based, i.e. the content is displayed over one another.
 		flex-direction: column;
 				
@@ -59,6 +62,9 @@ main {
 	}
 	
 	@include medium-layout {
+	
+		// Background for the entire panel
+		background: $column-panel-background-medium;
 		
 		// This layout is row based
 		flex-direction: row;
@@ -75,6 +81,9 @@ main {
 	
 	@include wide-layout {
 	
+		// Background for the entire panel
+		background: $column-panel-background-wide;
+	
 		// This layout is row based
 		flex-direction: row;
 		
@@ -88,12 +97,6 @@ main {
 		// Unused
 		.secondary-column .tertiary-column-content, .tertiary-widget-divider, .secondary-widget-divider, .primary-column .vmenu { display: none }
 	}
-	
-	// Appearances
-	background: $column-panel-background;
-	@include narrow-layout { background: $tertiary-column-background-narrow; }
-	@include medium-layout { background: $tertiary-column-background-medium; }
-	@include wide-layout { background: $tertiary-column-background-wide; }
 }
 
 
@@ -103,7 +106,8 @@ main {
 	margin-left: 0;
 	margin-bottom: $column-divider-bottom-spacing;
 	margin-right: 0;
-	border-right: 1px solid $column-divider-color;
-	display: $column-divider-display;
+	@include medium-layout { border-right: 1px solid $column-divider-color-medium; }
+	@include wide-layout { border-right: 1px solid $column-divider-color-wide; }
+	@if $column-divider-display { display: block; } @else { display: none; }
 }
 

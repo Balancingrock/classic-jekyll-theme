@@ -3,13 +3,13 @@
 .body-panel {
 
 	// Layout top-to-bottom for the top level
-	// This arranges the navbanner-panel, column-panel, footer-separator and footer-panel (from "default.html")
+	// This arranges the banner-area, column-panel, footer-separator and footer-panel (from "default.html")
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	
-	// Setting a background image on the entire site
-	@include wide-layout { background: $body-panel-background-wide; }
-	@include medium-layout { background: $body-panel-background-medium; }
-	@include narrow-layout { background: $body-panel-background-narrow; }
+	// Setting a background on the entire site
+	@include wide-layout { background: $background-wide; }
+	@include medium-layout { background: $background-medium; }
+	@include narrow-layout { background: $background-narrow; }
 }
