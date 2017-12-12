@@ -40,14 +40,6 @@
 				
 			// Remove link underlining
 			a { text-decoration: none; }
-
-			// Use the item color for all elements & Hover effect
-			p { color: $menubar-item-color-narrow; }
-			background: $menubar-item-background-narrow;
-			&:hover {
-				p { color: $menubar-item-hover-color-narrow; }
-				background: $menubar-item-background-hover-narrow;
-			}
 			
 			// If the checkbox is checked
 			input:checked ~ {
@@ -66,7 +58,13 @@
 				height: $menubar-item-height-narrow;
 				.symbol { width: $menubar-item-disclosure-symbol-width-narrow; }
 				.text { width: 100%; } // Takes up remainder of .title width
-					
+				
+				// Use the item color for all elements & Hover effect
+				background: $menubar-item-background-narrow;
+				&:hover {
+					background: $menubar-item-background-hover-narrow;
+				}
+
 				.symbol {
 
 					// Layout: Center the disclosure symbol
@@ -87,6 +85,13 @@
 					display: flex;
 					justify-content: start;
 					align-items: center;
+					
+					// Use the item color for all elements & Hover effect
+					p { color: $menubar-item-color-narrow; }
+					&:hover {
+						p { color: $menubar-item-hover-color-narrow; }
+					}
+
 				}
 			}
 		
