@@ -24,6 +24,7 @@ github_username:  jekyll
 
 # Build settings
 markdown: kramdown
+keep_files: [assets]
 theme: classic-jekyll-theme
 plugins:
   - jekyll-feed

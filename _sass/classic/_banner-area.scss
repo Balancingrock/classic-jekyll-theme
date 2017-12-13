@@ -9,19 +9,22 @@
 			.banner-area .menubar {
 				@if $menubar-enabled-narrow { display: flex; } @else { display: none; }
 			}
-			.banner-area .menubar-bottom-separator, .banner-area .add-to-banner-area-height {
+			.banner-area .menubar-bottom-separator,
+			.banner-area .add-to-banner-area-height {
 				@if $menubar-bottom-separator-enabled-narrow { display: block; } @else { display: none; }
 			}
 		}
 		@include medium-layout {
 			@if $banner-menu-symbol-enabled-medium {
 				.banner-area .menubar { display: none; }
-				.banner-area .menubar-bottom-separator, .banner-area .add-to-banner-area-height { display: none }
+				.banner-area .menubar-bottom-separator,
+				.banner-area .add-to-banner-area-height { display: none }
 			} @else {
 				.banner-area .menubar {
 					@if $menubar-enabled-medium { display: flex; } @else { display: none; }
 				}
-				.banner-area .menubar-bottom-separator, .banner-area .add-to-banner-area-height {
+				.banner-area .menubar-bottom-separator,
+				.banner-area .add-to-banner-area-height {
 					@if $menubar-bottom-separator-enabled-medium { display: block; } @else { display: none; }
 				}
 			}
@@ -29,12 +32,14 @@
 		@include wide-layout {
 			@if $banner-menu-symbol-enabled-wide {
 				.banner-area .menubar { display: none; }
-				.banner-area .menubar-bottom-separator, .banner-area .add-to-banner-area-height { display: none }
+				.banner-area .menubar-bottom-separator,
+				.banner-area .add-to-banner-area-height { display: none }
 			} @else {
 				.banner-area .menubar  {
 					@if $menubar-enabled-wide { display: flex; } @else { display: none; }
 				}
-				.banner-area .menubar-bottom-separator, .banner-area .add-to-banner-area-height {
+				.banner-area .menubar-bottom-separator,
+				.banner-area .add-to-banner-area-height {
 					@if $menubar-bottom-separator-enabled-wide { display: block; } @else { display: none; }
 				}
 			}
@@ -107,51 +112,29 @@
 			
 		.banner-icon {				
 
-			@include narrow-layout {
+			// Position tweaks
+			@include narrow-layout { padding: $banner-icon-padding-narrow; }
+			@include medium-layout { padding: $banner-icon-padding-medium; }
+			@include wide-layout { padding: $banner-icon-padding-wide; }
 
-				// Position tweaks
-				padding: $banner-icon-padding-narrow;
+			// Sizing
+			@include narrow-layout { width: $banner-icon-width-narrow; }
+			@include medium-layout { width: $banner-icon-width-medium; }
+			@include wide-layout { width: $banner-icon-width-wide; }
 
-				// Sizing
-				width: $banner-icon-width-narrow;
-				height: $banner-icon-height-narrow;
+			@include narrow-layout { height: $banner-icon-height-narrow; }
+			@include medium-layout { height: $banner-icon-height-medium; }
+			@include wide-layout { height: $banner-icon-height-wide; }
 				
-				// Content (icon image)
-				content: $banner-icon-url-narrow;
+			// Content (icon image)
+			@include narrow-layout { content: $banner-icon-url-narrow; }
+			@include medium-layout { content: $banner-icon-url-medium; }
+			@include wide-layout { content: $banner-icon-url-wide; }
 				
-				// Background
-				background: $banner-icon-background-narrow;
-			}
-			@include medium-layout {
-			
-				// Position tweaks
-				padding: $banner-icon-padding-medium;
-
-				// Sizing
-				width: $banner-icon-width-medium;
-				height: $banner-icon-height-medium;
-				
-				// Content (icon image)
-				content: $banner-icon-url-medium;
-				
-				// Background
-				background: $banner-icon-background-medium;
-			}
-			@include wide-layout {
-			
-				// Position tweaks
-				padding: $banner-icon-padding-wide;
-
-				// Sizing
-				width: $banner-icon-width-wide;
-				height: $banner-icon-height-wide;
-				
-				// Content (icon image)
-				content: $banner-icon-url-wide;
-				
-				// Background
-				background: $banner-icon-background-wide;
-			}
+			// Background
+			@include narrow-layout { background: $banner-icon-background-narrow; }
+			@include medium-layout { background: $banner-icon-background-medium; }
+			@include wide-layout { background: $banner-icon-background-wide; }			
 		}
 	}
 		
@@ -416,90 +399,48 @@
 			justify-content: center;
 			align-items: center;
 
-			@include narrow-layout {
-				
-				// Insert the menu symbol		
-				p:after { content: $banner-menu-symbol-code-narrow; }
+			// Insert the menu symbol		
+			@include narrow-layout { p:after { content: $banner-menu-symbol-code-narrow; } }
+			@include medium-layout { p:after { content: $banner-menu-symbol-code-medium; } }
+			@include wide-layout { p:after { content: $banner-menu-symbol-code-wide; } }
 
-				// Size the tap area 
-				width: $banner-menu-symbol-tap-area-width-narrow;
-				height: $banner-menu-symbol-tap-area-height-narrow;
+			// Size the tap area 
+			@include narrow-layout { width: $banner-menu-symbol-tap-area-width-narrow; }
+			@include medium-layout { width: $banner-menu-symbol-tap-area-width-medium; }
+			@include wide-layout { width: $banner-menu-symbol-tap-area-width-wide; }
+			
+			@include narrow-layout { height: $banner-menu-symbol-tap-area-height-narrow; }
+			@include medium-layout { height: $banner-menu-symbol-tap-area-height-medium; }
+			@include wide-layout { height: $banner-menu-symbol-tap-area-height-wide; }
 					
-				// The background
-				background: $banner-menu-symbol-tap-area-background-narrow;
+			// The background
+			@include narrow-layout { background: $banner-menu-symbol-tap-area-background-narrow; }
+			@include medium-layout { background: $banner-menu-symbol-tap-area-background-medium; }
+			@include wide-layout { background: $banner-menu-symbol-tap-area-background-wide; }
 					
-				// The border
-				border: $banner-menu-symbol-tap-area-border-narrow;
-			}
-			@include medium-layout {
-				
-				// Insert the menu symbol		
-				p:after { content: $banner-menu-symbol-code-medium; }
-
-				// Size the tap area 
-				width: $banner-menu-symbol-tap-area-width-medium;
-				height: $banner-menu-symbol-tap-area-height-medium;
-					
-				// The background
-				background: $banner-menu-symbol-tap-area-background-medium;
-					
-				// The border
-				border: $banner-menu-symbol-tap-area-border-medium;
-			}
-			@include wide-layout {
-				
-				// Insert the menu symbol		
-				p:after { content: $banner-menu-symbol-code-wide; }
-
-				// Size the tap area 
-				width: $banner-menu-symbol-tap-area-width-wide;
-				height: $banner-menu-symbol-tap-area-height-wide;
-					
-				// The background
-				background: $banner-menu-symbol-tap-area-background-wide;
-					
-				// The border
-				border: $banner-menu-symbol-tap-area-border-wide;
-			}
-
+			// The border
+			@include narrow-layout { border: $banner-menu-symbol-tap-area-border-narrow; }
+			@include medium-layout { border: $banner-menu-symbol-tap-area-border-medium; }
+			@include wide-layout { border: $banner-menu-symbol-tap-area-border-wide; }
 
 			// The label is used as checkbox-label, it should show a pointer when the mouse is above it.
 			cursor: pointer;
 				
 			p {
-				@include narrow-layout {
+				// Fine tune the position of the menu symbol in the tap area
+				@include narrow-layout { padding: $banner-menu-symbol-padding-narrow; }
+				@include medium-layout { padding: $banner-menu-symbol-padding-medium; }
+				@include wide-layout { padding: $banner-menu-symbol-padding-wide; }
 				
-					// Fine tune the position of the menu symbol in the tap area
-					padding: $banner-menu-symbol-padding-narrow;
+				// The font
+				@include narrow-layout { font: $banner-menu-symbol-font-narrow; }
+				@include medium-layout { font: $banner-menu-symbol-font-medium; }
+				@include wide-layout { font: $banner-menu-symbol-font-wide; }
 						
-					// The font
-					font: $banner-menu-symbol-font-narrow;
-						
-					// The color
-					color: $banner-menu-symbol-color-narrow;
-				}
-				@include medium-layout {
-					
-					// Fine tune the position of the menu symbol in the tap area
-					padding: $banner-menu-symbol-padding-medium;
-						
-					// The font
-					font: $banner-menu-symbol-font-medium;
-						
-					// The color
-					color: $banner-menu-symbol-color-medium;
-				}
-				@include wide-layout {
-					
-					// Fine tune the position of the menu symbol in the tap area
-					padding: $banner-menu-symbol-padding-wide;
-						
-					// The font
-					font: $banner-menu-symbol-font-wide;
-						
-					// The color
-					color: $banner-menu-symbol-color-wide;
-				}
+				// The color
+				@include narrow-layout { color: $banner-menu-symbol-color-narrow; }
+				@include medium-layout { color: $banner-menu-symbol-color-medium; }
+				@include wide-layout { color: $banner-menu-symbol-color-wide; }
 			}
 		}
 	}		
@@ -585,6 +526,9 @@
 // banner-area. It does not seem to be necessary though. Still,it could prevent future problems, hence 
 //
 .invisible {
+	display: block;
+	@include narrow-layout { display: none; }
+	width: 100%;
 	opacity: 0;
 	z-index: -1;
 	position: relative;

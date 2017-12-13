@@ -6,8 +6,8 @@
 .secondary-column {
 	
 	// Use the theme insets to keep the content of the column away from the edges.
-	@extend .theme-insets;
-	
+	@extend .theme-insets;	
+
 	// Set the background
 	@include narrow-layout { background: $secondary-column-background-narrow; }
 	@include medium-layout { background: $secondary-column-background-medium; }
@@ -58,7 +58,7 @@ main {
 		.secondary-column { order: 2; }
 
 		// Unused		
-		.tertiary-column, .secondary-divider, .tertiary-divider, .secondary-column .vmenu { display: none; }
+		.tertiary-column, .secondary-divider, .tertiary-divider, .secondary-column .vmenu-container { display: none; }
 	}
 	
 	@include medium-layout {
@@ -76,7 +76,7 @@ main {
 		.primary-column { flex: 1 1 auto; width: 1px; } // A width must be specified
 
 		// Unused
-		.tertiary-divider, .secondary-widget-divider, .tertiary-column, .primary-column .vmenu { display: none; }
+		.tertiary-divider, .secondary-widget-divider, .tertiary-column, .primary-column .vmenu-container { display: none; }
 	}
 	
 	@include wide-layout {
@@ -95,7 +95,7 @@ main {
 		.primary-column { flex: 1 1 auto; width: 1px; } // A width must be specified
 
 		// Unused
-		.secondary-column .tertiary-column-content, .tertiary-widget-divider, .secondary-widget-divider, .primary-column .vmenu { display: none }
+		.secondary-column .tertiary-column-content, .tertiary-widget-divider, .secondary-widget-divider, .primary-column .vmenu-container { display: none }
 	}
 }
 

@@ -12,7 +12,11 @@
 	<!-- Home page -->
 	{% assign home = 'Home' %}
 	{% if site.data.text-for.tHome %}{% assign home = site.data.text-for.tHome %}{% endif %}
+	{% if page.url == '/' %}
+	<div class="item isActiveSelection">
+	{% else %}
 	<div class="item">
+	{% endif %}
 		<div class="title">
 			<label class="symbol">
 				<p></p>
@@ -232,7 +236,14 @@
 				{% assign categories = 'Categories' %}
 				{% if site.data.text-for.tCategories %}{% assign categories = site.data.text-for.tCategories %}{% endif 	%}
 				<div class="item-separator"><p><!-- empty but necessary --></p></div>
+				<!-- Check if a category page is selected -->
+				{% assign selected = false %}
+				{% for cat in cats %}{% if cat.url == page.url %}{% assign selected = true %}{% endif %}{% endfor %}
+				{% if selected %}
+				<div class="item isActiveSelection">
+				{% else %}
 				<div class="item">
+				{% endif %}
 					<input type="checkbox" id="category-checkbox">
 					<div class="title">
 						<label class="symbol" for="category-checkbox">
@@ -267,6 +278,3 @@
 		{% endif %}
 	{% endif %}
 </nav>
-
-<!-- Separator between menubar and column panel -->
-<div class="menubar-separator-bottom"></div>

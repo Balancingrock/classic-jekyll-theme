@@ -1,19 +1,92 @@
-// For the vertical menu that can be used on top of the secondary column (wide & mediaum layout) or the primary column (narrow layout).
+// For the vertical menu that can be used on top of the secondary column (wide & mediaum layout) or the
+// primary column (narrow layout).
 //
 // This menu is shown when site.data.setup.navbanner-drop-down-menu is set to 'no'.
 //
-.vmenu {
+.vmenu-container {
+	@include narrow-layout { @if $vmenu-enable-narrow { display: flex; } @else { display: none; } }
+	@include medium-layout { @if $vmenu-enable-medium { display: flex; } @else { display: none; } }
+	@include wide-layout { @if $vmenu-enable-wide { display: flex; } @else { display: none; } }
+	
+	flex-direction: column;
+	
+	@include narrow-layout {
+	
+		// Border of the entire vmenu
+		border: $vmenu-border-narrow;
+		
+		// Backgound for the entire vmenu
+		background: $vmenu-background-narrow;
+		
+		// Box appearance for the entire vmenu
+		box-shadow: $vmenu-box-shadow-narrow;
+	}
+	@include medium-layout {
+	
+		// Border of the entire vmenu
+		border: $vmenu-border-medium;
+		
+		// Backgound for the entire vmenu
+		background: $vmenu-background-medium;
+		
+		// Box appearance for the entire vmenu
+		box-shadow: $vmenu-box-shadow-medium;
+	}
+	@include wide-layout {
+	
+		// Border of the entire vmenu
+		border: $vmenu-border-wide;
+		
+		// Backgound for the entire vmenu
+		background: $vmenu-background-wide;
+		
+		// Box appearance for the entire vmenu
+		box-shadow: $vmenu-box-shadow-wide;
+	}
+
+}
+
+.vmenu-container .topTitle {
+
+	@include narrow-layout { @if $vmenu-topTitle-enable-narrow { display: flex; } @else { display: none; } }
+	@include medium-layout { @if $vmenu-topTitle-enable-medium { display: flex; } @else { display: none; } }
+	@include wide-layout { @if $vmenu-topTitle-enable-wide { display: flex; } @else { display: none; } }
+
+	@include narrow-layout { justify-content: $vmenu-topTitle-justify-content-narrow; }
+	@include medium-layout { justify-content: $vmenu-topTitle-justify-content-medium; }
+	@include wide-layout { justify-content: $vmenu-topTitle-justify-content-wide; }
+	
+	@include narrow-layout { font: $vmenu-topTitle-font-narrow; }
+	@include medium-layout { font: $vmenu-topTitle-font-medium; }
+	@include wide-layout { font: $vmenu-topTitle-font-wide; }
+
+	@include narrow-layout { color: $vmenu-topTitle-color-narrow; }
+	@include medium-layout { color: $vmenu-topTitle-color-medium; }
+	@include wide-layout { color: $vmenu-topTitle-color-wide; }
+	
+	@include narrow-layout { background: $vmenu-topTitle-background-narrow; }
+	@include medium-layout { background: $vmenu-topTitle-background-medium; }
+	@include wide-layout { background: $vmenu-topTitle-background-wide; }
+
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	
+	@include narrow-layout { h1 { padding: $vmenu-topTitle-padding-narrow; } }
+	@include medium-layout { h1 { padding: $vmenu-topTitle-padding-medium; } }
+	@include wide-layout { h1 { padding: $vmenu-topTitle-padding-wide; } }
+
+	@include narrow-layout { h1 { margin: $vmenu-topTitle-margin-narrow; } }
+	@include medium-layout { h1 { margin: $vmenu-topTitle-margin-medium; } }
+	@include wide-layout { h1 { margin: $vmenu-topTitle-margin-wide; } }
+}
+
+.vmenu-container .vmenu {
 
 	// Stack the child elements on top of each other (the child elements are of class 'item')
 	display: flex;
 	flex-direction: column;
-
-	// Backgound for the entire vmenu
-	background: $vmenu-background;
 	
-	// Box appearance for the entire vmenu
-	box-shadow: $vmenu-box-shadow;
-
 	// The p's should not drive the display, make them as small as possible
 	p { margin: 0px; }
 
@@ -25,8 +98,10 @@
 		display: block;
 	}
 		
-	// Make sure the link in the title takes up the entire available area
+	// Make sure the title takes up available space (and since the link is displayed as block, this makes the
+	// entire area clickable.
 	.title { flex-grow: 1; }
+
 	
 	.item {
 			
@@ -40,14 +115,36 @@
 		input:checked ~ {
 		
 			// Show the correct symbol for this state.
-			.sub label .symbol:after { content: $vmenu-disclosure-symbol-open; }
+			.sub label .symbol:after { content: $vmenu-subitem-disclosure-symbol-open; }
 			
 			// Show the subsub's
 			.subsub { display: flex }
 		}
-
-		.sub {
-				
+		
+		.sub-isActivePage {
+			 @include narrow-layout { background: $vmenu-subitem-title-background-selected-narrow; }
+			 @include medium-layout { background: $vmenu-subitem-title-background-selected-medium; }
+			 @include wide-layout { background: $vmenu-subitem-title-background-selected-wide; }
+		}
+		
+		.sub,
+		.sub-hasLink {
+			// Background of the entire subitem
+			@include narrow-layout { background: $vmenu-subitem-background-narrow; }
+			@include medium-layout { background: $vmenu-subitem-background-medium; }
+			@include wide-layout { background: $vmenu-subitem-background-wide; }
+		}
+		
+		.sub-hasLink:hover {
+			@include narrow-layout { background: $vmenu-subitem-title-background-hover-narrow; }
+			@include medium-layout { background: $vmenu-subitem-title-background-hover-medium; }
+			@include wide-layout { background: $vmenu-subitem-title-background-hover-wide; }
+		}
+		
+		.sub,
+		.sub-hasLink,
+		.sub-isActivePage {
+			
 			// Place the components next to each other
 			display: flex;
 					
@@ -59,100 +156,124 @@
 				align-items: center;
 								
 				// Display the proper disclosure symbol
-				.symbol:after { content: $vmenu-disclosure-symbol-closed; }
+				.symbol:after { content: $vmenu-subitem-disclosure-symbol-closed; }
 			}
-		}
-		
-		// Not visible unless the checkbox is active
-		.subsub { display: none; }
 
-		// For the narrow layout only
-		@include narrow-layout {
-	
-			.sub {
+			// Border of the entire subitem
+			@include narrow-layout { border: $vmenu-subitem-border-narrow; }
+			@include medium-layout { border: $vmenu-subitem-border-medium; }
+			@include wide-layout { border: $vmenu-subitem-border-wide; }
 				
-				// Appearance
-				border: $vmenu-subitem-border-narrow;
-				background: $vmenu-subitem-background-narrow;
-	
+				
+			.disclosure {
 				// Create a small separator between symbol and title
-				.disclosure {
-					border-right: 2px solid $vmenu-disclosure-separator-color-narrow;					
-					width: $vmenu-disclosure-symbol-width-narrow;
-				}
-				
-				// Allow for some padding to change the size of this element
-				.title p { padding: $vmenu-subitem-padding-narrow; }
+				@include narrow-layout { border-right: $vmenu-subitem-disclosure-area-border-right-narrow; }
+				@include medium-layout { border-right: $vmenu-subitem-disclosure-area-border-right-medium; }
+				@include wide-layout { border-right: $vmenu-subitem-disclosure-area-border-right-wide; }
+					
+				// Create an indent that can be filled with a disclosure symbol
+				@include narrow-layout { width: $vmenu-subitem-disclosure-area-width-narrow; }
+				@include medium-layout { width: $vmenu-subitem-disclosure-area-width-medium; }
+				@include wide-layout { width: $vmenu-subitem-disclosure-area-width-wide; }
 			}
-			
-			.subsub {
-											
-				// Set border and background
-				border: $vmenu-subsubitem-border-narrow;
-				background: $vmenu-subsubitem-background-narrow;
 				
-				.disclosure {
+			.title {
 
-					width: $vmenu-subsubitem-indent-narrow;
-
-					// Create a small separator between symbol and title
-					border-right: 2px solid $vmenu-disclosure-separator-color-narrow;
-				}
-				
-				// Allow for some padding to change the size of this element
-				.title { p { padding: $vmenu-subsubitem-padding-narrow; } }
-			}			
-		}
-		
-		// For the medium layout only
-		@include medium-and-wide-layout {
-		
-			.sub {
-
-				// Color control
-				color: $vmenu-subitem-color;
-				background: $vmenu-subitem-background;
-				
-				// Set disclosure width
-				.disclosure { width: $vmenu-disclosure-symbol-width; }
-
-				// Show that this is the active page
-				.active-page { background: $vmenu-subitem-background-hover; }
-				
 				// The show-hover class is used to show hovering for non-link subitems
 				a:hover, .show-hover:hover {
-					color: $vmenu-subitem-color-hover;
-					background: $vmenu-subitem-background-hover;
+					@include narrow-layout { color: $vmenu-subitem-color-hover-narrow; }
+					@include medium-layout { color: $vmenu-subitem-color-hover-medium; }
+					@include wide-layout { color: $vmenu-subitem-color-hover-wide; }
 				}
 
 				p {
-					font: $vmenu-subitem-font;
-					padding: $vmenu-subitem-padding;
+					// Allow for some padding to position and change the size of this element
+					@include narrow-layout { padding: $vmenu-subitem-title-padding-narrow; }
+					@include medium-layout { padding: $vmenu-subitem-title-padding-medium; }
+					@include wide-layout { padding: $vmenu-subitem-title-padding-wide; }				
+
+					// Font for the sub menu title
+					@include narrow-layout { font: $vmenu-subitem-font-narrow; }
+					@include medium-layout { font: $vmenu-subitem-font-medium; }
+					@include wide-layout { font: $vmenu-subitem-font-wide; }
+
+					// Color for the sub menu title
+					@include narrow-layout { color: $vmenu-subitem-color-narrow; }
+					@include medium-layout { color: $vmenu-subitem-color-medium; }
+					@include wide-layout { color: $vmenu-subitem-color-wide; }
 				}
 			}
-	
-			.subsub {
+		}
+			
+		.subsub-isActivePage {
+			@include narrow-layout { background: $vmenu-subsubitem-background-selected-narrow; }
+			@include medium-layout { background: $vmenu-subsubitem-background-selected-medium; }
+			@include wide-layout { background: $vmenu-subsubitem-background-selected-wide; }
+		}
 
-				// Color control
-				color: $vmenu-subitem-color;
-				background: $vmenu-subitem-background;
+		.subsub,
+		.subsub-hasLink {
+			@include narrow-layout { background: $vmenu-subsubitem-background-narrow; }
+			@include medium-layout { background: $vmenu-subsubitem-background-medium; }
+			@include wide-layout { background: $vmenu-subsubitem-background-wide; }
+		}
+			
+		.subsub-hasLink:hover {
+			@include narrow-layout { background: $vmenu-subsubitem-background-hover-narrow; }
+			@include medium-layout { background: $vmenu-subsubitem-background-hover-medium; }
+			@include wide-layout { background: $vmenu-subsubitem-background-hover-wide; }
+		}
+
+		.subsub,
+		.subsub-hasLink,
+		.subsub-isActivePage {
+			
+			// Not visible unless the checkbox is active
+			display: none;
+							
+			// Set border and background
+			@include narrow-layout { border: $vmenu-subsubitem-border-narrow; }
+			@include medium-layout { border: $vmenu-subsubitem-border-medium; }
+			@include wide-layout { border: $vmenu-subsubitem-border-wide; }
 				
-				// Compensate for the 
-				.disclosure { width: $vmenu-subsubitem-indent; }
+			.disclosure {
+
+				// Create a small separator between symbol and title
+				@include narrow-layout { border-right: $vmenu-subsubitem-disclosure-area-border-right-narrow; }
+				@include medium-layout { border-right: $vmenu-subsubitem-disclosure-area-border-right-medium; }
+				@include wide-layout { border-right: $vmenu-subsubitem-disclosure-area-border-right-wide; }
 					
-				p {
-					font: $vmenu-subsubitem-font;
-					padding: $vmenu-subsubitem-padding;
-				}
+				// Create an indent that can be filled with a disclosure symbol
+				@include narrow-layout { width: $vmenu-subsubitem-disclosure-area-width-narrow; }
+				@include medium-layout { width: $vmenu-subsubitem-disclosure-area-width-medium; }
+				@include wide-layout { width: $vmenu-subsubitem-disclosure-area-width-wide; }
+			}
 				
-				// Show that this is the active page
-				.active-page { background: $vmenu-subsubitem-background-hover; }
+			.title {
+				
+				a:hover {						
+					@include narrow-layout { color: $vmenu-subsubitem-color-hover-narrow; }
+					@include medium-layout { color: $vmenu-subsubitem-color-hover-medium; }
+					@include wide-layout { color: $vmenu-subsubitem-color-hover-wide; }
+				}
 
-				a:hover {
-					color: $vmenu-subitem-color-hover;
-					background: $vmenu-subsubitem-background-hover;
+				p {
+					// Allow for some padding to position and change the size of this element
+					@include narrow-layout { padding: $vmenu-subsubitem-title-padding-narrow; }
+					@include medium-layout { padding: $vmenu-subsubitem-title-padding-medium; }
+					@include wide-layout { padding: $vmenu-subsubitem-title-padding-wide; }				
+
+					// Font for the sub menu title
+					@include narrow-layout { font: $vmenu-subsubitem-font-narrow; }
+					@include medium-layout { font: $vmenu-subsubitem-font-medium; }
+					@include wide-layout { font: $vmenu-subsubitem-font-wide; }
+
+					// Color for the sub menu title
+					@include narrow-layout { color: $vmenu-subsubitem-color-narrow; }
+					@include medium-layout { color: $vmenu-subsubitem-color-medium; }
+					@include wide-layout { color: $vmenu-subsubitem-color-wide; }
 				}
 			}
-		}		
-	}
+		}			
+	}		
 }

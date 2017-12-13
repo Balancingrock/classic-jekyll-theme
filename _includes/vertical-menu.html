@@ -3,7 +3,9 @@
 <!-- Get the top menu item for which to create the menu -->
 {% assign topTitle = page.menuTopTitle %}
 
-<nav class="vmenu">
+<nav class="vmenu-container">
+<div class="topTitle"><h1>{{ topTitle }}</h1></div>
+<div class="vmenu">
 
 	<!-- Find all pages that belong to the menuTopTitle of this page -->
 	{% assign topTitlePages = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle %}
@@ -180,60 +182,95 @@
 		<div class="item">
 			<!-- Sub menu item -->
 			{% if sortedSubsubMenuTitles.size == 0 %}
-				<div class="sub">
-					<div class="disclosure"><p></p></div>
-					<div class="title">
-						{% if sortedSubMenuLinks[forloop.index0] != false %}
-							{% if sortedSubMenuUrls[forloop.index0] == page.url %}
-								<a class="active-page" href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
-							{% else %}
+				{% if sortedSubMenuLinks[forloop.index0] != false %}
+					{% if sortedSubMenuUrls[forloop.index0] == page.url %}
+						<div class="sub-isActivePage">
+							<div class="disclosure"><p></p></div>
+							<div class="title">
 								<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
-							{% endif %}
-						{% else %}
+							</div>
+						</div>
+					{% else %}
+						<div class="sub-hasLink">
+							<div class="disclosure"><p></p></div>
+							<div class="title">
+								<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
+							</div>
+						</div>
+					{% endif %}
+				{% else %}
+					<div class="sub">
+						<div class="disclosure"><p></p></div>
+						<div class="title">
 							<p>{{ subMenuTitle }}</p>
-						{% endif %}
+						</div>
 					</div>
-				</div>
+				{% endif %}
 			{% else %}
 				<input type="checkbox" id="{{ subMenuTitle | append:'-vmenu-' | append: include.label-modifier }}">
-				<div class="sub">
-					<label class="disclosure show-hover" for="{{ subMenuTitle | append:'-vmenu-' | append: include.label-modifier }}">
-						<p class="symbol"><!-- will be filled by disclosure indicator --></p>
-					</label>
-					<div class="title">
-						{% if sortedSubMenuLinks[forloop.index0] != false %}
-							{% if sortedSubMenuUrls[forloop.index0] == page.url %}
-								<a class="active-page" href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
-							{% else %}
+				{% if sortedSubMenuLinks[forloop.index0] != false %}
+					{% if sortedSubMenuUrls[forloop.index0] == page.url %}
+						<div class="sub-isActivePage">
+							<label class="disclosure show-hover" for="{{ subMenuTitle | append:'-vmenu-' | append: include.label-modifier }}">
+								<p class="symbol"><!-- will be filled by disclosure indicator --></p>
+							</label>
+							<div class="title">
 								<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
-							{% endif %}
-						{% else %}
+							</div>
+						</div>
+					{% else %}
+						<div class="sub-hasLink">
+							<label class="disclosure show-hover" for="{{ subMenuTitle | append:'-vmenu-' | append: include.label-modifier }}">
+								<p class="symbol"><!-- will be filled by disclosure indicator --></p>
+							</label>
+							<div class="title">
+								<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
+							</div>
+						</div>
+				{% endif %}
+				{% else %}
+					<div class="sub">
+						<label class="disclosure show-hover" for="{{ subMenuTitle | append:'-vmenu-' | append: include.label-modifier }}">
+							<p class="symbol"><!-- will be filled by disclosure indicator --></p>
+						</label>
+						<div class="title">
 							<p>{{ subMenuTitle }}</p>
-						{% endif %}
+						</div>
 					</div>
-				</div>
+				{% endif %}
 
 			    <!-- Sub sub menu items -->
 	    		{% for subsubTitle in sortedSubsubMenuTitles %}
-				<div class="subsub">
-					<div class="disclosure"><p></p></div>
-					<div class="title">
-				    	{% if sortedSubsubMenuLinks[forloop.index0] != false %}
-					    	{% if sortedSubsubMenuUrls[forloop.index0] == page.url %}
-								<a class="active-page" href="{{ sortedSubsubMenuUrls[forloop.index0] }}"><p>{{ subsubTitle }}</p></a>
-							{% else %}
-								<a href="{{ sortedSubsubMenuUrls[forloop.index0] }}"><p>{{ subsubTitle }}</p></a>
-							{% endif %}
+			    	{% if sortedSubsubMenuLinks[forloop.index0] != false %}
+				    	{% if sortedSubsubMenuUrls[forloop.index0] == page.url %}
+							<div class="subsub-isActivePage">
+								<div class="disclosure"><p></p></div>
+								<div class="title">
+									<a href="{{ sortedSubsubMenuUrls[forloop.index0] }}"><p>{{ subsubTitle }}</p></a>
+								</div>
+		    				</div>
 						{% else %}
-							<p>{{ subsubTitle }}</p>
+							<div class="subsub-hasLink">
+								<div class="disclosure"><p></p></div>
+								<div class="title">
+									<a href="{{ sortedSubsubMenuUrls[forloop.index0] }}"><p>{{ subsubTitle }}</p></a>
+								</div>
+		    				</div>
 						{% endif %}
-					</div>
-		    	</div>
+					{% else %}
+						<div class="subsub">
+							<div class="disclosure"><p></p></div>
+							<div class="title">
+								<p>{{ subsubTitle }}</p>
+							</div>
+		    			</div>
+					{% endif %}
 		    	{% endfor %}			
     		{% endif %}
 		</div>
 		
 	{% endfor %}
+	</div>
 </nav>
 
 {% endif %}
