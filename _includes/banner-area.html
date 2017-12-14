@@ -1,4 +1,8 @@
-{% if site.data.setup.banner-position == 'top-fixed' %}{% assign banner-classes = 'banner-area banner-area-outside-dom' %}{% else %}{% assign banner-classes = 'banner-area banner-area-in-dom' %}{% endif%}
+{% if site.data.setup.banner-position == 'top-fixed' %}
+	{% assign banner-classes = 'banner-area banner-area-outside-dom' %}
+{% else %}
+	{% assign banner-classes = 'banner-area banner-area-in-dom' %}
+{% endif%}
 
 <input type="checkbox" id="banner-menu-symbol">
 <div class="{{ banner-classes }}">
@@ -23,14 +27,13 @@
 	<div class="banner-area invisible">
 		<div class="banner"></div>
 		<div class="menubar-top-separator"></div>
-		<div class="menubar">
-			{% include menubar-icon.html %}
-			<div class="item">
-				<div class="title">
-					<a href=""><p>Home</p></a>
-				</div>
-			</div>
-		</div>
+		<!-- Create a list of top menu item titles 
+		{% assign topTitles = "" | split: "" %}
+		{% assign sortedPages = site.pages | where:'menuInclude', true | where_exp:'item', 'item.menuTopTitle != nil' | sort: 'menuTopIndex', 'last' %}
+		{% for ape in sortedPages %}{% assign topTitles = topTitles | push: ape.menuTopTitle %}{% endfor %}
+		{% assign topTitles = topTitles | uniq %}
+-->
+		{% include menubar.html %}
 		<div class="menubar-bottom-separator"></div>
 		<div class="add-to-banner-area-height"></div>
 	</div>

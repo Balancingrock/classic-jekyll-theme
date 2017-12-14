@@ -1,7 +1,14 @@
 {% if jekyll.environment != 'production' and site.data.setup.fast-content-build %}{% else %}
 
 <!-- Get the top menu item for which to create the menu -->
-{% assign topTitle = page.menuTopTitle %}
+{% if page.menuTopTitle %}
+	{% assign topTitle = page.menuTopTitle %}
+{% else %}
+	{% comment %}<!-- Fix for missing top title for the home page -->{% endcomment %}
+	{% assign home = 'Home' %}
+	{% if site.data.text-for.tHome %}{% assign home = site.data.text-for.tHome %}{% endif %}
+	{% assign topTitle = home %}
+{% endif %}
 
 <nav class="vmenu-container">
 <div class="topTitle"><h1>{{ topTitle }}</h1></div>

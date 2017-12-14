@@ -526,8 +526,6 @@
 // banner-area. It does not seem to be necessary though. Still,it could prevent future problems, hence 
 //
 .invisible {
-	display: block;
-	@include narrow-layout { display: none; }
 	width: 100%;
 	opacity: 0;
 	z-index: -1;
