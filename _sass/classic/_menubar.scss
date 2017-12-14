@@ -28,7 +28,8 @@
 			background-color: $menubar-item-separator-line-color-narrow;
 		}
 			
-		.item {
+		.item,
+		.item-narrow-only {
 			
 			// Layout
 			display: flex;
@@ -44,7 +45,7 @@
 			input:checked ~ {
 
 				// Show submenu
-				.dropdown { display: flex; }
+				.dropdown, .dropdown-narrow { display: flex; }
 
 				// When the submenu is open, show the appropriate symbol
 				.title .symbol .code:after { content: $menubar-item-title-symbol-code-open-narrow; }
@@ -94,7 +95,8 @@
 				}
 			}
 		
-			.dropdown {
+			.dropdown,
+			.dropdown-narrow {
 				
 				// Disable submenu by default
 				display: none;
@@ -215,7 +217,9 @@
 			
 		// Make all p's as small as possible
 		p { margin: 0; padding: 0; }
-			
+		
+		.item-narrow-only { display: none; }
+		
 		.item {
 			
 			// Vertical layout
@@ -273,15 +277,16 @@
 			&:hover .dropdown { display: block; }
 
 			// Display the submenu if the user taps the corresponding menu item
-			input:checked ~ .dropdown { display: block; }					
+			//input:checked ~ .dropdown-narrow { display: block; }					
 
 			.title {
 				@include medium-layout { height: $menubar-item-height-medium; }
 				@include widest-layout { height: $menubar-item-height-widest; }
 			}
 			
-			.dropdown {
-						
+			.dropdown,
+			.dropdown-narrow {
+				
 				// Visibility depends on hovering over the item
 				display: none;
 
@@ -344,9 +349,9 @@
 					}
 				}
 
-		// Show selection for pages that match a menu entry
-		@include medium-layout { .isActiveSelection { background: $menubar-subitem-background-selected-medium; } }
-		@include widest-layout { .isActiveSelection { background: $menubar-subitem-background-selected-widest; } }
+				// Show selection for pages that match a menu entry
+				@include medium-layout { .isActiveSelection { background: $menubar-subitem-background-selected-medium; } }
+				@include widest-layout { .isActiveSelection { background: $menubar-subitem-background-selected-widest; } }
 			}
 		}
 			

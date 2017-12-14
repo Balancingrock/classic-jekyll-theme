@@ -4,66 +4,41 @@
 // This menu is shown when site.data.setup.navbanner-drop-down-menu is set to 'no'.
 //
 .vmenu-container {
-	@include narrow-layout { @if $vmenu-enable-narrow { display: flex; } @else { display: none; } }
+
+	// Enable disable
 	@include medium-layout { @if $vmenu-enable-medium { display: flex; } @else { display: none; } }
 	@include widest-layout { @if $vmenu-enable-widest { display: flex; } @else { display: none; } }
 	
+	// Ordering vertical
 	flex-direction: column;
 	
-	@include narrow-layout {
-	
-		// Border of the entire vmenu
-		border: $vmenu-border-narrow;
-		
-		// Backgound for the entire vmenu
-		background: $vmenu-background-narrow;
-		
-		// Box appearance for the entire vmenu
-		box-shadow: $vmenu-box-shadow-narrow;
-	}
-	@include medium-layout {
-	
-		// Border of the entire vmenu
-		border: $vmenu-border-medium;
-		
-		// Backgound for the entire vmenu
-		background: $vmenu-background-medium;
-		
-		// Box appearance for the entire vmenu
-		box-shadow: $vmenu-box-shadow-medium;
-	}
-	@include widest-layout {
-	
-		// Border of the entire vmenu
-		border: $vmenu-border-widest;
-		
-		// Backgound for the entire vmenu
-		background: $vmenu-background-widest;
-		
-		// Box appearance for the entire vmenu
-		box-shadow: $vmenu-box-shadow-widest;
-	}
+	// Border of the entire vmenu
+	@include medium-layout { border: $vmenu-border-medium; }
+	@include widest-layout { border: $vmenu-border-widest; }
+
+	// Backgound for the entire vmenu
+	@include medium-layout { background: $vmenu-background-medium; }
+	@include widest-layout { background: $vmenu-background-widest; }
+
+	// Box appearance for the entire vmenu
+	@include medium-layout { box-shadow: $vmenu-box-shadow-medium; }
+	@include widest-layout { box-shadow: $vmenu-box-shadow-widest; }
 }
 
 .vmenu-container .topTitle {
 
-	@include narrow-layout { @if $vmenu-topTitle-enable-narrow { display: flex; } @else { display: none; } }
 	@include medium-layout { @if $vmenu-topTitle-enable-medium { display: flex; } @else { display: none; } }
 	@include widest-layout { @if $vmenu-topTitle-enable-widest { display: flex; } @else { display: none; } }
 
-	@include narrow-layout { justify-content: $vmenu-topTitle-justify-content-narrow; }
 	@include medium-layout { justify-content: $vmenu-topTitle-justify-content-medium; }
 	@include widest-layout { justify-content: $vmenu-topTitle-justify-content-widest; }
 	
-	@include narrow-layout { font: $vmenu-topTitle-font-narrow; }
 	@include medium-layout { font: $vmenu-topTitle-font-medium; }
 	@include widest-layout { font: $vmenu-topTitle-font-widest; }
 
-	@include narrow-layout { color: $vmenu-topTitle-color-narrow; }
 	@include medium-layout { color: $vmenu-topTitle-color-medium; }
 	@include widest-layout { color: $vmenu-topTitle-color-widest; }
 	
-	@include narrow-layout { background: $vmenu-topTitle-background-narrow; }
 	@include medium-layout { background: $vmenu-topTitle-background-medium; }
 	@include widest-layout { background: $vmenu-topTitle-background-widest; }
 
@@ -71,11 +46,9 @@
 	margin: 0;
 	width: 100%;
 	
-	@include narrow-layout { h1 { padding: $vmenu-topTitle-padding-narrow; } }
 	@include medium-layout { h1 { padding: $vmenu-topTitle-padding-medium; } }
 	@include widest-layout { h1 { padding: $vmenu-topTitle-padding-widest; } }
 
-	@include narrow-layout { h1 { margin: $vmenu-topTitle-margin-narrow; } }
 	@include medium-layout { h1 { margin: $vmenu-topTitle-margin-medium; } }
 	@include widest-layout { h1 { margin: $vmenu-topTitle-margin-widest; } }
 }
@@ -121,7 +94,6 @@
 		}
 		
 		.sub-isActivePage {
-			 @include narrow-layout { background: $vmenu-subitem-title-background-selected-narrow; }
 			 @include medium-layout { background: $vmenu-subitem-title-background-selected-medium; }
 			 @include widest-layout { background: $vmenu-subitem-title-background-selected-widest; }
 		}
@@ -129,13 +101,11 @@
 		.sub,
 		.sub-hasLink {
 			// Background of the entire subitem
-			@include narrow-layout { background: $vmenu-subitem-background-narrow; }
 			@include medium-layout { background: $vmenu-subitem-background-medium; }
 			@include widest-layout { background: $vmenu-subitem-background-widest; }
 		}
 		
 		.sub-hasLink:hover {
-			@include narrow-layout { background: $vmenu-subitem-title-background-hover-narrow; }
 			@include medium-layout { background: $vmenu-subitem-title-background-hover-medium; }
 			@include widest-layout { background: $vmenu-subitem-title-background-hover-widest; }
 		}
@@ -159,19 +129,16 @@
 			}
 
 			// Border of the entire subitem
-			@include narrow-layout { border: $vmenu-subitem-border-narrow; }
 			@include medium-layout { border: $vmenu-subitem-border-medium; }
 			@include widest-layout { border: $vmenu-subitem-border-widest; }
 				
 				
 			.disclosure {
 				// Create a small separator between symbol and title
-				@include narrow-layout { border-right: $vmenu-subitem-disclosure-area-border-right-narrow; }
 				@include medium-layout { border-right: $vmenu-subitem-disclosure-area-border-right-medium; }
 				@include widest-layout { border-right: $vmenu-subitem-disclosure-area-border-right-widest; }
 					
 				// Create an indent that can be filled with a disclosure symbol
-				@include narrow-layout { width: $vmenu-subitem-disclosure-area-width-narrow; }
 				@include medium-layout { width: $vmenu-subitem-disclosure-area-width-medium; }
 				@include widest-layout { width: $vmenu-subitem-disclosure-area-width-widest; }
 			}
@@ -180,24 +147,20 @@
 
 				// The show-hover class is used to show hovering for non-link subitems
 				a:hover, .show-hover:hover {
-					@include narrow-layout { color: $vmenu-subitem-color-hover-narrow; }
 					@include medium-layout { color: $vmenu-subitem-color-hover-medium; }
 					@include widest-layout { color: $vmenu-subitem-color-hover-widest; }
 				}
 
 				p {
 					// Allow for some padding to position and change the size of this element
-					@include narrow-layout { padding: $vmenu-subitem-title-padding-narrow; }
 					@include medium-layout { padding: $vmenu-subitem-title-padding-medium; }
 					@include widest-layout { padding: $vmenu-subitem-title-padding-widest; }				
 
 					// Font for the sub menu title
-					@include narrow-layout { font: $vmenu-subitem-font-narrow; }
 					@include medium-layout { font: $vmenu-subitem-font-medium; }
 					@include widest-layout { font: $vmenu-subitem-font-widest; }
 
 					// Color for the sub menu title
-					@include narrow-layout { color: $vmenu-subitem-color-narrow; }
 					@include medium-layout { color: $vmenu-subitem-color-medium; }
 					@include widest-layout { color: $vmenu-subitem-color-widest; }
 				}
@@ -205,20 +168,17 @@
 		}
 			
 		.subsub-isActivePage {
-			@include narrow-layout { background: $vmenu-subsubitem-background-selected-narrow; }
 			@include medium-layout { background: $vmenu-subsubitem-background-selected-medium; }
 			@include widest-layout { background: $vmenu-subsubitem-background-selected-widest; }
 		}
 
 		.subsub,
 		.subsub-hasLink {
-			@include narrow-layout { background: $vmenu-subsubitem-background-narrow; }
 			@include medium-layout { background: $vmenu-subsubitem-background-medium; }
 			@include widest-layout { background: $vmenu-subsubitem-background-widest; }
 		}
 			
 		.subsub-hasLink:hover {
-			@include narrow-layout { background: $vmenu-subsubitem-background-hover-narrow; }
 			@include medium-layout { background: $vmenu-subsubitem-background-hover-medium; }
 			@include widest-layout { background: $vmenu-subsubitem-background-hover-widest; }
 		}
@@ -231,19 +191,16 @@
 			display: none;
 							
 			// Set border and background
-			@include narrow-layout { border: $vmenu-subsubitem-border-narrow; }
 			@include medium-layout { border: $vmenu-subsubitem-border-medium; }
 			@include widest-layout { border: $vmenu-subsubitem-border-widest; }
 				
 			.disclosure {
 
 				// Create a small separator between symbol and title
-				@include narrow-layout { border-right: $vmenu-subsubitem-disclosure-area-border-right-narrow; }
 				@include medium-layout { border-right: $vmenu-subsubitem-disclosure-area-border-right-medium; }
 				@include widest-layout { border-right: $vmenu-subsubitem-disclosure-area-border-right-widest; }
 					
 				// Create an indent that can be filled with a disclosure symbol
-				@include narrow-layout { width: $vmenu-subsubitem-disclosure-area-width-narrow; }
 				@include medium-layout { width: $vmenu-subsubitem-disclosure-area-width-medium; }
 				@include widest-layout { width: $vmenu-subsubitem-disclosure-area-width-widest; }
 			}
@@ -251,24 +208,20 @@
 			.title {
 				
 				a:hover {						
-					@include narrow-layout { color: $vmenu-subsubitem-color-hover-narrow; }
 					@include medium-layout { color: $vmenu-subsubitem-color-hover-medium; }
 					@include widest-layout { color: $vmenu-subsubitem-color-hover-widest; }
 				}
 
 				p {
 					// Allow for some padding to position and change the size of this element
-					@include narrow-layout { padding: $vmenu-subsubitem-title-padding-narrow; }
 					@include medium-layout { padding: $vmenu-subsubitem-title-padding-medium; }
 					@include widest-layout { padding: $vmenu-subsubitem-title-padding-widest; }				
 
 					// Font for the sub menu title
-					@include narrow-layout { font: $vmenu-subsubitem-font-narrow; }
 					@include medium-layout { font: $vmenu-subsubitem-font-medium; }
 					@include widest-layout { font: $vmenu-subsubitem-font-widest; }
 
 					// Color for the sub menu title
-					@include narrow-layout { color: $vmenu-subsubitem-color-narrow; }
 					@include medium-layout { color: $vmenu-subsubitem-color-medium; }
 					@include widest-layout { color: $vmenu-subsubitem-color-widest; }
 				}

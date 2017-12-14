@@ -35,105 +35,100 @@ Builds a menubar for use in the banner-area.
 	{%- for topTitle in topTitles -%}
 
 		{%- if jekyll.environment != 'production' and site.data.setup.fast-content-build -%}{%- else -%}
+			
+			{%- comment -%}<!-- note: the html comment tags are for editor coloring support
+			
+			Due to the poor support for variables in Liquid we have to resort to some fairly laborious code.
+			
+			First determine all pages that contain sub menu information for the running top menu item. These are collected in "titlePages"
+			
+			Then create four lists containing the sub menu title, index, url and link respectively. These lists are all in the same sequence such that entry [n] is applicable to the same sub menu in all lists. (I.e. they are synchronous)
+			
+			Then sort the lists into four new lists. Again these lists must be kept synchronous.
+			
+			Lastly, step through the lists to create the actual sub menu's
+			
+			-->{%- endcomment -%}
+			
+			{%- assign titlePages = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle -%}
+			
+			{%- assign subMenuTitles = "" | split: "" -%}
+			{%- assign subMenuIndexes = "" | split: "" -%}
+			{%- assign subMenuUrls = "" | split: "" -%}
+			{%- assign subMenuLinks = "" | split: "" -%}
 
-			{%- if site.data.setup.drop-down-menu -%}
-
-				<!-- Create a list of sub menu item titles -->
-			
-				{%- comment -%}<!-- note: the html comment tags are for editor coloring support
-			
-				Due to the poor support for variables in Liquid we have to resort to some fairly laborious code.
-			
-				First determine all pages that contain sub menu information for the running top menu item. These are collected in "titlePages"
-			
-				Then create four lists containing the sub menu title, index, url and link respectively. These lists are all in the same sequence such that entry [n] is applicable to the same sub menu in all lists. (I.e. they are synchronous)
-			
-				Then sort the lists into four new lists. Again these lists must be kept synchronous.
-			
-				Lastly, step through the lists to create the actual sub menu's
-			
-				-->{%- endcomment -%}
-			
-				{%- assign titlePages = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle -%}
-			
-				{%- assign subMenuTitles = "" | split: "" -%}
-				{%- assign subMenuIndexes = "" | split: "" -%}
-				{%- assign subMenuUrls = "" | split: "" -%}
-				{%- assign subMenuLinks = "" | split: "" -%}
-
-				{%- for ape in titlePages -%}
-					{%- if ape.menuSubTitle != nil -%}
-						{%- assign subMenuTitles = subMenuTitles | push: ape.menuSubTitle -%}
-						{%- if ape.menuSubIndex != nil -%}
-							{%- assign subMenuIndexes = subMenuIndexes | push: ape.menuSubIndex -%}
+			{%- for ape in titlePages -%}
+				{%- if ape.menuSubTitle != nil -%}
+					{%- assign subMenuTitles = subMenuTitles | push: ape.menuSubTitle -%}
+					{%- if ape.menuSubIndex != nil -%}
+						{%- assign subMenuIndexes = subMenuIndexes | push: ape.menuSubIndex -%}
+					{%- else -%}
+						{%- assign subMenuIndexes = subMenuIndexes | push: -1 -%}
+					{%- endif -%}
+					{%- assign subMenuUrls = subMenuUrls | push: ape.url -%}
+					{%- if ape.menuLink != nil -%}
+						{%- assign subMenuLinks = subMenuLinks | push: ape.menuLink -%}
+					{%- else -%}
+						{%- assign subMenuLinks = subMenuLinks | push: true -%}
+					{%- endif -%}
+				{%- endif -%}
+				{%- if ape.menuSubs != nil -%}
+					{%- for sub in ape.menuSubs -%}
+						{%- assign subMenuTitles = subMenuTitles | push: sub.title -%}
+						{%- if sub.index != nil -%}
+							{%- assign subMenuIndexes = subMenuIndexes | push: sub.index -%}
 						{%- else -%}
 							{%- assign subMenuIndexes = subMenuIndexes | push: -1 -%}
 						{%- endif -%}
-						{%- assign subMenuUrls = subMenuUrls | push: ape.url -%}
-						{%- if ape.menuLink != nil -%}
-							{%- assign subMenuLinks = subMenuLinks | push: ape.menuLink -%}
+						{%- if sub.url != nil -%}
+							{%- if sub.anchorId != nil -%}
+								{%- assign urlWithAnchorId = sub.url | append: '#' | append: sub.anchorId -%}
+							{%- else -%}
+								{%- assign urlWithAnchorId = sub.url -%}
+							{%- endif -%}
+						{%- else -%}
+							{%- if sub.anchorId != nil -%}
+								{%- assign urlWithAnchorId = ape.url | append: '#' | append: sub.anchorId -%}
+							{%- else -%}
+								{%- assign urlWithAnchorId = ape.url -%}
+							{%- endif -%}
+						{%- endif -%}
+						{%- assign subMenuUrls = subMenuUrls | push: urlWithAnchorId -%}
+						{%- if sub.link != nil -%}
+							{%- assign subMenuLinks = subMenuLinks | push: sub.link -%}
 						{%- else -%}
 							{%- assign subMenuLinks = subMenuLinks | push: true -%}
 						{%- endif -%}
-					{%- endif -%}
-					{%- if ape.menuSubs != nil -%}
-						{%- for sub in ape.menuSubs -%}
-							{%- assign subMenuTitles = subMenuTitles | push: sub.title -%}
-							{%- if sub.index != nil -%}
-								{%- assign subMenuIndexes = subMenuIndexes | push: sub.index -%}
-							{%- else -%}
-								{%- assign subMenuIndexes = subMenuIndexes | push: -1 -%}
-							{%- endif -%}
-							{%- if sub.url != nil -%}
-								{%- if sub.anchorId != nil -%}
-									{%- assign urlWithAnchorId = sub.url | append: '#' | append: sub.anchorId -%}
-								{%- else -%}
-									{%- assign urlWithAnchorId = sub.url -%}
-								{%- endif -%}
-							{%- else -%}
-								{%- if sub.anchorId != nil -%}
-									{%- assign urlWithAnchorId = ape.url | append: '#' | append: sub.anchorId -%}
-								{%- else -%}
-									{%- assign urlWithAnchorId = ape.url -%}
-								{%- endif -%}
-							{%- endif -%}
-							{%- assign subMenuUrls = subMenuUrls | push: urlWithAnchorId -%}
-							{%- if sub.link != nil -%}
-								{%- assign subMenuLinks = subMenuLinks | push: sub.link -%}
-							{%- else -%}
-								{%- assign subMenuLinks = subMenuLinks | push: true -%}
-							{%- endif -%}
-						{%- endfor -%}
-					{%- endif -%}
-				{%- endfor -%}
+					{%- endfor -%}
+				{%- endif -%}
+			{%- endfor -%}
 
-				{%- assign sortedSubMenuTitles = "" | split: "" -%}
-				{%- assign sortedSubMenuIndexes = subMenuIndexes | sort -%}
-				{%- assign sortedSubMenuUrls = "" | split: "" -%}
-				{%- assign sortedSubMenuLinks = "" | split: "" -%}
+			{%- assign sortedSubMenuTitles = "" | split: "" -%}
+			{%- assign sortedSubMenuIndexes = subMenuIndexes | sort -%}
+			{%- assign sortedSubMenuUrls = "" | split: "" -%}
+			{%- assign sortedSubMenuLinks = "" | split: "" -%}
 
-				{%- for menuIndex in sortedSubMenuIndexes -%}
-					{%- if menuIndex != -1 -%}
-						{%- for aMenuIndex in subMenuIndexes -%}
-							{%- if aMenuIndex == menuIndex -%}
-								{%- assign sortedSubMenuTitles = sortedSubMenuTitles | push: subMenuTitles[forloop.index0] -%}
-								{%- assign sortedSubMenuUrls = sortedSubMenuUrls | push: subMenuUrls[forloop.index0] -%}
-								{%- assign sortedSubMenuLinks = sortedSubMenuLinks | push: subMenuLinks[forloop.index0] -%}
-								{%- continue -%}
-							{%- endif -%}
-						{%- endfor -%}
-					{%- endif -%}
-				{%- endfor -%}
-				{%- for aMenuIndex in subMenuIndexes -%}
-					{%- if aMenuIndex == -1 -%}
-						{%- assign sortedSubMenuTitles = sortedSubMenuTitles | push: subMenuTitles[forloop.index0] -%}
-						{%- assign sortedSubMenuUrls = sortedSubMenuUrls | push: subMenuUrls[forloop.index0] -%}
-						{%- assign sortedSubMenuLinks = sortedSubMenuLinks | push: subMenuLinks[forloop.index0] -%}
-						{%- continue -%}
-					{%- endif -%}
-				{%- endfor -%}
+			{%- for menuIndex in sortedSubMenuIndexes -%}
+				{%- if menuIndex != -1 -%}
+					{%- for aMenuIndex in subMenuIndexes -%}
+						{%- if aMenuIndex == menuIndex -%}
+							{%- assign sortedSubMenuTitles = sortedSubMenuTitles | push: subMenuTitles[forloop.index0] -%}
+							{%- assign sortedSubMenuUrls = sortedSubMenuUrls | push: subMenuUrls[forloop.index0] -%}
+							{%- assign sortedSubMenuLinks = sortedSubMenuLinks | push: subMenuLinks[forloop.index0] -%}
+							{%- continue -%}
+						{%- endif -%}
+					{%- endfor -%}
+				{%- endif -%}
+			{%- endfor -%}
+			{%- for aMenuIndex in subMenuIndexes -%}
+				{%- if aMenuIndex == -1 -%}
+					{%- assign sortedSubMenuTitles = sortedSubMenuTitles | push: subMenuTitles[forloop.index0] -%}
+					{%- assign sortedSubMenuUrls = sortedSubMenuUrls | push: subMenuUrls[forloop.index0] -%}
+					{%- assign sortedSubMenuLinks = sortedSubMenuLinks | push: subMenuLinks[forloop.index0] -%}
+					{%- continue -%}
+				{%- endif -%}
+			{%- endfor -%}
 		
-			{%- endif -%}
 		{%- endif -%}
 		
 		<div class="item-separator"><p><!-- empty but necessary --></p></div>
@@ -194,37 +189,39 @@ Builds a menubar for use in the banner-area.
 				
 
 			{%- if jekyll.environment != 'production' and site.data.setup.fast-content-build -%}{%- else -%}
-				{%- if site.data.setup.drop-down-menu -%}
 
-					<!-- Create sub menu items -->
-					{%- if sortedSubMenuTitles.size > 0 -%}
-						<div class="dropdown">
-							{%- for subTitle in sortedSubMenuTitles -%}
-								<div class="subitem-separator"><p></p></div>
-								{%- if sortedSubMenuLinks[forloop.index0] != false -%}
-									{%- if sortedSubMenuUrls[forloop.index0] == page.url -%}
-										<div class="subitem isActiveSelection">
-									{%- else -%}
-										<div class="subitem">
-									{%- endif -%}
-											<div class="title">
-												<div class="symbol"><p></p></div>
-												<div class="text">
-													<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subTitle }}</p></a>
-												</div>
-											</div>
-										</div>
+				<!-- Create sub menu items -->
+				{%- if sortedSubMenuTitles.size > 0 -%}
+					{%- if site.data.setup.drop-down-menu -%}
+					<div class="dropdown">
+					{%- else -%}
+					<div class="dropdown-narrow">
+					{%- endif -%}
+						{%- for subTitle in sortedSubMenuTitles -%}
+							<div class="subitem-separator"><p></p></div>
+							{%- if sortedSubMenuLinks[forloop.index0] != false -%}
+								{%- if sortedSubMenuUrls[forloop.index0] == page.url -%}
+									<div class="subitem isActiveSelection">
 								{%- else -%}
 									<div class="subitem">
+								{%- endif -%}
 										<div class="title">
 											<div class="symbol"><p></p></div>
-											<div class="text"><p class="paddingAsLink">{{ subTitle }}</p></div>
+											<div class="text">
+												<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subTitle }}</p></a>
+											</div>
 										</div>
 									</div>
-								{%- endif -%}
-							{%- endfor -%}
-						</div>			
-					{%- endif -%}
+							{%- else -%}
+								<div class="subitem">
+									<div class="title">
+										<div class="symbol"><p></p></div>
+										<div class="text"><p class="paddingAsLink">{{ subTitle }}</p></div>
+									</div>
+								</div>
+							{%- endif -%}
+						{%- endfor -%}
+					</div>			
 				{%- endif -%}
 			{%- endif -%}
 		</div>
@@ -233,7 +230,7 @@ Builds a menubar for use in the banner-area.
 
 	<!-- Categories menu -->
 	{%- if jekyll.environment != 'production' and site.data.setup.fast-content-build -%}{%- else -%}
-		{%- if site.data.setup.generate-categories-menu and site.data.setup.drop-down-menu -%}
+		{%- if site.data.setup.generate-categories-menu -%}
 			{%- assign cats = site.pages | where:'layout', 'category-page' | sort:'title' -%}
 			{%- if cats.size > 0 -%}
 				{%- assign categories = 'Categories' -%}
@@ -243,9 +240,17 @@ Builds a menubar for use in the banner-area.
 				{%- assign selected = false -%}
 				{%- for cat in cats -%}{%- if cat.url == page.url -%}{%- assign selected = true -%}{%- endif -%}{%- endfor -%}
 				{%- if selected -%}
-				<div class="item isActiveSelection">
+					{%- if site.data.setup.drop-down-menu -%}
+						<div class="item isActiveSelection">
+					{%- else -%}
+						<div class="item-narrow-only isActiveSelection">
+					{%- endif -%}
 				{%- else -%}
-				<div class="item">
+					{%- if site.data.setup.drop-down-menu -%}
+						<div class="item">
+					{%- else -%}
+						<div class="item-narrow-only">
+					{%- endif -%}
 				{%- endif -%}
 					<input type="checkbox" id="category-checkbox">
 					<div class="title">
