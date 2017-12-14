@@ -1,42 +1,46 @@
+{% comment %}<!--
+
+Builds a menubar for use in the banner-area.
+	
+-->{%- endcomment -%}
+
 <nav class="menubar">
 
 	<!-- include the menu icon -->
-	{% include menubar-icon.html %}
+	{%- include menubar-icon.html -%}
 	
 	<!-- Create a list of top menu item titles -->
-	{% assign topTitles = "" | split: "" %}
-	{% assign sortedPages = site.pages | where:'menuInclude', true | where_exp:'item', 'item.menuTopTitle != nil' | sort: 'menuTopIndex', 'last' %}
-	{% for ape in sortedPages %}{% assign topTitles = topTitles | push: ape.menuTopTitle %}{% endfor %}
-	{% assign topTitles = topTitles | uniq %}
+	{%- assign topTitles = "" | split: "" -%}
+	{%- assign sortedPages = site.pages | where:'menuInclude', true | where_exp:'item', 'item.menuTopTitle != nil' | sort: 'menuTopIndex', 'last' -%}
+	{%- for ape in sortedPages -%}{%- assign topTitles = topTitles | push: ape.menuTopTitle -%}{%- endfor -%}
+	{%- assign topTitles = topTitles | uniq -%}
 
 	<!-- Home page -->
-	{% assign home = 'Home' %}
-	{% if site.data.text-for.tHome %}{% assign home = site.data.text-for.tHome %}{% endif %}
-	{% if page.url == '/' %}
-	<div class="item isActiveSelection">
-	{% else %}
-	<div class="item">
-	{% endif %}
-		<div class="title">
-			<label class="symbol">
-				<p></p>
-			</label>
-			<div class="text">
-				<a href="{{ site.url }}{{ site.baseurl }}"><p>{{ home }}</p></a>
+	{%- assign home = 'Home' -%}
+	{%- if site.data.text-for.tHome -%}{%- assign home = site.data.text-for.tHome -%}{%- endif -%}
+	{%- if page.url == '/' -%}
+		<div class="item isActiveSelection">
+	{%- else -%}
+		<div class="item">
+	{%- endif -%}
+			<div class="title">
+				<label class="symbol"><p></p></label>
+				<div class="text">
+					<a href="{{ site.url }}{{ site.baseurl }}"><p>{{ home }}</p></a>
+				</div>
 			</div>
 		</div>
-	</div>
 	
 	<!-- Page menus -->
-	{% for topTitle in topTitles %}
+	{%- for topTitle in topTitles -%}
 
-		{% if jekyll.environment != 'production' and site.data.setup.fast-content-build %}{% else %}
+		{%- if jekyll.environment != 'production' and site.data.setup.fast-content-build -%}{%- else -%}
 
-			{% if site.data.setup.drop-down-menu %}
+			{%- if site.data.setup.drop-down-menu -%}
 
 				<!-- Create a list of sub menu item titles -->
 			
-				{% comment %}<!-- note: the html comment tags are for editor coloring support
+				{%- comment -%}<!-- note: the html comment tags are for editor coloring support
 			
 				Due to the poor support for variables in Liquid we have to resort to some fairly laborious code.
 			
@@ -48,161 +52,161 @@
 			
 				Lastly, step through the lists to create the actual sub menu's
 			
-				-->{% endcomment %}
+				-->{%- endcomment -%}
 			
-				{% assign titlePages = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle %}
+				{%- assign titlePages = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle -%}
 			
-				{% assign subMenuTitles = "" | split: "" %}
-				{% assign subMenuIndexes = "" | split: "" %}
-				{% assign subMenuUrls = "" | split: "" %}
-				{% assign subMenuLinks = "" | split: "" %}
+				{%- assign subMenuTitles = "" | split: "" -%}
+				{%- assign subMenuIndexes = "" | split: "" -%}
+				{%- assign subMenuUrls = "" | split: "" -%}
+				{%- assign subMenuLinks = "" | split: "" -%}
 
-				{% for ape in titlePages %}
-					{% if ape.menuSubTitle != nil %}
-						{% assign subMenuTitles = subMenuTitles | push: ape.menuSubTitle %}
-						{% if ape.menuSubIndex != nil %}
-							{% assign subMenuIndexes = subMenuIndexes | push: ape.menuSubIndex %}
-						{% else %}
-							{% assign subMenuIndexes = subMenuIndexes | push: -1 %}
-						{% endif %}
-						{% assign subMenuUrls = subMenuUrls | push: ape.url %}
-						{% if ape.menuLink != nil %}
-							{% assign subMenuLinks = subMenuLinks | push: ape.menuLink %}
-						{% else %}
-							{% assign subMenuLinks = subMenuLinks | push: true %}
-						{% endif %}
-					{% endif %}
-					{% if ape.menuSubs != nil %}
-						{% for sub in ape.menuSubs %}
-							{% assign subMenuTitles = subMenuTitles | push: sub.title %}
-							{% if sub.index != nil %}
-								{% assign subMenuIndexes = subMenuIndexes | push: sub.index %}
-							{% else %}
-								{% assign subMenuIndexes = subMenuIndexes | push: -1 %}
-							{% endif %}
-							{% if sub.url != nil %}
-								{% if sub.anchorId != nil %}
-									{% assign urlWithAnchorId = sub.url | append: '#' | append: sub.anchorId %}
-								{% else %}
-									{% assign urlWithAnchorId = sub.url %}
-								{% endif %}
-							{% else %}
-								{% if sub.anchorId != nil %}
-									{% assign urlWithAnchorId = ape.url | append: '#' | append: sub.anchorId %}
-								{% else %}
-									{% assign urlWithAnchorId = ape.url %}
-								{% endif %}
-							{% endif %}
-							{% assign subMenuUrls = subMenuUrls | push: urlWithAnchorId %}
-							{% if sub.link != nil %}
-								{% assign subMenuLinks = subMenuLinks | push: sub.link %}
-							{% else %}
-								{% assign subMenuLinks = subMenuLinks | push: true %}
-							{% endif %}
-						{% endfor %}
-					{% endif %}
-				{% endfor %}
+				{%- for ape in titlePages -%}
+					{%- if ape.menuSubTitle != nil -%}
+						{%- assign subMenuTitles = subMenuTitles | push: ape.menuSubTitle -%}
+						{%- if ape.menuSubIndex != nil -%}
+							{%- assign subMenuIndexes = subMenuIndexes | push: ape.menuSubIndex -%}
+						{%- else -%}
+							{%- assign subMenuIndexes = subMenuIndexes | push: -1 -%}
+						{%- endif -%}
+						{%- assign subMenuUrls = subMenuUrls | push: ape.url -%}
+						{%- if ape.menuLink != nil -%}
+							{%- assign subMenuLinks = subMenuLinks | push: ape.menuLink -%}
+						{%- else -%}
+							{%- assign subMenuLinks = subMenuLinks | push: true -%}
+						{%- endif -%}
+					{%- endif -%}
+					{%- if ape.menuSubs != nil -%}
+						{%- for sub in ape.menuSubs -%}
+							{%- assign subMenuTitles = subMenuTitles | push: sub.title -%}
+							{%- if sub.index != nil -%}
+								{%- assign subMenuIndexes = subMenuIndexes | push: sub.index -%}
+							{%- else -%}
+								{%- assign subMenuIndexes = subMenuIndexes | push: -1 -%}
+							{%- endif -%}
+							{%- if sub.url != nil -%}
+								{%- if sub.anchorId != nil -%}
+									{%- assign urlWithAnchorId = sub.url | append: '#' | append: sub.anchorId -%}
+								{%- else -%}
+									{%- assign urlWithAnchorId = sub.url -%}
+								{%- endif -%}
+							{%- else -%}
+								{%- if sub.anchorId != nil -%}
+									{%- assign urlWithAnchorId = ape.url | append: '#' | append: sub.anchorId -%}
+								{%- else -%}
+									{%- assign urlWithAnchorId = ape.url -%}
+								{%- endif -%}
+							{%- endif -%}
+							{%- assign subMenuUrls = subMenuUrls | push: urlWithAnchorId -%}
+							{%- if sub.link != nil -%}
+								{%- assign subMenuLinks = subMenuLinks | push: sub.link -%}
+							{%- else -%}
+								{%- assign subMenuLinks = subMenuLinks | push: true -%}
+							{%- endif -%}
+						{%- endfor -%}
+					{%- endif -%}
+				{%- endfor -%}
 
-				{% assign sortedSubMenuTitles = "" | split: "" %}
-				{% assign sortedSubMenuIndexes = subMenuIndexes | sort %}
-				{% assign sortedSubMenuUrls = "" | split: "" %}
-				{% assign sortedSubMenuLinks = "" | split: "" %}
+				{%- assign sortedSubMenuTitles = "" | split: "" -%}
+				{%- assign sortedSubMenuIndexes = subMenuIndexes | sort -%}
+				{%- assign sortedSubMenuUrls = "" | split: "" -%}
+				{%- assign sortedSubMenuLinks = "" | split: "" -%}
 
-				{% for menuIndex in sortedSubMenuIndexes %}
-					{% if menuIndex != -1 %}
-						{% for aMenuIndex in subMenuIndexes %}
-							{% if aMenuIndex == menuIndex %}
-								{% assign sortedSubMenuTitles = sortedSubMenuTitles | push: subMenuTitles[forloop.index0] %}
-								{% assign sortedSubMenuUrls = sortedSubMenuUrls | push: subMenuUrls[forloop.index0] %}
-								{% assign sortedSubMenuLinks = sortedSubMenuLinks | push: subMenuLinks[forloop.index0] %}
-								{% continue %}
-							{% endif %}
-						{% endfor %}
-					{% endif %}
-				{% endfor %}
-				{% for aMenuIndex in subMenuIndexes %}
-					{% if aMenuIndex == -1 %}
-						{% assign sortedSubMenuTitles = sortedSubMenuTitles | push: subMenuTitles[forloop.index0] %}
-						{% assign sortedSubMenuUrls = sortedSubMenuUrls | push: subMenuUrls[forloop.index0] %}
-						{% assign sortedSubMenuLinks = sortedSubMenuLinks | push: subMenuLinks[forloop.index0] %}
-						{% continue %}
-					{% endif %}
-				{% endfor %}
+				{%- for menuIndex in sortedSubMenuIndexes -%}
+					{%- if menuIndex != -1 -%}
+						{%- for aMenuIndex in subMenuIndexes -%}
+							{%- if aMenuIndex == menuIndex -%}
+								{%- assign sortedSubMenuTitles = sortedSubMenuTitles | push: subMenuTitles[forloop.index0] -%}
+								{%- assign sortedSubMenuUrls = sortedSubMenuUrls | push: subMenuUrls[forloop.index0] -%}
+								{%- assign sortedSubMenuLinks = sortedSubMenuLinks | push: subMenuLinks[forloop.index0] -%}
+								{%- continue -%}
+							{%- endif -%}
+						{%- endfor -%}
+					{%- endif -%}
+				{%- endfor -%}
+				{%- for aMenuIndex in subMenuIndexes -%}
+					{%- if aMenuIndex == -1 -%}
+						{%- assign sortedSubMenuTitles = sortedSubMenuTitles | push: subMenuTitles[forloop.index0] -%}
+						{%- assign sortedSubMenuUrls = sortedSubMenuUrls | push: subMenuUrls[forloop.index0] -%}
+						{%- assign sortedSubMenuLinks = sortedSubMenuLinks | push: subMenuLinks[forloop.index0] -%}
+						{%- continue -%}
+					{%- endif -%}
+				{%- endfor -%}
 		
-			{% endif %}
-		{% endif %}
+			{%- endif -%}
+		{%- endif -%}
 		
 		<div class="item-separator"><p><!-- empty but necessary --></p></div>
 		
 		<!-- If the menu selection and active page are the same, show it -->
-		{% if page.menuTopTitle == topTitle  %}
-			{% if page.menuLink == false %}
+		{%- if page.menuTopTitle == topTitle  -%}
+			{%- if page.menuLink == false -%}
 				<div class="item">
-			{% else %}
+			{%- else -%}
 				<div class="item isActiveSelection">
-			{% endif %}
-		{% else %}
+			{%- endif -%}
+		{%- else -%}
 			<div class="item">
-		{% endif %}
+		{%- endif -%}
 
 			<!-- Create top menu item -->
 			<input type="checkbox" id="{{ topTitle | append:'-checkbox'}}">
 			<div class="title">
 				<label class="symbol" for="{{ topTitle | append:'-checkbox'}}">
-					{% if sortedSubMenuTitles.size > 0 %}
+					{%- if sortedSubMenuTitles.size > 0 -%}
 						<p class="code"><!-- will be filled by disclosure indicator --></p>
-					{% else %}
+					{%- else -%}
 						<p></p>
-					{% endif %}
+					{%- endif -%}
 				</label>
 				<div class="text">
 					<!-- Find page to link to -->
-					{% assign pageFound = false %}
-					{% for ape in site.pages %}
-						{% if ape.menuTopTitle == topTitle and ape.menuSubTitle == nil and ape.menuSubs == nil %}
-							{% if ape.menuLink == false %}
+					{%- assign pageFound = false -%}
+					{%- for ape in site.pages -%}
+						{%- if ape.menuTopTitle == topTitle and ape.menuSubTitle == nil and ape.menuSubs == nil -%}
+							{%- if ape.menuLink == false -%}
 								<p class="paddingAsLink">{{ topTitle }}</p>
-							{% else %}
+							{%- else -%}
 								<a href="{{ ape.url }}"><p>{{ topTitle }}</p></a>
-							{% endif %}
-							{% assign pageFound = true %}
-							{% break %}
-						{% endif %}
-					{% endfor %}
-					{% if pageFound == false %}
-						{% for ape in site.pages %}
-							{% if ape.menuTopTitle == topTitle and ape.menuTopIndex %}
-								{% if ape.menuLink == false %}
+							{%- endif -%}
+							{%- assign pageFound = true -%}
+							{%- break -%}
+						{%- endif -%}
+					{%- endfor -%}
+					{%- if pageFound == false -%}
+						{%- for ape in site.pages -%}
+							{%- if ape.menuTopTitle == topTitle and ape.menuTopIndex -%}
+								{%- if ape.menuLink == false -%}
 									<p class="paddingAsLink">{{ topTitle }}</p>
-								{% else %}
+								{%- else -%}
 									<a href="{{ ape.url }}"><p>{{ topTitle }}</p></a>
-								{% endif %}
-								{% assign pageFound = true %}
-								{% break %}
-							{% endif %}
-						{% endfor %}
-						{% if pageFound == false %}
+								{%- endif -%}
+								{%- assign pageFound = true -%}
+								{%- break -%}
+							{%- endif -%}
+						{%- endfor -%}
+						{%- if pageFound == false -%}
 							<p class="paddingAsLink">{{ topTitle }}</p>
-						{% endif %}
-					{% endif %}
+						{%- endif -%}
+					{%- endif -%}
 				</div>
 			</div>
 				
 
-			{% if jekyll.environment != 'production' and site.data.setup.fast-content-build %}{% else %}
-				{% if site.data.setup.drop-down-menu %}
+			{%- if jekyll.environment != 'production' and site.data.setup.fast-content-build -%}{%- else -%}
+				{%- if site.data.setup.drop-down-menu -%}
 
 					<!-- Create sub menu items -->
-					{% if sortedSubMenuTitles.size > 0 %}
+					{%- if sortedSubMenuTitles.size > 0 -%}
 						<div class="dropdown">
-							{% for subTitle in sortedSubMenuTitles %}
+							{%- for subTitle in sortedSubMenuTitles -%}
 								<div class="subitem-separator"><p></p></div>
-								{% if sortedSubMenuLinks[forloop.index0] != false %}
-									{% if sortedSubMenuUrls[forloop.index0] == page.url %}
+								{%- if sortedSubMenuLinks[forloop.index0] != false -%}
+									{%- if sortedSubMenuUrls[forloop.index0] == page.url -%}
 										<div class="subitem isActiveSelection">
-									{% else %}
+									{%- else -%}
 										<div class="subitem">
-									{% endif %}
+									{%- endif -%}
 											<div class="title">
 												<div class="symbol"><p></p></div>
 												<div class="text">
@@ -210,60 +214,59 @@
 												</div>
 											</div>
 										</div>
-								{% else %}
+								{%- else -%}
 									<div class="subitem">
 										<div class="title">
 											<div class="symbol"><p></p></div>
 											<div class="text"><p class="paddingAsLink">{{ subTitle }}</p></div>
 										</div>
 									</div>
-								{% endif %}
-							{% endfor %}
+								{%- endif -%}
+							{%- endfor -%}
 						</div>			
-					{% endif %}
-				{% endif %}
-			{% endif %}
+					{%- endif -%}
+				{%- endif -%}
+			{%- endif -%}
 		</div>
-	{% endfor %}
+	{%- endfor -%}
 
 
 	<!-- Categories menu -->
-	{% if jekyll.environment != 'production' and site.data.setup.fast-content-build %}{% else %}
-		{% if site.data.setup.generate-categories-menu and site.data.setup.drop-down-menu %}
-
-			{% assign cats = site.pages | where:'layout', 'category-page' | sort:'title' %}
-			{% if cats.size > 0 %}
-				{% assign categories = 'Categories' %}
-				{% if site.data.text-for.tCategories %}{% assign categories = site.data.text-for.tCategories %}{% endif 	%}
+	{%- if jekyll.environment != 'production' and site.data.setup.fast-content-build -%}{%- else -%}
+		{%- if site.data.setup.generate-categories-menu and site.data.setup.drop-down-menu -%}
+			{%- assign cats = site.pages | where:'layout', 'category-page' | sort:'title' -%}
+			{%- if cats.size > 0 -%}
+				{%- assign categories = 'Categories' -%}
+				{%- if site.data.text-for.tCategories -%}{%- assign categories = site.data.text-for.tCategories -%}{%- endif 		-%}
 				<div class="item-separator"><p><!-- empty but necessary --></p></div>
 				<!-- Check if a category page is selected -->
-				{% assign selected = false %}
-				{% for cat in cats %}{% if cat.url == page.url %}{% assign selected = true %}{% endif %}{% endfor %}
-				{% if selected %}
+				{%- assign selected = false -%}
+				{%- for cat in cats -%}{%- if cat.url == page.url -%}{%- assign selected = true -%}{%- endif -%}{%- endfor -%}
+				{%- if selected -%}
 				<div class="item isActiveSelection">
-				{% else %}
+				{%- else -%}
 				<div class="item">
-				{% endif %}
+				{%- endif -%}
 					<input type="checkbox" id="category-checkbox">
 					<div class="title">
 						<label class="symbol" for="category-checkbox">
-							{% if cats.size > 0 %}
+							{%- if cats.size > 0 -%}
 								<p class="code"><!-- will be filled by disclosure indicator --></p>
-							{% else %}
+							{%- else -%}
 								<p></p>
-							{% endif %}
+							{%- endif -%}
 						</label>
 						<div class="text"><p class="paddingAsLink">{{ categories }}</p></div>
 					</div>
-				
+	
 					<div class="dropdown">
-						{% for cat in cats %}
+						{%- for cat in cats -%}
 							<div class="subitem-separator"><p></p></div>
-							{% if cat.url == page.url %}
+							{%- if cat.url == page.url -%}
 								<div class="subitem isActiveSelection">
-							{% else %}
+							{%- else -%}
 								<div class="subitem">
-							{% endif %}
+							{%- endif -%}
 									<div class="title">
 										<div class="symbol"></div>
 										<div class="text">
@@ -271,10 +274,10 @@
 										</div>
 									</div>
 								</div>
-						{% endfor %}
+						{%- endfor -%}
 					</div>
 				</div>
-			{% endif %}
-		{% endif %}
-	{% endif %}
+			{%- endif -%}
+		{%- endif -%}
+	{%- endif -%}
 </nav>

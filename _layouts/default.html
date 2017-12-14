@@ -1,90 +1,90 @@
 <!DOCTYPE html>
-{% if page.secondary-column %}{% if page.secondary-column == 'left' %}{% assign secondary-column = 'left' %}{% endif %}{% if page.secondary-column == 'right' %}{% assign secondary-column = 'right' %}{% endif %}{% else %}{% if site.data.setup.secondary-column == 'left' %}{% assign secondary-column = 'left' %}{% endif %}{% if site.data.setup.secondary-column == 'right' %}{% assign secondary-column = 'right' %}{% endif %}{% endif %}
-{% if page.secondary-column-content %}{% assign secondary-column-content = page.secondary-column-content %}{% else %}{% assign secondary-column-content = 'secondary-column.html' %}{% endif %}
-{% if page.tertiary-column %}{% if page.tertiary-column == 'present' %}{% assign tertiary-column = 'present' %}{% endif %}{% else %}{% if site.data.setup.tertiary-column == 'present' %}{% assign tertiary-column = 'present' %}{% endif %}{% endif %}
-{% if page.tertiary-column-content %}{% assign tertiary-column-content = page.tertiary-column-content %}{% else %}{% assign tertiary-column-content = 'tertiary-column.html' %}{% endif %}
-{% if page.navbanner-position %}{% assign navbanner-position = page.navbanner-position %}{% else %}{% assign navbanner-position = site.data.setup.navbanner-position %}{% endif %}
+{%- if page.secondary-column -%}{%- if page.secondary-column == 'left' -%}{%- assign secondary-column = 'left' -%}{%- endif -%}{%- if page.secondary-column == 'right' -%}{%- assign secondary-column = 'right' -%}{%- endif -%}{%- else -%}{%- if site.data.setup.secondary-column == 'left' -%}{%- assign secondary-column = 'left' -%}{%- endif -%}{%- if site.data.setup.secondary-column == 'right' -%}{%- assign secondary-column = 'right' -%}{%- endif -%}{%- endif -%}
+{%- if page.secondary-column-content -%}{%- assign secondary-column-content = page.secondary-column-content -%}{%- else -%}{%- assign secondary-column-content = 'secondary-column.html' -%}{%- endif -%}
+{%- if page.tertiary-column -%}{%- if page.tertiary-column == 'present' -%}{%- assign tertiary-column = 'present' -%}{%- endif -%}{%- else -%}{%- if site.data.setup.tertiary-column == 'present' -%}{%- assign tertiary-column = 'present' -%}{%- endif -%}{%- endif -%}
+{%- if page.tertiary-column-content -%}{%- assign tertiary-column-content = page.tertiary-column-content -%}{%- else -%}{%- assign tertiary-column-content = 'tertiary-column.html' -%}{%- endif -%}
+{%- if page.navbanner-position -%}{%- assign navbanner-position = page.navbanner-position -%}{%- else -%}{%- assign navbanner-position = site.data.setup.navbanner-position -%}{%- endif -%}
 <html>
 
-	{% include head.html %}
+	{%- include head.html -%}
 	
   	<body class="body-panel">
   	
-  		{% if site.data.setup.banner-position == 'top' or site.data.setup.banner-position == 'top-fixed' %}
-  			{% if site.data.setup.use-separate-banner-menubar-file and site.data.setup.drop-down-menu %}
+  		{%- if site.data.setup.banner-position == 'top' or site.data.setup.banner-position == 'top-fixed' -%}
+  			{%- if site.data.setup.use-separate-banner-menubar-file and site.data.setup.drop-down-menu -%}
   				<div id="navFrame"><script>$("#navFrame").load("/banner-area.html");</script></div>
-  			{% else %}
-  				{% include banner-area.html %}
-  			{% endif %}
-  		{% endif %}
+  			{%- else -%}
+  				{%- include banner-area.html -%}
+  			{%- endif -%}
+  		{%- endif -%}
 
 		<div class="column-panel">
 
-			{% if secondary-column == 'left' %}
+			{%- if secondary-column == 'left' -%}
 			<div class="secondary-column">
 				<div class="secondary-column-content">
-					{% if site.data.setup.drop-down-menu %}{% else %}
-						{% include vertical-menu.html label-modifier="a" %}
-					{% endif %}
-					{% include {{ secondary-column-content }} label-modifier="a" %}
+					{%- if site.data.setup.drop-down-menu -%}{%- else -%}
+						{%- include vertical-menu.html label-modifier="a" -%}
+					{%- endif -%}
+					{%- include {{ secondary-column-content }} label-modifier="a" -%}
 				</div>
-				{% if tertiary-column == 'present' %}	
-					<div class="tertiary-column-content">{% include {{ tertiary-column-content }} %}</div>
-				{% endif %}
+				{%- if tertiary-column == 'present' -%}	
+					<div class="tertiary-column-content">{%- include {{ tertiary-column-content }} -%}</div>
+				{%- endif -%}
 			</div>
 			<div class="secondary-divider"></div>
-			{% else %}
-				{% if tertiary-column == 'present' %}
+			{%- else -%}
+				{%- if tertiary-column == 'present' -%}
 				<div class="tertiary-column">
-					<div class="tertiary-column-content">{% include {{ tertiary-column-content }} %}</div>
+					<div class="tertiary-column-content">{%- include {{ tertiary-column-content }} -%}</div>
 				</div>
 				<div class="tertiary-divider"></div>
-				{% endif %}			
-			{% endif %}
+				{%- endif -%}			
+			{%- endif -%}
 
 
 			<div class="primary-column">
-			  	{% if site.data.setup.banner-position == 'main' %}
-  					{% if site.data.setup.use-separate-banner-menubar-file %}
+			  	{%- if site.data.setup.banner-position == 'main' -%}
+  					{%- if site.data.setup.use-separate-banner-menubar-file -%}
   						<div id="navFrame"><script>$("#navFrame").load("/banner-area.html");</script></div>
-  					{% else %}
-  						{% include banner-area.html %}
-  					{% endif %}
-  				{% endif %}
-  				{% if site.data.setup.drop-down-menu %}{% else %}
-  					{% include vertical-menu.html label-modifier="b" %}
-  				{% endif %}
+  					{%- else -%}
+  						{%- include banner-area.html -%}
+  					{%- endif -%}
+  				{%- endif -%}
+  				{%- if site.data.setup.drop-down-menu -%}{%- else -%}
+  					{%- include vertical-menu.html label-modifier="b" -%}
+  				{%- endif -%}
 				<main>{{ content }}</main>
 			</div>
 			
 			
-			{% if secondary-column == 'right' %}
+			{%- if secondary-column == 'right' -%}
 			<div class="secondary-divider"></div>			
 			<div class="secondary-column">
 				<div class="secondary-column-content">
-					{% if site.data.setup.drop-down-menu %}{% else %}
-						{% include vertical-menu.html label-modifier="c" %}
-					{% endif %}
-					{% include {{ secondary-column-content }} label-modifier="b" %}
+					{%- if site.data.setup.drop-down-menu -%}{%- else -%}
+						{%- include vertical-menu.html label-modifier="c" -%}
+					{%- endif -%}
+					{%- include {{ secondary-column-content }} label-modifier="b" -%}
 				</div>
-				{% if tertiary-column == 'present' %}	
-					<div class="tertiary-column-content">{% include {{ tertiary-column-content }} %}</div>
-				{% endif %}
+				{%- if tertiary-column == 'present' -%}	
+					<div class="tertiary-column-content">{%- include {{ tertiary-column-content }} -%}</div>
+				{%- endif -%}
 			</div>
-			{% else %}
-			   {% if tertiary-column == 'present' %}
+			{%- else -%}
+			   {%- if tertiary-column == 'present' -%}
 				<div class="tertiary-divider"></div>
 				<div class="tertiary-column">
-					<div class="tertiary-column-content">{% include {{ tertiary-column-content }} %}</div>
+					<div class="tertiary-column-content">{%- include {{ tertiary-column-content }} -%}</div>
 				</div>
-				{% endif %}
-			{% endif %}
+				{%- endif -%}
+			{%- endif -%}
 
 		</div>
 
 		<div class="footer-divider"></div>
 
-		<div class="footer-panel">{% include footer.html %}</div>
+		<div class="footer-panel">{%- include footer.html -%}</div>
 
   	</body>
 

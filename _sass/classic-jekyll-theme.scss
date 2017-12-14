@@ -86,12 +86,15 @@ $add-to-banner-area-height-wide:		0px;
 // Banner
 // ---------------------------------------------------------------------------------------------------------------------
 // Disabling the banner also disables the banner-icon, banner-title, banner-subtitle and banner-menu-symbol.
+// When the banner is enabled, the height of the banner *must* always be set explicitly (there are no HTML elements
+// inside the DOM of the 'banner' class).
 //
 $banner-enabled-narrow:					true;
 $banner-enabled-medium:					true;
 $banner-enabled-wide:					true;
 
 // The height of the banner. (Not the banner-area!)
+// Always set a fixed value ('auto' and percentages don't work)
 // CSS property: Height
 //
 $banner-height-narrow:					48px;
@@ -929,7 +932,7 @@ $vmenu-topTitle-color-wide:					black;
 // The background for the title of the vertical menu
 // CSS property: background
 //
-$vmenu-topTitle-background-narrow:			yellow;
+$vmenu-topTitle-background-narrow:			none;
 $vmenu-topTitle-background-medium:			none;
 $vmenu-topTitle-background-wide:			none;
 

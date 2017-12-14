@@ -1,5 +1,5 @@
-{% if jekyll.environment != 'production' and site.data.setup.fast-content-build %}{% else %}
-{% comment %}
+{%- if jekyll.environment != 'production' and site.data.setup.fast-content-build -%}{%- else -%}
+{%- comment -%}<!--
 
 Usage:
 
@@ -7,13 +7,13 @@ Configure the number of referenced posts by assigning a value to `number-of-rece
 
 Configure the text for the header message in "_data/text-for.yml" for the item `tRecent`.
 
-{% endcomment %}
+-->{%- endcomment -%}
 <div>
-	{% assign recent = 'Recent' %}
-	{% if site.data.text-for.tRecent %}{% assign recent = site.data.text-for.tRecent %}{% endif %}
+	{%- assign recent = 'Recent' -%}
+	{%- if site.data.text-for.tRecent -%}{%- assign recent = site.data.text-for.tRecent -%}{%- endif -%}
 	<h1>{{ recent }}:</h1>
-	{% for post in site.posts limit: site.data.setup.number-of-recent-posts-in-widget %}
-		<p><a href="{{ post.url }}">{% if post.date %}{{ post.date | date: "%F" }}{% endif %} {{ post.title }}</a></p>
-	{% endfor %}
+	{%- for post in site.posts limit: site.data.setup.number-of-recent-posts-in-widget -%}
+		<p><a href="{{ post.url }}">{%- if post.date -%}{{ post.date | date: "%F" }}{%- endif -%} {{ post.title }}</a></p>
+	{%- endfor -%}
 </div>
-{% endif %}
+{%- endif -%}

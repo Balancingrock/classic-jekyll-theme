@@ -1,4 +1,4 @@
-{% comment %}
+{%- comment -%}<!--
 
 Purpose:
 
@@ -7,7 +7,7 @@ To include a youtube video player in HD format in a column. The player will size
 
 Usage:
 
-	{% include widgets/youtube-player.html video='Identifier of the video' %}
+	{%- include widgets/youtube-player.html video='Identifier of the video' -%}
 
 
 Also needs the following CSS (written in SASS, included in `_sass/_widgets.scss`):
@@ -31,6 +31,6 @@ Also needs the following CSS (written in SASS, included in `_sass/_widgets.scss`
 	}
 }
 
-{% endcomment %}
+-->{%- endcomment -%}
 
 <div class="scaling-iframe-wrapper-hd"><iframe src="https://www.youtube.com/embed/{{ include.video }}"></iframe></div>

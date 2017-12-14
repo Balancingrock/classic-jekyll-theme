@@ -1,3 +1,15 @@
+{% comment %}<!--
+
+Layout of a single 'cblock'.
+
+Parameters:
+	link: A link for more information about the item.
+	image: A link that points to an image to be displayed for the item.
+	name: The name of the item.
+	description: A short description of the item.
+
+-->{%- endcomment -%}
+
 <div class="cblock">
 	<a href={{ include.link }}><img class="cblock-image" src={{ include.image }}></a>
 	<p class="cblock-name"><a href={{ include.link }}>{{ include.name }}</a></p>
