@@ -9,7 +9,7 @@
 	justify-content: flex-start;
 	
 	// Setting a background on the entire site
-	@include wide-layout { background: $background-wide; }
+	@include widest-layout { background: $background-widest; }
 	@include medium-layout { background: $background-medium; }
 	@include narrow-layout { background: $background-narrow; }
 }

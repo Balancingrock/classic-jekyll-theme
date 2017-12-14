@@ -3,7 +3,7 @@
 	// Positioning & size
 	@include narrow-layout { height: auto; }
 	@include medium-layout { height: $menubar-height-medium; }
-	@include wide-layout { height: $menubar-height-wide; }
+	@include widest-layout { height: $menubar-height-widest; }
 
 	// Never display input elements
 	input { display: none; }
@@ -133,11 +133,11 @@
 		.isActiveSelection { background: $menubar-item-background-selected-narrow; }
 	}
 			
-	@include medium-and-wide-layout {
+	@include medium-and-widest-layout {
 
 		// Check if it must be displayed
 		@include medium-layout { @if $menubar-enabled-medium { display: flex; } @else { display: none; } }
-		@include wide-layout { @if $menubar-enabled-wide { display: flex; } @else { display: none; } }
+		@include widest-layout { @if $menubar-enabled-widest { display: flex; } @else { display: none; } }
 
 		// Appearances
 		@include medium-layout {
@@ -145,10 +145,10 @@
 			border: $menubar-border-medium;
 			box-shadow: $menubar-box-shadow-medium;
 		}
-		@include wide-layout {
-			background: $menubar-background-wide;
-			border: $menubar-border-wide;
-			box-shadow: $menubar-box-shadow-wide;
+		@include widest-layout {
+			background: $menubar-background-widest;
+			border: $menubar-border-widest;
+			box-shadow: $menubar-box-shadow-widest;
 		}
 
 		// Positioning of items and item-separators.
@@ -157,9 +157,9 @@
 			justify-content: $menubar-justify-content-medium;
 			align-items: $menubar-align-items-medium;
 		}
-		@include wide-layout {
-			justify-content: $menubar-justify-content-wide;
-			align-items: $menubar-align-items-wide;
+		@include widest-layout {
+			justify-content: $menubar-justify-content-widest;
+			align-items: $menubar-align-items-widest;
 		}
 
 		.menubar-icon {
@@ -170,11 +170,11 @@
 				content: $menubar-icon-url-medium;
 				padding: $menubar-icon-padding-medium;
 			}
-			@include wide-layout {
-				width: $menubar-icon-width-wide;
-				height: $menubar-icon-height-wide;
-				content: $menubar-icon-url-wide;
-				padding: $menubar-icon-padding-wide;
+			@include widest-layout {
+				width: $menubar-icon-width-widest;
+				height: $menubar-icon-height-widest;
+				content: $menubar-icon-url-widest;
+				padding: $menubar-icon-padding-widest;
 			}
 		}
 
@@ -196,20 +196,20 @@
 				p { font: $menubar-item-separator-symbol-font-medium; }
 			}
 					
-			@include wide-layout {
+			@include widest-layout {
 				
 				// Appearance
-				color: $menubar-item-separator-symbol-color-wide;
-				background: $menubar-item-separator-symbol-background-wide;
+				color: $menubar-item-separator-symbol-color-widest;
+				background: $menubar-item-separator-symbol-background-widest;
 
 				// Set padding
-				padding: $menubar-item-separator-symbol-padding-wide;
+				padding: $menubar-item-separator-symbol-padding-widest;
 	
 				// Set the separator symbol
-				p:after { content: $menubar-item-separator-symbol-wide; }
+				p:after { content: $menubar-item-separator-symbol-widest; }
 
 				// The font for the separator
-				p { font: $menubar-item-separator-symbol-font-wide; }
+				p { font: $menubar-item-separator-symbol-font-widest; }
 			}
 		}
 			
@@ -234,12 +234,12 @@
 					background: $menubar-item-background-hover-medium;
 				}
 			}
-			@include wide-layout {
-				p { color: $menubar-item-color-wide; }
-				background: $menubar-item-background-wide;
+			@include widest-layout {
+				p { color: $menubar-item-color-widest; }
+				background: $menubar-item-background-widest;
 				&:hover {
-					p { color: $menubar-item-hover-color-wide; }
-					background: $menubar-item-background-hover-wide;
+					p { color: $menubar-item-hover-color-widest; }
+					background: $menubar-item-background-hover-widest;
 				}
 			}
 				
@@ -260,13 +260,13 @@
 				// Font for the item text
 				p { font: $menubar-item-font-medium; }
 			}
-			@include wide-layout {
+			@include widest-layout {
 
 				// Sizing of the items
-				a, .paddingAsLink { padding: $menubar-item-padding-wide;}
+				a, .paddingAsLink { padding: $menubar-item-padding-widest;}
 	
 				// Font for the item text
-				p { font: $menubar-item-font-wide; }
+				p { font: $menubar-item-font-widest; }
 			}
 
 			// Display the submenu if the user hovers the mouse over it
@@ -277,7 +277,7 @@
 
 			.title {
 				@include medium-layout { height: $menubar-item-height-medium; }
-				@include wide-layout { height: $menubar-item-height-wide; }
+				@include widest-layout { height: $menubar-item-height-widest; }
 			}
 			
 			.dropdown {
@@ -300,12 +300,12 @@
 					border: $menubar-dropdown-border-medium;
 					box-shadow: $menubar-dropdown-box-shadow-medium;
 				}
-				@include wide-layout {
-					margin: $menubar-dropdown-margin-wide;
-					padding: $menubar-dropdown-padding-wide;
-					background: $menubar-dropdown-background-wide;
-					border: $menubar-dropdown-border-wide;
-					box-shadow: $menubar-dropdown-box-shadow-wide;
+				@include widest-layout {
+					margin: $menubar-dropdown-margin-widest;
+					padding: $menubar-dropdown-padding-widest;
+					background: $menubar-dropdown-background-widest;
+					border: $menubar-dropdown-border-widest;
+					box-shadow: $menubar-dropdown-box-shadow-widest;
 				}
 
 				.subitem {
@@ -326,32 +326,32 @@
 						// Font for subitem text
 						p { font: $menubar-subitem-font-medium; }
 					}
-					@include wide-layout {
+					@include widest-layout {
 						
 						// Hover effect
-						p { color: $menubar-subitem-color-wide; }
-						background: $menubar-subitem-background-wide;
+						p { color: $menubar-subitem-color-widest; }
+						background: $menubar-subitem-background-widest;
 						&:hover {
-							p { color: $menubar-subitem-hover-color-wide; }
-							background: $menubar-subitem-background-hover-wide;
+							p { color: $menubar-subitem-hover-color-widest; }
+							background: $menubar-subitem-background-hover-widest;
 						}
 
 						// Sizing of the subitems
-						a, .paddingAsLink { padding: $menubar-subitem-padding-wide; }
+						a, .paddingAsLink { padding: $menubar-subitem-padding-widest; }
 							
 						// Font for subitem text
-						p { font: $menubar-subitem-font-wide; }
+						p { font: $menubar-subitem-font-widest; }
 					}
 				}
 
 		// Show selection for pages that match a menu entry
 		@include medium-layout { .isActiveSelection { background: $menubar-subitem-background-selected-medium; } }
-		@include wide-layout { .isActiveSelection { background: $menubar-subitem-background-selected-wide; } }
+		@include widest-layout { .isActiveSelection { background: $menubar-subitem-background-selected-widest; } }
 			}
 		}
 			
 		// Show selection for pages that match a menu entry
 		@include medium-layout { .isActiveSelection { background: $menubar-item-background-selected-medium; } }
-		@include wide-layout { .isActiveSelection { background: $menubar-item-background-selected-wide; } }
+		@include widest-layout { .isActiveSelection { background: $menubar-item-background-selected-widest; } }
 	}
 }

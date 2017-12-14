@@ -7,7 +7,7 @@
 	margin: 0;
 	@include narrow-layout { border-bottom: 1px solid $footer-divider-color-narrow; }
 	@include medium-layout { border-bottom: 1px solid $footer-divider-color-medium; }
-	@include wide-layout { border-bottom: 1px solid $footer-divider-color-wide; }
+	@include widest-layout { border-bottom: 1px solid $footer-divider-color-widest; }
 }
 
 .footer-panel {
@@ -23,9 +23,9 @@
 		color: $footer-color-medium;
 		background: $footer-background-medium;
 	}
-	@include wide-layout {
-		font: $footer-font-wide;
-		color: $footer-color-wide;
-		background: $footer-background-wide;
+	@include widest-layout {
+		font: $footer-font-widest;
+		color: $footer-color-widest;
+		background: $footer-background-widest;
 	}
 }

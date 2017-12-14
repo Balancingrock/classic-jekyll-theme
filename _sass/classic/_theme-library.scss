@@ -37,22 +37,22 @@
 .display-flex-narrow {
 	@include narrow-layout { display: flex; }
 	@include medium-layout { display: none; }
-	@include wide-layout { display: none; }
+	@include widest-layout { display: none; }
 }
 .display-flex-medium {
 	@include narrow-layout { display: none; }
 	@include medium-layout { display: flex; }
-	@include wide-layout { display: none; }
+	@include widest-layout { display: none; }
 }
-.display-flex-wide {
+.display-flex-widest {
 	@include narrow-layout { display: none; }
 	@include medium-layout { display: none; }
-	@include wide-layout { display: flex; }
+	@include widest-layout { display: flex; }
 }
 .display-flex-medium-and-wide {
 	@include narrow-layout { display: none; }
 	@include medium-layout { display: flex; }
-	@include wide-layout { display: flex; }
+	@include widest-layout { display: flex; }
 }
 
 
@@ -66,20 +66,20 @@
 .display-block-narrow {
 	@include narrow-layout { display: block; }
 	@include medium-layout { display: none; }
-	@include wide-layout { display: none; }
+	@include widest-layout { display: none; }
 }
 .display-block-medium {
 	@include narrow-layout { display: none; }
 	@include medium-layout { display: block; }
-	@include wide-layout { display: none; }
+	@include widest-layout { display: none; }
 }
-.display-block-wide {
+.display-block-widest {
 	@include narrow-layout { display: none; }
 	@include medium-layout { display: none; }
-	@include wide-layout { display: block; }
+	@include widest-layout { display: block; }
 }
 .display-block-medium-and-wide {
 	@include narrow-layout { display: none; }
 	@include medium-layout { display: block; }
-	@include wide-layout { display: block; }
+	@include widest-layout { display: block; }
 }

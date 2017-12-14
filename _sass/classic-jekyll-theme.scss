@@ -59,7 +59,7 @@ $theme-color:							green;
 // The body panel encompasses the entire DOM.
 // CSS property: Background.
 //
-$background-wide:						none;
+$background-widest:						none;
 $background-medium:						none;
 $background-narrow:						none;
 
@@ -79,7 +79,7 @@ $background-narrow:						none;
 //
 $add-to-banner-area-height-narrow:		0px;
 $add-to-banner-area-height-medium:		0px;
-$add-to-banner-area-height-wide:		0px;
+$add-to-banner-area-height-widest:		0px;
 
 
 // *********************************************************************************************************************
@@ -91,7 +91,7 @@ $add-to-banner-area-height-wide:		0px;
 //
 $banner-enabled-narrow:					true;
 $banner-enabled-medium:					true;
-$banner-enabled-wide:					true;
+$banner-enabled-widest:					true;
 
 // The height of the banner. (Not the banner-area!)
 // Always set a fixed value ('auto' and percentages don't work)
@@ -99,14 +99,14 @@ $banner-enabled-wide:					true;
 //
 $banner-height-narrow:					48px;
 $banner-height-medium:					68px;
-$banner-height-wide:					135px;
+$banner-height-widest:					135px;
 
 // The background of the banner. (Not the banner-area!)
 // CSS property: Background.
 //
 $banner-background-narrow:				white;
 $banner-background-medium:				white;
-$banner-background-wide:				white;
+$banner-background-widest:				white;
 
 
 // *********************************************************************************************************************
@@ -120,14 +120,14 @@ $banner-background-wide:				white;
 //
 $banner-icon-enabled-narrow:			true;
 $banner-icon-enabled-medium:			true;
-$banner-icon-enabled-wide:				true;
+$banner-icon-enabled-widest:			true;
 
 // The z-order of the icon. Use this to position the icon relative to the title-area and the menu-symbol.
 // CSS property: z-index
 //
 $banner-icon-z-index-narrow:			1;
 $banner-icon-z-index-medium:			1;
-$banner-icon-z-index-wide:				1;
+$banner-icon-z-index-widest:			1;
 
 // Positions the icon horizontally in the banner area.
 // CSS property: justify-content
@@ -136,7 +136,7 @@ $banner-icon-z-index-wide:				1;
 //
 $banner-icon-justify-content-narrow:	flex-start;
 $banner-icon-justify-content-medium:	flex-start;
-$banner-icon-justify-content-wide:		flex-start;
+$banner-icon-justify-content-widest:	flex-start;
 
 // Positions the icon verticall in the banner area.
 // CSS property: align-items
@@ -145,28 +145,28 @@ $banner-icon-justify-content-wide:		flex-start;
 //
 $banner-icon-align-items-narrow:		center;
 $banner-icon-align-items-medium:		center;
-$banner-icon-align-items-wide:			center;
+$banner-icon-align-items-widest:		center;
 
 // The width of the icon div.
 // CSS property: width
 //
 $banner-icon-width-narrow:				auto;
 $banner-icon-width-medium:				auto;
-$banner-icon-width-wide:				auto;
+$banner-icon-width-widest:				auto;
 
 // The height of the icon div.
 // CSS property: height
 //
 $banner-icon-height-narrow:				auto;
 $banner-icon-height-medium:				auto;
-$banner-icon-height-wide:				auto;
+$banner-icon-height-widest:				auto;
 
 // The padding can be used to tweak the position of the icon inside its html div element.
 // CSS property: padding
 //
 $banner-icon-padding-narrow:			0 0 0 $hspacing-unit;
 $banner-icon-padding-medium:			0px;
-$banner-icon-padding-wide:				0px;
+$banner-icon-padding-widest:			0px;
 
 // The url for the icon to be loaded into the div.
 // CSS property: content
@@ -176,14 +176,14 @@ $banner-icon-padding-wide:				0px;
 //
 $banner-icon-url-narrow:				url("/assets/img/cog-wheels-60x43.png");
 $banner-icon-url-medium:				url("/assets/img/cog-wheels-120x68.png");
-$banner-icon-url-wide:					url("/assets/img/cog-wheels-240x135.png");
+$banner-icon-url-widest:				url("/assets/img/cog-wheels-240x135.png");
 
 // The background for the icon div.
 // CSS property: background
 //
 $banner-icon-background-narrow:			none;
 $banner-icon-background-medium:			none;
-$banner-icon-background-wide:			none;
+$banner-icon-background-widest:			none;
 
 
 // *********************************************************************************************************************
@@ -199,7 +199,7 @@ $banner-icon-background-wide:			none;
 //
 $banner-title-enabled-narrow:					true;
 $banner-title-enabled-medium:					true;
-$banner-title-enabled-wide:						true;
+$banner-title-enabled-widest:					true;
 
 // Controls display of the subtitle.
 // Note: Disabling the banner also disables the subtitle.
@@ -208,35 +208,35 @@ $banner-title-enabled-wide:						true;
 //
 $banner-subtitle-enabled-narrow:				false;
 $banner-subtitle-enabled-medium:				false;
-$banner-subtitle-enabled-wide:					true;
+$banner-subtitle-enabled-widest:				true;
 
 // The z-order of the title-area. Use this to position the title-area relative to the icon and the menu-symbol.
 // CSS property: z-index
 //
 $banner-title-area-z-index-narrow:				2;
 $banner-title-area-z-index-medium:				2;
-$banner-title-area-z-index-wide:				2;
+$banner-title-area-z-index-widest:				2;
 
 // Size the title area horizontally
 // CSS property: width
 //
 $banner-title-area-width-narrow:				auto;
 $banner-title-area-width-medium:				auto;
-$banner-title-area-width-wide:					auto;
+$banner-title-area-width-widest:				auto;
 
 // Size the title area vertically
 // CSS property: height
 //
 $banner-title-area-height-narrow:				auto;
 $banner-title-area-height-medium:				auto;
-$banner-title-area-height-wide:					auto;
+$banner-title-area-height-widest:				auto;
 
 // Background of the title area
 // CSS property: background
 //
 $banner-title-area-background-narrow:			none;
 $banner-title-area-background-medium:			none;
-$banner-title-area-background-wide:				none;
+$banner-title-area-background-widest:			none;
 
 // Horizontally position the title area inside the banner.
 // CSS property: justify-content
@@ -245,7 +245,7 @@ $banner-title-area-background-wide:				none;
 //
 $banner-title-area-justify-content-narrow:		center;
 $banner-title-area-justify-content-medium:		center;
-$banner-title-area-justify-content-wide:		center;
+$banner-title-area-justify-content-widest:		center;
 
 // Vertically position the title area inside the banner.
 // CSS property: align-items
@@ -254,7 +254,7 @@ $banner-title-area-justify-content-wide:		center;
 //
 $banner-title-area-align-items-narrow:			center;
 $banner-title-area-align-items-medium:			center;
-$banner-title-area-align-items-wide:			center;
+$banner-title-area-align-items-widest:			center;
 
 // Position the title and subtitle either above eachother or next to each other.
 // CSS property: flex-direction
@@ -263,7 +263,7 @@ $banner-title-area-align-items-wide:			center;
 //
 $banner-title-subtitle-flex-direction-narrow:	column;
 $banner-title-subtitle-flex-direction-medium:	column;
-$banner-title-subtitle-flex-direction-wide:		column;
+$banner-title-subtitle-flex-direction-widest:	column;
 
 // Horizontally position the title and subtitle in the title area
 // CSS property: justify-content
@@ -272,7 +272,7 @@ $banner-title-subtitle-flex-direction-wide:		column;
 //
 $banner-title-subtitle-justify-content-narrow:	center;
 $banner-title-subtitle-justify-content-medium:	center;
-$banner-title-subtitle-justify-content-wide:	center;
+$banner-title-subtitle-justify-content-widest:	center;
 
 // Vertically position the title and subtitle in the title area
 // CSS property: align-items
@@ -281,7 +281,7 @@ $banner-title-subtitle-justify-content-wide:	center;
 //
 $banner-title-subtitle-align-items-narrow:		center;
 $banner-title-subtitle-align-items-medium:		center;
-$banner-title-subtitle-align-items-wide:		flex-end;
+$banner-title-subtitle-align-items-widest:		flex-end;
 
 // Fine tuning of the title position.
 //
@@ -292,7 +292,7 @@ $banner-title-subtitle-align-items-wide:		flex-end;
 //
 $banner-title-padding-narrow:					0px;
 $banner-title-padding-medium:					0px;
-$banner-title-padding-wide:						0px;
+$banner-title-padding-widest:					0px;
 
 // Fine tuning of the subtitle position.
 //
@@ -303,7 +303,7 @@ $banner-title-padding-wide:						0px;
 //
 $banner-subtitle-padding-narrow:				0px;
 $banner-subtitle-padding-medium:				0px;
-$banner-subtitle-padding-wide:					0px;
+$banner-subtitle-padding-widest:				0px;
 
 // The font for the title.
 // CSS property: font
@@ -312,7 +312,7 @@ $banner-subtitle-padding-wide:					0px;
 //
 $banner-title-font-narrow:						20px $theme-font-family;
 $banner-title-font-medium:						25px $theme-font-family;
-$banner-title-font-wide:						40px $theme-font-family;
+$banner-title-font-widest:						40px $theme-font-family;
 
 // The font for the subtitle.
 // CSS property: font
@@ -321,21 +321,21 @@ $banner-title-font-wide:						40px $theme-font-family;
 //
 $banner-subtitle-font-narrow:					12px $theme-font-family;
 $banner-subtitle-font-medium:					15px $theme-font-family;
-$banner-subtitle-font-wide:						18px $theme-font-family;
+$banner-subtitle-font-widest:					18px $theme-font-family;
 
 // The color for the title.
 // CSS property: color
 //
 $banner-title-color-narrow:						$theme-color;
 $banner-title-color-medium:						$theme-color;
-$banner-title-color-wide:						$theme-color;
+$banner-title-color-widest:						$theme-color;
 
 // The color for the subtitle.
 // CSS property: color
 //
 $banner-subtitle-color-narrow:					$theme-color;
 $banner-subtitle-color-medium:					$theme-color;
-$banner-subtitle-color-wide:					lighten(black, 50%);
+$banner-subtitle-color-widest:					lighten(black, 50%);
 
 
 // *********************************************************************************************************************
@@ -349,90 +349,90 @@ $banner-subtitle-color-wide:					lighten(black, 50%);
 // Note: Disabling the banner also disables the title.
 // Note: This does NOT control visibility of the menubar!
 //
-$banner-menu-symbol-enabled-narrow:			true;
-$banner-menu-symbol-enabled-medium:			true;
-$banner-menu-symbol-enabled-wide:			false;
+$banner-menu-symbol-enabled-narrow:				true;
+$banner-menu-symbol-enabled-medium:				true;
+$banner-menu-symbol-enabled-widest:				false;
 
 // The z-order of the menu symbol. Use this to position the menu symbol relative to the title-area and the icon.
 // CSS property: z-index
 //
-$banner-menu-symbol-z-index-narrow:			3;
-$banner-menu-symbol-z-index-medium:			3;
-$banner-menu-symbol-z-index-wide:			3;
+$banner-menu-symbol-z-index-narrow:				3;
+$banner-menu-symbol-z-index-medium:				3;
+$banner-menu-symbol-z-index-widest:				3;
 
 // Horizontally position the menu symbol tap area in the banner.
 // CSS property: justify-content
 //
 // Useful values are: flex-start | center | flex-end
 //
-$banner-menu-symbol-justify-content-narrow:	flex-end;
-$banner-menu-symbol-justify-content-medium:	flex-end;
-$banner-menu-symbol-justify-content-wide:	flex-end;
+$banner-menu-symbol-justify-content-narrow:		flex-end;
+$banner-menu-symbol-justify-content-medium:		flex-end;
+$banner-menu-symbol-justify-content-widest:		flex-end;
 
 // Vertically position the menu symbol tap area in the banner.
 // CSS property: align-items
 //
 // Useful values are: flex-start | center | flex-end
 //
-$banner-menu-symbol-align-items-narrow:		center;
-$banner-menu-symbol-align-items-medium:		center;
-$banner-menu-symbol-align-items-wide:		center;
+$banner-menu-symbol-align-items-narrow:			center;
+$banner-menu-symbol-align-items-medium:			center;
+$banner-menu-symbol-align-items-widest:			center;
 
 // Width of the menu symbol tap or click area (the symbol itself is centered in this area)
 // CSS property: width
 //
-$banner-menu-symbol-tap-area-width-narrow:	10%;
-$banner-menu-symbol-tap-area-width-medium:	10%;
-$banner-menu-symbol-tap-area-width-wide:	10%;
+$banner-menu-symbol-tap-area-width-narrow:		10%;
+$banner-menu-symbol-tap-area-width-medium:		10%;
+$banner-menu-symbol-tap-area-width-widest:		10%;
 
 // Height of the menu symbol tap or click area (the symbol itself is centered in this area)
 // CSS property: height
 //
-$banner-menu-symbol-tap-area-height-narrow:	100%;
-$banner-menu-symbol-tap-area-height-medium:	100%;
-$banner-menu-symbol-tap-area-height-wide:	100%;
+$banner-menu-symbol-tap-area-height-narrow:		100%;
+$banner-menu-symbol-tap-area-height-medium:		100%;
+$banner-menu-symbol-tap-area-height-widest:		100%;
 
 // The background for the menu symbol tap area
 // CSS property: background
 //
 $banner-menu-symbol-tap-area-background-narrow:	none;
 $banner-menu-symbol-tap-area-background-medium:	none;
-$banner-menu-symbol-tap-area-background-wide:	none;
+$banner-menu-symbol-tap-area-background-widest:	none;
 
 // The border of the menu symbol tap area
 // CSS property: border
 //
-$banner-menu-symbol-tap-area-border-narrow:	none;
-$banner-menu-symbol-tap-area-border-medium:	none;
-$banner-menu-symbol-tap-area-border-wide:	none;
+$banner-menu-symbol-tap-area-border-narrow:		none;
+$banner-menu-symbol-tap-area-border-medium:		none;
+$banner-menu-symbol-tap-area-border-widest:		none;
 
 // Fine tuning of the placing of the menu symbol in the tap area
 // CSS property: padding
 //
-$banner-menu-symbol-padding-narrow:			0px;
-$banner-menu-symbol-padding-medium:			0px;
-$banner-menu-symbol-padding-wide:			0px;
+$banner-menu-symbol-padding-narrow:				0px;
+$banner-menu-symbol-padding-medium:				0px;
+$banner-menu-symbol-padding-widest:				0px;
 
 // The menu symbol to be used.
 // Written using the :after CSS selector.
 //
-$banner-menu-symbol-code-narrow:			'\02261';
-$banner-menu-symbol-code-medium:			'\02261';
-$banner-menu-symbol-code-wide:				'\02261';
+$banner-menu-symbol-code-narrow:				'\02261';
+$banner-menu-symbol-code-medium:				'\02261';
+$banner-menu-symbol-code-widest:				'\02261';
 
 // The color of the menu symbol.
 // CSS property: color
 //
-$banner-menu-symbol-color-narrow:			$theme-color;
-$banner-menu-symbol-color-medium:			$theme-color;
-$banner-menu-symbol-color-wide:				$theme-color;
+$banner-menu-symbol-color-narrow:				$theme-color;
+$banner-menu-symbol-color-medium:				$theme-color;
+$banner-menu-symbol-color-widest:				$theme-color;
 
 // The font to be used for the menu symbol.
 // CSS property: font
 //
-$banner-menu-symbol-font-narrow:			30px $theme-font-family;
-$banner-menu-symbol-font-medium:			35px $theme-font-family;
-$banner-menu-symbol-font-wide:				40px $theme-font-family;
+$banner-menu-symbol-font-narrow:				30px $theme-font-family;
+$banner-menu-symbol-font-medium:				35px $theme-font-family;
+$banner-menu-symbol-font-widest:				40px $theme-font-family;
 
 
 // *********************************************************************************************************************
@@ -443,23 +443,23 @@ $banner-menu-symbol-font-wide:				40px $theme-font-family;
 
 // Controls visibility
 //
-$menubar-top-separator-enabled-narrow:		true;
-$menubar-top-separator-enabled-medium:		true;
-$menubar-top-separator-enabled-wide:		true;
+$menubar-top-separator-enabled-narrow:			true;
+$menubar-top-separator-enabled-medium:			true;
+$menubar-top-separator-enabled-widest:			true;
 
 // The height of the seperator.
 // CSS property: height
 //
-$menubar-top-separator-height-narrow:		2px;
-$menubar-top-separator-height-medium:		2px;
-$menubar-top-separator-height-wide:			2px;
+$menubar-top-separator-height-narrow:			2px;
+$menubar-top-separator-height-medium:			2px;
+$menubar-top-separator-height-widest:			2px;
 
 // The background of the separator
 // CSS property: background
 //
-$menubar-top-separator-background-narrow:	$theme-color;
-$menubar-top-separator-background-medium:	$theme-color;
-$menubar-top-separator-background-wide:		$theme-color;
+$menubar-top-separator-background-narrow:		$theme-color;
+$menubar-top-separator-background-medium:		$theme-color;
+$menubar-top-separator-background-widest:		$theme-color;
 
 
 // *********************************************************************************************************************
@@ -473,21 +473,21 @@ $menubar-top-separator-background-wide:		$theme-color;
 //
 $menubar-bottom-separator-enabled-narrow:		true;
 $menubar-bottom-separator-enabled-medium:		true;
-$menubar-bottom-separator-enabled-wide:			true;
+$menubar-bottom-separator-enabled-widest:		true;
 
 // The height of the seperator.
 // CSS property: height
 //
 $menubar-bottom-separator-height-narrow:		2px;
 $menubar-bottom-separator-height-medium:		2px;
-$menubar-bottom-separator-height-wide:			2px;
+$menubar-bottom-separator-height-widest:		2px;
 
 // The background of the separator
 // CSS property: background
 //
 $menubar-bottom-separator-background-narrow:	$theme-color;
 $menubar-bottom-separator-background-medium:	$theme-color;
-$menubar-bottom-separator-background-wide:		$theme-color;
+$menubar-bottom-separator-background-widest:	$theme-color;
 
 
 // *********************************************************************************************************************
@@ -501,9 +501,9 @@ $menubar-bottom-separator-background-wide:		$theme-color;
 // Controls visibility of the menubar.
 // Use this to disable the menubar permanently.
 //
-$menubar-enabled-narrow:						true;
-$menubar-enabled-medium:						true;
-$menubar-enabled-wide:							true;
+$menubar-enabled-narrow:							true;
+$menubar-enabled-medium:							true;
+$menubar-enabled-widest:							true;
 
 // The height of the menubar.
 // To fill out the entire height of the menubar, leave the height set to 'auto' and set the height of a menu-item
@@ -512,72 +512,72 @@ $menubar-enabled-wide:							true;
 //
 // Note: For the narrow layout it is always set to 'auto'.
 //
-$menubar-height-medium:							auto;
-$menubar-height-wide:							auto;
+$menubar-height-medium:								auto;
+$menubar-height-widest:								auto;
 
 // Horizontally position the icon, items and item-separators in the menubar.
 // CSS property: justify-content
 //
-$menubar-justify-content-medium:				center;
-$menubar-justify-content-wide:					center;
+$menubar-justify-content-medium:					center;
+$menubar-justify-content-widest:					center;
 
 // Vertically position the items and item-separators in the menubar.
 // CSS property: align-items
 //
 // Useful values: flex-start | center | flex-end
 //
-$menubar-align-items-medium:					center;
-$menubar-align-items-wide:						center;
+$menubar-align-items-medium:						center;
+$menubar-align-items-widest:						center;
 
 // Background for the menubar.
 // CSS property: background
 //
-$menubar-background-narrow:						white;
-$menubar-background-medium:						white;
-$menubar-background-wide:						white;
+$menubar-background-narrow:							white;
+$menubar-background-medium:							white;
+$menubar-background-widest:							white;
 
 // Border for the menubar.
 // CSS property: border
 //
-$menubar-border-medium:							none;
-$menubar-border-wide:							none;
+$menubar-border-medium:								none;
+$menubar-border-widest:								none;
 
 // Shadow for the menubar.
 // CSS property: box-shadow
 //
-$menubar-box-shadow-medium:						none;
-$menubar-box-shadow-wide:						none;
+$menubar-box-shadow-medium:							none;
+$menubar-box-shadow-widest:							none;
 
 // The font to be used for the text of an item
 // CSS property: font
 //
-$menubar-item-font-narrow:						$theme-font-size $theme-font-family;
-$menubar-item-font-medium:						$theme-font-size $theme-font-family;
-$menubar-item-font-wide:						$theme-font-size $theme-font-family;
+$menubar-item-font-narrow:							$theme-font-size $theme-font-family;
+$menubar-item-font-medium:							$theme-font-size $theme-font-family;
+$menubar-item-font-widest:							$theme-font-size $theme-font-family;
 
 // The color & hover color to be used for the text of an item
 // CSS property: color
 //
-$menubar-item-color-narrow:						$theme-color;
-$menubar-item-color-medium:						$theme-color;
-$menubar-item-color-wide:						$theme-color;
-$menubar-item-hover-color-narrow:				black;
-$menubar-item-hover-color-medium:				black;
-$menubar-item-hover-color-wide:					black;
+$menubar-item-color-narrow:							$theme-color;
+$menubar-item-color-medium:							$theme-color;
+$menubar-item-color-widest:							$theme-color;
+$menubar-item-hover-color-narrow:					black;
+$menubar-item-hover-color-medium:					black;
+$menubar-item-hover-color-widest:					black;
 
 // The background & hover background & active-page background to be used for an item
 // The selected background is used when a menu item is visible and the page that is linked to that item is visible.
 // CSS property: background
 //
-$menubar-item-background-narrow:				$grey-color-light;
-$menubar-item-background-medium:				white;
-$menubar-item-background-wide:					white;
-$menubar-item-background-hover-narrow:			$grey-color-light;
-$menubar-item-background-hover-medium:			$grey-color-light;
-$menubar-item-background-hover-wide:			$grey-color-light;
-$menubar-item-background-selected-narrow:		$grey-color-light;
-$menubar-item-background-selected-medium:		$grey-color-light;
-$menubar-item-background-selected-wide:			$grey-color-light;
+$menubar-item-background-narrow:					$grey-color-light;
+$menubar-item-background-medium:					white;
+$menubar-item-background-widest:					white;
+$menubar-item-background-hover-narrow:				$grey-color-light;
+$menubar-item-background-hover-medium:				$grey-color-light;
+$menubar-item-background-hover-widest:				$grey-color-light;
+$menubar-item-background-selected-narrow:			$grey-color-light;
+$menubar-item-background-selected-medium:			$grey-color-light;
+$menubar-item-background-selected-widest:			$grey-color-light;
 
 // The height of a menubar item.
 // For medium and wide layout it is recommended to set the height to 'auto' and drive the height by the font
@@ -585,151 +585,151 @@ $menubar-item-background-selected-wide:			$grey-color-light;
 // For narrow the height of the item should be big enough to tap.
 // CSS property: height
 //
-$menubar-item-height-narrow:					3 * $vspacing-unit;
-$menubar-item-height-medium:					auto;
-$menubar-item-height-wide:						auto;
+$menubar-item-height-narrow:						3 * $vspacing-unit;
+$menubar-item-height-medium:						auto;
+$menubar-item-height-widest:						auto;
 
 // The height of the item separator line.
 // This line is only visible in the narrow layout (which is vertical).
 // CSS property: height
 //
-$menubar-item-separator-line-width-narrow:		2px;
+$menubar-item-separator-line-width-narrow:			2px;
 
 // The color of the item separator line.
 // This line is only visible in the narrow layout (which is vertical).
 // CSS property: color
 //
-$menubar-item-separator-line-color-narrow:		$menubar-background-narrow;
+$menubar-item-separator-line-color-narrow:			$menubar-background-narrow;
 
 // Padding of the menu items for the medium and wide layout
 // CSS property: padding
 //
-$menubar-item-padding-medium:					$vspacing-unit/4 $hspacing-unit;
-$menubar-item-padding-wide:						$vspacing-unit/4 $hspacing-unit;
+$menubar-item-padding-medium:						$vspacing-unit/4 $hspacing-unit;
+$menubar-item-padding-widest:						$vspacing-unit/4 $hspacing-unit;
 
 // The disclosure symbol definitions for the narrow vertical menubar.
 // Written to a <p> with the CSS :after selector.
 //
-$menubar-item-title-symbol-code-closed-narrow:	'\021E8';
-$menubar-item-title-symbol-code-open-narrow:	'\021E9';
+$menubar-item-title-symbol-code-closed-narrow:		'\021E8';
+$menubar-item-title-symbol-code-open-narrow:		'\021E9';
 
 // The width of the disclosure area in the narrow vertical menubar.
 // CSS property: width
 //
-$menubar-item-disclosure-symbol-width-narrow:	10%;
+$menubar-item-disclosure-symbol-width-narrow:		10%;
 
 // The menubar item separator symbol.
 // This symbol appears between items when the menubar is horizontal, i.e. in de medium and wide layout.
 // Written to a <p> with the CSS :after selector.
 //
-$menubar-item-separator-symbol-medium:			'';
-$menubar-item-separator-symbol-wide:			'';
+$menubar-item-separator-symbol-medium:				'';
+$menubar-item-separator-symbol-widest:				'';
 
 // The font to be used for the item separator.
 // CSS property: font
 //
-$menubar-item-separator-symbol-font-medium:		$theme-font-size $theme-font-family;
-$menubar-item-separator-symbol-font-wide:		$theme-font-size $theme-font-family;
+$menubar-item-separator-symbol-font-medium:			$theme-font-size $theme-font-family;
+$menubar-item-separator-symbol-font-widest:			$theme-font-size $theme-font-family;
 
 // The color for the item separator.
 // CSS property: color
 //
-$menubar-item-separator-symbol-color-medium:	$theme-color;
-$menubar-item-separator-symbol-color-wide:		$theme-color;
+$menubar-item-separator-symbol-color-medium:		$theme-color;
+$menubar-item-separator-symbol-color-widest:		$theme-color;
 
 // The background behind the item separator
 // CSS property: background
 //
 $menubar-item-separator-symbol-background-medium:	$menubar-item-background-medium;
-$menubar-item-separator-symbol-background-wide:		$menubar-item-background-wide;
+$menubar-item-separator-symbol-background-widest:	$menubar-item-background-widest;
 
 // The padding around the item separator
 // CSS property: padding
 //
-$menubar-item-separator-symbol-padding-medium:	$vspacing-unit/4 0px;
-$menubar-item-separator-symbol-padding-wide:	$vspacing-unit/4 0px;
+$menubar-item-separator-symbol-padding-medium:		$vspacing-unit/4 0px;
+$menubar-item-separator-symbol-padding-widest:		$vspacing-unit/4 0px;
 
 // The margin around the dropdown part of the menubar containing the sub-items.
 // The default shows a left-indent such that the submenu items appear below and to the right the menu title.
 // CSS property: margin
 //
-$menubar-dropdown-margin-medium:				0px 0px 0px $hspacing-unit;
-$menubar-dropdown-margin-wide:					0px 0px 0px $hspacing-unit;
+$menubar-dropdown-margin-medium:					0px 0px 0px $hspacing-unit;
+$menubar-dropdown-margin-widest:					0px 0px 0px $hspacing-unit;
 
 // The padding inside the dropdown part of the menubar containing the sub-items.
 // CSS property: padding
 //
-$menubar-dropdown-padding-medium:				0px;
-$menubar-dropdown-padding-wide:					0px;
+$menubar-dropdown-padding-medium:					0px;
+$menubar-dropdown-padding-widest:					0px;
 
 // The background for the dropdown box
 // The background for the box is only visible when no background for the subitem has been specified.
 // CSS property: background
 //
-$menubar-dropdown-background-medium:			white;
-$menubar-dropdown-background-wide:				white;
+$menubar-dropdown-background-medium:				white;
+$menubar-dropdown-background-widest:				white;
 
 // The border around the dropdown part of the menubar containing sub-items.
 // CSS property: border
 //
-$menubar-dropdown-border-medium:				none;
-$menubar-dropdown-border-wide:					none;
+$menubar-dropdown-border-medium:					none;
+$menubar-dropdown-border-widest:					none;
 
 // The shadow around the dropdown part of the menubar containing sub-items.
 // CSS property: box-shadow
 //
-$menubar-dropdown-box-shadow-medium:			0em 0.25em 0.25em 0em rgba(0,0,0,0.2);
-$menubar-dropdown-box-shadow-wide:				0em 0.25em 0.25em 0em rgba(0,0,0,0.2);
+$menubar-dropdown-box-shadow-medium:				0em 0.25em 0.25em 0em rgba(0,0,0,0.2);
+$menubar-dropdown-box-shadow-widest:				0em 0.25em 0.25em 0em rgba(0,0,0,0.2);
 
 // The font for the subitem menu title.
 // CSS property: font
 //
-$menubar-subitem-font-medium:					$small-1-font-size $theme-font-family;
-$menubar-subitem-font-wide:						$small-1-font-size $theme-font-family;
+$menubar-subitem-font-medium:						$small-1-font-size $theme-font-family;
+$menubar-subitem-font-widest:						$small-1-font-size $theme-font-family;
 
 // The colors for the subitem menu title.
 // CSS property: color
 //
-$menubar-subitem-color-medium:					$theme-color;
-$menubar-subitem-color-wide:					$theme-color;
-$menubar-subitem-hover-color-medium:			black;
-$menubar-subitem-hover-color-wide:				black;
+$menubar-subitem-color-medium:						$theme-color;
+$menubar-subitem-color-widest:						$theme-color;
+$menubar-subitem-hover-color-medium:				black;
+$menubar-subitem-hover-color-widest:				black;
 
 // The background for the submenu item.
 // CSS property: background
 //
-$menubar-subitem-background-narrow: 			$grey-color-light;
-$menubar-subitem-background-medium:				none;
-$menubar-subitem-background-wide:				none;
-$menubar-subitem-background-hover-narrow:		$grey-color-light;
-$menubar-subitem-background-hover-medium:		$grey-color-light;
-$menubar-subitem-background-hover-wide:			$grey-color-light;
-$menubar-subitem-background-selected-narrow:	$grey-color-light;
-$menubar-subitem-background-selected-medium:	$grey-color-light;
-$menubar-subitem-background-selected-wide:		$grey-color-light;
+$menubar-subitem-background-narrow: 				$grey-color-light;
+$menubar-subitem-background-medium:					none;
+$menubar-subitem-background-widest:					none;
+$menubar-subitem-background-hover-narrow:			$grey-color-light;
+$menubar-subitem-background-hover-medium:			$grey-color-light;
+$menubar-subitem-background-hover-widest:			$grey-color-light;
+$menubar-subitem-background-selected-narrow:		$grey-color-light;
+$menubar-subitem-background-selected-medium:		$grey-color-light;
+$menubar-subitem-background-selected-widest:		$grey-color-light;
 
 // The indent for submenu items in relation to the preceding top title for the narrow layout only.
 // CSS property: left-padding
 //
-$menubar-subitem-indent-narrow:					$hspacing-unit;
+$menubar-subitem-indent-narrow:						$hspacing-unit;
 
 // The padding for the submenu items in the dropdown box for horizontal menubar.
 // CSS property: padding
 //
-$menubar-subitem-padding-medium:				$vspacing-unit/4 $hspacing-unit;
-$menubar-subitem-padding-wide:					$vspacing-unit/4 $hspacing-unit;
+$menubar-subitem-padding-medium:					$vspacing-unit/4 $hspacing-unit;
+$menubar-subitem-padding-widest:					$vspacing-unit/4 $hspacing-unit;
 
 // The width of the submenu item separator line.
 // This line is only visible in the narrow layout (which is vertical).
 // CSS property: height
 //
-$menubar-subitem-separator-line-width-narrow:	1px;
+$menubar-subitem-separator-line-width-narrow:		1px;
 
 // The color of the submenu item separator line.
 // This line is only visible in the narrow layout (which is vertical).
 // CSS property: background-color
 //
-$menubar-subitem-separator-line-color-narrow:	$menubar-background-narrow;
+$menubar-subitem-separator-line-color-narrow:		$menubar-background-narrow;
 
 
 // *********************************************************************************************************************
@@ -743,26 +743,26 @@ $menubar-subitem-separator-line-color-narrow:	$menubar-background-narrow;
 // The icon (image)
 // CSS property: content
 //
-$menubar-icon-url-medium:						none;
-$menubar-icon-url-wide:							none; //url("/assets/img/test-pattern-55.png");
+$menubar-icon-url-medium:				none;
+$menubar-icon-url-widest:				none; //url("/assets/img/test-pattern-55.png");
 
 // Height of the icon
 // CSS property: height
 //
-$menubar-icon-height-medium:					auto;
-$menubar-icon-height-wide:						auto;
+$menubar-icon-height-medium:			auto;
+$menubar-icon-height-widest:			auto;
 
 // Width of the icon
 // CSS property: width
 //
-$menubar-icon-width-medium:						auto;
-$menubar-icon-width-wide:						auto;
+$menubar-icon-width-medium:				auto;
+$menubar-icon-width-widest:				auto;
 
 // Padding for the icon or to insert some extra padding (indent) before the first item.
 // CSS property: padding
 //
-$menubar-icon-padding-medium:					0px;
-$menubar-icon-padding-wide:						0px;
+$menubar-icon-padding-medium:			0px;
+$menubar-icon-padding-widest:			0px;
 
 
 // *********************************************************************************************************************
@@ -773,7 +773,7 @@ $menubar-icon-padding-wide:						0px;
 //
 $column-panel-background-narrow:		none;
 $column-panel-background-medium:		none;
-$column-panel-background-wide:			none;
+$column-panel-background-widest:		none;
 
 // The width of the columns, these settings drive which layout is used, based on the browser window width.
 // Used in the mixin definitions.
@@ -787,27 +787,27 @@ $tertiary-column-width:					240px;
 //
 $primary-column-background-narrow:		none;
 $primary-column-background-medium:		none;
-$primary-column-background-wide:		none;
+$primary-column-background-widest:		none;
 
 // For the secondary column.
 // CSS property: background
 //
 $secondary-column-background-narrow:	none;
 $secondary-column-background-medium:	none;
-$secondary-column-background-wide:		none;
+$secondary-column-background-widest:	none;
 
 // For the tertiary column.
 // CSS property: background
 //
 $tertiary-column-background-narrow:		none;
 $tertiary-column-background-medium:		none;
-$tertiary-column-background-wide:		none;
+$tertiary-column-background-widest:		none;
 
 // Color for the dividers between the columns
 // CSS property: border-right (but only the color part)
 //
 $column-divider-color-medium:			lighten($grey-color, 30%);
-$column-divider-color-wide:				lighten($grey-color, 30%);
+$column-divider-color-widest:			lighten($grey-color, 30%);
 
 // Enable/disable display of the column dividers
 //
@@ -837,14 +837,14 @@ $column-divider-bottom-spacing:         $vspacing-unit;
 //
 $footer-background-narrow:				none;
 $footer-background-medium:				none;
-$footer-background-wide:				none;
+$footer-background-widest:				none;
 
 // The footer divider is placed between the columns panel and the footer panel.
 // CSS property: border-color
 //
 $footer-divider-color-narrow:			$theme-color;
 $footer-divider-color-medium:			$theme-color;
-$footer-divider-color-wide:				$theme-color;
+$footer-divider-color-widest:			$theme-color;
 
 // Enables or disables display of the footer divider
 //
@@ -857,14 +857,14 @@ $footer-divider-display:				true;
 //
 $footer-font-narrow:					$small-1-font-size $theme-font-family;
 $footer-font-medium:					$small-1-font-size $theme-font-family;
-$footer-font-wide:						$small-1-font-size $theme-font-family;
+$footer-font-widest:					$small-1-font-size $theme-font-family;
 
 // The color for the footer text.
 // CSS property: color
 //
 $footer-color-narrow:					black;
 $footer-color-medium:					black;
-$footer-color-wide:						black;
+$footer-color-widest:					black;
 
 
 // *********************************************************************************************************************
@@ -897,168 +897,168 @@ $widget-divider-display:				true;
 // the settings here.
 // Values: true | false
 //
-$vmenu-enable-narrow:						true;
-$vmenu-enable-medium:						true;
-$vmenu-enable-wide:							true;
+$vmenu-enable-narrow:									true;
+$vmenu-enable-medium:									true;
+$vmenu-enable-widest:									true;
 
 // The title is a h1 HTML element, enable or disable it
 // Values: true | false
 //
-$vmenu-topTitle-enable-narrow:				true;
-$vmenu-topTitle-enable-medium:				true;
-$vmenu-topTitle-enable-wide:				true;
+$vmenu-topTitle-enable-narrow:							true;
+$vmenu-topTitle-enable-medium:							true;
+$vmenu-topTitle-enable-widest:							true;
 
 // Position the top title text horizontally
 // CSS property: justify-content
 //
-$vmenu-topTitle-justify-content-narrow:		center;
-$vmenu-topTitle-justify-content-medium:		flex-start;
-$vmenu-topTitle-justify-content-wide:		flex-start;
+$vmenu-topTitle-justify-content-narrow:					center;
+$vmenu-topTitle-justify-content-medium:					flex-start;
+$vmenu-topTitle-justify-content-widest:					flex-start;
 
 // The font for the title of the vertical menu
 // CSS property: font
 //
-$vmenu-topTitle-font-narrow:				$small-4-font-size $theme-font-family;
-$vmenu-topTitle-font-medium:				$small-5-font-size $theme-font-family;
-$vmenu-topTitle-font-wide:					$small-5-font-size $theme-font-family;
+$vmenu-topTitle-font-narrow:							$small-4-font-size $theme-font-family;
+$vmenu-topTitle-font-medium:							$small-5-font-size $theme-font-family;
+$vmenu-topTitle-font-widest:							$small-5-font-size $theme-font-family;
 
 // The color for the title of the vertical menu
 // CSS property: color
 //
-$vmenu-topTitle-color-narrow:				black;
-$vmenu-topTitle-color-medium:				black;
-$vmenu-topTitle-color-wide:					black;
+$vmenu-topTitle-color-narrow:							black;
+$vmenu-topTitle-color-medium:							black;
+$vmenu-topTitle-color-widest:							black;
 
 // The background for the title of the vertical menu
 // CSS property: background
 //
-$vmenu-topTitle-background-narrow:			none;
-$vmenu-topTitle-background-medium:			none;
-$vmenu-topTitle-background-wide:			none;
+$vmenu-topTitle-background-narrow:						none;
+$vmenu-topTitle-background-medium:						none;
+$vmenu-topTitle-background-widest:						none;
 
 // The padding for the title of the vertical menu
 // Use this or the margin to position the top title vertically
 // CSS property: padding
 //
-$vmenu-topTitle-padding-narrow:				10px 0;
-$vmenu-topTitle-padding-medium:				0;
-$vmenu-topTitle-padding-wide:				0;
+$vmenu-topTitle-padding-narrow:							10px 0;
+$vmenu-topTitle-padding-medium:							0;
+$vmenu-topTitle-padding-widest:							0;
 
 // The margin for the title of the vertical menu
 // Use this or the padding to position the top title vertically
 // CSS property: margin
 //
-$vmenu-topTitle-margin-narrow:				0;
-$vmenu-topTitle-margin-medium:				0;
-$vmenu-topTitle-margin-wide:				0;
+$vmenu-topTitle-margin-narrow:							0;
+$vmenu-topTitle-margin-medium:							0;
+$vmenu-topTitle-margin-widest:							0;
 
 // The border for the vertical menu
 // CSS property: border
 //
-$vmenu-border-narrow:						none;
-$vmenu-border-medium:						none;
-$vmenu-border-wide:							1px solid $grey-color-light;
+$vmenu-border-narrow:									none;
+$vmenu-border-medium:									1px solid $grey-color-light;
+$vmenu-border-widest:									1px solid $grey-color-light;
 
 // The shadow for the vertical menu
 // CSS property: box-shadow
 //
-$vmenu-box-shadow-narrow:					0em 0.25em 0.25em 0em rgba(0,0,0,0.2);
-$vmenu-box-shadow-medium:					0em 0.25em 0.25em 0em rgba(0,0,0,0.2);
-$vmenu-box-shadow-wide:						0em 0.25em 0.25em 0em rgba(0,0,0,0.2);
+$vmenu-box-shadow-narrow:								0em 0.25em 0.25em 0em rgba(0,0,0,0.2);
+$vmenu-box-shadow-medium:								0em 0.25em 0.25em 0em rgba(0,0,0,0.2);
+$vmenu-box-shadow-widest:								0em 0.25em 0.25em 0em rgba(0,0,0,0.2);
 
 // The background for the vertical menu
 // CSS property: background
 //
-$vmenu-background-narrow:					none;
-$vmenu-background-medium:					none;
-$vmenu-background-wide:						none;
+$vmenu-background-narrow:								none;
+$vmenu-background-medium:								none;
+$vmenu-background-widest:								none;
 
 // The symbol used to show a menu item with subitems that are not shown
 // Written to a <p> with the CSS :after selector.
 //
-$vmenu-subitem-disclosure-symbol-closed:	'\021E8';
+$vmenu-subitem-disclosure-symbol-closed:				'\021E8';
 
 // The symbol used to show a menu item with subitems that are shown
 // Written to a <p> with the CSS :after selector.
 //
-$vmenu-subitem-disclosure-symbol-open:		'\021E9';
+$vmenu-subitem-disclosure-symbol-open:					'\021E9';
 
 // The width of the disclosure symbol div for the narrow layout must be wide enough to tap.
 // CSS property: width
 // 
-$vmenu-subitem-disclosure-area-width-narrow:	10%;
-$vmenu-subitem-disclosure-area-width-medium:	1.2em;
-$vmenu-subitem-disclosure-area-width-wide:		1.2em;
+$vmenu-subitem-disclosure-area-width-narrow:			10%;
+$vmenu-subitem-disclosure-area-width-medium:			1.2em;
+$vmenu-subitem-disclosure-area-width-widest:			1.2em;
 
 // There can be a separator between the disclosure symbol and the menu title
 // CSS property: border-right
 //
-$vmenu-subitem-disclosure-area-border-right-narrow: 2px solid white;
-$vmenu-subitem-disclosure-area-border-right-medium: none;
-$vmenu-subitem-disclosure-area-border-right-wide: 	none;
+$vmenu-subitem-disclosure-area-border-right-narrow: 	2px solid white;
+$vmenu-subitem-disclosure-area-border-right-medium: 	none;
+$vmenu-subitem-disclosure-area-border-right-widest: 	none;
 
 // The font for the sub menu item
 // CSS property: font
 //
-$vmenu-subitem-font-narrow:					$small-1-font-size $theme-font-family;
-$vmenu-subitem-font-medium:					$small-1-font-size $theme-font-family;
-$vmenu-subitem-font-wide:					$small-1-font-size $theme-font-family;
+$vmenu-subitem-font-narrow:								$small-1-font-size $theme-font-family;
+$vmenu-subitem-font-medium:								$small-1-font-size $theme-font-family;
+$vmenu-subitem-font-widest:								$small-1-font-size $theme-font-family;
 
 // The font color of the sub menu item
 // CSS property: color
 //
-$vmenu-subitem-color-narrow:				black;
-$vmenu-subitem-color-medium:				black;
-$vmenu-subitem-color-wide:					black;
+$vmenu-subitem-color-narrow:							black;
+$vmenu-subitem-color-medium:							black;
+$vmenu-subitem-color-widest:							black;
 
 // The font color of the sub menu item when the cursor hovers over it
 // CSS property: color with the :hover selector
 //
-$vmenu-subitem-color-hover-narrow:			black;
-$vmenu-subitem-color-hover-medium:			black;
-$vmenu-subitem-color-hover-wide:			black;
+$vmenu-subitem-color-hover-narrow:						black;
+$vmenu-subitem-color-hover-medium:						black;
+$vmenu-subitem-color-hover-widest:						black;
 
 // Padding for the sub menu item title
 // CSS property: padding
 //
-$vmenu-subitem-title-padding-narrow:		$vspacing-unit $hspacing-unit;
-$vmenu-subitem-title-padding-medium:		$vspacing-unit/4 $hspacing-unit/2;
-$vmenu-subitem-title-padding-wide:			$vspacing-unit/4 $hspacing-unit/2;
+$vmenu-subitem-title-padding-narrow:					$vspacing-unit $hspacing-unit;
+$vmenu-subitem-title-padding-medium:					$vspacing-unit/4 $hspacing-unit/2;
+$vmenu-subitem-title-padding-widest:					$vspacing-unit/4 $hspacing-unit/2;
 
 // The border of the sub menu item
 // CSS property: border
 //
-$vmenu-subitem-border-narrow:				1px solid white;
-$vmenu-subitem-border-medium:				none;
-$vmenu-subitem-border-wide:					none;
+$vmenu-subitem-border-narrow:							1px solid white;
+$vmenu-subitem-border-medium:							none;
+$vmenu-subitem-border-widest:							none;
 
 // The background for the sub menu item
 // CSS property: background
 //
-$vmenu-subitem-background-narrow:			$grey-color-light;
-$vmenu-subitem-background-medium:			none;
-$vmenu-subitem-background-wide:				none;
+$vmenu-subitem-background-narrow:						$grey-color-light;
+$vmenu-subitem-background-medium:						none;
+$vmenu-subitem-background-widest:						none;
 
 // The background for the title of the sub menu item when the cursor hovers over it.
 // CSS property: background
 //
-$vmenu-subitem-title-background-hover-narrow:		$grey-color-light;
-$vmenu-subitem-title-background-hover-medium:		$grey-color-light;
-$vmenu-subitem-title-background-hover-wide:			$grey-color-light;
+$vmenu-subitem-title-background-hover-narrow:			$grey-color-light;
+$vmenu-subitem-title-background-hover-medium:			$grey-color-light;
+$vmenu-subitem-title-background-hover-widest:			$grey-color-light;
 
 // The background for the title of the sub menu item when the page it links to is currently displayed.
 // CSS property: background
 //
-$vmenu-subitem-title-background-selected-narrow:	$grey-color-light;
-$vmenu-subitem-title-background-selected-medium:	$grey-color-light;
-$vmenu-subitem-title-background-selected-wide:		$grey-color-light;
+$vmenu-subitem-title-background-selected-narrow:		$grey-color-light;
+$vmenu-subitem-title-background-selected-medium:		$grey-color-light;
+$vmenu-subitem-title-background-selected-widest:		$grey-color-light;
 
 // The font for the sub menu item
 // CSS property: font
 //
-$vmenu-subsubitem-font-narrow:						$small-1-font-size $theme-font-family;
-$vmenu-subsubitem-font-medium:						$small-1-font-size $theme-font-family;
-$vmenu-subsubitem-font-wide:						$small-1-font-size $theme-font-family;
+$vmenu-subsubitem-font-narrow:							$small-1-font-size $theme-font-family;
+$vmenu-subsubitem-font-medium:							$small-1-font-size $theme-font-family;
+$vmenu-subsubitem-font-widest:							$small-1-font-size $theme-font-family;
 
 // The width of the disclosure area in front of the sub sub menu item title
 // Note: There can be no disclosure symbol in a subsubitem, hence this has the function of an indent.
@@ -1066,63 +1066,63 @@ $vmenu-subsubitem-font-wide:						$small-1-font-size $theme-font-family;
 //
 $vmenu-subsubitem-disclosure-area-width-narrow:			20%;
 $vmenu-subsubitem-disclosure-area-width-medium:			2em;
-$vmenu-subsubitem-disclosure-area-width-wide:			2em;
+$vmenu-subsubitem-disclosure-area-width-widest:			2em;
 
 // There can be a separator between the disclosure symbol and the menu title
 // CSS property: border-right
 //
 $vmenu-subsubitem-disclosure-area-border-right-narrow:	2px solid white;
 $vmenu-subsubitem-disclosure-area-border-right-medium:	none;
-$vmenu-subsubitem-disclosure-area-border-right-wide: 	none;
+$vmenu-subsubitem-disclosure-area-border-right-widest: 	none;
 
 // Padding for a sub-sub menu item
 // CSS property: padding
 //
-$vmenu-subsubitem-title-padding-narrow:		$vspacing-unit $hspacing-unit;
-$vmenu-subsubitem-title-padding-medium:		$vspacing-unit/8 $hspacing-unit/4;
-$vmenu-subsubitem-title-padding-wide:		$vspacing-unit/8 $hspacing-unit/4;
+$vmenu-subsubitem-title-padding-narrow:					$vspacing-unit $hspacing-unit;
+$vmenu-subsubitem-title-padding-medium:					$vspacing-unit/8 $hspacing-unit/4;
+$vmenu-subsubitem-title-padding-widest:					$vspacing-unit/8 $hspacing-unit/4;
 
 // The border of a sub-sub menu item
 // CSS property: border
 //
-$vmenu-subsubitem-border-narrow:			1px solid white;
-$vmenu-subsubitem-border-medium:			none;
-$vmenu-subsubitem-border-wide:				none;
+$vmenu-subsubitem-border-narrow:						1px solid white;
+$vmenu-subsubitem-border-medium:						none;
+$vmenu-subsubitem-border-widest:						none;
 
 // The text color of the sub-sub menu item title
 // CSS property: color
 //
-$vmenu-subsubitem-color-narrow:				black;
-$vmenu-subsubitem-color-medium:				black;
-$vmenu-subsubitem-color-wide:				black;
+$vmenu-subsubitem-color-narrow:							black;
+$vmenu-subsubitem-color-medium:							black;
+$vmenu-subsubitem-color-widest:							black;
 
 // The text color of the sub-sub menu item title when the cursor hovers over it
 // CSS property: color
 //
-$vmenu-subsubitem-color-hover-narrow:		black;
-$vmenu-subsubitem-color-hover-medium:		black;
-$vmenu-subsubitem-color-hover-wide:			black;
+$vmenu-subsubitem-color-hover-narrow:					black;
+$vmenu-subsubitem-color-hover-medium:					black;
+$vmenu-subsubitem-color-hover-widest:					black;
 
 // The background of the sub-sub menu item layout
 // CSS property: background
 //
-$vmenu-subsubitem-background-narrow:		none;
-$vmenu-subsubitem-background-medium:		none;
-$vmenu-subsubitem-background-wide:			none;
+$vmenu-subsubitem-background-narrow:					none;
+$vmenu-subsubitem-background-medium:					none;
+$vmenu-subsubitem-background-widest:					none;
 
 // The background of the sub-sub menu item when the cursor hovers over it
 // CSS property: background
 //
-$vmenu-subsubitem-background-hover-narrow:	$grey-color-light;
-$vmenu-subsubitem-background-hover-medium:	$grey-color-light;
-$vmenu-subsubitem-background-hover-wide:	$grey-color-light;
+$vmenu-subsubitem-background-hover-narrow:				$grey-color-light;
+$vmenu-subsubitem-background-hover-medium:				$grey-color-light;
+$vmenu-subsubitem-background-hover-widest:				$grey-color-light;
 
 // The background of the sub-sub menu item when the page linked to is currently displayed
 // CSS property: background
 //
-$vmenu-subsubitem-background-selected-narrow:	$grey-color-light;
-$vmenu-subsubitem-background-selected-medium:	$grey-color-light;
-$vmenu-subsubitem-background-selected-wide:		$grey-color-light;
+$vmenu-subsubitem-background-selected-narrow:			$grey-color-light;
+$vmenu-subsubitem-background-selected-medium:			$grey-color-light;
+$vmenu-subsubitem-background-selected-widest:			$grey-color-light;
 
 
 // *********************************************************************************************************************

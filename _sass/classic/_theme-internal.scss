@@ -6,8 +6,8 @@
 
 // Caculate the width ranges where the layout changes take place
 //
-$wide-min-width:				$primary-column-min-width + $secondary-column-width + $tertiary-column-width;
-$medium-max-width:				$wide-min-width - 1;
+$widest-min-width:				$primary-column-min-width + $secondary-column-width + $tertiary-column-width;
+$medium-max-width:				$widest-min-width - 1;
 $medium-min-width:				$primary-column-min-width + $secondary-column-width;
 $narrow-max-width:				$medium-min-width - 1;
 
@@ -24,13 +24,13 @@ $narrow-max-width:				$medium-min-width - 1;
 	}
 }
 
-@mixin wide-layout {
-	@media screen and (min-width: $wide-min-width) {
+@mixin widest-layout {
+	@media screen and (min-width: $widest-min-width) {
 		@content
 	}
 }
 
-@mixin medium-and-wide-layout {
+@mixin medium-and-widest-layout {
 	@media screen and (min-width: $medium-min-width) {
 		@content
 	}

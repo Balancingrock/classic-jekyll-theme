@@ -11,7 +11,7 @@
 	// Set the background
 	@include narrow-layout { background: $secondary-column-background-narrow; }
 	@include medium-layout { background: $secondary-column-background-medium; }
-	@include wide-layout { background: $secondary-column-background-wide; }
+	@include widest-layout { background: $secondary-column-background-widest; }
 }
 
 main {
@@ -22,7 +22,7 @@ main {
 	// Set the background
 	@include narrow-layout { background: $primary-column-background-narrow; }
 	@include medium-layout { background: $primary-column-background-medium; }
-	@include wide-layout { background: $primary-column-background-wide; }
+	@include widest-layout { background: $primary-column-background-widest; }
 }
 
 .tertiary-column {
@@ -33,7 +33,7 @@ main {
 	// Set the background
 	@include narrow-layout { background: $tertiary-column-background-narrow; }
 	@include medium-layout { background: $tertiary-column-background-medium; }
-	@include wide-layout { background: $tertiary-column-background-wide; }
+	@include widest-layout { background: $tertiary-column-background-widest; }
 }
 
 // The layout for the column panel is the main driver for the RWD aspects of this theme.
@@ -79,10 +79,10 @@ main {
 		.tertiary-divider, .secondary-widget-divider, .tertiary-column, .primary-column .vmenu-container { display: none; }
 	}
 	
-	@include wide-layout {
+	@include widest-layout {
 	
 		// Background for the entire panel
-		background: $column-panel-background-wide;
+		background: $column-panel-background-widest;
 	
 		// This layout is row based
 		flex-direction: row;
@@ -107,7 +107,7 @@ main {
 	margin-bottom: $column-divider-bottom-spacing;
 	margin-right: 0;
 	@include medium-layout { border-right: 1px solid $column-divider-color-medium; }
-	@include wide-layout { border-right: 1px solid $column-divider-color-wide; }
+	@include widest-layout { border-right: 1px solid $column-divider-color-widest; }
 	@if $column-divider-display { display: block; } @else { display: none; }
 }
 
