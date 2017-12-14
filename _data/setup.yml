@@ -76,7 +76,8 @@ enable-cookies-policy: yes
 #
 banner-position: top-fixed
 
-# Switches between drop-down menu's en the vertical menu for the subMenuTitles. It does not affect the top menu items with the exception of the 'Categories' item.
+# Switches between drop-down menu's en the vertical-menu for the subMenuTitles. It does not affect the top menu items with the exception of the 'Categories' item.
+# Only works for medium and widest layouts, the narrow layout always used the menubar instead of the vertical-menu. (Which is displayed vertically anyhow)
 # Values: yes | no
 # - yes: The drop down menu is used, the vertical menu is not shown. The Categories menu item is generated when the generate-categories-menu is set to 'yes'.
 # - no: The vertical menu is used, the drop down menu is not shown. The Categories menu is not created, even when the generate-categories-menu is set to 'yes'.
