@@ -75,7 +75,7 @@
 	.title { flex-grow: 1; }
 
 	
-	.item {
+	.subitem {
 			
 		// Make the input checkbox invisible
 		input { display: none }
@@ -87,10 +87,16 @@
 		input:checked ~ {
 		
 			// Show the correct symbol for this state.
-			.sub label .symbol:after { content: $vmenu-subitem-disclosure-symbol-open; }
+			.sub,
+			.sub-hasLink,
+			.sub-isActivePage  {
+				label .symbol:after { content: $vmenu-subitem-disclosure-symbol-open; }
+			}
 			
 			// Show the subsub's
-			.subsub { display: flex }
+			.subsub,
+			.subsub-hasLink,
+			.subsub-isActivePage { display: flex }
 		}
 		
 		.sub-isActivePage {
