@@ -56,8 +56,6 @@
 				// Layout
 				display: flex;
 				height: $menubar-item-height-narrow;
-				.symbol { width: $menubar-item-disclosure-symbol-width-narrow; }
-				.text { width: 100%; } // Takes up remainder of .title width
 				
 				// Use the item color for all elements & Hover effect
 				background: $menubar-item-background-narrow;
@@ -71,7 +69,10 @@
 					display: flex;
 					justify-content: center;
 					align-items: center;
-						
+					
+					// The width of the tap area with the disclosure symbol in it
+					width: $menubar-item-disclosure-symbol-width-narrow;
+					
 					// Load the disclosure symbol for the closed state
 					.code:after { content: $menubar-item-title-symbol-code-closed-narrow; }
 				
@@ -86,6 +87,9 @@
 					justify-content: start;
 					align-items: center;
 					
+					 // Takes up remainder of .title width
+					.text { width: 100%; }
+
 					// Use the item color for all elements & Hover effect
 					p { color: $menubar-item-color-narrow; }
 					&:hover {
@@ -111,23 +115,53 @@
 					background-color: $menubar-subitem-separator-line-color-narrow;
 				}
 					
-				.subitem .title {
-						
-					// Layout (row oriented)
-					display: flex;
-					
-					// Appearance
-					background: $menubar-subitem-background-narrow;
-						
-					.symbol { width: $menubar-item-disclosure-symbol-width-narrow; }
-						
-					.text a {
-						display: flex;
-						justify-content: start;
-						align-items: center;
+				.subitem {
+				
+					// If the checkbox is checked
+					input:checked ~ {
+
+						// Show submenu
+						.sub-dropdown, .sub-dropdown-narrow { display: flex; }
+
+						// When the submenu is open, show the appropriate symbol
+						.title .symbol .code:after { content: $menubar-subitem-title-symbol-code-open-narrow; }
 					}
+
+					.title {
 						
-					p { padding-left: $menubar-subitem-indent-narrow; }
+						// Layout (row oriented)
+						display: flex;
+					
+						// Appearance
+						background: $menubar-subitem-background-narrow;
+						
+						.symbol { width: $menubar-item-disclosure-symbol-width-narrow; }
+						
+						.text a {
+							display: flex;
+							justify-content: start;
+							align-items: center;
+						}
+						
+						p { padding-left: $menubar-subitem-indent-narrow; }
+					}
+					
+					.sub-dropdown,
+					.sub-dropdown-narrow {
+						
+						// Disable by default
+						display: none;
+						
+						// Subitems are stacked vertically
+						flex-direction: column;
+					
+						.subsubitem-separator {
+							display: block;
+							width: 100%;
+							height: $menubar-subitem-separator-line-width-narrow;
+							background-color: $menubar-subitem-separator-line-color-narrow;
+						}
+					}
 				}
 			}
 		}

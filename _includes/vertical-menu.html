@@ -21,7 +21,7 @@
 			
 	Due to the poor support for variables in Liquid we have to resort to some fairly laborious code.
 			
-	First determine all pages that contain sub menu information for the running top menu item. These are collected in "titlePages"
+	First determine all pages that contain sub menu information for the running top menu item. These are collected in "topTitlePages"
 			
 	Then create four lists containing the sub menu title, index, url and link respectively. These lists are all in the same sequence such that entry [n] is applicable to the same sub menu in all lists. (I.e. they are synchronous)
 			
@@ -184,11 +184,12 @@
 				{%- assign sortedSubsubMenuLinks = sortedSubsubMenuLinks | push: subsubMenuLinks[forloop.index0] -%}
 				{%- continue -%}
 			{%- endif -%}
-		{%- endfor -%}
+		{%- endfor %}
 
-		<div class="item">
+		<div class="subitem">
+		
 			<!-- Sub menu item -->
-			{%- if sortedSubsubMenuTitles.size == 0 -%}
+			{% if sortedSubsubMenuTitles.size == 0 -%}
 				{%- if sortedSubMenuLinks[forloop.index0] != false -%}
 					{%- if sortedSubMenuUrls[forloop.index0] == page.url -%}
 						<div class="sub-isActivePage">
@@ -234,7 +235,7 @@
 								<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
 							</div>
 						</div>
-				{%- endif -%}
+					{%- endif -%}
 				{%- else -%}
 					<div class="sub">
 						<label class="disclosure show-hover" for="{{ subMenuTitle | append:'-vmenu-' | append: include.label-modifier }}">

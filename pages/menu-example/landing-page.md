@@ -1,11 +1,9 @@
 ---
 layout: page
 menuInclude: yes
-menuLink: no
-menuTopTitle: More
+menuLink: yes
+menuTopTitle: Menu Example
 menuTopIndex: 10
-menuSubTitle: More of anything
 excerpt: "An excerpt is used as the page description and can be up to 160 characters long..."
 ---
-
-More of anything.
+Select an item from the submenu or sub-submenu.

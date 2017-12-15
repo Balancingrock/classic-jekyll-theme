@@ -12,9 +12,9 @@ This Classic Jekyll Theme is a responsive design featuring three different view 
 
 The secondary and tertiary columns can be disabled.
 
-This theme was build starting from the default Jekyll theme "minima" and incorporates as much from that style as possible. Things like google analytics and discuss have been kept. For European sites, a cookies policy warning has been added.
+This theme was build starting from the default Jekyll theme "minima" and incorporates as much from that style as possible. Things like google analytics and disqus have been kept. For European sites, a cookies policy warning has been added.
 
-In addition there is a navigation menu bar available that shows a home item, a category item, a contact item and any pages that have the appropriate YAML front matter. In the narrow and medium layouts the menu is hidden until the user taps the menu icon.
+In addition there is a navigation menu bar available that shows a home item, a category item, a contact item and any pages that have the appropriate YAML front matter. In the narrow layout the menu is hidden until the user taps the menu icon.
 
 The category menu allows a drop-down of category-pages for designer selected categories. The page menus contain a drop-down of sub-pages that relate to the menu item via their YAML front matter.
 

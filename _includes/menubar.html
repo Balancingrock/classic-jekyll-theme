@@ -128,7 +128,7 @@ Builds a menubar for use in the banner-area.
 					{%- continue -%}
 				{%- endif -%}
 			{%- endfor -%}
-		
+
 		{%- endif -%}
 		
 		<div class="item-separator"><p><!-- empty but necessary --></p></div>
@@ -188,38 +188,186 @@ Builds a menubar for use in the banner-area.
 			</div>
 				
 
-			{%- if jekyll.environment != 'production' and site.data.setup.fast-content-build -%}{%- else -%}
-
+			{%- if jekyll.environment != 'production' and site.data.setup.fast-content-build -%}{%- else %}
+				
 				<!-- Create sub menu items -->
-				{%- if sortedSubMenuTitles.size > 0 -%}
+				{% if sortedSubMenuTitles.size > 0 -%}
 					{%- if site.data.setup.drop-down-menu -%}
 					<div class="dropdown">
 					{%- else -%}
 					<div class="dropdown-narrow">
 					{%- endif -%}
-						{%- for subTitle in sortedSubMenuTitles -%}
+						{%- for subMenuTitle in sortedSubMenuTitles %}
+						
+							<!-- Now build the sub-sub menu tables for {{ subMenuTitle }} -->
+						
+							{% assign subsubMenuTitles = "" | split: "" -%}
+							{%- assign subsubMenuIndexes = "" | split: "" -%}
+							{%- assign subsubMenuUrls = "" | split: "" -%}
+							{%- assign subsubMenuLinks = "" | split: "" -%}
+
+							{%- for ape in titlePages %}
+							<!-- 001 ape.url = {{ ape.url }} -->
+								{%- if ape.menuSubs != nil %}
+							<!-- 002 ape.url = {{ ape.url }} -->
+									{%- for sub in ape.menuSubs -%}
+										{%- if sub.title == subMenuTitle %}
+							<!-- 003 sub.title = {{ sub.title }} -->
+											{%- if sub.sub != nil %}
+							<!-- 004 sub.sub not nil -->
+												{%- for subsub in sub.sub %}
+							<!-- 005 subsub.title = {{ subsub.title }} -->
+													{%- assign subsubMenuTitles = subsubMenuTitles | push: subsub.title -%}
+													{%- if subsub.index != nil -%}
+														{%- assign subsubMenuIndexes = subsubMenuIndexes | push: subsub.index -%}
+													{%- else -%}
+														{%- assign subsubMenuIndexes = subsubMenuIndexes | push: -1 -%}
+													{%- endif -%}
+													{%- if subsub.url != nil -%}
+														{%- if subsub.anchorId != nil -%}
+															{%- assign urlWithAnchorId = subsub.url | append: '#' | append: subsub.anchorId -%}
+														{%- else -%}
+															{%- assign urlWithAnchorId = subsub.url -%}
+														{%- endif -%}
+													{%- else -%}
+														{%- if subsub.anchorId != nil -%}
+															{%- assign urlWithAnchorId = ape.url | append: '#' | append: subsub.anchorId -%}
+														{%- else -%}
+															{%- assign urlWithAnchorId = ape.url -%}
+														{%- endif -%}
+													{%- endif -%}
+													{%- assign subsubMenuUrls = subsubMenuUrls | push: urlWithAnchorId -%}
+													{%- if subsub.link != nil -%}
+														{%- assign subsubMenuLinks = subsubMenuLinks | push: subsub.link -%}
+													{%- else -%}
+														{%- assign subsubMenuLinks = subsubMenuLinks | push: true -%}
+													{%- endif -%}
+												{%- endfor -%}
+											{%- endif -%}
+										{%- endif -%}
+									{%- endfor -%}
+								{%- endif -%}
+							{%- endfor %}
+
+							<!-- 006 subsubMenuTitles.size = {{ subsubMenuTitles.size }} -->
+							<!-- Sort all 4 the lists based on the index of the subMenu that was read -->
+							{% assign sortedSubsubMenuTitles = "" | split: "" -%}
+							{%- assign sortedSubsubMenuIndexes = subsubMenuIndexes | sort -%}
+							{%- assign sortedSubsubMenuUrls = "" | split: "" -%}
+							{%- assign sortedSubsubMenuLinks = "" | split: "" -%}
+
+							{%- for menuIndex in sortedSubsubMenuIndexes -%}
+								{%- if menuIndex != -1 -%}
+									{%- for aMenuIndex in subsubMenuIndexes -%}
+										{%- if aMenuIndex == menuIndex -%}
+											{%- assign sortedSubsubMenuTitles = sortedSubsubMenuTitles | push: subsubMenuTitles[forloop.index0] -%}
+											{%- assign sortedSubsubMenuUrls = sortedSubsubMenuUrls | push: subsubMenuUrls[forloop.index0] -%}
+											{%- assign sortedSubsubMenuLinks = sortedSubsubMenuLinks | push: subsubMenuLinks[forloop.index0] -%}
+											{%- continue -%}
+										{%- endif -%}
+									{%- endfor -%}
+								{%- endif -%}
+							{%- endfor -%}
+							{%- for aMenuIndex in subsubMenuIndexes -%}
+								{%- if aMenuIndex == -1 -%}
+									{%- assign sortedSubsubMenuTitles = sortedSubsubMenuTitles | push: subsubMenuTitles[forloop.index0] -%}
+									{%- assign sortedSubsubMenuUrls = sortedSubsubMenuUrls | push: subsubMenuUrls[forloop.index0] -%}
+									{%- assign sortedSubsubMenuLinks = sortedSubsubMenuLinks | push: subsubMenuLinks[forloop.index0] -%}
+									{%- continue -%}
+								{%- endif -%}
+							{%- endfor %}
+							<!-- 007 sortedSubsubMenuTitles.size = {{ sortedSubsubMenuTitles.size }} -->
+
+							<!-- Create the sub menu -->
 							<div class="subitem-separator"><p></p></div>
-							{%- if sortedSubMenuLinks[forloop.index0] != false -%}
+							{% if sortedSubMenuLinks[forloop.index0] != false -%}
 								{%- if sortedSubMenuUrls[forloop.index0] == page.url -%}
+								<div class="subitem isActiveSelection">
+								{%- else -%}
+									{%- assign urlFound = false -%}
+									{%- for url in sortedSubSubMenuUrls -%}
+										{%- if url == page.url -%}{%- assign urlFound = true -%}{%- endif -%}
+									{%- endfor -%}
+									{%- if urlFound -%}
+								<div class="subitem isActiveSelection">
+									{%- else -%}
+								<div class="subitem">
+									{%- endif -%}
+								{%- endif -%}
+									<input type="checkbox" id="{{ subMenuTitle | append:'-checkbox'}}">
+									<div class="title">
+										<label class="symbol" for="{{ subMenuTitle | append:'-checkbox'}}">
+											{%- if sortedSubsubMenuTitles.size > 0 -%}
+												<p class="code"><!-- will be filled by disclosure indicator --></p>
+											{%- else -%}
+												<p></p>
+											{%- endif -%}
+										</label>
+										<div class="text">
+											<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
+										</div>
+									</div><!-- title -->
+							{%- else -%}
+								{%- assign urlFound = false -%}
+								{%- for url in sortedSubSubMenuUrls -%}
+									{%- if url == page.url -%}{%- assign urlFound = true -%}{%- endif -%}
+								{%- endfor -%}
+								{%- if urlFound -%}
 									<div class="subitem isActiveSelection">
 								{%- else -%}
 									<div class="subitem">
 								{%- endif -%}
+										<input type="checkbox" id="{{ subMenuTitle | append:'-checkbox'}}">
 										<div class="title">
-											<div class="symbol"><p></p></div>
-											<div class="text">
-												<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subTitle }}</p></a>
-											</div>
-										</div>
-									</div>
-							{%- else -%}
-								<div class="subitem">
-									<div class="title">
-										<div class="symbol"><p></p></div>
-										<div class="text"><p class="paddingAsLink">{{ subTitle }}</p></div>
-									</div>
-								</div>
+											<label class="symbol" for="{{ subMenuTitle | append:'-checkbox'}}">
+												{%- if sortedSubsubMenuTitles.size > 0 -%}
+												<p class="code"><!-- will be filled by disclosure indicator --></p>
+												{%- else -%}
+												<p></p>
+												{%- endif -%}
+											</label>
+											<div class="text"><p class="paddingAsLink">{{ subMenuTitle }}</p></div>
+										</div><!-- title -->
 							{%- endif -%}
+							
+							<!-- sub sub menu item build -->
+							<!-- 008 sortedSubsubMenuTitles.size = {{ sortedSubsubMenuTitles.size }} -->
+
+							{% if sortedSubsubMenuTitles.size > 0 -%}
+								{%- if site.data.setup.drop-down-menu -%}
+										<div class="sub-dropdown">
+								{%- else -%}
+										<div class="sub-dropdown-narrow">
+								{%- endif -%}
+								{%- for subsubMenuTitle in sortedSubsubMenuTitles -%}
+											<div class="subsubitem-separator"><p></p></div>
+							<!-- 009 sortedSubsubMenuLinks[forloop.index0] = {{ sortedSubsubMenuLinks[forloop.index0] }} -->
+										{%- if sortedSubsubMenuLinks[forloop.index0] != false -%}
+							<!-- 010 sortedSubsubMenuUrls[forloop.index0] = {{ sortedSubsubMenuUrls[forloop.index0] }} -->
+											{%- if sortedSubsubMenuUrls[forloop.index0] == page.url -%}
+											<div class="subsubitem isActiveSelection">
+											{%- else -%}
+											<div class="subsubitem">
+											{%- endif -%}
+												<div class="title">
+													<div class="symbol"><p></p></div>
+													<div class="text">
+														<a href="{{ sortedSubsubMenuUrls[forloop.index0] }}"><p>{{ subsubMenuTitle }}</p></a>
+													</div>
+												</div><!-- title -->
+										{%- else -%}
+											<div class="subsubitem">
+												<div class="title">
+													<div class="symbol"><p></p></div>
+													<div class="text"><p class="paddingAsLink">{{ subsubMenuTitle }}</p></div>
+												</div><!-- title -->
+										{%- endif -%}
+											</div><!-- subsubitem -->
+								{%- endfor -%}
+									</div><!-- sub-dropdown -->
+							{%- endif -%}
+							
+							</div><!-- subitem -->
 						{%- endfor -%}
 					</div>			
 				{%- endif -%}

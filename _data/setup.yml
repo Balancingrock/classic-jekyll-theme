@@ -86,7 +86,7 @@ banner-position: top-fixed
 # Note 2: This setting can affect the use-separate-navbanner setting.
 # Note 3: When the drop-down menus are not used, any items in the menubar without a linked page will become useless.
 #
-drop-down-menu: yes 
+drop-down-menu: no 
 
 # Controls the generation of the categories menu entry in the menu bar if the drop-down-menu option is set to 'yes'. Has no impact on the categories widget.
 # Values: yes | no

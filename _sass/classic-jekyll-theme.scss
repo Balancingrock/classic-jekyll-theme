@@ -607,11 +607,17 @@ $menubar-item-separator-line-color-narrow:			$menubar-background-narrow;
 $menubar-item-padding-medium:						$vspacing-unit/4 $hspacing-unit;
 $menubar-item-padding-widest:						$vspacing-unit/4 $hspacing-unit;
 
-// The disclosure symbol definitions for the narrow vertical menubar.
+// The disclosure symbol definitions for the narrow vertical menubar at the item level.
 // Written to a <p> with the CSS :after selector.
 //
 $menubar-item-title-symbol-code-closed-narrow:		'\021E8';
 $menubar-item-title-symbol-code-open-narrow:		'\021E9';
+
+// The disclosure symbol definitions for the narrow vertical menubar at the sub-item level.
+// Written to a <p> with the CSS :after selector.
+//
+$menubar-subitem-title-symbol-code-closed-narrow:	'\021E8';
+$menubar-subitem-title-symbol-code-open-narrow:		'\021E9';
 
 // The width of the disclosure area in the narrow vertical menubar.
 // CSS property: width
