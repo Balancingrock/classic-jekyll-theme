@@ -1,13 +1,16 @@
+
+<!-- include subscribe.html -->
 {%- comment -%}<!--
 
 Usage:
 
 Configure the text for the header message in "_data/text-for.yml" for the item `tSubscribe`.
 
--->{%- endcomment -%}
+-->{%- endcomment %}
 <div>
 	{%- assign subscribe = 'Subscribe' -%}
-	{%- if site.data.text-for.tSubscribe -%}{%- assign subscribe = site.data.text-for.tSubscribe -%}{%- endif -%}
+	{%- if site.data.text-for.tSubscribe -%}{%- assign subscribe = site.data.text-for.tSubscribe -%}{%- endif %}
 	<h1>{{ subscribe }}:</h1>
 	<p class="rss-subscribe"><a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
 </div>
+<!-- end of include subscribe.html -->

@@ -1,3 +1,5 @@
+
+<!-- include cblock-row.html -->
 {% comment %}<!--
 
 Layout of a single 'cblock'.
@@ -7,10 +9,10 @@ Parameters:
 	cblocks: A sequence of cblock's that must be displayed in a row.
 
 -->{%- endcomment -%}
-
 <h2 class="cblock-row-title">{{ include.title }}</h2>
 <div class="cblock-row">
 {%- for cblock in include.cblocks -%}
 	{%- include cblock.html name=cblock.name image=cblock.image description=cblock.description link=cblock.link -%}
-{%- endfor -%}
+{%- endfor %}
 </div>
+<!-- end of include cblock-row.html -->

@@ -1,4 +1,8 @@
-<!-- This widget divider will only show up when the tertiary column content is merged into the secondary column-->
-<div class="tertiary-widget-divider"></div>
 
-<div class="widget">{%- include widgets/browser-info.html -%}</div>
+<!-- include tertiary-column.html -->
+{%- comment -%}<!-- This widget divider will only show up when the tertiary column content is merged into the secondary column-->{%- endcomment %}
+<div class="tertiary-widget-divider"></div>
+<div class="widget">
+{% include widgets/browser-info.html %}
+</div>
+<!-- end of include tertiary-column.html -->

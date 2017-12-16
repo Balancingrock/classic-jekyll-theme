@@ -1,4 +1,6 @@
-{% comment %}<!--
+
+<!-- include disqus-comments.html -->
+{%- comment -%}<!--
 
 Layout of a disqus comment section.
 
@@ -18,8 +20,7 @@ Control:
     {%- assign disqus_url = page.url | prepend: site.url -%}
   {%- elsif site.github.url -%}
     {%- assign disqus_url = page.url | prepend: site.github.url -%}
-  {%- endif -%}
-
+  {%- endif %}
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
@@ -37,4 +38,4 @@ Control:
     })();
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-{%- endif -%}
+{% endif -%}

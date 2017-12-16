@@ -1,3 +1,5 @@
+
+<!-- include older-posts.html -->
 {%- if jekyll.environment != 'production' and site.data.setup.fast-content-build -%}{%- else -%}
 {%- comment -%}<!--
 
@@ -5,24 +7,31 @@ Usage:
 
 Translations can be configure in the _data/text-for.yml file for the items `tOlderPosts` and `tMonths`.
 
--->{%- endcomment -%}
+-->{%- endcomment %}
 <div class="older-posts">
 	{%- assign olderPosts = 'Older Posts' -%}
 	{%- if site.data.text-for.tOlderPosts -%}{%- assign olderPosts = site.data.text-for.tOlderPosts -%}{%- endif -%}
 	{%- assign currentYear = "" -%}
 	{%- assign currentMonth = "" -%}
-	{%- assign yearDetails = 'no' -%}
-	{%- assign monthDetails = 'no' -%}
+	{%- assign yearDetails = false -%}
+	{%- assign monthDetails = false %}
 	<h1>{{ olderPosts }}:</h1>
 	{%- for post in site.posts -%}
 		{%- assign postYear = post.date | date: "%Y" -%}
 		{%- assign postMonth = post.date | date: "%m" -%}
 		{%- if postYear != currentYear -%}
 			{%- assign currentYear = postYear -%}
-			{%- if monthDetails == 'yes' -%}</details>{%- assign monthDetails == 'no' -%}{%- endif -%}
-			{%- if yearDetails == 'yes' -%}</details>{%- assign yearDetails == 'no' -%}{%- endif -%}
-			<details class="year-details"><summary>{{ currentYear }}</summary>
-			{%- assign yearDetails = 'yes' -%}
+			{%- if monthDetails %}
+		</details>
+				{%- assign monthDetails == false -%}
+			{%- endif -%}
+			{%- if yearDetails %}
+	</details>
+				{%- assign yearDetails == false -%}
+			{%- endif %}
+	<details class="year-details">
+		<summary>{{ currentYear }}</summary>
+			{%- assign yearDetails = true -%}
 		{%- endif -%}
 		{%- if postMonth != currentMonth -%}
 			{%- if postMonth == '01' -%}{%- assign monthString = site.data.text-for.tMonths[1] -%}
@@ -39,13 +48,20 @@ Translations can be configure in the _data/text-for.yml file for the items `tOld
 			{%- elsif postMonth == '12' -%}{%- assign monthString = site.data.text-for.tMonths[12] -%}
 			{%- endif -%}
 			{%- assign currentMonth = postMonth -%}
-			{%- if monthDetails == 'yes' -%}</details>{%- assign monthDetails == 'no' -%}{%- endif -%}
-			<details class="month-details"><summary>{{ monthString }}</summary>
-			{%- assign monthDetails = 'yes' -%}
-		{%- endif -%}
-		<p><a href="{{ post.url }}">{{ post.title }}</a></p>
+			{%- if monthDetails %}
+		</details>
+				{%- assign monthDetails == false -%}
+			{%- endif %}
+		<details class="month-details">
+			<summary>{{ monthString }}</summary>
+			{%- assign monthDetails = true -%}
+		{%- endif %}
+			<a href="{{ post.url }}"><p>{{ post.title }}</p></a>
 	{%- endfor -%}
-	{%- if monthDetails == yes -%}</details>{%- assign monthDetails == no -%}{%- endif -%}
-	{%- if yearDetails == yes -%}</details>{%- assign yearDetails == no -%}{%- endif -%}
+	{%- if monthDetails %}
+		</details>{%- assign monthDetails == false -%}{%- endif %}
+	{%- if yearDetails %}
+	</details>{%- assign yearDetails == false -%}{%- endif %}
 </div>
-{%- endif -%}
+{%- endif %}
+<!-- end of include older-posts.html -->

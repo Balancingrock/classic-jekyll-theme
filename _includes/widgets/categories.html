@@ -1,19 +1,21 @@
-{%- if jekyll.environment != 'production' and site.data.setup.fast-content-build -%}{%- else -%}
-<!-- Categories widget -->
+
+<!-- include categories.html -->
+{%- if jekyll.environment != 'production' and site.data.setup.fast-content-build -%}{%- else %}
 <div class="categories">
 	{%- assign categories = 'Categories' -%}
-	{%- if site.data.text-for.tCategories -%}{%- assign categories = site.data.text-for.tCategories -%}{%- endif -%}
+	{%- if site.data.text-for.tCategories -%}{%- assign categories = site.data.text-for.tCategories -%}{%- endif %}
 	<input type="checkbox" id={{ "category-checkbox" | append: include.label-modifier }}>
 	<label for={{ "category-checkbox" | append: include.label-modifier }}><h1>{{ categories }}</h1></label>
 	{%- assign cats = site.pages | where:'layout', 'category-page' | sort:'title' -%}
 	{%- if cats.size > 0 -%}
-		{%- for cat in cats -%}
-			<div class="title"><a href="{{ cat.url }}"><p>{{ cat.title | capitalize }}</p></a></div>
+		{%- for cat in cats %}
+	<div class="title"><a href="{{ cat.url }}"><p>{{ cat.title | capitalize }}</p></a></div>
 		{%- endfor -%}
 	{%- else -%}
 		{%- assign no-categories = 'None' -%}
-		{%- if site.data.text-for.tNoCategories -%}{%- assign no-categories = site.data.text-for.tNoCategories -%}{%- endif -%}
-		<div class="title"><p>{{ no-categories | capitalize }}</p></div>
-	{%- endif -%}
+		{%- if site.data.text-for.tNoCategories -%}{%- assign no-categories = site.data.text-for.tNoCategories -%}{%- endif %}
+	<div class="title"><p>{{ no-categories | capitalize }}</p></div>
+	{%- endif %}
 </div>
-{%- endif -%}
+{%- endif %}
+<!-- end of include categories.html -->
