@@ -21,8 +21,9 @@
 			
 		// Make sure the separator is empty
 		.item-separator:after { content: none; }
+		
+		// Show it as a line across the whle screen
 		.item-separator {
-			//display: block;
 			width: 100%;
 			height: $menubar-item-separator-line-width-narrow;
 			background-color: $menubar-item-separator-line-color-narrow;
@@ -35,16 +36,20 @@
 			display: flex;
 			flex-direction: column;
 			
-			// Make the link areas as big as possible
-			a {	width: 100%; height: 100%; }
+			// Format the link (area)
+			a {
+				// Make the link area as big as possible
+				width: 100%;
+				height: 100%;
 				
-			// Remove link underlining
-			a { text-decoration: none; }
+				// Remove link underlining
+				text-decoration: none;
+			}
 			
-			// If the checkbox is checked
+			// Implement selection changes
 			input:checked ~ {
 
-				// Show submenu
+				// Show submenu when selected
 				.dropdown, .dropdown-narrow { display: flex; }
 
 				// When the submenu is open, show the appropriate symbol
@@ -54,14 +59,17 @@
 			.title {
 				
 				// Layout
-				display: flex;
+				display: flex; // Default = row layout
+				
+				// Set the height
 				height: $menubar-item-height-narrow;
 				
-				// Use the item color for all elements & Hover effect
+				// Use the item color for all elements
 				background: $menubar-item-background-narrow;
-				&:hover {
-					background: $menubar-item-background-hover-narrow;
-				}
+				&:hover { background: $menubar-item-background-hover-narrow; }
+
+				// Create the hover effect
+				&:hover { background: $menubar-item-background-hover-narrow; }
 
 				.symbol {
 
@@ -90,15 +98,14 @@
 					 // Takes up remainder of .title width
 					.text { width: 100%; }
 
-					// Use the item color for all elements & Hover effect
+					// Use the item color for all elements
 					p { color: $menubar-item-color-narrow; }
-					&:hover {
-						p { color: $menubar-item-hover-color-narrow; }
-					}
-
+					
+					// Hover effect
+					&:hover { p { color: $menubar-item-hover-color-narrow; } }
 				}
 			}
-		
+
 			.dropdown,
 			.dropdown-narrow {
 				
@@ -107,7 +114,7 @@
 				
 				// Subitems are stacked vertically
 				flex-direction: column;
-					
+				
 				.subitem-separator {
 					display: block;
 					width: 100%;
@@ -134,7 +141,12 @@
 					
 						// Appearance
 						background: $menubar-subitem-background-narrow;
+						&:hover { background: $menubar-subitem-background-hover-narrow; }
 						
+						// Height
+						height: $menubar-subitem-height-narrow;
+						
+						// The disclosure symbol
 						.symbol { width: $menubar-item-disclosure-symbol-width-narrow; }
 						
 						.text a {
@@ -158,8 +170,29 @@
 						.subsubitem-separator {
 							display: block;
 							width: 100%;
-							height: $menubar-subitem-separator-line-width-narrow;
-							background-color: $menubar-subitem-separator-line-color-narrow;
+							height: $menubar-subsubitem-separator-line-width-narrow;
+							background-color: $menubar-subsubitem-separator-line-color-narrow;
+						}
+						
+						.subsubitem .title {
+						
+							// Layout (row oriented)
+							display: flex;
+					
+							// Appearance
+							background: $menubar-subsubitem-background-narrow;
+							&:hover { background: $menubar-subsubitem-background-hover-narrow; }
+							
+							// Height
+							height: $menubar-subsubitem-height-narrow;
+	
+							.text a {
+								display: flex;
+								justify-content: start;
+								align-items: center;
+							}
+						
+							p { padding-left: $menubar-subsubitem-indent-narrow; }
 						}
 					}
 				}
@@ -251,6 +284,7 @@
 			
 		// Make all p's as small as possible
 		p { margin: 0; padding: 0; }
+
 		
 		.item-narrow-only { display: none; }
 		
@@ -263,57 +297,56 @@
 			// Make this the baseline reverence for the dropdown box
 			position: relative;
 			
-			// Hover effect
-			@include medium-layout {
-				p { color: $menubar-item-color-medium; }
-				background: $menubar-item-background-medium;
-				&:hover {
-					p { color: $menubar-item-hover-color-medium; }
-					background: $menubar-item-background-hover-medium;
-				}
-			}
-			@include widest-layout {
-				p { color: $menubar-item-color-widest; }
-				background: $menubar-item-background-widest;
-				&:hover {
-					p { color: $menubar-item-hover-color-widest; }
-					background: $menubar-item-background-hover-widest;
-				}
-			}
-				
-			// Make the entire hightlight block clickable
-			a {	display: block; }
-				
-			// Remove the link underlining
-			a { text-decoration: none; }
+			// Appearances
+			p {
+				// Prevent wrapping of the (sub) menu items
+				white-space: nowrap;
 
-			// Prevent wrapping of the (sub) menu items
-			p { white-space: nowrap; }
+				// Font color
+				@include medium-layout { color: $menubar-item-color-medium; }
+				@include widest-layout { color: $menubar-item-color-widest; }
 			
-			@include medium-layout {
+				// Font
+				@include medium-layout { font: $menubar-item-font-medium; }
+				@include widest-layout { font: $menubar-item-font-widest; }
+			}
+			
+			// Set background
+			@include medium-layout { background: $menubar-item-background-medium; }
+			@include widest-layout { background: $menubar-item-background-widest; }
+
+			// Hover effect
+			&:hover {
+
+				// Display the submenu if the user hovers the mouse over it
+				.dropdown { display: block; }
+			
+				p {
+					// Change font color
+					@include medium-layout { color: $menubar-item-hover-color-medium; }
+					@include widest-layout { color: $menubar-item-hover-color-widest; }
+				}
 				
-				// Sizing of the items
-				a, .paddingAsLink { padding: $menubar-item-padding-medium;}
-					
-				// Font for the item text
-				p { font: $menubar-item-font-medium; }
+				// Change item background
+				@include medium-layout { background: $menubar-item-background-hover-medium; }
+				@include widest-layout { background: $menubar-item-background-hover-widest; }
 			}
-			@include widest-layout {
-
-				// Sizing of the items
-				a, .paddingAsLink { padding: $menubar-item-padding-widest;}
-	
-				// Font for the item text
-				p { font: $menubar-item-font-widest; }
+			
+			a {
+				// Make the entire hightlight block clickable
+				display: block;
+				
+				// Remove the link underlining
+				text-decoration: none;
 			}
 
-			// Display the submenu if the user hovers the mouse over it
-			&:hover .dropdown { display: block; }
-
-			// Display the submenu if the user taps the corresponding menu item
-			//input:checked ~ .dropdown-narrow { display: block; }					
-
-			.title {
+			// Sizing of the items
+			a, .paddingAsLink {
+				@include medium-layout { padding: $menubar-item-padding-medium; }
+				@include widest-layout { padding: $menubar-item-padding-widest; }
+			}
+			
+			.title {		
 				@include medium-layout { height: $menubar-item-height-medium; }
 				@include widest-layout { height: $menubar-item-height-widest; }
 			}
@@ -327,70 +360,150 @@
 				// Don't show the separators
 				.subitem-separator { display: none; }
 					
-				// Position the dropdown below the item.
+				// Position the dropdown box below the item.
 				position: absolute;
 				top: 100%;
-								
+
+				// Make it at least as wide as the parent						
+				min-width: 100%;
+						
 				// Appearances
-				@include medium-layout {
-					margin: $menubar-dropdown-margin-medium;
-					padding: $menubar-dropdown-padding-medium;
-					background: $menubar-dropdown-background-medium;
-					border: $menubar-dropdown-border-medium;
-					box-shadow: $menubar-dropdown-box-shadow-medium;
-				}
-				@include widest-layout {
-					margin: $menubar-dropdown-margin-widest;
-					padding: $menubar-dropdown-padding-widest;
-					background: $menubar-dropdown-background-widest;
-					border: $menubar-dropdown-border-widest;
-					box-shadow: $menubar-dropdown-box-shadow-widest;
-				}
+				@include medium-layout { margin: $menubar-dropdown-margin-medium; }
+				@include widest-layout { margin: $menubar-dropdown-margin-widest; }
+
+				@include medium-layout { padding: $menubar-dropdown-padding-medium; }
+				@include widest-layout { padding: $menubar-dropdown-padding-widest; }
+
+				@include medium-layout { background: $menubar-dropdown-background-medium; }
+				@include widest-layout { background: $menubar-dropdown-background-widest; }
+
+				@include medium-layout { border: $menubar-dropdown-border-medium; }
+				@include widest-layout { border: $menubar-dropdown-border-widest; }
+
+				@include medium-layout { box-shadow: $menubar-dropdown-box-shadow-medium; }
+				@include widest-layout { box-shadow: $menubar-dropdown-box-shadow-widest; }
 
 				.subitem {
-													
-					@include medium-layout {
-						
-						// Hover effect
-						p { color: $menubar-subitem-color-medium; }
-						background: $menubar-subitem-background-medium;
-						&:hover {
-							p { color: $menubar-subitem-hover-color-medium; }
-							background: $menubar-subitem-background-hover-medium;
-						}
+					
+					// To anchor the sub-dropdown
+					position: relative;
+					
+					// Appearances
+					p {
+						@include medium-layout { font: $menubar-subitem-font-medium; }
+						@include widest-layout { font: $menubar-subitem-font-widest; }
 
-						// Sizing of the subitems
-						a, .paddingAsLink { padding: $menubar-subitem-padding-medium; }
-							
-						// Font for subitem text
-						p { font: $menubar-subitem-font-medium; }
+						@include medium-layout { color: $menubar-subitem-color-medium; }
+						@include widest-layout { color: $menubar-subitem-color-widest; }
 					}
-					@include widest-layout {
+					
+					@include medium-layout { background: $menubar-subitem-background-medium; }
+					@include widest-layout { background: $menubar-subitem-background-widest; }
+
+					// Hover effect
+					&:hover {
+
+						// Show the sub-dropdown only on hover
+						.sub-dropdown { display: flex; }
+
+						p {
+							@include medium-layout { color: $menubar-subitem-hover-color-medium; }
+							@include widest-layout { color: $menubar-subitem-hover-color-widest; }
+						}
 						
-						// Hover effect
-						p { color: $menubar-subitem-color-widest; }
-						background: $menubar-subitem-background-widest;
-						&:hover {
-							p { color: $menubar-subitem-hover-color-widest; }
-							background: $menubar-subitem-background-hover-widest;
+						@include medium-layout { background: $menubar-subitem-background-hover-medium; }
+						@include widest-layout { background: $menubar-subitem-background-hover-widest; }
+					}
+											
+					// Sizing of the subitems
+					a, .paddingAsLink {
+						@include medium-layout { padding: $menubar-subitem-padding-medium; }
+						@include widest-layout { padding: $menubar-subitem-padding-widest; }
+					}
+					
+					.sub-dropdown {
+					
+						// Do not display (until hover over the subitem)
+						display: none;
+						
+						// Position it relative to the subitem
+						position: absolute;
+						
+						// Position it adjacent to the subitem
+						top: 0;
+						left: 100%;
+						
+						// Make it at least as wide as the parent						
+						min-width: 100%;
+						
+						// Stack the sub-sub item vertically
+						flex-direction: column;
+						
+						// Formatting the appearance
+						@include medium-layout { background: $menubar-sub-dropdown-background-medium; }
+						@include widest-layout { background: $menubar-sub-dropdown-background-widest; }
+						
+						@include medium-layout { border: $menubar-sub-dropdown-border-medium; }
+						@include widest-layout { border: $menubar-sub-dropdown-border-widest; }
+						
+						@include medium-layout { box-shadow: $menubar-sub-dropdown-box-shadow-medium; }
+						@include widest-layout { box-shadow: $menubar-sub-dropdown-box-shadow-widest; }
+						
+						.subsubitem {
+						
+							// Appearance
+							p {
+								@include medium-layout { font: $menubar-subsubitem-font-medium; }
+								@include widest-layout { font: $menubar-subsubitem-font-widest; }
+
+								@include medium-layout { color: $menubar-subsubitem-color-medium; }
+								@include widest-layout { color: $menubar-subsubitem-color-widest; }
+							}
+							
+							@include medium-layout { background: $menubar-subsubitem-background-medium; }
+							@include widest-layout { background: $menubar-subsubitem-background-widest; }
+
+							// Hover effect
+							&:hover {
+								p {
+									@include medium-layout { color: $menubar-subsubitem-hover-color-medium; }
+									@include widest-layout { color: $menubar-subsubitem-hover-color-widest; }
+								}
+								
+								@include medium-layout { background: $menubar-subsubitem-background-hover-medium; }
+								@include widest-layout { background: $menubar-subsubitem-background-hover-widest; }
+							}
+							
+							// Sizing of the subitems
+							a, .paddingAsLink {
+								@include medium-layout { padding: $menubar-subsubitem-padding-medium; }
+								@include widest-layout { padding: $menubar-subsubitem-padding-widest; }
+							}
 						}
 
-						// Sizing of the subitems
-						a, .paddingAsLink { padding: $menubar-subitem-padding-widest; }
-							
-						// Font for subitem text
-						p { font: $menubar-subitem-font-widest; }
+						// Show selection for pages that match a menu entry
+						// Note that this setting overrides the setting in .subsubitem and hence be placed after it.
+						.isActiveSelection {
+							@include medium-layout { background: $menubar-subsubitem-background-selected-medium; }
+							@include widest-layout { background: $menubar-subsubitem-background-selected-widest; }
+						}
 					}
 				}
 
 				// Show selection for pages that match a menu entry
-				@include medium-layout { .isActiveSelection { background: $menubar-subitem-background-selected-medium; } }
-				@include widest-layout { .isActiveSelection { background: $menubar-subitem-background-selected-widest; } }
+				// Note that this setting overrides the setting in .subitem and hence be placed after it.
+				.isActiveSelection {
+					@include medium-layout { background: $menubar-subitem-background-selected-medium; }
+					@include widest-layout { background: $menubar-subitem-background-selected-widest; }
+				}
 			}
-		}
-			
+		}	
+		
 		// Show selection for pages that match a menu entry
-		@include medium-layout { .isActiveSelection { background: $menubar-item-background-selected-medium; } }
-		@include widest-layout { .isActiveSelection { background: $menubar-item-background-selected-widest; } }
+		// Note that this setting overrides the setting in .item and hence be placed after it.
+		.isActiveSelection {
+			@include medium-layout { background: $menubar-item-background-selected-medium; }
+			@include widest-layout { background: $menubar-item-background-selected-widest; }
+		}
 	}
 }
