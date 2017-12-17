@@ -1,13 +1,13 @@
 // Footer related SCCS
 
 // This is the element between the column panel and the footer.
-.footer-divider {
-	@if $footer-divider-display { display: block; } @else { display: none; }
+.footer-separator {
+	@if $footer-separator-display { display: block; } @else { display: none; }
 	width: 100%;
 	margin: 0;
-	@include narrow-layout { border-bottom: 1px solid $footer-divider-color-narrow; }
-	@include medium-layout { border-bottom: 1px solid $footer-divider-color-medium; }
-	@include widest-layout { border-bottom: 1px solid $footer-divider-color-widest; }
+	@include narrow-layout { border-bottom: 1px solid $footer-separator-color-narrow; }
+	@include medium-layout { border-bottom: 1px solid $footer-separator-color-medium; }
+	@include widest-layout { border-bottom: 1px solid $footer-separator-color-widest; }
 }
 
 .footer-panel {

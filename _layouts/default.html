@@ -88,7 +88,7 @@
 				</div>
 		{%- endif %}
 			</div>
-			<div class="secondary-divider"></div>
+			<div class="secondary-separator"></div>
 	{%- else -%}
 		{%- if tertiary-column == 'present' %}
 			<div class="tertiary-column">
@@ -96,7 +96,7 @@
 			{% include {{ tertiary-column-content }} %}
 				</div>
 			</div>
-			<div class="tertiary-divider"></div>
+			<div class="tertiary-separator"></div>
 		{%- endif -%}			
 	{%- endif %}
 
@@ -118,7 +118,7 @@
 			</div>
 			
 	{%- if secondary-column == 'right' %}
-			<div class="secondary-divider"></div>			
+			<div class="secondary-separator"></div>			
 			<div class="secondary-column">
 				<div class="secondary-column-content">
 		{%- if site.data.setup.drop-down-menu -%}{%- else -%}
@@ -134,7 +134,7 @@
 			</div>
 	{%- else -%}
 	   {%- if tertiary-column == 'present' %}
-			<div class="tertiary-divider"></div>
+			<div class="tertiary-separator"></div>
 			<div class="tertiary-column">
 				<div class="tertiary-column-content">
 			{% include {{ tertiary-column-content }} %}
@@ -144,7 +144,7 @@
 	{%- endif %}
 
 		</div>
-		<div class="footer-divider"></div>
+		<div class="footer-separator"></div>
 		<div class="footer-panel">
 	{% include footer.html %}
 		</div>

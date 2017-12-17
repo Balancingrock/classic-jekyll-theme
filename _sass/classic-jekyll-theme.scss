@@ -816,29 +816,29 @@ $tertiary-column-background-narrow:		none;
 $tertiary-column-background-medium:		none;
 $tertiary-column-background-widest:		none;
 
-// Color for the dividers between the columns
+// Color for the separator between the columns
 // CSS property: border-right (but only the color part)
 //
-$column-divider-color-medium:			lighten($grey-color, 30%);
-$column-divider-color-widest:			lighten($grey-color, 30%);
+$column-separator-color-medium:			lighten($grey-color, 30%);
+$column-separator-color-widest:			lighten($grey-color, 30%);
 
-// Enable/disable display of the column dividers
+// Enable/disable display of the column separator
 //
 // Values: true | false
 //
-$column-divider-display:				true;
+$column-separator-display:				true;
 
-// Set the space between the top of the divider and the menubar-bottom-separator.
-// The background for the divider is the background of the column panel.
+// Set the space between the top of the separator and the menubar-bottom-separator.
+// The background for the separator is the background of the column panel.
 // CSS property: margin-top
 // 
-$column-divider-top-spacing:			$vspacing-unit;
+$column-separator-top-spacing:			$vspacing-unit;
 
-// Set the space between the bottom of the divider and the footer divider.
-// The background for the divider is the background of the column panel.
+// Set the space between the bottom of the separator and the footer separator.
+// The background for the separator is the background of the column panel.
 // CSS property: margin-bottom
 //
-$column-divider-bottom-spacing:         $vspacing-unit;
+$column-separator-bottom-spacing:		$vspacing-unit;
 
 
 // *********************************************************************************************************************
@@ -852,18 +852,18 @@ $footer-background-narrow:				none;
 $footer-background-medium:				none;
 $footer-background-widest:				none;
 
-// The footer divider is placed between the columns panel and the footer panel.
+// The footer separator is placed between the columns panel and the footer panel.
 // CSS property: border-color
 //
-$footer-divider-color-narrow:			$theme-color;
-$footer-divider-color-medium:			$theme-color;
-$footer-divider-color-widest:			$theme-color;
+$footer-separator-color-narrow:			$theme-color;
+$footer-separator-color-medium:			$theme-color;
+$footer-separator-color-widest:			$theme-color;
 
-// Enables or disables display of the footer divider
+// Enables or disables display of the footer separator
 //
 // Values: true | false
 //
-$footer-divider-display:				true;
+$footer-separator-display:				true;
 
 // The font to be used for the footer text.
 // CSS property: font
@@ -884,16 +884,16 @@ $footer-color-widest:					black;
 // Widget separators
 // ---------------------------------------------------------------------------------------------------------------------
 //
-// The color for the divider.
+// The color for the separator.
 // CSS property: border-color
 //
-$widget-divider-color:      			$theme-color;
+$widget-separator-color:      			$theme-color;
 
-// Enables or disables display of the widget dividers
+// Enables or disables display of the widget separator
 //
 // Values: true | false
 //
-$widget-divider-display:				true;
+$widget-separator-display:				true;
 
 
 // *********************************************************************************************************************

@@ -12,10 +12,12 @@ Configure the text for the header message in "_data/text-for.yml" for the item `
 -->{%- endcomment %}
 <div>
 	{%- assign recent = 'Recent' -%}
-	{%- if site.data.text-for.tRecent -%}{%- assign recent = site.data.text-for.tRecent -%}{%- endif %}
+	{%- if site.data.text-for.tRecent -%}
+		{%- assign recent = site.data.text-for.tRecent -%}
+	{%- endif %}
 	<h1>{{ recent }}:</h1>
 	{%- for post in site.posts limit: site.data.setup.number-of-recent-posts-in-widget %}
-		<p><a href="{{ post.url }}">{%- if post.date -%}{{ post.date | date: "%F" }}{%- endif -%} {{ post.title }}</a></p>
+		<p><a href="{{ post.url }}">{% if post.date %}{{ post.date | date: "%F" }}{% endif %} {{ post.title }}</a></p>
 	{%- endfor %}
 </div>
 {%- endif %}

@@ -58,7 +58,10 @@ main {
 		.secondary-column { order: 2; }
 
 		// Unused		
-		.tertiary-column, .secondary-divider, .tertiary-divider, .secondary-column .vmenu-container { display: none; }
+		.tertiary-column,
+		.secondary-separator,
+		.tertiary-separator,
+		.secondary-column .vmenu-container { display: none; }
 	}
 	
 	@include medium-layout {
@@ -76,7 +79,10 @@ main {
 		.primary-column { flex: 1 1 auto; width: 1px; } // A width must be specified
 
 		// Unused
-		.tertiary-divider, .secondary-widget-divider, .tertiary-column, .primary-column .vmenu-container { display: none; }
+		.tertiary-separator,
+		.secondary-widget-separator,
+		.tertiary-column,
+		.primary-column .vmenu-container { display: none; }
 	}
 	
 	@include widest-layout {
@@ -95,19 +101,22 @@ main {
 		.primary-column { flex: 1 1 auto; width: 1px; } // A width must be specified
 
 		// Unused
-		.secondary-column .tertiary-column-content, .tertiary-widget-divider, .secondary-widget-divider, .primary-column .vmenu-container { display: none }
+		.secondary-column .tertiary-column-content,
+		.tertiary-widget-separator,
+		.secondary-widget-separator,
+		.primary-column .vmenu-container { display: none }
 	}
 }
 
 
-// The column dividers
-.secondary-divider, .tertiary-divider {
-	margin-top: $column-divider-top-spacing;
+// The column separator
+.secondary-separator, .tertiary-separator {
+	margin-top: $column-separator-top-spacing;
 	margin-left: 0;
-	margin-bottom: $column-divider-bottom-spacing;
+	margin-bottom: $column-separator-bottom-spacing;
 	margin-right: 0;
-	@include medium-layout { border-right: 1px solid $column-divider-color-medium; }
-	@include widest-layout { border-right: 1px solid $column-divider-color-widest; }
-	@if $column-divider-display { display: block; } @else { display: none; }
+	@include medium-layout { border-right: 1px solid $column-separator-color-medium; }
+	@include widest-layout { border-right: 1px solid $column-separator-color-widest; }
+	@if $column-separator-display { display: block; } @else { display: none; }
 }
 
