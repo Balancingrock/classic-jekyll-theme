@@ -41,7 +41,15 @@ If changes are made to this file that increase the height of the banner-area tha
 <div class="banner-area invisible">
 	<div class="banner"></div>
 	<div class="menubar-top-separator"></div>
-	{% include menubar.html %}
+	<div class="menubar">
+		{% include menubar-icon.html %}
+		<div class="item">
+			<div class="title">
+				<div class=symbol><p></p></div>
+				<div class="text"><a><p>Home</p></a></div>
+			</div>
+		</div>
+	</div>
 	<div class="menubar-bottom-separator"></div>
 	<div class="add-to-banner-area-height"></div>
 </div>
