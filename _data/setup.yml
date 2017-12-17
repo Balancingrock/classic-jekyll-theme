@@ -74,7 +74,7 @@ enable-cookies-policy: yes
 #
 # Hint: When the 'top-fixed' is used a background color should be specified for the banner and menu. 
 #
-banner-position: top-fixed
+banner-position: top
 
 # Switches between drop-down menu's en the vertical-menu for the subMenuTitles. It does not affect the top menu items with the exception of the 'Categories' item.
 # Only works for medium and widest layouts, the narrow layout always used the menubar instead of the vertical-menu. (Which is displayed vertically anyhow)

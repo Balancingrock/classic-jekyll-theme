@@ -5,6 +5,7 @@ menuLink: yes
 menuTopTitle: Menu Example
 menuSubs:
 - title: Sub 4
+  index: 4
   link: no
   sub:
   - title: "subsub4-2"

@@ -52,17 +52,19 @@
 
 {%- comment -%}<!-- Determine placing of banner-area -->{%- endcomment -%}
 
-{%- if page.navbanner-position -%}
-	{%- assign navbanner-position = page.navbanner-position -%}
+{%- if page.banner-position -%}
+	{%- assign banner-position = page.banner-position -%}
+{%- elsif page.navbanner-position -%}
+	{%- assign banner-position = page.navbanner-position -%}
 {%- else -%}
-	{%- assign navbanner-position = site.data.setup.navbanner-position -%}
+	{%- assign banner-position = site.data.setup.banner-position -%}
 {%- endif %}
 <html>
 	{% include head.html %}
 	
   	<body class="body-panel">
   	
-	{%- if site.data.setup.banner-position == 'top' or site.data.setup.banner-position == 'top-fixed' -%}
+	{%- if banner-position == 'top' or banner-position == 'top-fixed' -%}
 		{%- if site.data.setup.use-separate-banner-menubar-file %}
   		<div id="navFrame"><script>$("#navFrame").load("/banner-area.html");</script></div>
 		{%- else -%}
@@ -99,7 +101,7 @@
 	{%- endif %}
 
 			<div class="primary-column">
-  	{%- if site.data.setup.banner-position == 'main' -%}
+  	{%- if banner-position == 'main' -%}
 		{%- if site.data.setup.use-separate-banner-menubar-file %}
   				<div id="navFrame"><script>$("#navFrame").load("/banner-area.html");</script></div>
 		{%- else -%}
