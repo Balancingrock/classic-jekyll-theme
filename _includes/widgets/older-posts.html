@@ -59,9 +59,13 @@ Translations can be configure in the _data/text-for.yml file for the items `tOld
 			<a href="{{ post.url }}"><p>{{ post.title }}</p></a>
 	{%- endfor -%}
 	{%- if monthDetails %}
-		</details>{%- assign monthDetails == false -%}{%- endif %}
+		</details>
+		{%- assign monthDetails == false -%}
+	{%- endif %}
 	{%- if yearDetails %}
-	</details>{%- assign yearDetails == false -%}{%- endif %}
+	</details>
+		{%- assign yearDetails == false -%}
+	{%- endif %}
 </div>
 {%- endif %}
 <!-- end of include older-posts.html -->
