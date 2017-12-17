@@ -81,6 +81,14 @@ $add-to-banner-area-height-narrow:		0px;
 $add-to-banner-area-height-medium:		0px;
 $add-to-banner-area-height-widest:		0px;
 
+// See setup.yml: IF the banner-position is set to 'top' or 'main' these values should be zero (0px). If the
+// banner-position is set to 'top-fixed' then this value should be set to the height of the banner-area.
+//
+// Note: This prevents an anchored link from scrolling to a position behind the banner-area.
+//
+$anchor-top-fixed-offset-narrow:		200px;
+$anchor-top-fixed-offset-medium:		200px;
+$anchor-top-fixed-offset-widest:		200px;
 
 // *********************************************************************************************************************
 // Banner

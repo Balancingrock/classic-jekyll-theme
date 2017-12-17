@@ -70,11 +70,14 @@ enable-cookies-policy: yes
 # - top: The navigation banner will be placed above all the columns
 # - main: The navigation banner will be placed inside the main column at the top.
 # - top-fixed: The navigation banner will be placed above all the columns and remain in place when scrolling down.
-# This is the default value, pages may override this in their YAML frontmatter.
+# This is the default value, pages may override this in their YAML frontmatter. But beware the anchor offset!
 #
-# Hint: When the 'top-fixed' is used a background color should be specified for the banner and menu. 
+# $anchor-top-fixed-offset-xxxxx should be zero for 'top' and 'main' and should be set to the banner-area height
+# for 'top-fixed'. (See classic-jekyll-theme.scss)
 #
-banner-position: top
+# Hint 1: When the 'top-fixed' is used a background color should be specified for the banner and menu.
+#
+banner-position: top-fixed
 
 # Switches between drop-down menu's en the vertical-menu for the subMenuTitles. It does not affect the top menu items with the exception of the 'Categories' item.
 # Only works for medium and widest layouts, the narrow layout always used the menubar instead of the vertical-menu. (Which is displayed vertically anyhow)

@@ -531,3 +531,18 @@
 	z-index: -1;
 	position: relative;
 }
+
+// For anchor links when using top-fixed banner positioning
+//
+.anchor::before {
+	display: block;
+	content: " ";
+	@include narrow-layout { margin-top: -$anchor-top-fixed-offset-narrow; }
+	@include narrow-layout { height: $anchor-top-fixed-offset-narrow; }
+	@include medium-layout { margin-top: -$anchor-top-fixed-offset-medium; }
+	@include medium-layout { height: $anchor-top-fixed-offset-medium; }
+	@include widest-layout { margin-top: -$anchor-top-fixed-offset-widest; }
+	@include widest-layout { height: $anchor-top-fixed-offset-widest; }
+	visibility: hidden;
+	pointer-events: none;
+}
