@@ -2,7 +2,7 @@
 layout: page
 menuInclude: yes
 menuLink: yes
-menuTopTitle: Menu Example
+menuTopTitle: Menus
 menuSubs:
 - title: Anchor example
   index: 10
@@ -21,7 +21,7 @@ excerpt: "An excerpt is used as the page description and can be up to 160 charac
 {:.anchor}
 #### Important {#top}
 
-When using the banner position "top-fixed" be sure to set an appropriate value for the $anchor-top-fixed-offset-xxxxx properties in the theme.scss file. This will prevent the target of menu item from appearing below the banner area.
+When using the banner position "top-fixed" (see `_data/_setup.yml`) be sure to set an appropriate value for the $anchor-top-fixed-offset-xxxxx properties in the classic-jekyll-theme.scss file. This will prevent the anchored item from appearing behind the banner area.
 
 Beware that the $anchor-top-fixed-offset-xxxxx should be set to zero when the banner position is NOT set to "top-fixed".
 
@@ -30,7 +30,7 @@ The way to use anchors in markdown is as follows:
     ---
     layout: page
     menuInclude: yes
-    menuTopTitle: Menu Example
+    menuTopTitle: Menus
     menuSubs:
     - title: Anchor example
       index: 10

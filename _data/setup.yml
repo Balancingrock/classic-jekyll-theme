@@ -63,7 +63,7 @@ number-of-recent-posts-in-widget: 10
 # Enables or disables the cookies warning.
 # Values: yes | no
 #
-enable-cookies-policy: yes
+enable-cookies-policy: no
 
 # Controls the position of the banner and menubar.
 # Values: top | main | top-fixed
@@ -77,7 +77,7 @@ enable-cookies-policy: yes
 #
 # Hint 1: When the 'top-fixed' is used a background color should be specified for the banner and menu.
 #
-banner-position: top-fixed
+banner-position: top
 
 # Switches between drop-down menu's en the vertical-menu for the subMenuTitles. It does not affect the top menu items with the exception of the 'Categories' item.
 # Only works for medium and widest layouts, the narrow layout always used the menubar instead of the vertical-menu. (Which is displayed vertically anyhow)
@@ -96,7 +96,7 @@ drop-down-menu: yes
 # - yes: The categories menu entry is generated if -and only if- the drop-down-menu option is set to 'yes'.
 # - no : The categories menu entry is not generated.
 #
-generate-categories-menu: yes
+generate-categories-menu: no
 
 # Create a separate file containing the banner and menubar.
 # Values: yes | no
@@ -105,15 +105,15 @@ generate-categories-menu: yes
 #
 # This option uses javascript. Choosing 'yes' will download the jQuery javascript library from google.
 #
-# Using a separate navbanner file speeds up jekyll compilation a lot. However it also means that the browser has to make two additional fetches: the navbanner file and the jQuery library (the latter from google). This is mitigated by the fact that both files can be cached by the browser.
+# Using a separate banner-area file speeds up jekyll compilation a lot. However it also means that the browser has to make two additional fetches: the navbanner file and the jQuery library (the latter from google). This is mitigated by the fact that both files can be cached by the browser.
 # If another jQuery library has to be used, edit the _includes/head.html file accordingly.
 #
-# Note 1: If this option is set to 'yes', then make sure the file 'navbanner.md' is present (can be found in the theme folder) in the same project folder as the index.md file.
+# Note 1: If this option is set to 'yes', then make sure the file 'banner-area.md' is present (can be found in the theme folder) in the same project folder as the index.md file.
 #
 # Note 2: When a separate navbanner file is used the menubar will not be able to highlight the active page.
 #
-# Hint: Keep this option set to 'yes' during development when jekyll auto regeneration is used during content development. Then switch it back to 'no' for the version that is published.
+# Hint: Keep this option set to 'yes' during content creation or site development (when jekyll auto regeneration is used). Then switch it back to 'no' for the version that is published.
 
-use-separate-banner-menubar-file: yes
+use-separate-banner-menubar-file: no
 
 # End of file

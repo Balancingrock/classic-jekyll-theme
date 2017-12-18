@@ -1,8 +1,7 @@
 ---
 layout: page
 menuInclude: yes
-menuLink: yes
-menuTopTitle: Menu Example
+menuTopTitle: Menus
 menuTopIndex: 10
 excerpt: "An excerpt is used as the page description and can be up to 160 characters long..."
 ---

@@ -39,13 +39,13 @@ After the initiation use a `-` symbol to start a new sub menu item like this:
 
     ---
     ... other stuff
-    menuTopTitle: classic
+    menuTopTitle: Classic
     menuSubs:
     - title: sub-item-1
       index: 1
       link: yes
       url: http://example.com/anypage.html
-      anchor-id: id-of-anchored-html-item
+      anchorId: id-of-anchored-html-item
 	- title: "----"
 	  index: 2
 	  link: no
@@ -85,9 +85,11 @@ By default _yes_ is assumed. This controls the creation of a link from the sub-m
 
 If another page (or even site) must be linked to a sub-menu item, this tag can be used.
 
-#### anchor-id
+#### anchorId
 
 Use this to anchor the sub-menu item to a specific HTML element.
+
+When using the banner position “top-fixed” (see `_data/_setup.yml`) be sure to set an appropriate value for the $anchor-top-fixed-offset-xxxxx properties in the classic-jekyll-theme.scss file. This will prevent the anchored item from appearing behind the banner area. 
 
 ### Sub-sub menu items
 
@@ -95,26 +97,26 @@ Sub-sub-menu items are created in the same way the sub-items are created, but us
 
     ---
     ... other stuff
-    menuTopTitle: classic
+    menuTopTitle: Classic
     menuSubs:
     - title: sub-item-1
       index: 1
       link: yes
       url: http://example.com/anypage.html
-      anchor-id: id-of-anchored-html-item
+      anchorId: id-of-anchored-html-item
 	- title: cattle
 	  index: 2
 	  link: no
 	  sub:
 	  - title: sub-sub-item-1
-	    anchor-id: horses
+	    anchorId: horses
 	  - title: sub-sub-item-2
-	    anchor-id: cows
+	    anchorId: cows
 	- title: sub-item-3
 	---
 
 This will create two sub-sub menu items under the _cattle_ entry.
 
-For the sub-sub menu entries the same tags as for the sub-menus can be used. (`link`, `index`, `url` and `anchor-id`)
+For the sub-sub menu entries the same tags as for the sub-menus can be used. (`link`, `index`, `url` and `anchorId`)
 
 __Attention__: Sub-sub menu entries can only be defined in a single page!
