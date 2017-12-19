@@ -10,7 +10,7 @@ menuSubs:
   index: 5
 excerpt: Setup of Classic Jekyll Theme
 ---
-### Installation
+## Installation
 
 Classic (like any theme) can be installed in different ways:
 
@@ -20,7 +20,7 @@ Classic (like any theme) can be installed in different ways:
 
 You can use any of these, but there are small differences.
 
-#### Gem based
+### Gem based
 
 Gem based is the preferred approach when more than 1 website must be maintained. It installs the theme for use in multiple projects. This is the standard way of installing themes for Jekyll.
 
@@ -28,7 +28,7 @@ Use the command `gem install classic-jekyll-theme` to install the theme. From th
 
 The disadvantage from using this method is that the pages, assets and icon files are not are not available. To add these extra steps must be taken manually. Like -for example- also installing a single-use website using git or zip. 
 
-#### Using Git
+### Using Git
 
 There are two ways to do this, forking on github, or cloning to local.
 
@@ -42,19 +42,19 @@ That is it.
 
 Hint: As you get more experienced, it is possible that you want to change certain aspects of Classic. For that reason we found it advantageous to maintain 1 _master_ clone and make the theme adjustments in that master clone. Other websites -or the website- will then be set up from that master clone, again using the _git clone_ command. In this way changes to Classic and the content of the site are decoupled. This in turn makes it easier to upgrade Classic.
 
-#### Zip
+### Zip
 
 This is very much like using the git clone command as written above.
 
 Download the zip file from github and unpack it where you need it. Then run `bundle exec jekyll serve` in that directory. Point your browser at `localhost:4000` and voila!
 
-### Setup
+## Setup
 
 It is assumed that `root/_config.yml` is already configured correctly.
 
 Classic has many parameters that can be configured. They reside in two files: `root/_data/_setup.yml` and `root/_sass/classic-jekyll-theme.scss`. Both of these files are documented, so please refer to these files for further instructions.
 
-#### Javascript
+### Javascript
 
 Javascript is used for google-analytics, disqus the cookie-warning and when using a separate banner-area file.
 
