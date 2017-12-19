@@ -18,4 +18,4 @@ If the screen is too small, the title will be displayed over the icon.
 
 Also note that there is less space available in the menubar this way, which could lead to overflow into the secondary column and disappearing on the right. In this mode, it is usually best to use "flex-start' for the theme properties "menubar-justify-content-medium/widest".
 
-This illustrates the importance of choosing a proper column with in conjunction with the necessary menubar area.
+This illustrates the importance of choosing a proper column width in conjunction with the necessary menubar area.
