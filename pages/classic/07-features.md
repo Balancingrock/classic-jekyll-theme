@@ -14,10 +14,12 @@ The main features of this theme are as follows:
 
 - RWD design (automatic reordering of the content to fit the width of the device it is viewed on)
 - Integrated menubar generator with drop-down menu (the drop-down aspect can be disabled)
+- Menu items can be three levels deep (Item, subitem, sub-subitem)
 - Automatic vertical menu when disabling the drop-down aspect of the menubar
 - Integrated categories page generator
 - Page by page override of layout and secondary/tertiary column content
 - Extensive configuration of visible elements (font, color, background, padding, size etc)
+- Banner & menubar may be fixed to the top of the browser window
 - Includes several widgets:
 	- Recent posts
 	- Older posts

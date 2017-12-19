@@ -43,6 +43,9 @@ $grey-color-light:				lighten($grey-color, 40%);
 $grey-color-light-light:		lighten($grey-color-light, 40%);
 $grey-color-dark:				darken($grey-color, 25%);
 
+// Since Liquid is not available, it is necessary to redefine the base-url here
+//
+$baseurl:						"/classic";
 
 // *********************************************************************************************************************
 // General color and background settings
@@ -54,7 +57,7 @@ $theme-color:							green;
 // Background color, picture or pattern.
 //
 // See http://www.w3schools.com/cssref/css3_pr_background.asp for a full description.
-// Example: ...-background: url("/assets/img/bckgnd.png") repeat
+// Example: ...-background: url("#{$baseurl}/assets/img/bckgnd.png") repeat
 //
 // The body panel encompasses the entire DOM.
 // CSS property: Background.
@@ -179,12 +182,12 @@ $banner-icon-padding-widest:			0px;
 // The url for the icon to be loaded into the div.
 // CSS property: content
 //
-// Example: $banner-icon-url-...: url("/assets/img/wide-icon.png");
+// Example: $banner-icon-url-...: url("#{$baseurl}/assets/img/wide-icon.png");
 // Set to 'none' if there is no banner icon.
 //
-$banner-icon-url-narrow:				url("/assets/img/cog-wheels-60x43.png");
-$banner-icon-url-medium:				url("/assets/img/cog-wheels-120x68.png");
-$banner-icon-url-widest:				url("/assets/img/cog-wheels-240x135.png");
+$banner-icon-url-narrow:				url("#{$baseurl}/assets/img/cog-wheels-60x43.png");
+$banner-icon-url-medium:				url("#{$baseurl}/assets/img/cog-wheels-120x68.png");
+$banner-icon-url-widest:				url("#{$baseurl}/assets/img/cog-wheels-240x135.png");
 
 // The background for the icon div.
 // CSS property: background
@@ -757,7 +760,7 @@ $menubar-subsubitem-separator-line-color-narrow:	$menubar-background-narrow;
 // CSS property: content
 //
 $menubar-icon-url-medium:				none;
-$menubar-icon-url-widest:				none; //url("/assets/img/test-pattern-55.png");
+$menubar-icon-url-widest:				none; //url("#{$baseurl}/assets/img/test-pattern-55.png");
 
 // Height of the icon
 // CSS property: height

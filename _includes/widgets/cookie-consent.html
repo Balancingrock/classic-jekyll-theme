@@ -14,8 +14,8 @@ Configure the text for the message and the buttons in "_data/text-for.yml" for t
 {%- assign moreInfo = 'More info' -%}
 {%- if site.data.text-for.tMoreInfo -%}{%- assign moreInfo = site.data.text-for.tMoreInfo -%}{%- endif -%}
 <script type="text/javascript">
-    window.cookieconsent_options = {"message":"{{ usesCookies }}","dismiss":"{{ cookieOk }}","learnMore":"{{ moreInfo}}","link":"/pages/cookie-consent/cookie-consent.html","theme":"dark-top"};
+    window.cookieconsent_options = {"message":"{{ usesCookies }}","dismiss":"{{ cookieOk }}","learnMore":"{{ moreInfo}}","link":"/pages/cookie-consent/cookie-consent.html | relative_url ","theme":"dark-top"};
 </script>
 
-<script type="text/javascript" src="/assets/js/cookieconsent.min.js"></script>
+<script type="text/javascript" src="/assets/js/cookieconsent.min.js | relative_url "></script>
 <!-- End Cookie Consent plugin -->

@@ -54,6 +54,8 @@ It is assumed that `root/_config.yml` is already configured correctly.
 
 Classic has many parameters that can be configured. They reside in two files: `root/_data/_setup.yml` and `root/_sass/classic-jekyll-theme.scss`. Both of these files are documented, so please refer to these files for further instructions.
 
+If your site is hosted at a path, the `$baseurl` value must not only be defined in `_config.yml` but also in classic-jekyll-theme.scss. For example if the full url is: http://balancingrock.nl/classic then the $baseurl must be set to _/classic_.
+
 ### Javascript
 
 Javascript is used for google-analytics, disqus the cookie-warning and when using a separate banner-area file.

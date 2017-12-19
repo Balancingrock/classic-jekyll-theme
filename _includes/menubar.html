@@ -160,7 +160,7 @@
 				{%- if ape.menuLink == false %}
 				<p class="paddingAsLink">{{ topTitle }}</p>
 				{%- else %}
-				<a href="{{ ape.url }}"><p>{{ topTitle }}</p></a>
+				<a href="{{ ape.url | relative_url }}"><p>{{ topTitle }}</p></a>
 				{%- endif -%}
 				{%- assign pageFound = true -%}
 				{%- break -%}
@@ -172,7 +172,7 @@
 					{%- if ape.menuLink == false %}
 				<p class="paddingAsLink">{{ topTitle }}</p>
 					{%- else %}
-				<a href="{{ ape.url }}"><p>{{ topTitle }}</p></a>
+				<a href="{{ ape.url | relative_url }}"><p>{{ topTitle }}</p></a>
 					{%- endif -%}
 					{%- assign pageFound = true -%}
 					{%- break -%}
@@ -297,7 +297,7 @@
 						{%- endif %}
 					</label>
 					<div class="text">
-						<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
+						<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
 					</div>
 				</div>
 					{%- else -%}
@@ -342,7 +342,7 @@
 						<div class="title">
 							<div class="symbol"><p></p></div>
 							<div class="text">
-								<a href="{{ sortedSubsubMenuUrls[forloop.index0] }}"><p>{{ subsubMenuTitle }}</p></a>
+								<a href="{{ sortedSubsubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subsubMenuTitle }}</p></a>
 							</div>
 						</div>
 							{%- else %}
@@ -414,7 +414,7 @@
 				<div class="title">
 					<div class="symbol"></div>
 					<div class="text">
-						<a href="{{ cat.url }}"><p>{{ cat.title | capitalize }}</p></a>
+						<a href="{{ cat.url | relative_url }}"><p>{{ cat.title | capitalize }}</p></a>
 					</div>
 				</div>
 			</div>

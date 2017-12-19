@@ -201,14 +201,14 @@
 			<div class="sub-isActivePage">
 				<div class="disclosure"><p></p></div>
 				<div class="title">
-					<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
+					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
 				</div>
 			</div>
 				{%- else %}
 			<div class="sub-hasLink">
 				<div class="disclosure"><p></p></div>
 				<div class="title">
-					<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
+					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
 				</div>
 			</div>
 				{%- endif -%}
@@ -227,7 +227,7 @@
 					<p class="symbol"><!-- will be filled by disclosure indicator --></p>
 				</label>
 				<div class="title">
-					<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
+					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
 				</div>
 			</div>
 				{%- else %}
@@ -236,7 +236,7 @@
 					<p class="symbol"><!-- will be filled by disclosure indicator --></p>
 				</label>
 				<div class="title">
-					<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
+					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
 				</div>
 			</div>
 				{%- endif -%}
@@ -257,14 +257,14 @@
 			<div class="subsub-isActivePage">
 				<div class="disclosure"><p></p></div>
 				<div class="title">
-					<a href="{{ sortedSubsubMenuUrls[forloop.index0] }}"><p>{{ subsubTitle }}</p></a>
+					<a href="{{ sortedSubsubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subsubTitle }}</p></a>
 				</div>
     		</div>
 					{%- else %}
 			<div class="subsub-hasLink">
 				<div class="disclosure"><p></p></div>
 				<div class="title">
-					<a href="{{ sortedSubsubMenuUrls[forloop.index0] }}"><p>{{ subsubTitle }}</p></a>
+					<a href="{{ sortedSubsubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subsubTitle }}</p></a>
 				</div>
     		</div>
 					{% endif -%}

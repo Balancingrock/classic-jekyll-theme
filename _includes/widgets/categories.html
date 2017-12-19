@@ -9,7 +9,7 @@
 	{%- assign cats = site.pages | where:'layout', 'category-page' | sort:'title' -%}
 	{%- if cats.size > 0 -%}
 		{%- for cat in cats %}
-	<div class="title"><a href="{{ cat.url }}"><p>{{ cat.title | capitalize }}</p></a></div>
+	<div class="title"><a href="{{ cat.url | relative_url }}"><p>{{ cat.title | capitalize }}</p></a></div>
 		{%- endfor -%}
 	{%- else -%}
 		{%- assign no-categories = 'None' -%}
