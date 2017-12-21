@@ -76,7 +76,7 @@ Contract support for this (or other Jekyll related work) is available: sales@bal
 
 ## Usage
 
-Please see [http://www.balancingrock.nl/classic](http://www.balancingrock.nl/classic) on how to use the theme and which frontmatter is available.
+Please see [http://balancingrock.github.io/classic-jekyll-theme](http://balancingrock.github.io/classic-jekyll-theme) on how to use the theme and which frontmatter is available.
 
 ## History
 

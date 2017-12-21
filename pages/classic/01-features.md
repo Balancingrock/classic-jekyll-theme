@@ -1,14 +1,15 @@
 ---
 layout: page
-title: Main features
-date: 2017-12-15
-tertiary-column: none
+title: The Classic Jekyll Theme
+date: 2017-12-20
 menuInclude: yes
+menuLink: yes
 menuTopTitle: Classic
+menuTopIndex: 2
 menuSubs:
-- title: Main features
-  index: 7
-excerpt: The main features of the classic-jekyll-theme
+- title: Features
+  index: 1
+excerpt: Landing page for the Classic menu topics with a list of the main features.
 ---
 The main features of this theme are as follows:
 

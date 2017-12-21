@@ -1,17 +1,25 @@
 ---
 layout: page
-title: Speed
-date: 2017-12-15
+title: Compilation Speed
+date: 2017-12-20
 menuInclude: yes
 menuTopTitle: Jekyll
 menuTopIndex: 1
 menuSubs:
-- title: Speed
-  index: 1
+- title: Compilation speed
+  index: 2
+  sub:
+  - title: Jekyll
+    anchorId: jekyll
+    index: 1
+  - title: Classic
+    anchorId: classic
+    index: 2
 tertiary-column: none
 excerpt: Speed hints for Jekyll and Classic
 ---
-## Jekyll Speed Hints
+{:.anchor}
+## Jekyll Speed Hints {#jekyll}
 
 Once the site starts to grow, compilation speed can become an issue. Jekyll is not all that fast, and Classic can slow down things even more.
 
@@ -54,7 +62,8 @@ This helps when writing a new post:
 
 However once the post is ready to be published, it is still necessary to recompile the entire site to ensure that all webpages properly reflect that a new post was added.
 
-## Classic Speed Hints
+{:.anchor}
+## Classic Speed Hints {#classic}
 
 ### Use fast-content-build
 

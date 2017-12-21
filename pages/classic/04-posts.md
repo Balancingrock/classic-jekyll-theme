@@ -1,11 +1,12 @@
 ---
 layout: page
-title: "Posts in classic"
-date: 2017-12-15
+title: Posts in classic
+date: 2017-12-20
 menuInclude: yes
 menuTopTitle: Classic
-menuSubTitle: "About Posts"
-menuSubIndex: 2
+menuSubs:
+- title: Posts
+  index: 4
 excerpt: "An excerpt is used as the page description and can be up to 160 characters long..."
 ---
 Also see: [Pages and Posts](/pages/classic/pages.html).

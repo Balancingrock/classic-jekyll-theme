@@ -7,7 +7,7 @@ menuInclude: yes
 menuTopTitle: Classic
 menuSubs:
 - title: About Menu Items
-  index: 4
+  index: 5
 excerpt: "An excerpt is used as the page description and can be up to 160 characters long..."
 ---
 Menu items are created through YAML front matter, except for the `Home` and the `Categories` items.

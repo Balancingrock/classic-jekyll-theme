@@ -6,7 +6,7 @@ menuInclude: yes
 menuTopTitle: Classic
 menuSubs:
 - title: About Categories
-  index: 3
+  index: 6
 excerpt: "An excerpt is used as the page description and can be up to 160 characters long..."
 ---
 
