@@ -18,7 +18,7 @@ Either way will work just fine.
 
 If this theme is the basis for your own theme, then it seems prudent to use the _clone_ command. The cloned repository can then serve as the _master_ repository for your websites.
 
-If the only purpose is to create a website, then the gem command is probably more comfortable.
+If the only purpose is to create a website, then the gem command will result in less clutter in the website directory.
 
 This installation description presupposes that Jekyll is already installed. If not, please check out the [Jekyll](https://jekyllrb.com) website for more information.
 
@@ -46,7 +46,7 @@ Create a new repository with:
 
 of course the _repository-name_ should be replaced with the name of new local repository.
 
-If the theme will be modified and used in more than one website, it may be advantageous to use the local repository only for theme related work. And use the local repository as the master repository for other website development. 
+If the theme will be modified and used in more than one website, it may be advantageous to use the local repository only for theme related work. And use the local repository as the master repository for other website development. If you know your way around git, we would even advise to create a separate branch for your own development efforts. That makes it more manageable to merge future changes from the classic theme.
 
 #### Setup
 
@@ -66,16 +66,48 @@ It is recommended to explore the files `_config.yml`, `_data/setup.yml` and `_sa
 
 Always check the output of the compilation in the terminal (command line) window! Error messages will appear in that window, not the browser!
 
+And finally: When using _git clone_ you will end up with files in the pages and _posts directory that you don't need (or want!) Simply delete what you cannot use from any of these directories (the `pages` directory can be deleted completely)
+ 
 ### Gem based
 
 Install the theme with the command:
 
     gem install classic-jekyll-theme
 
-## Setup
+Since you will need to copy some files from the gem directory, check where that directory is with:
 
-It is assumed that `root/_config.yml` is already configured correctly.
+    bundle show classic-jekyll-theme
 
-Classic has many parameters that can be configured. They reside in two files: `root/_data/_setup.yml` and `root/_sass/classic-jekyll-theme.scss`. Both of these files are documented, so please refer to these files for further instructions.
+For convenience you can create an alias to the gem directory at the same level as the root of your website directory.
 
-If your site is hosted at a path, the `$baseurl` value must not only be defined in `_config.yml` but also in classic-jekyll-theme.scss. For example if the full url is: http://balancingrock.nl/classic then the $baseurl must be set to _/classic_.
+#### Create a new site & Setup
+
+Create a new website with:
+
+    jekyll new mysite
+
+Change to the new directory `mysite`.
+
+Copy the file `_sass/classic-jekyll-theme.scss` from the gem directory to `mysite/_sass/classic-jekyll-theme.scss`
+Copy the file `_data/setup.yml` from the gem directory to `mysite/_data/setup.yml`
+
+In the file `mysite/_config.yml` change _theme: minima_ to _theme: classic-jekyll-theme_.
+In the file `mysite/Gemfile` change _gem "minima", "~> 2.0"_ to _gem "classic-jekyll-theme"_.
+In the file `mysite/_sass/classic-jekyll-theme.scss` change _$baseurl: "classic-jekyll-theme"_ to _$baseurl: ""_.
+
+Optional:
+- Remove the `mysite/about.md` file.
+- Copy the folder `icons` from the gem directory to `mysite/icons` (to be used as examples, replace them later with icons of your own)
+- Copy the file `banner-area.md` from the gem directory to `mysite/banner-area.md` (needed when using a separate banner file, which is _not_ used by default)
+
+Now you are ready to start the jekyll server:
+
+    bundle exec jekyll serve
+    
+(Note: depending on what was done before, the `Gemfile.lock` may cause problems. If so, simply delete that file. Anytime the _bundle_ command is run it will be recreated when its is not present, and on recreation it will also be filled with the correct data)
+
+It is recommended to explore the files `_config.yml`, `_data/setup.yml` and `_sass/classic-jekyll-theme.scss` before making changes to the theme itself. In general it is save to change any setting in these files and check the results of a modification in the browser. Note that any changes to `_config.yml` require a restart of the server as above. Changes to setup and classic-jekyll-theme can be seen bij saving the file and reloading the browser. Note that some changes may require a few seconds before the compilation is ready.
+
+Always check the output of the compilation in the terminal (command line) window! Error messages will appear in that window, not the browser!
+
+To stop the jekyll server use the key combination: _CTRL-C_. 

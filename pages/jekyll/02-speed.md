@@ -4,7 +4,6 @@ title: Compilation Speed
 date: 2017-12-20
 menuInclude: yes
 menuTopTitle: Jekyll
-menuTopIndex: 1
 menuSubs:
 - title: Compilation speed
   index: 2
