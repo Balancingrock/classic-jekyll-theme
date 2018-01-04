@@ -1,4 +1,4 @@
-{% comment %}
+{%- comment -%}<!--
 
 Usage:
 
@@ -6,16 +6,16 @@ Enable the cookie consent script by setting the "_data/setup.yml" item `enable-c
 
 Configure the text for the message and the buttons in "_data/text-for.yml" for the items `tUsesCookies`, `tCookieOk` and `tMoreInfo`
 
-{% endcomment %}
-{% assign usesCookies = 'This site uses cookies' %}
-{% if site.data.text-for.tUsesCookies %}{% assign usesCookies = site.data.text-for.tUsesCookies %}{% endif %}
-{% assign cookieOk = 'OK' %}
-{% if site.data.text-for.tCookieOk %}{% assign cookieOk = site.data.text-for.tCookieOk %}{% endif %}
-{% assign moreInfo = 'More info' %}
-{% if site.data.text-for.tMoreInfo %}{% assign moreInfo = site.data.text-for.tMoreInfo %}{% endif %}
+-->{%- endcomment -%}
+{%- assign usesCookies = 'This site uses cookies' -%}
+{%- if site.data.text-for.tUsesCookies -%}{%- assign usesCookies = site.data.text-for.tUsesCookies -%}{%- endif -%}
+{%- assign cookieOk = 'OK' -%}
+{%- if site.data.text-for.tCookieOk -%}{%- assign cookieOk = site.data.text-for.tCookieOk -%}{%- endif -%}
+{%- assign moreInfo = 'More info' -%}
+{%- if site.data.text-for.tMoreInfo -%}{%- assign moreInfo = site.data.text-for.tMoreInfo -%}{%- endif -%}
 <script type="text/javascript">
-    window.cookieconsent_options = {"message":"{{ usesCookies }}","dismiss":"{{ cookieOk }}","learnMore":"{{ moreInfo}}","link":"/pages/cookie-consent/cookie-consent.html","theme":"dark-top"};
+    window.cookieconsent_options = {"message":"{{ usesCookies }}","dismiss":"{{ cookieOk }}","learnMore":"{{ moreInfo}}","link":"/pages/cookie-consent/cookie-consent.html | relative_url ","theme":"dark-top"};
 </script>
 
-<script type="text/javascript" src="/assets/js/cookieconsent.min.js"></script>
+<script type="text/javascript" src="/assets/js/cookieconsent.min.js | relative_url "></script>
 <!-- End Cookie Consent plugin -->

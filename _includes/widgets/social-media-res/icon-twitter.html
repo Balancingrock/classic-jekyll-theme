@@ -1,1 +1,7 @@
-<a href="https://twitter.com/{{ include.username }}"><span class="icon icon--twitter">{% include widgets/social-media-res/icon-twitter.svg %}</span><span class="username">{{ include.username }}</span></a>
+
+<!-- include icon-twitter.html -->
+<a href="https://twitter.com/{{ include.username }}">
+	<span class="icon icon--twitter">{%- include widgets/social-media-res/icon-twitter.svg -%}</span>
+	<span class="username">{{ include.username }}</span>
+</a>
+<!-- end of include icon-twitter.html -->

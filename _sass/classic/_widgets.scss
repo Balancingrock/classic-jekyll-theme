@@ -1,0 +1,88 @@
+// Formatting for the widgets. Note that widgets are small.
+.widget {
+	font-size: $small-2-font-size;
+	h1 { font-size: $small-1-font-size; font-weight: bold; }
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure { margin-bottom: 0; }
+}
+
+// The separator between widgets, a thin horizontal line.
+.widget-separator {
+	margin-top: $vspacing-unit / 2;
+	margin-left: 0;
+	margin-bottom: $vspacing-unit / 2;
+	margin-right: 0;
+	border-bottom: 1px solid $widget-separator-color;
+	@if $widget-separator-display { display: block; } @else { display: none; }
+}
+
+// Separator between primary, secondary and tertiary
+.secondary-widget-separator { @extend .widget-separator; }
+.tertiary-widget-separator { @extend .widget-separator; }
+
+// Used to include an iframe that scales with the column width in HD (16:9) format.
+// To be used for the div that wraps an iframe like:
+// <div class="scaling-iframe-wrapper-hd"><iframe>...</iframe></div>
+// Very usefull for video players etc.
+.scaling-iframe-wrapper-hd {
+	position: relative;
+	padding-bottom: 56.25%; // HD ratio is 16:9 => (9/16)*100%= 56.25%
+	padding-top: 30px;
+	overflow: hidden;
+	margin-top: $vspacing-unit;
+	margin-bottom: $vspacing-unit;
+	iframe {
+		// Allows component to extend over the padding area
+		position: absolute;
+		// Let the upper left corner be the upper left corner of the containg element
+		top: 0;
+		left: 0;
+		// Make the iframe as big as its container.
+		width: 100%;
+		height: 100%;
+	}
+}
+
+// Used by the older-posts widget
+.older-posts {
+	h1 {
+		margin-bottom: $vspacing-unit/2;
+	}
+	.year-details {
+		summary {
+			outline: none; // Prevent blue input-active activity border
+		}
+		.month-details {
+			padding-left: $hspacing-unit;
+			p {
+				padding: 0 0 0 (2 * $hspacing-unit);
+				margin: 0 0 0 0;
+				text-indent: -$hspacing-unit;
+			}
+		}
+	}
+}
+
+// For the categories
+.categories {
+	
+	// Do not display the checkbox
+	input { display: none; }
+	
+	p { margin: 0 }
+	
+	a {
+		text-decoration: none;
+		display: block;
+		background: $category-item-background;
+	}
+	a:hover { background: $category-item-background-hover; }
+	
+	label h1 { background: $category-header-background; }
+	label h1:hover { background: $category-header-background-hover; }
+	
+	.title { padding: $category-item-padding; }
+	
+	// Only display the categories when the cat input checkbox is active
+	.title { display: none; }
+	input:checked ~ { .title { display: block; } }
+}

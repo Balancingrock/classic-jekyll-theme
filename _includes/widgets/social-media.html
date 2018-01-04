@@ -1,4 +1,6 @@
-{% comment %}
+
+<!-- include social-media.html -->
+{%- comment -%}<!--
 
 Usage:
 
@@ -6,15 +8,22 @@ Configure the github-username and twitter-username in `_config.yml`.
 
 Configure the text for the header message in "_data/text-for.yml" for the item `tSocialMediaResources`.
 
-{% endcomment %}
+-->{%- endcomment %}
 <div>
-	{% assign message = 'Social Media & Resources' %}
-	{% if site.data.text-for.tSocialMediaResources %}{% assign message = site.data.text-for.tSocialMediaResources %}{% endif %}
+{%- assign message = 'Social Media & Resources' -%}
+{%- if site.data.text-for.tSocialMediaResources -%}
+	{%- assign message = site.data.text-for.tSocialMediaResources -%}
+{%- endif %}
 	<h1>{{ message }}:</h1>
-	{% if site.github_username %}
-		<div>{% include widgets/social-media-res/icon-github.html username=site.github_username %}</div>
-	{% endif %}
-	{% if site.twitter_username %}
-		<div>{% include widgets/social-media-res/icon-twitter.html username=site.twitter_username %}</div>
-	{% endif %}
+{%- if site.github_username %}
+		<div>
+	{% include widgets/social-media-res/icon-github.html username=site.github_username %}
+		</div>
+{%- endif -%}
+{%- if site.twitter_username %}
+		<div>
+	{% include widgets/social-media-res/icon-twitter.html username=site.twitter_username %}
+		</div>
+{%- endif %}
 </div>
+<!-- end of include social-media.html -->

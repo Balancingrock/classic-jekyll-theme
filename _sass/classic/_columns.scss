@@ -1,0 +1,122 @@
+// *********************************************************************************************************************
+// Column panel settings
+// ---------------------------------------------------------------------------------------------------------------------
+//
+
+.secondary-column {
+	
+	// Use the theme insets to keep the content of the column away from the edges.
+	@extend .theme-insets;	
+
+	// Set the background
+	@include narrow-layout { background: $secondary-column-background-narrow; }
+	@include medium-layout { background: $secondary-column-background-medium; }
+	@include widest-layout { background: $secondary-column-background-widest; }
+}
+
+main {
+
+	// Use the theme insets to keep the content of the column away from the edges.
+	@extend .theme-insets;
+
+	// Set the background
+	@include narrow-layout { background: $primary-column-background-narrow; }
+	@include medium-layout { background: $primary-column-background-medium; }
+	@include widest-layout { background: $primary-column-background-widest; }
+}
+
+.tertiary-column {
+	
+	// Use the theme insets to keep the content of the column away from the edges.
+	@extend .theme-insets;
+
+	// Set the background
+	@include narrow-layout { background: $tertiary-column-background-narrow; }
+	@include medium-layout { background: $tertiary-column-background-medium; }
+	@include widest-layout { background: $tertiary-column-background-widest; }
+}
+
+// The layout for the column panel is the main driver for the RWD aspects of this theme.
+//
+.column-panel {
+
+	// Layout
+	display: flex;
+	
+	@include narrow-layout {
+	
+		// Background for the entire panel
+		background: $column-panel-background-narrow;
+	
+		// This layout is column based, i.e. the content is displayed over one another.
+		flex-direction: column;
+				
+		// The primary column must be displayed on top, use the 'order' property to enforce this.
+		.primary-column { order: 1; }
+
+		// The secondary column is put below the primary the second place
+		.secondary-column { order: 2; }
+
+		// Unused		
+		.tertiary-column,
+		.secondary-separator,
+		.tertiary-separator,
+		.secondary-column .vmenu-container { display: none; }
+	}
+	
+	@include medium-layout {
+	
+		// Background for the entire panel
+		background: $column-panel-background-medium;
+		
+		// This layout is row based
+		flex-direction: row;
+		
+		// The secondary column uses a fixed witdh and hosts both the secondary and tertiary column content
+		.secondary-column { width: $secondary-column-width; }
+
+		// The primary column can grow
+		.primary-column { flex: 1 1 auto; width: 1px; } // A width must be specified
+
+		// Unused
+		.tertiary-separator,
+		.secondary-widget-separator,
+		.tertiary-column,
+		.primary-column .vmenu-container { display: none; }
+	}
+	
+	@include widest-layout {
+	
+		// Background for the entire panel
+		background: $column-panel-background-widest;
+	
+		// This layout is row based
+		flex-direction: row;
+		
+		// The secondary and tertiary columns uses a fixed witdh 
+		.secondary-column { width: $secondary-column-width; }
+		.tertiary-column { width: $tertiary-column-width; }
+							
+		// The primary column can grow
+		.primary-column { flex: 1 1 auto; width: 1px; } // A width must be specified
+
+		// Unused
+		.secondary-column .tertiary-column-content,
+		.tertiary-widget-separator,
+		.secondary-widget-separator,
+		.primary-column .vmenu-container { display: none }
+	}
+}
+
+
+// The column separator
+.secondary-separator, .tertiary-separator {
+	margin-top: $column-separator-top-spacing;
+	margin-left: 0;
+	margin-bottom: $column-separator-bottom-spacing;
+	margin-right: 0;
+	@include medium-layout { border-right: 1px solid $column-separator-color-medium; }
+	@include widest-layout { border-right: 1px solid $column-separator-color-widest; }
+	@if $column-separator-display { display: block; } @else { display: none; }
+}
+

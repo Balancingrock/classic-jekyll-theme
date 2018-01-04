@@ -1,50 +1,71 @@
-{% comment %}
+
+<!-- include older-posts.html -->
+{%- if jekyll.environment != 'production' and site.data.setup.fast-content-build -%}{%- else -%}
+{%- comment -%}<!--
 
 Usage:
 
 Translations can be configure in the _data/text-for.yml file for the items `tOlderPosts` and `tMonths`.
 
-{% endcomment %}
+-->{%- endcomment %}
 <div class="older-posts">
-	{% assign olderPosts = 'Older Posts' %}
-	{% if site.data.text-for.tOlderPosts %}{% assign olderPosts = site.data.text-for.tOlderPosts %}{% endif %}
-	{% assign currentYear = "" %}
-	{% assign currentMonth = "" %}
-	{% assign yearDetails = 'no' %}
-	{% assign monthDetails = 'no' %}
+	{%- assign olderPosts = 'Older Posts' -%}
+	{%- if site.data.text-for.tOlderPosts -%}{%- assign olderPosts = site.data.text-for.tOlderPosts -%}{%- endif -%}
+	{%- assign currentYear = "" -%}
+	{%- assign currentMonth = "" -%}
+	{%- assign yearDetails = false -%}
+	{%- assign monthDetails = false %}
 	<h1>{{ olderPosts }}:</h1>
-	{% for post in site.posts %}
-		{% assign postYear = post.date | date: "%Y" %}
-		{% assign postMonth = post.date | date: "%m" %}
-		{% if postYear != currentYear %}
-			{% assign currentYear = postYear %}
-			{% if monthDetails == 'yes' %}</details>{% assign monthDetails == 'no' %}{% endif %}
-			{% if yearDetails == 'yes' %}</details>{% assign yearDetails == 'no' %}{% endif %}
-			<details class="year-details"><summary>{{ currentYear }}</summary>
-			{% assign yearDetails = 'yes' %}
-		{% endif %}
-		{% if postMonth != currentMonth %}
-			{% if postMonth == '01' %}{% assign monthString = site.data.text-for.tMonths[1] %}
-			{% elsif postMonth == '02' %}{% assign monthString = site.data.text-for.tMonths[2] %}
-			{% elsif postMonth == '03' %}{% assign monthString = site.data.text-for.tMonths[3] %}
-			{% elsif postMonth == '04' %}{% assign monthString = site.data.text-for.tMonths[4] %}
-			{% elsif postMonth == '05' %}{% assign monthString = site.data.text-for.tMonths[5] %}
-			{% elsif postMonth == '06' %}{% assign monthString = site.data.text-for.tMonths[6] %}
-			{% elsif postMonth == '07' %}{% assign monthString = site.data.text-for.tMonths[7] %}
-			{% elsif postMonth == '08' %}{% assign monthString = site.data.text-for.tMonths[8] %}
-			{% elsif postMonth == '09' %}{% assign monthString = site.data.text-for.tMonths[9] %}
-			{% elsif postMonth == '10' %}{% assign monthString = site.data.text-for.tMonths[10] %}
-			{% elsif postMonth == '11' %}{% assign monthString = site.data.text-for.tMonths[11] %}
-			{% elsif postMonth == '12' %}{% assign monthString = site.data.text-for.tMonths[12] %}
-			{% endif %}
-			{% assign currentMonth = postMonth %}
-			{% if monthDetails == 'yes' %}</details>{% assign monthDetails == 'no' %}{% endif %}
-			<details class="month-details"><summary>{{ monthString }}</summary>
-			{% assign monthDetails = 'yes' %}
-		{% endif %}
-		<p><a href="{{ post.url }}">{{ post.title }}</a></p>
-	{% endfor %}
-	{% if monthDetails == yes %}</details>{% assign monthDetails == no %}{% endif %}
-	{% if yearDetails == yes %}</details>{% assign yearDetails == no %}{% endif %}
+	{%- for post in site.posts -%}
+		{%- assign postYear = post.date | date: "%Y" -%}
+		{%- assign postMonth = post.date | date: "%m" -%}
+		{%- if postYear != currentYear -%}
+			{%- assign currentYear = postYear -%}
+			{%- if monthDetails %}
+		</details>
+				{%- assign monthDetails == false -%}
+			{%- endif -%}
+			{%- if yearDetails %}
+	</details>
+				{%- assign yearDetails == false -%}
+			{%- endif %}
+	<details class="year-details">
+		<summary>{{ currentYear }}</summary>
+			{%- assign yearDetails = true -%}
+		{%- endif -%}
+		{%- if postMonth != currentMonth -%}
+			{%- if postMonth == '01' -%}{%- assign monthString = site.data.text-for.tMonths[1] -%}
+			{%- elsif postMonth == '02' -%}{%- assign monthString = site.data.text-for.tMonths[2] -%}
+			{%- elsif postMonth == '03' -%}{%- assign monthString = site.data.text-for.tMonths[3] -%}
+			{%- elsif postMonth == '04' -%}{%- assign monthString = site.data.text-for.tMonths[4] -%}
+			{%- elsif postMonth == '05' -%}{%- assign monthString = site.data.text-for.tMonths[5] -%}
+			{%- elsif postMonth == '06' -%}{%- assign monthString = site.data.text-for.tMonths[6] -%}
+			{%- elsif postMonth == '07' -%}{%- assign monthString = site.data.text-for.tMonths[7] -%}
+			{%- elsif postMonth == '08' -%}{%- assign monthString = site.data.text-for.tMonths[8] -%}
+			{%- elsif postMonth == '09' -%}{%- assign monthString = site.data.text-for.tMonths[9] -%}
+			{%- elsif postMonth == '10' -%}{%- assign monthString = site.data.text-for.tMonths[10] -%}
+			{%- elsif postMonth == '11' -%}{%- assign monthString = site.data.text-for.tMonths[11] -%}
+			{%- elsif postMonth == '12' -%}{%- assign monthString = site.data.text-for.tMonths[12] -%}
+			{%- endif -%}
+			{%- assign currentMonth = postMonth -%}
+			{%- if monthDetails %}
+		</details>
+				{%- assign monthDetails == false -%}
+			{%- endif %}
+		<details class="month-details">
+			<summary>{{ monthString }}</summary>
+			{%- assign monthDetails = true -%}
+		{%- endif %}
+			<a href="{{ post.url | relative_url }}"><p>{{ post.title }}</p></a>
+	{%- endfor -%}
+	{%- if monthDetails %}
+		</details>
+		{%- assign monthDetails == false -%}
+	{%- endif %}
+	{%- if yearDetails %}
+	</details>
+		{%- assign yearDetails == false -%}
+	{%- endif %}
 </div>
-
+{%- endif %}
+<!-- end of include older-posts.html -->

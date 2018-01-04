@@ -1,0 +1,15 @@
+// Settings for the body panel in the layout "defaults.html"
+//
+.body-panel {
+
+	// Layout top-to-bottom for the top level
+	// This arranges the banner-area, column-panel, footer-separator and footer-panel (from "default.html")
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	
+	// Setting a background on the entire site
+	@include widest-layout { background: $background-widest; }
+	@include medium-layout { background: $background-medium; }
+	@include narrow-layout { background: $background-narrow; }
+}

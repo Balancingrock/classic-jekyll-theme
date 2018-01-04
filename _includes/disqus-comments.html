@@ -1,0 +1,39 @@
+
+<!-- include disqus-comments.html -->
+{%- comment -%}<!--
+
+Layout of a disqus comment section.
+
+Include this in a layout where the disqus comments must be placed.
+
+Control:
+	page.comments: (yes | no) Turn the comment section on or of.
+	jekyll.environment: The disqus comments are only created for 'production' code.
+	site.url: Is prepended to the page.url to build the required disqus-url that allows disqus to mange the comments.
+	site.github.url: Same as site.url, but for sites hosted on github.
+	site.disqus.shortname: The disqus identifier for the site (user)
+	
+-->{%- endcomment -%}
+
+{%- if page.comments != false and jekyll.environment == "production" -%}
+	{%- if site.url -%}
+		{%- assign disqus_url = page.url | prepend: site.url -%}
+	{%- elsif site.github.url -%}
+		{%- assign disqus_url = page.url | prepend: site.github.url -%}
+	{%- endif %}
+	<div id="disqus_thread"></div>
+	<script>
+		var disqus_config = function () {
+			this.page.url = '{{ disqus_url }}';
+			this.page.identifier = '{{ disqus_url }}';
+		};
+
+		(function() {
+			var d = document, s = d.createElement('script');
+			s.src = 'https://{{ site.disqus.shortname }}.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+		})();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+{% endif -%}

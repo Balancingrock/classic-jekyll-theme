@@ -1,0 +1,31 @@
+// Footer related SCCS
+
+// This is the element between the column panel and the footer.
+.footer-separator {
+	@if $footer-separator-display { display: block; } @else { display: none; }
+	width: 100%;
+	margin: 0;
+	@include narrow-layout { border-bottom: 1px solid $footer-separator-color-narrow; }
+	@include medium-layout { border-bottom: 1px solid $footer-separator-color-medium; }
+	@include widest-layout { border-bottom: 1px solid $footer-separator-color-widest; }
+}
+
+.footer-panel {
+	@extend .theme-insets;
+	text-align: center;	
+	@include narrow-layout {
+		font: $footer-font-narrow;
+		color: $footer-color-narrow;
+		background: $footer-background-narrow;
+	}
+	@include medium-layout {
+		font: $footer-font-medium;
+		color: $footer-color-medium;
+		background: $footer-background-medium;
+	}
+	@include widest-layout {
+		font: $footer-font-widest;
+		color: $footer-color-widest;
+		background: $footer-background-widest;
+	}
+}

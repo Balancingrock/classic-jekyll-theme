@@ -1,78 +1,152 @@
 <!DOCTYPE html>
-{% if page.secondary-column %}{% if page.secondary-column == 'left' %}{% assign secondary-column = 'left' %}{% endif %}{% if page.secondary-column == 'right' %}{% assign secondary-column = 'right' %}{% endif %}{% else %}{% if site.data.setup.secondary-column == 'left' %}{% assign secondary-column = 'left' %}{% endif %}{% if site.data.setup.secondary-column == 'right' %}{% assign secondary-column = 'right' %}{% endif %}{% endif %}
-{% if page.secondary-column-content %}{% assign secondary-column-content = page.secondary-column-content %}{% else %}{% assign secondary-column-content = 'secondary-column.html' %}{% endif %}
-{% if page.tertiary-column %}{% if page.tertiary-column == 'present' %}{% assign tertiary-column = 'present' %}{% endif %}{% else %}{% if site.data.setup.tertiary-column == 'present' %}{% assign tertiary-column = 'present' %}{% endif %}{% endif %}
-{% if page.tertiary-column-content %}{% assign tertiary-column-content = page.tertiary-column-content %}{% else %}{% assign tertiary-column-content = 'tertiary-column.html' %}{% endif %}
-{% if page.navbanner-position %}{% assign navbanner-position = page.navbanner-position %}{% else %}{% assign navbanner-position = site.data.setup.navbanner-position %}{% endif %}
-<html>
 
+{%- comment -%}<!-- Determine placing of secondary column -->{%- endcomment -%}
+
+{%- if page.secondary-column -%}
+	{%- if page.secondary-column == 'left' -%}
+		{%- assign secondary-column = 'left' -%}
+	{%- endif -%}
+	{%- if page.secondary-column == 'right' -%}
+		{%- assign secondary-column = 'right' -%}
+	{%- endif -%}
+{%- else -%}
+	{%- if site.data.setup.secondary-column == 'left' -%}
+		{%- assign secondary-column = 'left' -%}
+	{%- endif -%}
+	{%- if site.data.setup.secondary-column == 'right' -%}
+		{%- assign secondary-column = 'right' -%}
+	{%- endif -%}
+{%- endif -%}
+
+
+{%- comment -%}<!-- Determine content source of secondary column -->{%- endcomment -%}
+
+{%- if page.secondary-column-content -%}
+	{%- assign secondary-column-content = page.secondary-column-content -%}
+{%- else -%}
+	{%- assign secondary-column-content = 'secondary-column.html' -%}
+{%- endif -%}
+
+
+{%- comment -%}<!-- Determine placing of tertiary column -->{%- endcomment -%}
+
+{%- if page.tertiary-column -%}
+	{%- if page.tertiary-column == 'present' -%}
+		{%- assign tertiary-column = 'present' -%}
+	{%- endif -%}
+{%- else -%}
+	{%- if site.data.setup.tertiary-column == 'present' -%}
+		{%- assign tertiary-column = 'present' -%}
+	{%- endif -%}
+{%- endif -%}
+
+
+{%- comment -%}<!-- Determine content source of secondary column -->{%- endcomment -%}
+
+{%- if page.tertiary-column-content -%}
+	{%- assign tertiary-column-content = page.tertiary-column-content -%}
+{%- else -%}
+	{%- assign tertiary-column-content = 'tertiary-column.html' -%}
+{%- endif -%}
+
+
+{%- comment -%}<!-- Determine placing of banner-area -->{%- endcomment -%}
+
+{%- if page.banner-position -%}
+	{%- assign banner-position = page.banner-position -%}
+{%- elsif page.navbanner-position -%}
+	{%- assign banner-position = page.navbanner-position -%}
+{%- else -%}
+	{%- assign banner-position = site.data.setup.banner-position -%}
+{%- endif %}
+<html>
 	{% include head.html %}
 	
   	<body class="body-panel">
   	
-  		{% if navbanner-position == 'top' %}
-  			{% if site.data.setup.use-separate-navbanner %}
-  				<div id="navFrame" class="navbanner-panel"><script>$("#navFrame").load("/navbanner.html");</script></div>
-  			{% else %}
-  				<div class="navbanner-panel">{% include navbanner.html %}</div>
-  			{% endif %}
-  		{% endif %}
+	{%- if banner-position == 'top' or banner-position == 'top-fixed' -%}
+		{%- if site.data.setup.use-separate-banner-menubar-file %}
+  		<div id="navFrame"><script>$("#navFrame").load("/banner-area.html");</script></div>
+		{%- else -%}
+			{%- include banner-area.html -%}
+		{%- endif -%}
+	{%- endif %}
 
 		<div class="column-panel">
 
-			{% if secondary-column == 'left' %}
+	{%- if secondary-column == 'left' %}
 			<div class="secondary-column">
-				<div class="secondary-column-content">{% include {{ secondary-column-content }} %}</div>
-				{% if tertiary-column == 'present' %}	
-					<div class="tertiary-column-content">{% include {{ tertiary-column-content }} %}</div>
-				{% endif %}
-			</div>
-			<div class="secondary-divider"></div>
-			{% else %}
-				{% if tertiary-column == 'present' %}
-				<div class="tertiary-column">
-					<div class="tertiary-column-content">{% include {{ tertiary-column-content }} %}</div>
+				<div class="secondary-column-content">
+		{%- if site.data.setup.drop-down-menu -%}{%- else -%}
+			{%- include vertical-menu.html label-modifier="a" -%}
+		{%- endif %}
+		{% include {{ secondary-column-content }} label-modifier="a" %}
 				</div>
-				<div class="tertiary-divider"></div>
-				{% endif %}			
-			{% endif %}
-
+		{%- if tertiary-column == 'present' %}	
+				<div class="tertiary-column-content">
+			{% include {{ tertiary-column-content }} %}
+				</div>
+		{%- endif %}
+			</div>
+			<div class="secondary-separator"></div>
+	{%- else -%}
+		{%- if tertiary-column == 'present' %}
+			<div class="tertiary-column">
+				<div class="tertiary-column-content">
+			{% include {{ tertiary-column-content }} %}
+				</div>
+			</div>
+			<div class="tertiary-separator"></div>
+		{%- endif -%}			
+	{%- endif %}
 
 			<div class="primary-column">
-			  	{% if navbanner-position == 'main' %}
-  					{% if site.data.setup.use-separate-navbanner %}
-  						<div id="navFrame" class="navbanner-panel"><script>$("#navFrame").load("/navbanner.html");</script></div>
-  					{% else %}
-  						<div class="navbanner-panel">{% include navbanner.html %}</div>
-  					{% endif %}
-  				{% endif %}
-				<main>{{ content }}</main>
+  	{%- if banner-position == 'main' -%}
+		{%- if site.data.setup.use-separate-banner-menubar-file %}
+  				<div id="navFrame"><script>$("#navFrame").load("/banner-area.html");</script></div>
+		{%- else -%}
+			{% include banner-area.html %}
+		{%- endif -%}
+	{%- endif %}
+				<main>
+
+<!-- Start of main content -->
+{{ content }}
+<!-- End of main content -->
+
+				</main>
 			</div>
 			
-			
-			{% if secondary-column == 'right' %}
-			<div class="secondary-divider"></div>			
+	{%- if secondary-column == 'right' %}
+			<div class="secondary-separator"></div>			
 			<div class="secondary-column">
-				<div class="secondary-column-content">{% include {{ secondary-column-content }} %}</div>
-				{% if tertiary-column == 'present' %}	
-					<div class="tertiary-column-content">{% include {{ tertiary-column-content }} %}</div>
-				{% endif %}
-			</div>
-			{% else %}
-			   {% if tertiary-column == 'present' %}
-				<div class="tertiary-divider"></div>
-				<div class="tertiary-column">
-					<div class="tertiary-column-content">{% include {{ tertiary-column-content }} %}</div>
+				<div class="secondary-column-content">
+		{%- if site.data.setup.drop-down-menu -%}{%- else -%}
+			{% include vertical-menu.html label-modifier="c" %}
+		{%- endif -%}
+		{% include {{ secondary-column-content }} label-modifier="b" %}
 				</div>
-				{% endif %}
-			{% endif %}
+		{%- if tertiary-column == 'present' %}	
+				<div class="tertiary-column-content">
+			{%- include {{ tertiary-column-content }} %}
+				</div>
+		{%- endif -%}
+			</div>
+	{%- else -%}
+	   {%- if tertiary-column == 'present' %}
+			<div class="tertiary-separator"></div>
+			<div class="tertiary-column">
+				<div class="tertiary-column-content">
+			{% include {{ tertiary-column-content }} %}
+				</div>
+			</div>
+		{%- endif -%}
+	{%- endif %}
 
 		</div>
-
-		<div class="footer-divider"></div>
-
-		<div class="footer-panel">{% include footer.html %}</div>
-
+		<div class="footer-separator"></div>
+		<div class="footer-panel">
+	{% include footer.html %}
+		</div>
   	</body>
-
 </html>

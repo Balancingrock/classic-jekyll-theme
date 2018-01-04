@@ -1,16 +1,37 @@
-<!-- This widget divider will only show up in the narrow layout -->
-<div class="secondary-widget-divider"></div>
 
-<div class="widget">{% include widgets/recent-posts.html %}</div>
+<!-- include secondary-column.html -->
+{%- comment -%}<!-- This widget separator will only show up in the narrow layout -->{%- endcomment %}
+<div class="secondary-widget-separator"></div>
 
-<div class="widget-divider"></div>
+{%- if site.data.setup.drop-down-menu -%}{%- else %}
+<div class="widget-separator"></div>
+{%- endif %}
 
-<div class="widget">{% include widgets/social-media.html %}</div>
+<div class="widget">
+{% include widgets/recent-posts.html %}
+</div>
 
-<div class="widget-divider"></div>
+<div class="widget-separator"></div>
 
-<div class="widget">{% include widgets/subscribe.html %}</div>
+<div class="widget">
+{% include widgets/social-media.html %}
+</div>
 
-<div class="widget-divider"></div>
+<div class="widget-separator"></div>
 
-<div class="widget">{% include widgets/older-posts.html %}</div>
+<div class="widget">
+{% include widgets/subscribe.html %}
+</div>
+
+<div class="widget-separator"></div>
+
+<div class="widget">
+{% include widgets/older-posts.html %}
+</div>
+
+<div class="widget-separator"></div>
+
+<div class="widget">
+{% include widgets/categories.html label-modifier=include.label-modifier %}
+</div>
+<!-- end of include secondary-column.html -->

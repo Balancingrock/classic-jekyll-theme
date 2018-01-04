@@ -1,0 +1,37 @@
+// *********************************************************************************************************************
+// Internals
+// ---------------------------------------------------------------------------------------------------------------------
+// Do not change these definitions
+//
+
+// Caculate the width ranges where the layout changes take place
+//
+$widest-min-width:				$primary-column-min-width + $secondary-column-width + $tertiary-column-width;
+$medium-max-width:				$widest-min-width - 1;
+$medium-min-width:				$primary-column-min-width + $secondary-column-width;
+$narrow-max-width:				$medium-min-width - 1;
+
+
+@mixin narrow-layout {
+	@media screen and (min-width: 0px) and (max-width: $narrow-max-width) {
+		@content
+	}
+}
+
+@mixin medium-layout {
+	@media screen and (min-width: $medium-min-width) and (max-width: $medium-max-width) {
+		@content
+	}
+}
+
+@mixin widest-layout {
+	@media screen and (min-width: $widest-min-width) {
+		@content
+	}
+}
+
+@mixin medium-and-widest-layout {
+	@media screen and (min-width: $medium-min-width) {
+		@content
+	}
+}

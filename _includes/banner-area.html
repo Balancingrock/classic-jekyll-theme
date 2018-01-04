@@ -1,0 +1,57 @@
+
+<!-- include banner-area.html -->
+{%- comment -%}<!--
+
+Layout of the banner area.
+
+The banner area is complex in the sense that some elements are out of the DOM permanently and some elements are out of the DOM depending on the settings in the site.data.setup file.
+
+The height of the 'banner' class must be specified explicitly in the theme.scss file.
+
+The icon, title and label are placed on top of the banner using relative/absolute positioning.
+
+The conditional part for 'top-fixed' is present to make sure that the content of the column-panel is properly offset from the top of the screen such that no partion of it is positioned behind the banner-area. It has the same classes and structure as the banner-area so that it auto-adjusts for menubar switching (using the banner-menu-symbol).
+
+If changes are made to this file that increase the height of the banner-area that is placed outside the DOM, the HTML code can compensate for the height increase by specifying a height for the add-to-banner-area-height class.
+
+-->{%- endcomment -%}
+
+{%- if site.data.setup.banner-position == 'top-fixed' -%}
+	{%- assign banner-classes = 'banner-area banner-area-outside-dom' -%}
+{%- else -%}
+	{% assign banner-classes = 'banner-area banner-area-in-dom' -%}
+{%- endif %}
+<input type="checkbox" id="banner-menu-symbol">
+<div class="{{ banner-classes }}">
+	<div class="banner"></div>
+	{%- comment -%}<!-- The following elements are permanently outside the DOM -->{%- endcomment %}
+	<div class="icon-container">
+		{% include banner-icon.html %}
+	</div>
+	<div class="title-area-container">
+		{% include banner-title-area.html %}
+	</div>
+	<div class="label-container"><label for="banner-menu-symbol"><p><!-- empty but necessary! --></p></label></div>
+	{%- comment -%}<!-- This is part of the DOM again (unless the banner area is outside the DOM) -->{%- endcomment %}
+	<div class="menubar-top-separator"></div>
+	{% include menubar.html %}
+	<div class="menubar-bottom-separator"></div>
+</div>
+{%- if site.data.setup.banner-position == 'top-fixed' %}
+<div class="banner-area invisible">
+	<div class="banner"></div>
+	<div class="menubar-top-separator"></div>
+	<div class="menubar">
+		{% include menubar-icon.html %}
+		<div class="item">
+			<div class="title">
+				<div class=symbol><p></p></div>
+				<div class="text"><a><p>Home</p></a></div>
+			</div>
+		</div>
+	</div>
+	<div class="menubar-bottom-separator"></div>
+	<div class="add-to-banner-area-height"></div>
+</div>
+{% endif -%}
+<!-- end of include banner-area.html -->

@@ -1,0 +1,85 @@
+// *********************************************************************************************************************
+// Insets
+// ---------------------------------------------------------------------------------------------------------------------
+// Defines the insets used in the columns and the footer-panel. I.e the empty spaces between text and separators.
+//
+.theme-insets {
+	padding-top: $vspacing-unit;
+	padding-right: $hspacing-unit;
+	padding-bottom: $vspacing-unit;
+	padding-left: $hspacing-unit;
+}
+
+
+// *********************************************************************************************************************
+// Overlay
+// ---------------------------------------------------------------------------------------------------------------------
+// Will place an element over its parent and make it the exact same size.
+//
+// The parent must have its css 'position' property set to 'relative'.
+//
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+
+// *********************************************************************************************************************
+// display-flex-...
+// ---------------------------------------------------------------------------------------------------------------------
+// Will switch a display property to 'flex' for the narrow, medium resp wide layout and 'none' for all others.
+//
+// Can be used in custom html code to enable/disable elements.
+//
+.display-flex-narrow {
+	@include narrow-layout { display: flex; }
+	@include medium-layout { display: none; }
+	@include widest-layout { display: none; }
+}
+.display-flex-medium {
+	@include narrow-layout { display: none; }
+	@include medium-layout { display: flex; }
+	@include widest-layout { display: none; }
+}
+.display-flex-widest {
+	@include narrow-layout { display: none; }
+	@include medium-layout { display: none; }
+	@include widest-layout { display: flex; }
+}
+.display-flex-medium-and-wide {
+	@include narrow-layout { display: none; }
+	@include medium-layout { display: flex; }
+	@include widest-layout { display: flex; }
+}
+
+
+// *********************************************************************************************************************
+// display-block-...
+// ---------------------------------------------------------------------------------------------------------------------
+// Will switch a display property to 'block' for the narrow, medium resp wide layout and 'none' for all others.
+//
+// Can be used in custom html code to enable/disable elements.
+//
+.display-block-narrow {
+	@include narrow-layout { display: block; }
+	@include medium-layout { display: none; }
+	@include widest-layout { display: none; }
+}
+.display-block-medium {
+	@include narrow-layout { display: none; }
+	@include medium-layout { display: block; }
+	@include widest-layout { display: none; }
+}
+.display-block-widest {
+	@include narrow-layout { display: none; }
+	@include medium-layout { display: none; }
+	@include widest-layout { display: block; }
+}
+.display-block-medium-and-wide {
+	@include narrow-layout { display: none; }
+	@include medium-layout { display: block; }
+	@include widest-layout { display: block; }
+}

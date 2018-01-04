@@ -1,0 +1,30 @@
+
+<!-- include banner-title-area.html -->
+{%- comment -%}<!--
+
+This file is for customization of the title and subtitle in the banner.
+
+Do not change the name of any of the classes!
+
+If customization is needed, don't put anything in here, but keep the file.
+
+Note that simple title & subtitle can also be assigned through the settings in the classic-jekyll-theme.scss file.
+
+Be aware that this title-area is arranged outside the DOM and as such does not drive the size of the the banner.
+
+To display/not-display and elements use the '.display-flex-...' classes en '.display-block-...' classes. (See _sass/_theme-library.scss for more.
+
+Example: <div class='myclass display-block-narrow'><p>Hello</p></div>
+
+Will display the text "Hello" only when the narrow layout is in use.
+
+-->{%- endcomment %}
+<div class="title-area">
+	<div class="title">
+		<p>{{ site.title }}</p>
+	</div>
+	<div class="subtitle">
+		<p>{{ site.data.setup.subtitle }}</p>
+	</div>
+</div>
+<!-- end of include banner-title-area.html -->
