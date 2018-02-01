@@ -293,7 +293,7 @@
 			<div class="subitem isActiveSelection">
 						{%- else -%}
 							{%- assign urlFound = false -%}
-							{%- for url in sortedSubSubMenuUrls -%}
+							{%- for url in sortedSubsubMenuUrls -%}
 								{%- if url == page.url -%}{%- assign urlFound = true -%}{%- endif -%}
 							{%- endfor -%}
 							{%- if urlFound %}
@@ -317,7 +317,7 @@
 				</div>
 					{%- else -%}
 						{%- assign urlFound = false -%}
-						{%- for url in sortedSubSubMenuUrls -%}
+						{%- for url in sortedSubsubMenuUrls -%}
 							{%- if url == page.url -%}{%- assign urlFound = true -%}{%- endif -%}
 						{%- endfor -%}
 						{%- if urlFound %}
