@@ -218,12 +218,25 @@
 				</div>
 			</div>
 				{%- else %}
+					{%- assign urlFound = false -%}
+					{%- for url in sortedSubsubMenuUrls -%}
+						{%- if url == page.url -%}{%- assign urlFound = true -%}{%- endif -%}
+					{%- endfor -%}
+					{%- if urlFound %}
+			<div class="sub-isActivePage">
+				<div class="disclosure"><p></p></div>
+				<div class="title">
+					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
+				</div>
+			</div>
+					{%- else %}
 			<div class="sub-hasLink">
 				<div class="disclosure"><p></p></div>
 				<div class="title">
 					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
 				</div>
 			</div>
+					{%- endif -%}
 				{%- endif -%}
 			{%- else %}
 			<div class="sub">
@@ -244,6 +257,20 @@
 				</div>
 			</div>
 				{%- else %}
+					{%- assign urlFound = false -%}
+					{%- for url in sortedSubsubMenuUrls -%}
+						{%- if url == page.url -%}{%- assign urlFound = true -%}{%- endif -%}
+					{%- endfor -%}
+					{%- if urlFound %}
+			<div class="sub-isActivePage">
+				<label class="disclosure show-hover" for="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
+					<p class="symbol"><!-- will be filled by disclosure indicator --></p>
+				</label>
+				<div class="title">
+					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
+				</div>
+			</div>
+					{%- else %}
 			<div class="sub-hasLink">
 				<label class="disclosure show-hover" for="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
 					<p class="symbol"><!-- will be filled by disclosure indicator --></p>
@@ -252,6 +279,7 @@
 					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
 				</div>
 			</div>
+					{%- endif -%}
 				{%- endif -%}
 			{%- else %}
 			<div class="sub">
