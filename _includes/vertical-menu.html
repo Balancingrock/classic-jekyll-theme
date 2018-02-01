@@ -245,9 +245,9 @@
 			</div>
 			{%- endif -%}
 		{%- else %}
-			<input type="checkbox" id="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
 			{%- if sortedSubMenuLinks[forloop.index0] != false -%}
 				{%- if sortedSubMenuUrls[forloop.index0] == page.url %}
+			<input type="checkbox" id="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
 			<div class="sub-isActivePage">
 				<label class="disclosure show-hover" for="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
 					<p class="symbol"><!-- will be filled by disclosure indicator --></p>
@@ -262,6 +262,7 @@
 						{%- if url == page.url -%}{%- assign urlFound = true -%}{%- endif -%}
 					{%- endfor -%}
 					{%- if urlFound %}
+			<input type="checkbox" id="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}" checked>
 			<div class="sub-isActivePage">
 				<label class="disclosure show-hover" for="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
 					<p class="symbol"><!-- will be filled by disclosure indicator --></p>
@@ -271,6 +272,7 @@
 				</div>
 			</div>
 					{%- else %}
+			<input type="checkbox" id="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
 			<div class="sub-hasLink">
 				<label class="disclosure show-hover" for="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
 					<p class="symbol"><!-- will be filled by disclosure indicator --></p>
@@ -282,6 +284,7 @@
 					{%- endif -%}
 				{%- endif -%}
 			{%- else %}
+			<input type="checkbox" id="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
 			<div class="sub">
 				<label class="disclosure show-hover" for="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
 					<p class="symbol"><!-- will be filled by disclosure indicator --></p>
