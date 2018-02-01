@@ -141,9 +141,9 @@
 		{%- endif -%}
 
 		{%- comment -%}<!-- Create top menu item -->{%- endcomment %}
-		<input type="checkbox" id="{{ topTitle | append:'-checkbox'}}">
+		<input type="checkbox" id="{{ topTitle | replace:' ','-' | append:'-checkbox'}}">
 		<div class="title">
-			<label class="symbol" for="{{ topTitle | append:'-checkbox'}}">
+			<label class="symbol" for="{{ topTitle | replace:' ','-' | append:'-checkbox'}}">
 		{%- if sortedSubMenuTitles.size > 0 %}
 				<p class="code"><!-- will be filled by disclosure indicator --></p>
 		{%- else %}
@@ -287,9 +287,9 @@
 			<div class="subitem">
 							{%- endif -%}
 						{%- endif %}
-				<input type="checkbox" id="{{ subMenuTitle | append:'-checkbox'}}">
+				<input type="checkbox" id="{{ subMenuTitle | replace:' ','-' | append:'-checkbox'}}">
 				<div class="title">
-					<label class="symbol" for="{{ subMenuTitle | append:'-checkbox'}}">
+					<label class="symbol" for="{{ subMenuTitle | replace:' ','-' | append:'-checkbox'}}">
 						{%- if sortedSubsubMenuTitles.size > 0 %}
 						<p class="code"><!-- will be filled by disclosure indicator --></p>
 						{%- else %}
@@ -310,9 +310,9 @@
 						{%- else %}
 			<div class="subitem">
 						{%- endif %}
-				<input type="checkbox" id="{{ subMenuTitle | append:'-checkbox'}}">
+				<input type="checkbox" id="{{ subMenuTitle | replace:' ','-' | append:'-checkbox'}}">
 				<div class="title">
-					<label class="symbol" for="{{ subMenuTitle | append:'-checkbox'}}">
+					<label class="symbol" for="{{ subMenuTitle | replace:' ','-' | append:'-checkbox'}}">
 						{%- if sortedSubsubMenuTitles.size > 0 %}
 						<p class="code"><!-- will be filled by disclosure indicator --></p>
 						{%- else %}
