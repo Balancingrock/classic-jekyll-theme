@@ -46,7 +46,7 @@
 			
 			-->{%- endcomment -%}
 			
-			{%- assign titlePages = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle -%}
+			{%- assign titlePages = sortedPages | where:'menuTopTitle', topTitle -%}
 			
 			{%- assign subMenuTitles = "" | split: "" -%}
 			{%- assign subMenuIndexes = "" | split: "" -%}
@@ -155,7 +155,7 @@
 		{%- comment -%}<!-- Find page to link to -->{%- endcomment -%}
 					
 		{%- assign pageFound = false -%}
-		{%- for ape in site.pages -%}
+		{%- for ape in sortedPages -%}
 			{%- if ape.menuTopTitle == topTitle and ape.menuSubTitle == nil and ape.menuSubs == nil -%}
 				{%- if ape.menuLink == false %}
 				<p class="paddingAsLink">{{ topTitle }}</p>
@@ -167,7 +167,7 @@
 			{%- endif -%}
 		{%- endfor -%}
 		{%- if pageFound == false -%}
-			{%- for ape in site.pages -%}
+			{%- for ape in sortedPages -%}
 				{%- if ape.menuTopTitle == topTitle and ape.menuTopIndex -%}
 					{%- if ape.menuLink == false %}
 				<p class="paddingAsLink">{{ topTitle }}</p>

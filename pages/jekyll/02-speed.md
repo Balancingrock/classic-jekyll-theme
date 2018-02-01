@@ -45,11 +45,11 @@ Use `keep_files` to simply copy over those files. Use `exclude` to complete igno
 
 ### Incremental build
 
-Jekyll offers an incremental build option.
+Jekyll offers an incremental build option. This option does not seem to work pre Jekyll 3.7
 
     bundle exec jekyll serve --incremental
     
-However in Classic that may not help all that much. Interdependency of the files is such that incremental build don't seem to happen often. Still, we have not found any ill effects. Turning it on may help, or at least it does not seem to hurt.
+Note that the _home_ page is not rebuild when using _incremental_. To see the changes that are made to a post or page, go to that post/page directly.
 
 If you find any strange effects/artefacts, be sure to turn this off first.
 
