@@ -82,6 +82,7 @@ Please see [http://balancingrock.github.io/classic-jekyll-theme](http://balancin
 
 Release 2.0.0 (2017-12-19)
 [Release 2.1.1 (2018-01-22)](http://balancingrock.github.io/classic-jekyll-theme/classic/2017/12/22/bugfix-2-1.html)
+[Release 2.2.0 (2018-02-02)](http://balancingrock.github.io/classic-jekyll-theme/classic/2017/12/22/release-2-2-0.html)
 
 ## Suport & Feedback
 
