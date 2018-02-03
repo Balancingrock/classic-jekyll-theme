@@ -99,6 +99,21 @@
 			.subsub-isActivePage { display: flex }
 		}
 		
+		input:disabled ~ {
+		
+			// Show the correct symbol for this state.
+			.sub,
+			.sub-hasLink,
+			.sub-isActivePage  {
+				label .symbol:after { content: $vmenu-subitem-disclosure-symbol-closed; }
+			}
+			
+			// Show the subsub's
+			.subsub,
+			.subsub-hasLink,
+			.subsub-isActivePage { display: none }
+		}
+
 		.sub-isActivePage {
 			 @include medium-layout { background: $vmenu-subitem-title-background-selected-medium; }
 			 @include widest-layout { background: $vmenu-subitem-title-background-selected-widest; }

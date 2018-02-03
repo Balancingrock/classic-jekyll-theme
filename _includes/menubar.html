@@ -196,8 +196,23 @@
 				{%- else %}
 		<div class="dropdown-narrow">
 				{%- endif -%}
+				
+				{%- assign processedSubMenuTitles = "" | split: "" -%}
+
 				{%- for subMenuTitle in sortedSubMenuTitles %}
-						
+
+					{%- comment -%}<!-- Do not build the same sub menu item twice -->{%- endcomment -%}
+
+					{%- assign subMenuTitleProcessed = false -%}
+					{%- for smt in processedSubMenuTitles -%}
+						{%- if smt == subMenuTitle -%}{% assign subMenuTitleProcessed = true -%}{%- endif -%}
+					{%- endfor -%}
+					{%- if subMenuTitleProcessed -%}
+						{%- continue -%}
+					{%- else -%}
+						{%- assign processedSubMenuTitles = processedSubMenuTitles | push: subMenuTitle -%}
+					{%- endif -%}
+
 					{%- comment -%}<!-- Build the sub-sub tables for {{ subMenuTitle }} -->{%- endcomment -%}
 						
 					{% assign subsubMenuTitles = "" | split: "" -%}
@@ -278,7 +293,7 @@
 			<div class="subitem isActiveSelection">
 						{%- else -%}
 							{%- assign urlFound = false -%}
-							{%- for url in sortedSubSubMenuUrls -%}
+							{%- for url in sortedSubsubMenuUrls -%}
 								{%- if url == page.url -%}{%- assign urlFound = true -%}{%- endif -%}
 							{%- endfor -%}
 							{%- if urlFound %}
@@ -302,7 +317,7 @@
 				</div>
 					{%- else -%}
 						{%- assign urlFound = false -%}
-						{%- for url in sortedSubSubMenuUrls -%}
+						{%- for url in sortedSubsubMenuUrls -%}
 							{%- if url == page.url -%}{%- assign urlFound = true -%}{%- endif -%}
 						{%- endfor -%}
 						{%- if urlFound %}
