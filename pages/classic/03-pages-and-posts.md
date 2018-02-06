@@ -19,3 +19,7 @@ Additional YAML front matter:
 - __secondary-column-content__: By default the content for the secondary column is taken from _\_includes/secondary-column.html_. Assigning it a different file here will override this default for this page/post only. However if the vertical menu is used (i.e. `site.data.setup.drop-down-menu` is set to _no_), it will remain visible at the top of the content of the secondary column.
 - __tertiary-column-content__: By default the content for the tertiary column is taken from _\_includes/tertiary-column.html_. Assigning it a different file here will override this default for this page/post only.
 - __banner-position__: The position of the banner area. Use _top_ to place the banner across all three columns, _main_ to place the banner only above the primary column and _top-fixed_ to have the banner pinned at the top of the browser window. This setting is fro this page only.
+
+## For Pages
+
+- __date__: When present, the page will only be included in the website if this date is earlier than the build time. 

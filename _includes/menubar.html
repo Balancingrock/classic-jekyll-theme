@@ -8,9 +8,19 @@
 	
 	{%- comment -%}<!-- Create a list of top menu item titles -->{%- endcomment -%}
 	
+	{%- assign buildTimeInSecondsSinceEpoch = site.time | date: "%s" | plus: 0 -%}
+	
+	{%- assign pagesForPublishing = "" | split: "" -%}
+	{%- for ape in site.pages -%}
+		{%- assign pageInSecondsSindsEpoch = ape.date | date:"%s" | plus: 0 -%}
+		{%- if pageInSecondsSindsEpoch < buildTimeInSecondsSinceEpoch -%}
+		    {%- assign pagesForPublishing = pagesForPublishing | push: ape -%}
+		{%- endif -%}
+    {%- endfor -%}
+	
 	{%- assign topTitles = "" | split: "" -%}
-	{%- assign sortedPages = site.pages | where:'menuInclude', true | where_exp:'item', 'item.menuTopTitle != nil' | sort: 'menuTopIndex', 'last' -%}
-	{%- for ape in sortedPages -%}{%- assign topTitles = topTitles | push: ape.menuTopTitle -%}{%- endfor -%}
+	{%- assign sortedPages = pagesForPublishing | where:'menuInclude', true | where_exp:'item', 'item.menuTopTitle != nil' | sort: 'menuTopIndex', 'last' -%}
+	{%- for ape in sortedPages -%}{%- assign topTitles = topTitles | push: ape.menuTopTitle -%}{%- endfor -%}	
 	{%- assign topTitles = topTitles | uniq -%}
 
 	{%- comment -%}<!-- Home page -->{%- endcomment -%}
@@ -384,7 +394,7 @@
 	
 	{%- if jekyll.environment != 'production' and site.data.setup.fast-content-build -%}{%- else -%}
 		{%- if site.data.setup.generate-categories-menu -%}
-			{%- assign cats = site.pages | where:'layout', 'category-page' | sort:'title' -%}
+			{%- assign cats = pagesForPublishing | where:'layout', 'category-page' | sort:'title' -%}
 			{%- if cats.size > 0 -%}
 				{%- assign categories = 'Categories' -%}
 				{%- if site.data.text-for.tCategories -%}{%- assign categories = site.data.text-for.tCategories -%}{%- endif %}

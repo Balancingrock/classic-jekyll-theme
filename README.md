@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v2.2.0
+# Classic-Jekyll-Theme v2.3.0
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu (dropdown), (up to) three columns and a footer. The design is fully responsive for three different screen widths: widest, medium and narrow. It is probably best shown in an example:
 

@@ -18,7 +18,17 @@
 
 	{%- comment -%}<!-- Find all pages that belong to the menuTopTitle of this page -->{%- endcomment -%}
 	
-	{%- assign topTitlePages = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle -%}
+	{%- assign buildTimeInSecondsSinceEpoch = site.time | date: "%s" | plus: 0 -%}
+	
+	{%- assign pagesForPublishing = "" | split: "" -%}
+	{%- for ape in site.pages -%}
+		{%- assign pageInSecondsSindsEpoch = ape.date | date:"%s" | plus: 0 -%}
+		{%- if pageInSecondsSindsEpoch < buildTimeInSecondsSinceEpoch -%}
+		    {%- assign pagesForPublishing = pagesForPublishing | push: ape -%}
+		{%- endif -%}
+    {%- endfor -%}
+
+	{%- assign topTitlePages = pagesForPublishing | where:'menuInclude', true | where:'menuTopTitle', topTitle -%}
 			
 	{%- comment -%}<!-- note: these html comment tags are for editor coloring support
 			

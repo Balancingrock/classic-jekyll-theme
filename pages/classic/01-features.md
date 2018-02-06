@@ -21,10 +21,10 @@ The main features of this theme are as follows:
 - Page by page override of layout and secondary/tertiary column content
 - Extensive configuration of visible elements (font, color, background, padding, size etc)
 - Banner & menubar may be fixed to the top of the browser window
+- Release date for pages
 - Includes several widgets:
 	- Recent posts
 	- Older posts
-	- Youtube viewer
 	- Categories
 - Includes cookies warning (can be disabled)
 - Includes disqus & google analytics
