@@ -21,15 +21,15 @@ The static pages were replaced by scripting languages and database backends. Nee
 
 However as good as Wordpress (and others) might be, they do not simplify the underlying structure. They merely hide it from the site-developper. Add plugins to this, and instability of the platform becomes a real possibility. I know, I lost entire websites -more than once!- because of this.
 
-After the initial embrace of dynamic this and dynamic that, many people started to rediscover the old way of creating websites. Static websites are -as it turns out- more than enough for many small sites or blogs! Certainly with the new wave of "comments" providers as disqus.
+After the initial embrace of dynamic this and dynamic that, many people started to rediscover the old way of creating websites. Static websites are -as it turns out- more than enough for many small sites or blogs! Certainly with the new wave of "comment" providers like disqus.
 
 Creating a simple website using a comments provider is still a bit of work though.
 
 Enter the static website generator.
 
-Static websites generators take a lot of pain out of traditional web design. And when using a theme (like this!) this becomes even simpler.
+Static websites generators take a lot of pain out of traditional web design. And when using a theme (like this!) this becomes even easier.
 
-Creating content now is simply a matter of writing the content in a (plain) text editor, then compiling the website and uploading it (or only the changes) to the hosting provider.
+Creating content is now just a matter of writing the content in a (plain) text editor, then compiling the website and uploading it (or only the changes) to the hosting provider.
 
 Simple, neat.
 

@@ -170,7 +170,11 @@
 				{%- if ape.menuLink == false %}
 				<p class="paddingAsLink">{{ topTitle }}</p>
 				{%- else %}
+				    {%- if ape.url contains "http" -%}
+				<a href="{{ ape.url }}"><p>{{ topTitle }}</p></a>
+					{%- else -%}
 				<a href="{{ ape.url | relative_url }}"><p>{{ topTitle }}</p></a>
+				    {%- endif -%}
 				{%- endif -%}
 				{%- assign pageFound = true -%}
 				{%- break -%}
@@ -182,7 +186,11 @@
 					{%- if ape.menuLink == false %}
 				<p class="paddingAsLink">{{ topTitle }}</p>
 					{%- else %}
+					    {%- if ape.url contains "http" -%}
+				<a href="{{ ape.url }}"><p>{{ topTitle }}</p></a>
+				        {%- else -%}
 				<a href="{{ ape.url | relative_url }}"><p>{{ topTitle }}</p></a>
+				        {%- endif -%}
 					{%- endif -%}
 					{%- assign pageFound = true -%}
 					{%- break -%}
@@ -322,7 +330,11 @@
 						{%- endif %}
 					</label>
 					<div class="text">
+						{%- if sortedSubMenuUrls[forloop.index0] contains "http" -%}
+						<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
+						{%- else -%}
 						<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
+						{%- endif -%}
 					</div>
 				</div>
 					{%- else -%}
@@ -367,7 +379,11 @@
 						<div class="title">
 							<div class="symbol"><p></p></div>
 							<div class="text">
+							    {%- if sortedSubsubMenuUrls[forloop.index0] contains "http" -%}
+								<a href="{{ sortedSubsubMenuUrls[forloop.index0] }}"><p>{{ subsubMenuTitle }}</p></a>
+								{%- else -%}
 								<a href="{{ sortedSubsubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subsubMenuTitle }}</p></a>
+								{%- endif -%}
 							</div>
 						</div>
 							{%- else %}
@@ -439,7 +455,11 @@
 				<div class="title">
 					<div class="symbol"></div>
 					<div class="text">
+					{%- if cat.url contains "http" -%}
+						<a href="{{ cat.url }}"><p>{{ cat.title | capitalize }}</p></a>
+					{%- else -%}
 						<a href="{{ cat.url | relative_url }}"><p>{{ cat.title | capitalize }}</p></a>
+					{%- endif -%}
 					</div>
 				</div>
 			</div>
