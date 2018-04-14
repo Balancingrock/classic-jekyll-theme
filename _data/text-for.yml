@@ -48,3 +48,6 @@ tOlderPosts: Older Posts
 # Month names for Older Posts widget output
 # Note: Must start with 'None' because of index starting at 0
 tMonths: [None, January, February, March, April, May, June, July, August, September, October, November, December]
+
+# Text to be displayed for articles that will be published in the future.
+tFutureRelease: This article is scheduled for release in the near future.

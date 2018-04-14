@@ -53,8 +53,6 @@ After the initiation use a `-` symbol to start a new sub menu item like this:
 	---
 
 This example is discussed below.
-
-__Important limitation__: each menuSubs-title can only be defined in 1 page. Attempting to define them in more than 1 page will lead to duplication in the menu itself.
 	
 #### menuTopTitle
 
@@ -118,5 +116,3 @@ Sub-sub-menu items are created in the same way the sub-items are created, but us
 This will create two sub-sub menu items under the _cattle_ entry.
 
 For the sub-sub menu entries the same tags as for the sub-menus can be used. (`link`, `index`, `url` and `anchorId`)
-
-__Attention__: Sub-sub menu entries can only be defined in a single page!

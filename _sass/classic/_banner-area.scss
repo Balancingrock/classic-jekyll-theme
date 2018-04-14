@@ -125,16 +125,20 @@
 			@include narrow-layout { height: $banner-icon-height-narrow; }
 			@include medium-layout { height: $banner-icon-height-medium; }
 			@include widest-layout { height: $banner-icon-height-widest; }
-				
-			// Content (icon image)
-			@include narrow-layout { content: $banner-icon-url-narrow; }
-			@include medium-layout { content: $banner-icon-url-medium; }
-			@include widest-layout { content: $banner-icon-url-widest; }
-				
+							
 			// Background
 			@include narrow-layout { background: $banner-icon-background-narrow; }
 			@include medium-layout { background: $banner-icon-background-medium; }
 			@include widest-layout { background: $banner-icon-background-widest; }			
+		}
+		
+		// Content (icon image)
+		// Note: Firefox needs the 'after' attribute to display the icon. Other browsers seem fine without it.
+		// Issue no 19.
+		.banner-icon::after {
+			@include narrow-layout { content: $banner-icon-url-narrow; }
+			@include medium-layout { content: $banner-icon-url-medium; }
+			@include widest-layout { content: $banner-icon-url-widest; }
 		}
 	}
 		

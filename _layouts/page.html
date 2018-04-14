@@ -7,10 +7,21 @@ layout: default
 		<p class="page-meta">{%- if page.date -%}<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%F" }}</time>{%- endif -%}{%- if page.author -%} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{%- endif -%}</p>
 	</header>
 	<div class="page-content" itemprop="articleBody">
-  
+
+{%- assign buildTimeInSecondsSinceEpoch = site.time | date: "%s" | plus: 0 -%}	
+{%- assign pageInSecondsSindsEpoch = page.date | date:"%s" | plus: 0 -%}
+
+{%- if pageInSecondsSindsEpoch < buildTimeInSecondsSinceEpoch %}
 <!-- Page content -->
    {{ content }}
 <!-- End of page content -->
+{% else -%}
+	{%- assign future-release = 'This article is scheduled for release in the near future.' -%}
+	{%- if site.data.text-for.tFutureRelease -%}
+		{%- assign future-release = site.data.text-for.tFutureRelease -%}
+	{%- endif -%}
+	<p>{{ future-release }}</p>
+{% endif -%}
 
 	</div>
 {%- if site.disqus.shortname -%}

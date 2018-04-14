@@ -18,7 +18,17 @@
 
 	{%- comment -%}<!-- Find all pages that belong to the menuTopTitle of this page -->{%- endcomment -%}
 	
-	{%- assign topTitlePages = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle -%}
+	{%- assign buildTimeInSecondsSinceEpoch = site.time | date: "%s" | plus: 0 -%}
+	
+	{%- assign pagesForPublishing = "" | split: "" -%}
+	{%- for ape in site.pages -%}
+		{%- assign pageInSecondsSindsEpoch = ape.date | date:"%s" | plus: 0 -%}
+		{%- if pageInSecondsSindsEpoch < buildTimeInSecondsSinceEpoch -%}
+		    {%- assign pagesForPublishing = pagesForPublishing | push: ape -%}
+		{%- endif -%}
+    {%- endfor -%}
+
+	{%- assign topTitlePages = pagesForPublishing | where:'menuInclude', true | where:'menuTopTitle', topTitle -%}
 			
 	{%- comment -%}<!-- note: these html comment tags are for editor coloring support
 			
@@ -214,7 +224,11 @@
 			<div class="sub-isActivePage">
 				<div class="disclosure"><p></p></div>
 				<div class="title">
+					{%- if sortedSubMenuUrls[forloop.index0] contains "http" -%}
+					<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
+					{%- else -%}
 					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
+					{%- endif -%}
 				</div>
 			</div>
 				{%- else %}
@@ -226,14 +240,22 @@
 			<div class="sub-isActivePage">
 				<div class="disclosure"><p></p></div>
 				<div class="title">
+						{%- if sortedSubMenuUrls[forloop.index0] contains "http" -%}
+					<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
+						{%- else -%}
 					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
+						{%- endif -%}
 				</div>
 			</div>
 					{%- else %}
 			<div class="sub-hasLink">
 				<div class="disclosure"><p></p></div>
 				<div class="title">
+						{%- if sortedSubMenuUrls[forloop.index0] contains "http" -%}
+					<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
+						{%- else -%}
 					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
+						{%- endif -%}
 				</div>
 			</div>
 					{%- endif -%}
@@ -253,7 +275,11 @@
 					<p class="symbol"><!-- will be filled by disclosure indicator --></p>
 				</label>
 				<div class="title">
+					{%- if sortedSubMenuUrls[forloop.index0] contains "http" -%}
+					<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
+					{%- else -%}
 					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
+					{%- endif -%}
 				</div>
 			</div>
 				{%- else %}
@@ -268,7 +294,11 @@
 					<p class="symbol"><!-- will be filled by disclosure indicator --></p>
 				</label>
 				<div class="title">
+						{%- if sortedSubMenuUrls[forloop.index0] contains "http" -%}
+					<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
+						{%- else -%}
 					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
+						{%- endif -%}
 				</div>
 			</div>
 					{%- else %}
@@ -278,7 +308,11 @@
 					<p class="symbol"><!-- will be filled by disclosure indicator --></p>
 				</label>
 				<div class="title">
+						{%- if sortedSubMenuUrls[forloop.index0] contains "http" -%}
+					<a href="{{ sortedSubMenuUrls[forloop.index0] }}"><p>{{ subMenuTitle }}</p></a>
+						{%- else -%}
 					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
+						{%- endif -%}
 				</div>
 			</div>
 					{%- endif -%}
@@ -301,14 +335,22 @@
 			<div class="subsub-isActivePage">
 				<div class="disclosure"><p></p></div>
 				<div class="title">
+						{%- if sortedSubsubMenuUrls[forloop.index0] contains "http" -%}
+					<a href="{{ sortedSubsubMenuUrls[forloop.index0] }}"><p>{{ subsubTitle }}</p></a>
+						{%- else -%}
 					<a href="{{ sortedSubsubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subsubTitle }}</p></a>
+						{%- endif -%}
 				</div>
     		</div>
 					{%- else %}
 			<div class="subsub-hasLink">
 				<div class="disclosure"><p></p></div>
 				<div class="title">
+						{%- if sortedSubsubMenuUrls[forloop.index0] contains "http" -%}
+					<a href="{{ sortedSubsubMenuUrls[forloop.index0] }}"><p>{{ subsubTitle }}</p></a>
+						{%- else -%}
 					<a href="{{ sortedSubsubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subsubTitle }}</p></a>
+						{%- endif -%}
 				</div>
     		</div>
 					{% endif -%}
