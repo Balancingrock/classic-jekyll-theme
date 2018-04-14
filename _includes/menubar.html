@@ -46,7 +46,7 @@
 			
 			-->{%- endcomment -%}
 			
-			{%- assign titlePages = site.pages | where:'menuInclude', true | where:'menuTopTitle', topTitle -%}
+			{%- assign titlePages = sortedPages | where:'menuTopTitle', topTitle -%}
 			
 			{%- assign subMenuTitles = "" | split: "" -%}
 			{%- assign subMenuIndexes = "" | split: "" -%}
@@ -141,9 +141,9 @@
 		{%- endif -%}
 
 		{%- comment -%}<!-- Create top menu item -->{%- endcomment %}
-		<input type="checkbox" id="{{ topTitle | append:'-checkbox'}}">
+		<input type="checkbox" id="{{ topTitle | replace:' ','-' | append:'-checkbox'}}">
 		<div class="title">
-			<label class="symbol" for="{{ topTitle | append:'-checkbox'}}">
+			<label class="symbol" for="{{ topTitle | replace:' ','-' | append:'-checkbox'}}">
 		{%- if sortedSubMenuTitles.size > 0 %}
 				<p class="code"><!-- will be filled by disclosure indicator --></p>
 		{%- else %}
@@ -155,7 +155,7 @@
 		{%- comment -%}<!-- Find page to link to -->{%- endcomment -%}
 					
 		{%- assign pageFound = false -%}
-		{%- for ape in site.pages -%}
+		{%- for ape in sortedPages -%}
 			{%- if ape.menuTopTitle == topTitle and ape.menuSubTitle == nil and ape.menuSubs == nil -%}
 				{%- if ape.menuLink == false %}
 				<p class="paddingAsLink">{{ topTitle }}</p>
@@ -167,7 +167,7 @@
 			{%- endif -%}
 		{%- endfor -%}
 		{%- if pageFound == false -%}
-			{%- for ape in site.pages -%}
+			{%- for ape in sortedPages -%}
 				{%- if ape.menuTopTitle == topTitle and ape.menuTopIndex -%}
 					{%- if ape.menuLink == false %}
 				<p class="paddingAsLink">{{ topTitle }}</p>
@@ -196,8 +196,23 @@
 				{%- else %}
 		<div class="dropdown-narrow">
 				{%- endif -%}
+				
+				{%- assign processedSubMenuTitles = "" | split: "" -%}
+
 				{%- for subMenuTitle in sortedSubMenuTitles %}
-						
+
+					{%- comment -%}<!-- Do not build the same sub menu item twice -->{%- endcomment -%}
+
+					{%- assign subMenuTitleProcessed = false -%}
+					{%- for smt in processedSubMenuTitles -%}
+						{%- if smt == subMenuTitle -%}{% assign subMenuTitleProcessed = true -%}{%- endif -%}
+					{%- endfor -%}
+					{%- if subMenuTitleProcessed -%}
+						{%- continue -%}
+					{%- else -%}
+						{%- assign processedSubMenuTitles = processedSubMenuTitles | push: subMenuTitle -%}
+					{%- endif -%}
+
 					{%- comment -%}<!-- Build the sub-sub tables for {{ subMenuTitle }} -->{%- endcomment -%}
 						
 					{% assign subsubMenuTitles = "" | split: "" -%}
@@ -278,7 +293,7 @@
 			<div class="subitem isActiveSelection">
 						{%- else -%}
 							{%- assign urlFound = false -%}
-							{%- for url in sortedSubSubMenuUrls -%}
+							{%- for url in sortedSubsubMenuUrls -%}
 								{%- if url == page.url -%}{%- assign urlFound = true -%}{%- endif -%}
 							{%- endfor -%}
 							{%- if urlFound %}
@@ -287,9 +302,9 @@
 			<div class="subitem">
 							{%- endif -%}
 						{%- endif %}
-				<input type="checkbox" id="{{ subMenuTitle | append:'-checkbox'}}">
+				<input type="checkbox" id="{{ subMenuTitle | replace:' ','-' | append:'-checkbox'}}">
 				<div class="title">
-					<label class="symbol" for="{{ subMenuTitle | append:'-checkbox'}}">
+					<label class="symbol" for="{{ subMenuTitle | replace:' ','-' | append:'-checkbox'}}">
 						{%- if sortedSubsubMenuTitles.size > 0 %}
 						<p class="code"><!-- will be filled by disclosure indicator --></p>
 						{%- else %}
@@ -302,7 +317,7 @@
 				</div>
 					{%- else -%}
 						{%- assign urlFound = false -%}
-						{%- for url in sortedSubSubMenuUrls -%}
+						{%- for url in sortedSubsubMenuUrls -%}
 							{%- if url == page.url -%}{%- assign urlFound = true -%}{%- endif -%}
 						{%- endfor -%}
 						{%- if urlFound %}
@@ -310,9 +325,9 @@
 						{%- else %}
 			<div class="subitem">
 						{%- endif %}
-				<input type="checkbox" id="{{ subMenuTitle | append:'-checkbox'}}">
+				<input type="checkbox" id="{{ subMenuTitle | replace:' ','-' | append:'-checkbox'}}">
 				<div class="title">
-					<label class="symbol" for="{{ subMenuTitle | append:'-checkbox'}}">
+					<label class="symbol" for="{{ subMenuTitle | replace:' ','-' | append:'-checkbox'}}">
 						{%- if sortedSubsubMenuTitles.size > 0 %}
 						<p class="code"><!-- will be filled by disclosure indicator --></p>
 						{%- else %}

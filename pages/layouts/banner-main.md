@@ -12,7 +12,7 @@ secondary-column: left
 tertiary-column: none
 excerpt: The banner is placed above the main column only
 ---
-The banner only appears above the main page. To create more space for the banner, the secondary column has been fixed to the left en the tertiary column has been disabled.
+The banner only appears above the main page. To create more space for the banner, the secondary column has been fixed to the left and the tertiary column has been disabled.
 
 If the screen is too small, the title will be displayed over the icon.
 

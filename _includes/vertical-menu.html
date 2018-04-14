@@ -116,9 +116,22 @@
 	{%- endfor -%}
 
 
+	{%- assign processedSubMenuTitles = "" | split: "" -%}
 
 	{%- for subMenuTitle in sortedSubMenuTitles -%}
-	
+
+		{%- comment -%}<!-- Do not build the same sub menu item twice -->{%- endcomment -%}
+
+		{%- assign subMenuTitleProcessed = false -%}
+		{%- for smt in processedSubMenuTitles -%}
+			{%- if smt == subMenuTitle -%}{% assign subMenuTitleProcessed = true -%}{%- endif -%}
+		{%- endfor -%}
+		{%- if subMenuTitleProcessed -%}
+			{%- continue -%}
+		{%- else -%}
+			{%- assign processedSubMenuTitles = processedSubMenuTitles | push: subMenuTitle -%}
+		{%- endif -%}
+
 		{%- comment -%}<!-- Repeat the above, for the submenu title, building the subsub menu -->{%- endcomment -%}
 
 		{%- assign subsubMenuTitles = "" | split: "" -%}
@@ -205,12 +218,25 @@
 				</div>
 			</div>
 				{%- else %}
+					{%- assign urlFound = false -%}
+					{%- for url in sortedSubsubMenuUrls -%}
+						{%- if url == page.url -%}{%- assign urlFound = true -%}{%- endif -%}
+					{%- endfor -%}
+					{%- if urlFound %}
+			<div class="sub-isActivePage">
+				<div class="disclosure"><p></p></div>
+				<div class="title">
+					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
+				</div>
+			</div>
+					{%- else %}
 			<div class="sub-hasLink">
 				<div class="disclosure"><p></p></div>
 				<div class="title">
 					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
 				</div>
 			</div>
+					{%- endif -%}
 				{%- endif -%}
 			{%- else %}
 			<div class="sub">
@@ -219,11 +245,11 @@
 			</div>
 			{%- endif -%}
 		{%- else %}
-			<input type="checkbox" id="{{ subMenuTitle | append:'-vmenu-' | append: include.label-modifier }}">
 			{%- if sortedSubMenuLinks[forloop.index0] != false -%}
 				{%- if sortedSubMenuUrls[forloop.index0] == page.url %}
+			<input type="checkbox" id="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
 			<div class="sub-isActivePage">
-				<label class="disclosure show-hover" for="{{ subMenuTitle | append:'-vmenu-' | append: include.label-modifier }}">
+				<label class="disclosure show-hover" for="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
 					<p class="symbol"><!-- will be filled by disclosure indicator --></p>
 				</label>
 				<div class="title">
@@ -231,18 +257,36 @@
 				</div>
 			</div>
 				{%- else %}
-			<div class="sub-hasLink">
-				<label class="disclosure show-hover" for="{{ subMenuTitle | append:'-vmenu-' | append: include.label-modifier }}">
+					{%- assign urlFound = false -%}
+					{%- for url in sortedSubsubMenuUrls -%}
+						{%- if url == page.url -%}{%- assign urlFound = true -%}{%- endif -%}
+					{%- endfor -%}
+					{%- if urlFound %}
+			<input type="checkbox" id="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}" checked>
+			<div class="sub-isActivePage">
+				<label class="disclosure show-hover" for="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
 					<p class="symbol"><!-- will be filled by disclosure indicator --></p>
 				</label>
 				<div class="title">
 					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
 				</div>
 			</div>
+					{%- else %}
+			<input type="checkbox" id="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
+			<div class="sub-hasLink">
+				<label class="disclosure show-hover" for="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
+					<p class="symbol"><!-- will be filled by disclosure indicator --></p>
+				</label>
+				<div class="title">
+					<a href="{{ sortedSubMenuUrls[forloop.index0] | relative_url }}"><p>{{ subMenuTitle }}</p></a>
+				</div>
+			</div>
+					{%- endif -%}
 				{%- endif -%}
 			{%- else %}
+			<input type="checkbox" id="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
 			<div class="sub">
-				<label class="disclosure show-hover" for="{{ subMenuTitle | append:'-vmenu-' | append: include.label-modifier }}">
+				<label class="disclosure show-hover" for="{{ subMenuTitle | replace:' ','-' | append:'-vmenu-' | append: include.label-modifier }}">
 					<p class="symbol"><!-- will be filled by disclosure indicator --></p>
 				</label>
 				<div class="title"><p>{{ subMenuTitle }}</p></div>

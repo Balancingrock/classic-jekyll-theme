@@ -9,12 +9,12 @@
 	{%- assign cats = site.pages | where:'layout', 'category-page' | sort:'title' -%}
 	{%- if cats.size > 0 -%}
 		{%- for cat in cats %}
-	<div class="title"><a href="{{ cat.url | relative_url }}"><p>{{ cat.title | capitalize }}</p></a></div>
+	<div class="text"><a href="{{ cat.url | relative_url }}"><p>{{ cat.title | capitalize }}</p></a></div>
 		{%- endfor -%}
 	{%- else -%}
 		{%- assign no-categories = 'None' -%}
 		{%- if site.data.text-for.tNoCategories -%}{%- assign no-categories = site.data.text-for.tNoCategories -%}{%- endif %}
-	<div class="title"><p>{{ no-categories | capitalize }}</p></div>
+	<div class="text"><p>{{ no-categories | capitalize }}</p></div>
 	{%- endif %}
 </div>
 {%- endif %}

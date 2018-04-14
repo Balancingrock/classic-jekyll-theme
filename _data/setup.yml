@@ -76,6 +76,7 @@ enable-cookies-policy: no
 # for 'top-fixed'. (See classic-jekyll-theme.scss)
 #
 # Hint 1: When the 'top-fixed' is used a background color should be specified for the banner and menu.
+# Hint 2: It is recommended not to use the youtube-player widget when using 'top-fixed'. Because the youtube-player widget will scroll in front of the banner.
 #
 banner-position: top
 
