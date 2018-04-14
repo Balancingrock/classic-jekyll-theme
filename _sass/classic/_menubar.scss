@@ -236,15 +236,21 @@
 			@include medium-layout {
 				width: $menubar-icon-width-medium;
 				height: $menubar-icon-height-medium;
-				content: $menubar-icon-url-medium;
 				padding: $menubar-icon-padding-medium;
 			}
 			@include widest-layout {
 				width: $menubar-icon-width-widest;
 				height: $menubar-icon-height-widest;
-				content: $menubar-icon-url-widest;
 				padding: $menubar-icon-padding-widest;
 			}
+		}
+
+		// Content (icon image)
+		// Note: Firefox needs the 'after' attribute to display the icon. Other browsers seem fine without it.
+		// Issue no 19.
+		.menubar-icon:after {
+			@include medium-layout { content: $menubar-icon-url-medium; }
+			@include widest-layout { content: $menubar-icon-url-widest; }
 		}
 
 		.item-separator {
