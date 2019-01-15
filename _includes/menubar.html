@@ -10,13 +10,20 @@
 	
 	{%- assign buildTimeInSecondsSinceEpoch = site.time | date: "%s" | plus: 0 -%}
 	
-	{%- assign pagesForPublishing = "" | split: "" -%}
-	{%- for ape in site.pages -%}
-		{%- assign pageInSecondsSindsEpoch = ape.date | date:"%s" | plus: 0 -%}
-		{%- if pageInSecondsSindsEpoch < buildTimeInSecondsSinceEpoch -%}
-		    {%- assign pagesForPublishing = pagesForPublishing | push: ape -%}
-		{%- endif -%}
-    {%- endfor -%}
+    {%- assign pagesForPublishing = "" | split: "" -%}
+
+	{%- if site.data.setup.exclude-pages-from-menus -%}{%- else -%}
+	    {%- for ape in site.pages -%}
+		    {%- assign pageInSecondsSindsEpoch = ape.date | date:"%s" | plus: 0 -%}
+		    {%- if pageInSecondsSindsEpoch < buildTimeInSecondsSinceEpoch -%}
+		        {%- assign pagesForPublishing = pagesForPublishing | push: ape -%}
+		    {%- endif -%}
+        {%- endfor -%}
+    {%- endif -%}
+	
+	{%- if site.data.setup.include-posts-in-menus -%}
+		{%- assign pagesForPublishing = pagesForPublishing | concat: site.posts -%}
+	{%- endif -%}
 	
 	{%- assign topTitles = "" | split: "" -%}
 	{%- assign sortedPages = pagesForPublishing | where:'menuInclude', true | where_exp:'item', 'item.menuTopTitle != nil' | sort: 'menuTopIndex', 'last' -%}

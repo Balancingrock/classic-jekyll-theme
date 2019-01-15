@@ -16,17 +16,23 @@
 	<div class="topTitle"><h1>{{ topTitle }}</h1></div>
 	<div class="vmenu">
 
-	{%- comment -%}<!-- Find all pages that belong to the menuTopTitle of this page -->{%- endcomment -%}
+	{%- comment -%}<!-- Find all entries that belong to the menuTopTitle of this document -->{%- endcomment -%}
 	
 	{%- assign buildTimeInSecondsSinceEpoch = site.time | date: "%s" | plus: 0 -%}
 	
-	{%- assign pagesForPublishing = "" | split: "" -%}
-	{%- for ape in site.pages -%}
-		{%- assign pageInSecondsSindsEpoch = ape.date | date:"%s" | plus: 0 -%}
-		{%- if pageInSecondsSindsEpoch < buildTimeInSecondsSinceEpoch -%}
-		    {%- assign pagesForPublishing = pagesForPublishing | push: ape -%}
-		{%- endif -%}
-    {%- endfor -%}
+	{%- if site.data.setup.exclude-pages-from-menus -%}{%- else -%}
+	    {%- for ape in site.pages -%}
+		    {%- assign pageInSecondsSindsEpoch = ape.date | date:"%s" | plus: 0 -%}
+		    {%- if pageInSecondsSindsEpoch < buildTimeInSecondsSinceEpoch -%}
+		        {%- assign pagesForPublishing = pagesForPublishing | push: ape -%}
+		    {%- endif -%}
+        {%- endfor -%}
+    {%- endif -%}
+	
+	{%- if site.data.setup.include-posts-in-menus -%}
+		{%- assign pagesForPublishing = pagesForPublishing | concat: site.posts -%}
+	{%- endif -%}
+
 
 	{%- assign topTitlePages = pagesForPublishing | where:'menuInclude', true | where:'menuTopTitle', topTitle -%}
 			

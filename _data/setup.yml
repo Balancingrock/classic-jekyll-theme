@@ -114,7 +114,22 @@ generate-categories-menu: no
 # Note 2: When a separate navbanner file is used the menubar will not be able to highlight the active page.
 #
 # Hint: Keep this option set to 'yes' during content creation or site development (when jekyll auto regeneration is used). Then switch it back to 'no' for the version that is published.
-
+#
 use-separate-banner-menubar-file: no
+
+# Exclude pages from the menu structure. Note that this uses negative logic for backwards compatibility.
+# Values: yes | no
+# - yes: Pages will not be included in any menu structure
+# - no: Pages will be included in all menu structures
+#
+exclude-pages-from-menus: no
+
+# Included posts in any menu structure.
+# Values: yes | no
+# - yes: Posts will be scanned for inclusion in all menu structures.
+# - no: Posts will be excluded from the menu structures.
+#
+include-posts-in-menus: yes
+
 
 # End of file

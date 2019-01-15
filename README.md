@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v2.3.0
+# Classic-Jekyll-Theme v2.4.0
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu (dropdown), (up to) three columns and a footer. The design is fully responsive for three different screen widths: widest, medium and narrow. It is probably best shown in an example:
 
@@ -24,13 +24,15 @@ An example screenshot:
 
 ![example](http://balancingrock.nl/assets/img/classic-jekyll-theme-screenshot-half.png)
 
-Or visit a site using this theme: [365posts.com](http://www.365posts.com) or [Balancing Rock](http://www.balancingrock.nl)
+Or visit a site using this theme like [Balancing Rock](http://www.balancingrock.nl)
 
 Other features:
 
 - __Secondary and Tertiary Columns__ can be specified by default and on a page by page basis for presence, location and content.
 
 - __Navigation bar with drop-down menu__ is created automatically from the available pages when these have the proper YAML frontmatter. The navigation bar contains the top level menu items, while the submenu items show up as a drop-down menu when the cursor hovers over the corresponding menu item. Hovering over submenu item brings up the sub-submenu items.
+
+- __Create the menu__ from either Posts and/or Pages.
 
 - __Category pages__ are created semi-automatically; the web designer has to identify the categories for inclusion, but the menu entry and category pages are created automatically.
 
@@ -84,6 +86,7 @@ Please see [http://balancingrock.github.io/classic-jekyll-theme](http://balancin
 - [Release 2.1.1 (2018-01-22)](http://balancingrock.github.io/classic-jekyll-theme/classic/2017/12/22/bugfix-2-1.html)
 - [Release 2.2.0 (2018-02-02)](http://balancingrock.github.io/classic-jekyll-theme/classic/2018/02/02/release-2-2-0.html)
 - [Release 2.3.0 (2018-02-05)](http://balancingrock.github.io/classic-jekyll-theme/classic/2018/02/05/release-2-3-0.html)
+- [Release 2.4.0 (2019-01-15)](http://balancingrock.github.io/classic-jekyll-theme/classic/2019/01/15/release-2-4-0.html)
 
 ## Suport & Feedback
 
