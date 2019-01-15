@@ -20,6 +20,8 @@
 	
 	{%- assign buildTimeInSecondsSinceEpoch = site.time | date: "%s" | plus: 0 -%}
 	
+    {%- assign pagesForPublishing = "" | split: "" -%}
+
 	{%- if site.data.setup.exclude-pages-from-menus -%}{%- else -%}
 	    {%- for ape in site.pages -%}
 		    {%- assign pageInSecondsSindsEpoch = ape.date | date:"%s" | plus: 0 -%}
