@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "classic-jekyll-theme"
-  spec.version       = "2.4.1"
+  spec.version       = "2.4.2"
   spec.authors       = ["Rien"]
   spec.email         = ["rien@balancingrock.nl"]
 
@@ -17,6 +17,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "jekyll-feed", "~> 0.8"
   spec.add_runtime_dependency "jekyll-data", ">= 0.4", "< 2.0"
   
-  spec.add_development_dependency "bundler", "~> 1.12"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "bundler", "~> 2.0"
+  spec.add_development_dependency "rake", "~> 12.0"
 end

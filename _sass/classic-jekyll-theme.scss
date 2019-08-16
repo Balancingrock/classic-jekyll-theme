@@ -576,17 +576,24 @@ $menubar-subsubitem-font-widest:					$menubar-subitem-font-widest;
 $menubar-item-color-narrow:							$theme-color;
 $menubar-item-color-medium:							$theme-color;
 $menubar-item-color-widest:							$theme-color;
-$menubar-item-hover-color-narrow:					black;
-$menubar-item-hover-color-medium:					black;
-$menubar-item-hover-color-widest:					black;
+$menubar-item-color-hover-narrow:					black;
+$menubar-item-color-hover-medium:					black;
+$menubar-item-color-hover-widest:					black;
+$menubar-item-color-selected-narrow:				$theme-color;
+$menubar-item-color-selected-medium:				$theme-color;
+$menubar-item-color-selected-widest:				$theme-color;
 $menubar-subitem-color-medium:						$theme-color;
 $menubar-subitem-color-widest:						$theme-color;
-$menubar-subitem-hover-color-medium:				black;
-$menubar-subitem-hover-color-widest:				black;
+$menubar-subitem-color-hover-medium:				black;
+$menubar-subitem-color-hover-widest:				black;
+$menubar-subitem-color-selected-medium:				$theme-color;
+$menubar-subitem-color-selected-widest:				$theme-color;
 $menubar-subsubitem-color-medium:					$menubar-subitem-color-medium;
 $menubar-subsubitem-color-widest:					$menubar-subitem-color-widest;
-$menubar-subsubitem-hover-color-medium:				$menubar-subitem-hover-color-medium;
-$menubar-subsubitem-hover-color-widest:				$menubar-subitem-hover-color-widest;
+$menubar-subsubitem-color-hover-medium:				$menubar-subitem-color-hover-medium;
+$menubar-subsubitem-color-hover-widest:				$menubar-subitem-color-hover-widest;
+$menubar-subsubitem-color-selected-medium:			$menubar-subitem-color-selected-medium;
+$menubar-subsubitem-color-selected-widest:			$menubar-subitem-color-selected-widest;
 
 // The background & hover background & active-page background to be used for an entry
 // The selected background is used when an item is visible and the page that is linked to is visible.

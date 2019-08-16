@@ -102,7 +102,7 @@
 					p { color: $menubar-item-color-narrow; }
 					
 					// Hover effect
-					&:hover { p { color: $menubar-item-hover-color-narrow; } }
+					&:hover { p { color: $menubar-item-color-hover-narrow; } }
 				}
 			}
 
@@ -199,7 +199,10 @@
 			}
 		}
 		
-		.isActiveSelection { background: $menubar-item-background-selected-narrow; }
+		.isActiveSelection {
+			background: $menubar-item-background-selected-narrow;
+			.title .text p { color: $menubar-item-color-selected-narrow }
+		}
 	}
 			
 	@include medium-and-widest-layout {
@@ -329,8 +332,8 @@
 			
 				p {
 					// Change font color
-					@include medium-layout { color: $menubar-item-hover-color-medium; }
-					@include widest-layout { color: $menubar-item-hover-color-widest; }
+					@include medium-layout { color: $menubar-item-color-hover-medium; }
+					@include widest-layout { color: $menubar-item-color-hover-widest; }
 				}
 				
 				// Change item background
@@ -413,8 +416,8 @@
 						.sub-dropdown { display: flex; }
 
 						p {
-							@include medium-layout { color: $menubar-subitem-hover-color-medium; }
-							@include widest-layout { color: $menubar-subitem-hover-color-widest; }
+							@include medium-layout { color: $menubar-subitem-color-hover-medium; }
+							@include widest-layout { color: $menubar-subitem-color-hover-widest; }
 						}
 						
 						@include medium-layout { background: $menubar-subitem-background-hover-medium; }
@@ -472,8 +475,8 @@
 							// Hover effect
 							&:hover {
 								p {
-									@include medium-layout { color: $menubar-subsubitem-hover-color-medium; }
-									@include widest-layout { color: $menubar-subsubitem-hover-color-widest; }
+									@include medium-layout { color: $menubar-subsubitem-color-hover-medium; }
+									@include widest-layout { color: $menubar-subsubitem-color-hover-widest; }
 								}
 								
 								@include medium-layout { background: $menubar-subsubitem-background-hover-medium; }
@@ -492,6 +495,10 @@
 						.isActiveSelection {
 							@include medium-layout { background: $menubar-subsubitem-background-selected-medium; }
 							@include widest-layout { background: $menubar-subsubitem-background-selected-widest; }
+							p {
+								@include medium-layout { color: $menubar-subsubitem-color-selected-medium; }
+								@include widest-layout { color: $menubar-subsubitem-color-selected-widest; }
+							}
 						}
 					}
 				}
@@ -501,6 +508,10 @@
 				.isActiveSelection {
 					@include medium-layout { background: $menubar-subitem-background-selected-medium; }
 					@include widest-layout { background: $menubar-subitem-background-selected-widest; }
+					p {
+						@include medium-layout { color: $menubar-subitem-color-selected-medium; }
+						@include widest-layout { color: $menubar-subitem-color-selected-widest; }
+					}
 				}
 			}
 		}	
@@ -510,6 +521,10 @@
 		.isActiveSelection {
 			@include medium-layout { background: $menubar-item-background-selected-medium; }
 			@include widest-layout { background: $menubar-item-background-selected-widest; }
+			p {
+				@include medium-layout { color: $menubar-item-color-selected-medium; }
+				@include widest-layout { color: $menubar-item-color-selected-widest; }
+			}
 		}
 	}
 }
