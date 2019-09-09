@@ -1,4 +1,4 @@
-# Classic-Jekyll-Theme v2.4.2
+# Classic-Jekyll-Theme v2.4.3
 
 Welcome to Classic-Jekyll-Theme. This theme centers around one of the most used website structures on the web. A banner, navigation menu (dropdown), (up to) three columns and a footer. The design is fully responsive for three different screen widths: widest, medium and narrow. It is probably best shown in an example:
 
@@ -88,6 +88,7 @@ Please see [http://balancingrock.github.io/classic-jekyll-theme](http://balancin
 - [Release 2.3.0 (2018-02-05)](http://balancingrock.github.io/classic-jekyll-theme/classic/2018/02/05/release-2-3-0.html)
 - [Release 2.4.0 (2019-01-15)](http://balancingrock.github.io/classic-jekyll-theme//2019/01/15/release-2-4-0.html)
 - [Release 2.4.2 (2019-08-16)](http://balancingrock.github.io/classic-jekyll-theme//2019/08/16/release-2-4-2.html)
+- [Release 2.4.3 (2019-09-09)](http://balancingrock.github.io/classic-jekyll-theme//2019/09/09/release-2-4-3.html)
 
 ## Suport & Feedback
 
