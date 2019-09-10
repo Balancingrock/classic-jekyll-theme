@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "classic-jekyll-theme"
-  spec.version       = "2.4.3"
+  spec.version       = "2.5.0"
   spec.authors       = ["Rien"]
   spec.email         = ["rien@balancingrock.nl"]
 
@@ -13,9 +13,9 @@ Gem::Specification.new do |spec|
 
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^(assets|icons|pages|_layouts|_includes|_sass|_data|LICENSE|README|navbanner)}i) }
   
-  spec.add_runtime_dependency "jekyll", "~> 4.0"
+  spec.add_runtime_dependency "jekyll", "> 3.6"
   spec.add_runtime_dependency "jekyll-feed", "~> 0.8"
-  spec.add_runtime_dependency "jekyll-data", ">= 1.1", "< 2.0"
+  spec.add_runtime_dependency "jekyll-data", ">= 1.0"
   
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 12.0"
